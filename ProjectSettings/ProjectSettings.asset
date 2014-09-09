@@ -11,7 +11,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Temp
+  productName: Matico
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
@@ -68,7 +68,7 @@ PlayerSettings:
   iPhoneBundleIdentifier: com.Company.ProductName
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
-  productGUID: ecb610535e536e741990345d1014700b
+  productGUID: f18f7c9f63e8b954b81633b84c845d71
   iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
@@ -101,7 +101,11 @@ PlayerSettings:
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - m_Icon: {fileID: 0}
+      m_Size: 128
   m_BuildTargetBatching: []
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
@@ -146,7 +150,7 @@ PlayerSettings:
   flashStrippingLevel: 2
   spritePackerPolicy: 
   scriptingDefineSymbols: {}
-  metroPackageName: Temp
+  metroPackageName: Matico
   metroPackageLogo: 
   metroPackageLogo140: 
   metroPackageLogo180: 
@@ -157,7 +161,7 @@ PlayerSettings:
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Temp
+  metroApplicationDescription: Matico
   metroStoreTileLogo80: 
   metroStoreTileLogo: 
   metroStoreTileLogo140: 
