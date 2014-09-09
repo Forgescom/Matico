@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 43e3bea31f69db44b9bdf0229a01ae86
+guid: ea6cfcdc4d01b8b47868cbd3d10f6bbd
 TextureImporter:
   fileIDToRecycleName:
     21300000: botao_vermelho-17
@@ -22,13 +22,13 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -2
+  maxTextureSize: 256
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 2
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
