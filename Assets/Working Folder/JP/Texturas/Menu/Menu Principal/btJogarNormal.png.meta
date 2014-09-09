@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 64d15ef2b9a897d45969939884f1ca75
+guid: c13e60aa9c99a5646a933a7acd765f9c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: botoes_ecra-22
+    21300000: btJogarNormal
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,8 +22,8 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 512
   textureSettings:
     filterMode: -1
     aniso: -1

@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: d4b748f9d342a0d4da3a5f9622eb288b
+guid: 9aa61ca0d5fa86f41a30cbdec765d427
 TextureImporter:
   fileIDToRecycleName:
-    21300000: botoes_ecra-25
+    21300000: bg_definicoes
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,10 +22,10 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 512
+  textureFormat: -3
+  maxTextureSize: 2048
   textureSettings:
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: -1
     wrapMode: 1

@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 65cd908b024f13545a957dd454a4dc26
+guid: 84e3a9f2bc35a924382d81ffb66b44d6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: brand_logo-21
+    21300000: back_bt
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,13 +22,13 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 256
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 2
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
