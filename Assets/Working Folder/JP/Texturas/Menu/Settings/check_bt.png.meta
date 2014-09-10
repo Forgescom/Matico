@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 9aa61ca0d5fa86f41a30cbdec765d427
+guid: 0fcbf14ed6d5cd4448356aaaeb914139
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bg_definicoes
+    21300000: check_bt
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,12 +23,12 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 2048
+  maxTextureSize: 128
   textureSettings:
-    filterMode: 1
-    aniso: 1
+    filterMode: -1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInternal: {fileID: 0}
   m_Name: BGSlideUp
   serializedVersion: 4
-  m_AnimationType: 2
+  m_AnimationType: 1
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -16,40 +16,34 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
-        value: {x: 0, y: -11, z: 10}
-        inSlope: {x: 0, y: 11, z: 0}
-        outSlope: {x: 0, y: 11, z: 0}
+      - time: .600000024
+        value: {x: 0, y: -11, z: 0}
+        inSlope: {x: 0, y: .978067696, z: 0}
+        outSlope: {x: 0, y: .978067696, z: 0}
         tangentMode: 0
-      - time: 1
-        value: {x: 0, y: 0, z: 10}
-        inSlope: {x: 0, y: 11, z: 0}
-        outSlope: {x: 0, y: 11, z: 0}
-        tangentMode: 1095762034
+      - time: 1.60000002
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: -1.19021964, z: 0}
+        outSlope: {x: 0, y: -1.19021964, z: 0}
+        tangentMode: 4
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
-  m_SampleRate: 60
+  m_SampleRate: 50
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - path: 0
-      attribute: 1
-      script: {fileID: 0}
-      classID: 4
-      customType: 0
-      isPPtrCurve: 0
+    genericBindings: []
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 1.60000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -67,12 +61,12 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
+      - time: .600000024
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 1
+      - time: 1.60000002
         value: 0
         inSlope: 0
         outSlope: 0
@@ -86,16 +80,16 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
+      - time: .600000024
         value: -11
-        inSlope: 11
-        outSlope: 11
-        tangentMode: 10
-      - time: 1
+        inSlope: .978067696
+        outSlope: .978067696
+        tangentMode: 0
+      - time: 1.60000002
         value: 0
-        inSlope: 11
-        outSlope: 11
-        tangentMode: 10
+        inSlope: -1.19021964
+        outSlope: -1.19021964
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.y
@@ -105,13 +99,13 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
-        value: 10
+      - time: .600000024
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 1
-        value: 10
+      - time: 1.60000002
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10

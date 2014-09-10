@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: a72c186be19c6664f9401ce00efe5648
+guid: ca6e86322a878db4ba08d5ad0bba39af
 TextureImporter:
   fileIDToRecycleName:
-    21300000: btDefinicoesNormal
+    21300000: definicoes_header
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: a72c186be19c6664f9401ce00efe5648
+guid: befa0488b788e77408a3cc0de64e71bb
 TextureImporter:
   fileIDToRecycleName:
-    21300000: btDefinicoesNormal
+    21300000: edit_name_bar
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,7 +22,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 512
   textureSettings:
     filterMode: -1
