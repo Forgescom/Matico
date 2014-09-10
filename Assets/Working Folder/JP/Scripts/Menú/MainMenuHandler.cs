@@ -16,7 +16,8 @@ public class MainMenuHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		menuPrograma.SetActive (false);
+		menuSettings.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -63,11 +64,13 @@ public class MainMenuHandler : MonoBehaviour {
 				break;
 			case "BtPrograma":
 				activePanel = "Programa";
+				menuPrograma.SetActive (true);
 				transform.GetComponent<Animation>().Play("MainMenuOut");
 				menuPrograma.SendMessage("Activate");
 				break;
 			case "BtDefinicoes":
 				activePanel = "Settings";
+				menuSettings.SetActive (true);
 				transform.GetComponent<Animation>().Play("MainMenuOut");
 				menuSettings.SendMessage("Activate");
 				break;				
@@ -86,6 +89,7 @@ public class MainMenuHandler : MonoBehaviour {
 		{
 			menuPrograma.SendMessage("Deactivate");
 		}
+
 
 		transform.GetComponent<Animation>().Play("MainMenuIn");
 	}
