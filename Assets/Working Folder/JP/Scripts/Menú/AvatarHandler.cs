@@ -9,13 +9,13 @@ public class AvatarHandler : MonoBehaviour {
 
 
 	public GameObject mainMenu;
-	public GameObject settingsMenu;
+
 
 	// Use this for initialization
 	void Start () {
 		faceHolder = transform.FindChild ("caraHolder").GetComponent<SpriteRenderer> ();
 		mainMenu.SetActive(false);
-		settingsMenu.SetActive (false);
+
 	}
 	
 	// Update is called once per frame

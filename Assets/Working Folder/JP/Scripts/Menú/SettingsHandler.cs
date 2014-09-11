@@ -4,12 +4,12 @@ using System.Collections;
 public class SettingsHandler : MonoBehaviour {
 
 	public GameObject backButton;
-	public GameObject background;
-	public GameObject title;
+	GameObject background;
+	GameObject title;
 	// Use this for initialization
 	void Start () {
-		//background = transform.FindChild ("bg").gameObject;
-		//title = transform.FindChild ("title").gameObject;
+		background = transform.FindChild ("bg").gameObject;
+		title = transform.FindChild ("title").gameObject;
 
 	}
 	
@@ -30,7 +30,7 @@ public class SettingsHandler : MonoBehaviour {
 
 	void StartAnimations()
 	{
-		print (background.transform.position);
+
 		background.GetComponent<Animation> ().Play ("BGSlideUp");
 		title.GetComponent<Animation> ().Play ("MenuTabIn");
 		backButton.GetComponent<Animation> ().Play ("BtBackIn");
