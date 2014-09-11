@@ -3,19 +3,19 @@ using System.Collections;
 
 public class AvatarHandler : MonoBehaviour {
 
-	string avatarName = "Nome";
-	public GUIStyle estiloTextField;
-
 	SpriteRenderer faceHolder;
 	public Sprite [] faces;
 	int currentFaceIndex = 0;
 
 
 	public GameObject mainMenu;
+	public GameObject settingsMenu;
+
 	// Use this for initialization
 	void Start () {
 		faceHolder = transform.FindChild ("caraHolder").GetComponent<SpriteRenderer> ();
 		mainMenu.SetActive(false);
+		settingsMenu.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -23,14 +23,7 @@ public class AvatarHandler : MonoBehaviour {
 	
 	}
 
-	void OnGUI()
-	{
-		GUI.skin.settings.cursorColor = Color.black;
-		avatarName = GUI.TextField (new Rect (700, 250, 150, 30), avatarName, 15, estiloTextField);
 
-		TextMesh mirrorText = transform.FindChild ("TextMiror").GetComponent<TextMesh> ();
-		mirrorText.text = avatarName.ToString ();
-	}
 
 	void btEnter(GameObject bt)
 	{
@@ -102,5 +95,10 @@ public class AvatarHandler : MonoBehaviour {
 		}
 		faceHolder.sprite = faces [currentFaceIndex];
 
+	}
+
+	void Deactivate()
+	{
+		transform.gameObject.SetActive (false);
 	}
 }
