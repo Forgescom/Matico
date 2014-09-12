@@ -3,42 +3,96 @@ using System.Collections;
 
 public class BtHandler : MonoBehaviour {
 
+
+	//CLICK TYPE BUTTON
+	public GameObject menuController;
+	public Sprite overState;
+	public Sprite normalState;
+	SpriteRenderer spriteActive;
+
+	//IN CASE OF A TOGGLE BUTTON
+	public bool toggleButton;
+	public bool buttonOn;
+	public Sprite toggleOff;
+	public Sprite toggleOn;
+
+	//SCRIPT ANIMATION
 	float startSize;
 	float sizeProportion = 1.2f;
 	bool over =false;
 
-	public GameObject menuController;
+
 
 	// Use this for initialization
 	void Start () {
 		startSize = transform.localScale.x;
+		spriteActive = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//ANIMATIONS
 		if (over == true) {
-			transform.localScale = new Vector3 (startSize*sizeProportion, startSize*sizeProportion, 1);
+			//transform.localScale = new Vector3 (startSize*sizeProportion, startSize*sizeProportion, 1);
 		}
 		else{
-			transform.localScale = new Vector3(startSize,startSize,1);
+		//	transform.localScale = new Vector3(startSize,startSize,1);
 		}
 
 	}
 
 	void OnMouseEnter(){
-		menuController.SendMessage ("btEnter", transform.gameObject);
-		over =true;
+		if (overState == null) {		
+			over =true;
+		}
+		else{
+			spriteActive.sprite = overState;
+		}
+
 	}
 	
 	void OnMouseExit(){
-		menuController.SendMessage ("btExit", transform.gameObject);
+		if (normalState == null) {
+			over =false;
+		}
+		else{
+			spriteActive.sprite = normalState;
+		}
 
-		over =false;
 	}
 	
 	void OnMouseUp (){
-		menuController.SendMessage ("btClick", transform.gameObject);
+		ToggleButton ();
 
+		menuController.SendMessage ("btClick", transform.gameObject);
+	}
+
+	void ToggleButton(){
+
+		if (toggleButton) {
+			if(buttonOn)
+			{
+				spriteActive.sprite = toggleOff;
+				buttonOn =false;
+			}
+			else
+			{
+				spriteActive.sprite = toggleOn;
+				buttonOn =true;
+			}
+		}
+
+	}
+	public void updateButton()
+	{
+		spriteActive = GetComponent<SpriteRenderer> ();
+		if(buttonOn)
+		{
+			spriteActive.sprite = toggleOn;
+		}
+		else
+		{
+			spriteActive.sprite = toggleOff;
+		}
 	}
 }
