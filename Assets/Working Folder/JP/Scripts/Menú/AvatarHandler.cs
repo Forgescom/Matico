@@ -11,7 +11,6 @@ public class AvatarHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-	
 
 	}
 	
@@ -24,8 +23,7 @@ public class AvatarHandler : MonoBehaviour {
 	{
 		switch (bt.name) {		
 		case "BtContinuar":
-			//mainBrain.SaveName(name.text,avatarNumber.currentFaceIndex);
-			//mainBrain.ChangeMenu(transform.gameObject, mainBrain.mainMenu);			
+					
 			break;			
 		}
 	}
@@ -34,8 +32,7 @@ public class AvatarHandler : MonoBehaviour {
 	{
 		switch (bt.name) {		
 		case "BtContinuar":
-			//mainBrain.SaveName(name.text,avatarNumber.currentFaceIndex);
-			//mainBrain.ChangeMenu(transform.gameObject, mainBrain.mainMenu);			
+				
 			break;			
 		}
 	}
@@ -43,8 +40,7 @@ public class AvatarHandler : MonoBehaviour {
 	void btClick(GameObject bt)
 	{
 		switch (bt.name) {		
-			case "BtContinuar":
-				
+			case "BtContinuar":				
 				mainBrain.ChangeMenu(transform.gameObject, mainBrain.mainMenu);			
 				break;			
 		}

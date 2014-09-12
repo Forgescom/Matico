@@ -22,7 +22,7 @@ public class SettingsHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		nomeActual = PlayerPrefs.GetString (mainBrain.PREFS_PLAYER_NAME);
+		nomeActual = PlayerPrefs.GetString (Main.PREFS_PLAYER_NAME);
 		indiceAvatar = PlayerPrefs.GetInt (mainBrain.PREFS_PLAYER_AVATAR);
 		avatarSettings.SetCurrentFaceIndex (indiceAvatar);
 		nameMesh.text = nomeActual;

@@ -13,7 +13,7 @@ public class Main : MonoBehaviour {
 
 
 	//PLAYER PREFS KEYS
-	public string PREFS_PLAYER_NAME = "PlayerName";
+	public static string PREFS_PLAYER_NAME = "PlayerName";
 	public string PREFS_PLAYER_AVATAR = "PlayerAvatar";
 	public string PREFS_PLAYER_CURRENTLEVEL = "PlayerLevel";
 	public string PREFS_PLAYER_SOUNDFX = "SoundFx";
