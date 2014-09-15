@@ -22,7 +22,11 @@ public class CameraMovesHandler : MonoBehaviour {
 	Vector2 curDist = new Vector2(0,0); 
 	float speedTouch0 = 0.0F; 
 	float speedTouch1 = 0.0F;
-	
+
+	//BOARD START ANIMATION
+	Vector3 startPos;
+	Vector3 endPos;
+	float transitionDuration = 1.5f;
 	
 	// Use this for initialization
 	void Start () {
@@ -33,23 +37,39 @@ public class CameraMovesHandler : MonoBehaviour {
 	void Update () {
 		
 	}
-	
+
+
+
+
+	public void  startAnimBoard(Vector3 finPos)
+	{
+		startPos = new Vector3(0,0,0);
+		endPos = finPos;
+		endPos.z = -10;
+		StartCoroutine("moveCameraOnBoardStart");
+	}
+
+	IEnumerator moveCameraOnBoardStart()
+	{
+		
+		float t = 0.0f;
+		
+		while (t < 1.0f)
+		{
+			t += Time.deltaTime * (Time.timeScale/transitionDuration);
+			transform.camera.orthographicSize = Mathf.Lerp(5,2,t);
+			transform.position = Vector3.Lerp(startPos, endPos, t);
+			yield return 0;
+		}	
+	}
+
+
 	void MoveCamera(Vector3 direction){
-		startPosition = transform.position;
-		
-		
+		startPosition = transform.position;		
 		Vector3 newPosition = startPosition + direction;
-		newPosition.z = startPosition.z;
-		
-		transform.position = Vector3.Lerp(startPosition,newPosition,speedFactor);
-		/*transform.position = new Vector3 (Mathf.Clamp (transform.position.x, boundaries[0], boundaries[1]),
-		                                  Mathf.Clamp (transform.position.y, boundaries[2], boundaries[3]),
-		                                  transform.position.z);*/
-		
-		
-		ClampCameraMovement ();
-		
-		
+		newPosition.z = startPosition.z;		
+		transform.position = Vector3.Lerp(startPosition,newPosition,speedFactor);		
+		ClampCameraMovement ();		
 	}
 	
 	void ZoomInOutCamera(Touch[] inputValues ){
