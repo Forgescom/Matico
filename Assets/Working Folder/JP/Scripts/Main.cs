@@ -19,7 +19,7 @@ public class Main : MonoBehaviour {
 	public static string PREFS_PLAYER_SOUNDFX = "SoundFx";
 	public static string PREFS_PLAYER_SOUNDAMBIENTE = "SoundAmbiente";
 	public static string PREFS_PLAYER_SOUNDMATICO = "SoundMatico";
-
+	public static string PREFS_PLAYER_LEVEL = "CurrentLevel";
 
 
 	// Use this for initialization

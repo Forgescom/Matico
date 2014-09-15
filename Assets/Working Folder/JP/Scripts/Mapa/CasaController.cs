@@ -11,19 +11,16 @@ public class CasaController : MonoBehaviour {
 	float minHighlightSize = 1f;
 	float timeFactor = 5f;
 	
-	bool isHighLighted = false;
+	public bool isHighLighted = false;
 	
 	// Use this for initialization
 	void Start () {
-		desbloquadoSprite.SetActive(false);
-		highlightSprite.SetActive(false);
+	/*	desbloquadoSprite.SetActive(false);
+		highlightSprite.SetActive(false);*/
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (Input.GetKey (KeyCode.A))
-			UnlockButton ();
 		
 		if (isHighLighted == true) {
 			highlightSprite.transform.localScale = new Vector3(Mathf.PingPong((Time.time/timeFactor), maxHighlightSize-minHighlightSize)+minHighlightSize,
@@ -36,12 +33,13 @@ public class CasaController : MonoBehaviour {
 		print ("ABOUT TO THROW A MINI GAME");
 	}
 	
-	void UnlockButton(){
-		isHighLighted = true;
+	public void UnlockButton(){
 		desbloquadoSprite.SetActive(true);
 		highlightSprite.SetActive(true);
 		bloqueadoSprite.animation.Play ();
 	}
+
+
 	
 	void RemoveLocker()
 	{
