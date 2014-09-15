@@ -15,8 +15,9 @@ public class InputName : MonoBehaviour {
 	void Update () {
 		if(TouchScreenKeyboard.visible ==true)
 			textInput.text = keyboard.text;
-		if (keyboard.done)
-						PlayerPrefs.SetString (Main.PREFS_PLAYER_NAME, textInput.text);
+		if(keyboard!= null)
+			if (keyboard.done)
+					PlayerPrefs.SetString (Main.PREFS_PLAYER_NAME, textInput.text);
 		/*if(TouchScreenKeyboard.visible ==true)
 			if(keyboard.text.Length < 10)*/
 

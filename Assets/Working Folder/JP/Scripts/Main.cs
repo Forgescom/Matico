@@ -14,11 +14,11 @@ public class Main : MonoBehaviour {
 
 	//PLAYER PREFS KEYS
 	public static string PREFS_PLAYER_NAME = "PlayerName";
-	public string PREFS_PLAYER_AVATAR = "PlayerAvatar";
-	public string PREFS_PLAYER_CURRENTLEVEL = "PlayerLevel";
-	public string PREFS_PLAYER_SOUNDFX = "SoundFx";
-	public string PREFS_PLAYER_SOUNDAMBIENTE = "SoundAmbiente";
-	public string PREFS_PLAYER_SOUNDMATICO = "SoundMatico";
+	public static string PREFS_PLAYER_AVATAR = "PlayerAvatar";
+	public static string PREFS_PLAYER_CURRENTLEVEL = "PlayerLevel";
+	public static string PREFS_PLAYER_SOUNDFX = "SoundFx";
+	public static string PREFS_PLAYER_SOUNDAMBIENTE = "SoundAmbiente";
+	public static string PREFS_PLAYER_SOUNDMATICO = "SoundMatico";
 
 
 

@@ -41,7 +41,7 @@ public class AvatarHandler : MonoBehaviour {
 	{
 		switch (bt.name) {		
 			case "BtContinuar":				
-				mainBrain.ChangeMenu(transform.gameObject, mainBrain.mainMenu);			
+			mainBrain.ChangeMenu(transform.gameObject, mainBrain.mainMenu);			
 				break;			
 		}
 	}

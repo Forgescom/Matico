@@ -33,10 +33,10 @@ public class BtHandler : MonoBehaviour {
 	void Update () {
 		//ANIMATIONS
 		if (over == true) {
-			//transform.localScale = new Vector3 (startSize*sizeProportion, startSize*sizeProportion, 1);
+			transform.localScale = new Vector3 (startSize*sizeProportion, startSize*sizeProportion, 1);
 		}
 		else{
-		//	transform.localScale = new Vector3(startSize,startSize,1);
+			transform.localScale = new Vector3(startSize,startSize,1);
 		}
 
 	}

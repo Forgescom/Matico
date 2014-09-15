@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &237353266
 Transform:
   m_ObjectHideFlags: 0
@@ -576,12 +576,6 @@ MonoBehaviour:
   settingsMenu: {fileID: 1073245865}
   programaMenu: {fileID: 1506207825}
   backButton: {fileID: 37451398}
-  PREFS_PLAYER_NAME: PlayerName
-  PREFS_PLAYER_AVATAR: PlayerAvatar
-  PREFS_PLAYER_CURRENTLEVEL: PlayerLevel
-  PREFS_PLAYER_SOUNDFX: SoundFx
-  PREFS_PLAYER_SOUNDAMBIENTE: SoundAmbiente
-  PREFS_PLAYER_SOUNDMATICO: SoundMatico
 --- !u!1 &345279484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,7 +1920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1506207826
 Transform:
   m_ObjectHideFlags: 0
