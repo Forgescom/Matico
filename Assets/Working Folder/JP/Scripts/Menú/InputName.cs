@@ -15,22 +15,17 @@ public class InputName : MonoBehaviour {
 	void Update () {
 		if(TouchScreenKeyboard.visible ==true)
 			textInput.text = keyboard.text;
+
+
+		//WHEN DONE SAVE ON PREFAB THE NEW NAME
 		if(keyboard!= null)
 			if (keyboard.done)
-					PlayerPrefs.SetString (Main.PREFS_PLAYER_NAME, textInput.text);
-		/*if(TouchScreenKeyboard.visible ==true)
-			if(keyboard.text.Length < 10)*/
-
-
-	}
+				Main.SavePlayerPref(textInput.text);
+	}	
 
 	void OnMouseDown(){
-		//TouchScreenKeyboard.hideInput = true;
 
-		keyboard = TouchScreenKeyboard.Open ("Nome");
-
-		//textInput.text = keyboard.text;
-
+		keyboard = TouchScreenKeyboard.Open (Main.PLAYER_NAME);
 
 	}
 }

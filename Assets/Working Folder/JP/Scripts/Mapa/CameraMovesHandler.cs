@@ -98,11 +98,7 @@ public class CameraMovesHandler : MonoBehaviour {
 		float currentSize = transform.camera.orthographicSize;
 		float factor = boundaries [1] / (-1*boundaries [0]);
 		float margin = MAXSCALE - currentSize;
-		//print (factor);
-		//print (margin);
-		
-		
-		
+
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, -margin *factor, margin*factor),
 		                                  Mathf.Clamp (transform.position.y, -margin, margin),
 		                                  transform.position.z);

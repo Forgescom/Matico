@@ -571,8 +571,8 @@ GameObject:
   - 4: {fileID: 69742109}
   - 114: {fileID: 69742110}
   m_Layer: 0
-  m_Name: Casa7
-  m_TagString: Untagged
+  m_Name: Casa07
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1063,7 +1063,7 @@ GameObject:
   - 114: {fileID: 152247404}
   m_Layer: 0
   m_Name: Casa14
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1229,7 +1229,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa3
+      value: Casa03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -1418,7 +1418,7 @@ GameObject:
   - 114: {fileID: 163176539}
   m_Layer: 0
   m_Name: Casa36
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1636,7 +1636,7 @@ GameObject:
   - 114: {fileID: 187966608}
   m_Layer: 0
   m_Name: Casa29
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1846,7 +1846,7 @@ Transform:
   m_GameObject: {fileID: 215863204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.27332711, y: -.602390409, z: -1}
-  m_LocalScale: {x: 1, y: .937499702, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 430965113}
   m_RootOrder: 1
@@ -1963,7 +1963,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa8
+      value: Casa08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -2202,8 +2202,8 @@ GameObject:
   - 4: {fileID: 240219668}
   - 114: {fileID: 240219669}
   m_Layer: 0
-  m_Name: Casa5
-  m_TagString: Untagged
+  m_Name: Casa05
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2253,6 +2253,7 @@ GameObject:
   - 81: {fileID: 260569007}
   - 114: {fileID: 260569006}
   - 111: {fileID: 260569012}
+  - 114: {fileID: 260569013}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2355,6 +2356,17 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &260569013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260569005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67facf1365b6c5040856550078f3ea2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &262722819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,7 +2651,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa9
+      value: Casa09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -2939,7 +2951,7 @@ GameObject:
   - 114: {fileID: 398622086}
   m_Layer: 0
   m_Name: Casa24
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3046,7 +3058,7 @@ GameObject:
   - 114: {fileID: 402225933}
   m_Layer: 0
   m_Name: Casa45
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3184,8 +3196,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 430965112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.27332711, y: .602390409, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.20966482, y: .571909308, z: -1.07590032}
+  m_LocalScale: {x: .949400008, y: .949399769, z: .949399769}
   m_Children:
   - {fileID: 1223319225}
   - {fileID: 215863206}
@@ -3253,7 +3265,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 12800000, guid: 6db812bbc1eddf94d84b3e7dfcf99223, type: 3}
-    m_FontSize: 0
+    m_FontSize: 30
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 1
@@ -3265,9 +3277,8 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  maticoSprite: {fileID: 648292965}
-  name: {fileID: 1891912788}
-  mainBoardBrain: {fileID: 904776213}
+  xPos: .0799999982
+  yPos: .340000004
 --- !u!111 &430965115
 Animation:
   m_ObjectHideFlags: 0
@@ -3280,7 +3291,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 7dcc69b27c66bc049bfbeb011639f5cb, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &430965116
@@ -3305,7 +3316,7 @@ GameObject:
   - 114: {fileID: 431803815}
   m_Layer: 0
   m_Name: Casa39
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3394,7 +3405,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa6
+      value: Casa06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -4224,7 +4235,7 @@ GameObject:
   - 114: {fileID: 569557667}
   m_Layer: 0
   m_Name: Casa23
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4305,7 +4316,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 578117419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.37203217, y: -2.39263439, z: -2}
+  m_LocalPosition: {x: 5.13914967, y: -2.85837817, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 430965113}
@@ -4321,7 +4332,7 @@ GameObject:
   - 114: {fileID: 581471614}
   m_Layer: 0
   m_Name: Casa31
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4983,7 +4994,7 @@ GameObject:
   - 114: {fileID: 647940513}
   m_Layer: 0
   m_Name: Casa40
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5405,7 +5416,7 @@ GameObject:
   - 114: {fileID: 679053801}
   m_Layer: 0
   m_Name: Casa42
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5452,7 +5463,7 @@ GameObject:
   - 114: {fileID: 683700733}
   m_Layer: 0
   m_Name: Casa25
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5610,7 +5621,7 @@ GameObject:
   - 114: {fileID: 713992166}
   m_Layer: 0
   m_Name: Casa22
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5886,8 +5897,8 @@ GameObject:
   - 4: {fileID: 761928303}
   - 114: {fileID: 761928304}
   m_Layer: 0
-  m_Name: Casa1
-  m_TagString: Untagged
+  m_Name: Casa01
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6137,6 +6148,67 @@ Prefab:
   m_RootGameObject: {fileID: 2097621462}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &800627811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+  m_PrefabInternal: {fileID: 1245236555}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 800627814}
+  - 131: {fileID: 800627813}
+  - 114: {fileID: 800627812}
+  m_Layer: 0
+  m_Name: ClearData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &800627812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 06e52d0390086584689496d79c0ff2ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1245236555}
+  m_GameObject: {fileID: 800627811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d448523a388f88a47b7dc3bd0f3bdef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!131 &800627813
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13100000, guid: 06e52d0390086584689496d79c0ff2ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1245236555}
+  m_GameObject: {fileID: 800627811}
+  m_Enabled: 1
+  m_Texture: {fileID: 10400, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &800627814
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+  m_PrefabInternal: {fileID: 1245236555}
+  m_GameObject: {fileID: 800627811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &812057190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,55 +6730,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721e4ad115ac249458008239bf4a8b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canStartCamera: 0
-  houses:
-  - {fileID: 761928302}
-  - {fileID: 1437418818}
-  - {fileID: 1525535755}
-  - {fileID: 1995191866}
-  - {fileID: 240219667}
-  - {fileID: 1869925436}
-  - {fileID: 69742108}
-  - {fileID: 922573941}
-  - {fileID: 2055717820}
-  - {fileID: 1198193884}
-  - {fileID: 1666583729}
-  - {fileID: 1859053657}
-  - {fileID: 2064975974}
-  - {fileID: 152247403}
-  - {fileID: 1979330271}
-  - {fileID: 1485879685}
-  - {fileID: 1212972759}
-  - {fileID: 1010370683}
-  - {fileID: 1466849101}
-  - {fileID: 1293845567}
-  - {fileID: 1518250367}
-  - {fileID: 713992164}
-  - {fileID: 569557665}
-  - {fileID: 398622084}
-  - {fileID: 683700731}
-  - {fileID: 1515936808}
-  - {fileID: 960409928}
-  - {fileID: 1090850542}
-  - {fileID: 187966606}
-  - {fileID: 1429261751}
-  - {fileID: 581471612}
-  - {fileID: 2097621462}
-  - {fileID: 2129619072}
-  - {fileID: 2105811056}
-  - {fileID: 1993128718}
-  - {fileID: 163176538}
-  - {fileID: 1208212111}
-  - {fileID: 1256172202}
-  - {fileID: 431803814}
-  - {fileID: 647940511}
-  - {fileID: 1121071287}
-  - {fileID: 679053799}
-  - {fileID: 2132360257}
-  - {fileID: 1830528694}
-  - {fileID: 402225932}
   intro: {fileID: 430965112}
-  mainCamera: {fileID: 260569010}
+  bg: {fileID: 2069088147}
+  housesHolder: {fileID: 1970338726}
+  houses: []
 --- !u!4 &904776214
 Transform:
   m_ObjectHideFlags: 0
@@ -6789,8 +6816,8 @@ GameObject:
   - 4: {fileID: 922573943}
   - 114: {fileID: 922573942}
   m_Layer: 0
-  m_Name: Casa8
-  m_TagString: Untagged
+  m_Name: Casa08
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6957,7 +6984,7 @@ GameObject:
   - 114: {fileID: 960409930}
   m_Layer: 0
   m_Name: Casa27
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7320,7 +7347,7 @@ GameObject:
   - 114: {fileID: 1010370684}
   m_Layer: 0
   m_Name: Casa18
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8058,7 +8085,7 @@ GameObject:
   - 114: {fileID: 1090850544}
   m_Layer: 0
   m_Name: Casa28
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8293,7 +8320,7 @@ GameObject:
   - 114: {fileID: 1121071288}
   m_Layer: 0
   m_Name: Casa41
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9015,7 +9042,7 @@ GameObject:
   - 114: {fileID: 1198193886}
   m_Layer: 0
   m_Name: Casa10
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9207,7 +9234,7 @@ GameObject:
   - 114: {fileID: 1208212113}
   m_Layer: 0
   m_Name: Casa37
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9254,7 +9281,7 @@ GameObject:
   - 114: {fileID: 1212972760}
   m_Layer: 0
   m_Name: Casa17
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9400,6 +9427,50 @@ Prefab:
   m_RootGameObject: {fileID: 402225932}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1001 &1245236555
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 06e52d0390086584689496d79c0ff2ab, type: 2}
+  m_RootGameObject: {fileID: 800627811}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1249081381
 GameObject:
   m_ObjectHideFlags: 0
@@ -9505,7 +9576,7 @@ GameObject:
   - 114: {fileID: 1256172203}
   m_Layer: 0
   m_Name: Casa38
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9629,7 +9700,7 @@ GameObject:
   - 114: {fileID: 1293845569}
   m_Layer: 0
   m_Name: Casa20
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10057,7 +10128,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa1
+      value: Casa01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -10263,7 +10334,7 @@ GameObject:
   - 114: {fileID: 1429261753}
   m_Layer: 0
   m_Name: Casa30
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10454,8 +10525,8 @@ GameObject:
   - 4: {fileID: 1437418819}
   - 114: {fileID: 1437418820}
   m_Layer: 0
-  m_Name: Casa2
-  m_TagString: Untagged
+  m_Name: Casa02
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10596,7 +10667,7 @@ GameObject:
   - 114: {fileID: 1466849103}
   m_Layer: 0
   m_Name: Casa19
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10643,7 +10714,7 @@ GameObject:
   - 114: {fileID: 1485879687}
   m_Layer: 0
   m_Name: Casa16
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10784,7 +10855,7 @@ GameObject:
   - 114: {fileID: 1515936810}
   m_Layer: 0
   m_Name: Casa26
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10908,7 +10979,7 @@ GameObject:
   - 114: {fileID: 1518250369}
   m_Layer: 0
   m_Name: Casa21
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10954,8 +11025,8 @@ GameObject:
   - 4: {fileID: 1525535756}
   - 114: {fileID: 1525535757}
   m_Layer: 0
-  m_Name: Casa3
-  m_TagString: Untagged
+  m_Name: Casa03
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11761,7 +11832,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa5
+      value: Casa05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -11821,7 +11892,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa7
+      value: Casa07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -11984,7 +12055,7 @@ GameObject:
   - 114: {fileID: 1666583730}
   m_Layer: 0
   m_Name: Casa11
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12680,7 +12751,7 @@ GameObject:
   - 114: {fileID: 1830528695}
   m_Layer: 0
   m_Name: Casa44
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12940,7 +13011,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa2
+      value: Casa02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -12958,7 +13029,7 @@ GameObject:
   - 114: {fileID: 1859053659}
   m_Layer: 0
   m_Name: Casa12
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13055,8 +13126,8 @@ GameObject:
   - 4: {fileID: 1869925438}
   - 114: {fileID: 1869925437}
   m_Layer: 0
-  m_Name: Casa6
-  m_TagString: Untagged
+  m_Name: Casa06
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13810,7 +13881,7 @@ GameObject:
   - 114: {fileID: 1979330273}
   m_Layer: 0
   m_Name: Casa15
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14079,7 +14150,7 @@ GameObject:
   - 114: {fileID: 1993128720}
   m_Layer: 0
   m_Name: Casa35
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14125,8 +14196,8 @@ GameObject:
   - 4: {fileID: 1995191867}
   - 114: {fileID: 1995191868}
   m_Layer: 0
-  m_Name: Casa4
-  m_TagString: Untagged
+  m_Name: Casa04
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14505,8 +14576,8 @@ GameObject:
   - 4: {fileID: 2055717822}
   - 114: {fileID: 2055717821}
   m_Layer: 0
-  m_Name: Casa9
-  m_TagString: Untagged
+  m_Name: Casa09
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14553,7 +14624,7 @@ GameObject:
   - 114: {fileID: 2064975976}
   m_Layer: 0
   m_Name: Casa13
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14726,7 +14797,7 @@ GameObject:
   - 114: {fileID: 2097621463}
   m_Layer: 0
   m_Name: Casa32
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14927,7 +14998,7 @@ GameObject:
   - 114: {fileID: 2105811058}
   m_Layer: 0
   m_Name: Casa34
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15162,7 +15233,7 @@ GameObject:
   - 114: {fileID: 2129619074}
   m_Layer: 0
   m_Name: Casa33
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15209,7 +15280,7 @@ GameObject:
   - 114: {fileID: 2132360259}
   m_Layer: 0
   m_Name: Casa43
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15452,7 +15523,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
-      value: Casa4
+      value: Casa04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}

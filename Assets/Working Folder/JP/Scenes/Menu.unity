@@ -454,8 +454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainBrain: {fileID: 325029630}
-  name: {fileID: 1529414883}
-  avatarNumber: {fileID: 662675610}
 --- !u!111 &237353268
 Animation:
   m_ObjectHideFlags: 0
@@ -847,8 +845,8 @@ GameObject:
   - 4: {fileID: 750455158}
   - 23: {fileID: 750455157}
   - 102: {fileID: 750455156}
-  - 61: {fileID: 750455160}
   - 114: {fileID: 750455159}
+  - 61: {fileID: 750455160}
   m_Layer: 0
   m_Name: TextAvatarMirror
   m_TagString: Untagged
@@ -929,8 +927,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 72.0999985, y: 10.8999996}
-  m_Center: {x: 34.2999992, y: -9.9807977e-08}
+  m_Size: {x: 69.7300034, y: 10.3774004}
+  m_Center: {x: 33.5999985, y: 1.8049775e-08}
 --- !u!1 &750483973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,8 +1619,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1096381067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0629782677, y: -.0191553235, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1.3020668, y: 1.30206692, z: 1.30206692}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1831,6 +1829,7 @@ GameObject:
   - 92: {fileID: 1267377446}
   - 124: {fileID: 1267377445}
   - 81: {fileID: 1267377444}
+  - 114: {fileID: 1267377449}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1903,6 +1902,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1267377449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1267377443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67facf1365b6c5040856550078f3ea2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1506207825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,7 +1930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1506207826
 Transform:
   m_ObjectHideFlags: 0
@@ -2299,7 +2309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1590662225
 Transform:
   m_ObjectHideFlags: 0

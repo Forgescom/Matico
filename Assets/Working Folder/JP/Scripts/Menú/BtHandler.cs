@@ -32,39 +32,43 @@ public class BtHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//ANIMATIONS
-		if (over == true) {
+		if (over == true && toggleButton == false) {
 			transform.localScale = new Vector3 (startSize*sizeProportion, startSize*sizeProportion, 1);
 		}
 		else{
 			transform.localScale = new Vector3(startSize,startSize,1);
 		}
 
+
+
 	}
 
 	void OnMouseEnter(){
-		if (overState == null) {		
-			over =true;
-		}
-		else{
+		if (overState != null) {
 			spriteActive.sprite = overState;
+
 		}
+		over =true;
 
 	}
 	
 	void OnMouseExit(){
-		if (normalState == null) {
-			over =false;
-		}
-		else{
+		if (normalState != null) {
 			spriteActive.sprite = normalState;
 		}
+		over =false;
 
 	}
 	
 	void OnMouseUp (){
-		ToggleButton ();
+		print (over + transform.name);
 
-		menuController.SendMessage ("btClick", transform.gameObject);
+		if (over == true) {
+			menuController.SendMessage ("btClick", transform.gameObject);
+			ToggleButton ();
+		}
+
+	
 	}
 
 	void ToggleButton(){

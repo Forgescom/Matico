@@ -5,9 +5,19 @@ public class AvatarHandler : MonoBehaviour {
 
 	public Main mainBrain;
 
-	public TextMesh name;
-	public AvatarPiker avatarNumber;
-	
+
+	void btClick(GameObject bt)
+	{
+		switch (bt.name) {		
+		case "BtContinuar":				
+			
+			mainBrain.ChangeMenu(transform.gameObject, mainBrain.mainMenu);			
+			break;			
+		}
+	}
+
+
+
 	// Use this for initialization
 	void Start () {
 	
@@ -37,12 +47,5 @@ public class AvatarHandler : MonoBehaviour {
 		}
 	}
 	
-	void btClick(GameObject bt)
-	{
-		switch (bt.name) {		
-			case "BtContinuar":				
-			mainBrain.ChangeMenu(transform.gameObject, mainBrain.mainMenu);			
-				break;			
-		}
-	}
+
 }

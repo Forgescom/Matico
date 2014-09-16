@@ -88,8 +88,6 @@ public class AvatarPiker : MonoBehaviour {
 		}
 
 		faceHolder.sprite = faces [currentFaceIndex];
-		PlayerPrefs.SetInt (Main.PREFS_PLAYER_AVATAR, currentFaceIndex);	
-
-		
+		Main.SavePlayerPref(null,currentFaceIndex);		
 	}
 }

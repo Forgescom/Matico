@@ -20,11 +20,7 @@ public class BackgroundTouch : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {		
-
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Application.LoadLevel(0);
-		}
+	void Update () {
 
 
 		if(Input.touchCount == 1 ) {

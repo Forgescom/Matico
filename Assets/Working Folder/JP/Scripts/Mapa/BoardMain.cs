@@ -1,67 +1,66 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Linq;
 public class BoardMain : MonoBehaviour {
 
-	//ANIMATE CAMERA
-	public bool canStartCamera = false;
-
-	//HOUSES
-	public GameObject [] houses;
-	int currentHouse;
-
-	//OBJECTS TO CONTROLL
 	public GameObject intro;
-	public Camera mainCamera;
+	public GameObject bg;
+	public GameObject housesHolder;
 
+	public GameObject [] houses;
 
+	void Start(){
+		houses =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
+		LoadLevelStats ();
+		ShowObjects ();
+		UnlockHouses ();
 
-	// Use this for initialization
-	void Start () {
+	}
 
-		currentHouse = PlayerPrefs.GetInt (Main.PREFS_PLAYER_LEVEL);
-
-
-		//CHECK PLAYER LEVEL IF 0 THEN START ANIMATION ELSE DONT SHOW MATICO
-		if (currentHouse == 0) {
-			currentHouse = 1;
-			PlayerPrefs.SetInt (Main.PREFS_PLAYER_LEVEL,1);
+	void ShowObjects(){
+		if (Main.CURRENT_LEVEL == 0) {
 			intro.SetActive(true);
+			bg.GetComponent<BackgroundTouch>().enabled = false;
+
 		}
 		else
 		{
-			currentHouse = PlayerPrefs.GetInt (Main.PREFS_PLAYER_LEVEL);
 			intro.SetActive(false);
-			mainCamera.GetComponent<CameraMovesHandler>().startAnimBoard(houses [currentHouse-1].transform.position);
-		}
+			bg.SetActive(true);
 
-		//UNLOCKHOUSES
-		for (int i = 0; i<currentHouse; i ++) {
+		}
+	}
+
+	void UnlockHouses()
+	{
+		for (int i = 0; i<Main.CURRENT_LEVEL; i ++) {
 			houses[i].GetComponent<CasaController>().UnlockButton();
-			if(i == (currentHouse -1))
+			if(i == (Main.CURRENT_LEVEL -1))
 			{
 				houses[i].GetComponent<CasaController>().isHighLighted = true;
 			}
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (canStartCamera == true) {
-			if(intro.animation.isPlaying == false)
-			{
-				mainCamera.GetComponent<CameraMovesHandler>().startAnimBoard(houses [currentHouse-1].transform.position);
-			}		
-		}
-	}
 
-	void LevelPassed()
+	void LoadLevelStats()
 	{
-		currentHouse ++;
-		PlayerPrefs.SetInt (Main.PREFS_PLAYER_LEVEL, currentHouse);
 
 	}
 
+	void EnableMap()
+	{
+		bg.GetComponent<BackgroundTouch>().enabled = true;
 
+	}
+
+	void OnEnable()
+	{
+		DeactivateOnAnimEnd.animationFinish += EnableMap;
+	}
+
+	void OnDisable()
+	{
+		DeactivateOnAnimEnd.animationFinish -= EnableMap;
+	}
 }
