@@ -9,9 +9,12 @@ public class Intro : MonoBehaviour {
 	public float xPos;
 	public float yPos;
 
+	public TextMesh playerName;
+
 	void Start()
 	{
-
+		playerName.text= PlayerPrefs.GetString (Main.PREFS_PLAYER_NAME);
+		StartCoroutine ("ExitAnim");
 	}
 
 	void OnGUI(){
@@ -20,8 +23,9 @@ public class Intro : MonoBehaviour {
 	}
 
 
-	void ExitAnim(){
-	//	animation.Play ("IntroOut");
+	IEnumerator ExitAnim(){
+		yield return new WaitForSeconds(2f);
+		animation.Play ("IntroOut");
 
 	}
 

@@ -9,6 +9,8 @@ public class BoardMain : MonoBehaviour {
 
 	public GameObject [] houses;
 
+	public CameraMovesHandler cameraScript;
+
 	void Start(){
 		houses =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
@@ -51,7 +53,7 @@ public class BoardMain : MonoBehaviour {
 	void EnableMap()
 	{
 		bg.GetComponent<BackgroundTouch>().enabled = true;
-
+		cameraScript.startAnimBoard (houses [Main.CURRENT_LEVEL].transform.position);
 	}
 
 	void OnEnable()
