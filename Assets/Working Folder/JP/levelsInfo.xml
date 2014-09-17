@@ -1,0 +1,12 @@
+<GameLevelInfo>
+	<level id="Casa01" blocked= "false"><!-- level 1 ! -->
+		<typeofgame>Shooter</typeofgame>
+		<energiesspent>2</energiesspent>
+		<levelofdificulty>1</levelofdificulty>
+	</level>
+	<level id="Casa02" blocked= "false"><!-- level 1 ! -->
+		<typeofgame>Acelerometer</typeofgame>
+		<energiesspent>4</energiesspent>
+		<levelofdificulty>5</levelofdificulty>
+	</level>
+</GameLevelInfo>

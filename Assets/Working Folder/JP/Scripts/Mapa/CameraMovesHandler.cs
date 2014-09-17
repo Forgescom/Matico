@@ -14,7 +14,7 @@ public class CameraMovesHandler : MonoBehaviour {
 	
 	float speed = 0.05f; 
 	float MINSCALE = 2.0F; 
-	float MAXSCALE = 5.1F; 
+	float MAXSCALE = 5F; 
 	float minPinchSpeed = 5.0F; 
 	float varianceInDistances = 5.0F; 
 	float touchDelta = 0.0F; 

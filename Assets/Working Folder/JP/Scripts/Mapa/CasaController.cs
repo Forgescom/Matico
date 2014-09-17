@@ -3,6 +3,9 @@ using System.Collections;
 
 public class CasaController : MonoBehaviour {
 
+	public delegate void HouseClicked(string houseName);
+	public static event HouseClicked throwGame;
+
 	public GameObject bloqueadoSprite;
 	public GameObject desbloquadoSprite;
 	public GameObject highlightSprite;
@@ -30,7 +33,9 @@ public class CasaController : MonoBehaviour {
 	}
 	
 	void ButtonPressed(){
-		print ("ABOUT TO THROW A MINI GAME");
+		if (throwGame != null) {
+			throwGame (transform.name);
+		}
 	}
 	
 	public void UnlockButton(){

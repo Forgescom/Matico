@@ -570,6 +570,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 69742109}
   - 114: {fileID: 69742110}
+  - 114: {fileID: 69742111}
   m_Layer: 0
   m_Name: Casa07
   m_TagString: House
@@ -608,6 +609,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1296936029}
   highlightSprite: {fileID: 868197446}
   isHighLighted: 0
+--- !u!114 &69742111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1651370733}
+  m_GameObject: {fileID: 69742108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &71570256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +1077,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 152247405}
   - 114: {fileID: 152247404}
+  - 114: {fileID: 152247406}
   m_Layer: 0
   m_Name: Casa14
   m_TagString: House
@@ -1099,6 +1116,21 @@ Transform:
   - {fileID: 1561815975}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 13
+--- !u!114 &152247406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 763103477}
+  m_GameObject: {fileID: 152247403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &153015394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1448,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 163176540}
   - 114: {fileID: 163176539}
+  - 114: {fileID: 163176541}
   m_Layer: 0
   m_Name: Casa36
   m_TagString: House
@@ -1454,6 +1487,21 @@ Transform:
   - {fileID: 1686720068}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 35
+--- !u!114 &163176541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 909768043}
+  m_GameObject: {fileID: 163176538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &171211565
 Prefab:
   m_ObjectHideFlags: 0
@@ -1634,6 +1682,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 187966607}
   - 114: {fileID: 187966608}
+  - 114: {fileID: 187966609}
   m_Layer: 0
   m_Name: Casa29
   m_TagString: House
@@ -1672,6 +1721,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1196194270}
   highlightSprite: {fileID: 1427774496}
   isHighLighted: 0
+--- !u!114 &187966609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 930594057}
+  m_GameObject: {fileID: 187966606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &194602156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1909,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 215863204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.27332711, y: -.602390409, z: -1}
+  m_LocalPosition: {x: -1.2873379, y: -.602390409, z: -.999999881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 430965113}
@@ -2201,6 +2265,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 240219668}
   - 114: {fileID: 240219669}
+  - 114: {fileID: 240219670}
   m_Layer: 0
   m_Name: Casa05
   m_TagString: House
@@ -2239,6 +2304,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1350437246}
   highlightSprite: {fileID: 1628158145}
   isHighLighted: 0
+--- !u!114 &240219670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1650703361}
+  m_GameObject: {fileID: 240219667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &260569005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3076,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 398622085}
   - 114: {fileID: 398622086}
+  - 114: {fileID: 398622087}
   m_Layer: 0
   m_Name: Casa24
   m_TagString: House
@@ -3034,6 +3115,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1142542022}
   highlightSprite: {fileID: 2020125492}
   isHighLighted: 0
+--- !u!114 &398622087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1767793326}
+  m_GameObject: {fileID: 398622084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &399741382
 Prefab:
   m_ObjectHideFlags: 0
@@ -3103,6 +3199,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 402225934}
   - 114: {fileID: 402225933}
+  - 114: {fileID: 402225935}
   m_Layer: 0
   m_Name: Casa45
   m_TagString: House
@@ -3141,6 +3238,21 @@ Transform:
   - {fileID: 2138651601}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 44
+--- !u!114 &402225935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1232555796}
+  m_GameObject: {fileID: 402225932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &425279625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,7 +3347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &430965113
 Transform:
   m_ObjectHideFlags: 0
@@ -3252,6 +3364,7 @@ Transform:
   - {fileID: 648292967}
   - {fileID: 1891912790}
   - {fileID: 587099938}
+  - {fileID: 604489052}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &430965114
@@ -3362,6 +3475,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 431803816}
   - 114: {fileID: 431803815}
+  - 114: {fileID: 431803817}
   m_Layer: 0
   m_Name: Casa39
   m_TagString: House
@@ -3400,6 +3514,21 @@ Transform:
   - {fileID: 996638541}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 38
+--- !u!114 &431803817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 2143431790}
+  m_GameObject: {fileID: 431803814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &437475809
 Prefab:
   m_ObjectHideFlags: 0
@@ -4281,6 +4410,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 569557666}
   - 114: {fileID: 569557667}
+  - 114: {fileID: 569557668}
   m_Layer: 0
   m_Name: Casa23
   m_TagString: House
@@ -4319,6 +4449,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 280061653}
   highlightSprite: {fileID: 470689140}
   isHighLighted: 0
+--- !u!114 &569557668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 705029901}
+  m_GameObject: {fileID: 569557665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &581471612
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,6 +4473,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 581471613}
   - 114: {fileID: 581471614}
+  - 114: {fileID: 581471615}
   m_Layer: 0
   m_Name: Casa31
   m_TagString: House
@@ -4366,6 +4512,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 974104727}
   highlightSprite: {fileID: 1436780920}
   isHighLighted: 0
+--- !u!114 &581471615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1402396128}
+  m_GameObject: {fileID: 581471612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &585013944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,6 +4858,56 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ea6cfcdc4d01b8b47868cbd3d10f6bbd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &604489051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 604489052}
+  - 212: {fileID: 604489053}
+  m_Layer: 0
+  m_Name: seta_matico 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &604489052
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 604489051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.20629168, y: -4.7248168, z: 1.13324261}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 430965113}
+  m_RootOrder: 6
+--- !u!212 &604489053
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 604489051}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 2acd3be2794487e4ca15e6f2f1c07592, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &606476814
 GameObject:
@@ -5040,6 +5251,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 647940512}
   - 114: {fileID: 647940513}
+  - 114: {fileID: 647940514}
   m_Layer: 0
   m_Name: Casa40
   m_TagString: House
@@ -5078,6 +5290,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 228263286}
   highlightSprite: {fileID: 209826075}
   isHighLighted: 0
+--- !u!114 &647940514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1084120215}
+  m_GameObject: {fileID: 647940511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &648292965
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,6 +5689,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 679053800}
   - 114: {fileID: 679053801}
+  - 114: {fileID: 679053802}
   m_Layer: 0
   m_Name: Casa42
   m_TagString: House
@@ -5500,6 +5728,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 440821206}
   highlightSprite: {fileID: 220308198}
   isHighLighted: 0
+--- !u!114 &679053802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 2048687630}
+  m_GameObject: {fileID: 679053799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &683700731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,6 +5752,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 683700732}
   - 114: {fileID: 683700733}
+  - 114: {fileID: 683700734}
   m_Layer: 0
   m_Name: Casa25
   m_TagString: House
@@ -5547,6 +5791,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1409648856}
   highlightSprite: {fileID: 706888896}
   isHighLighted: 0
+--- !u!114 &683700734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 54035746}
+  m_GameObject: {fileID: 683700731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &705029901
 Prefab:
   m_ObjectHideFlags: 0
@@ -5667,6 +5926,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 713992165}
   - 114: {fileID: 713992166}
+  - 114: {fileID: 713992167}
   m_Layer: 0
   m_Name: Casa22
   m_TagString: House
@@ -5705,6 +5965,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 425279625}
   highlightSprite: {fileID: 2110339653}
   isHighLighted: 0
+--- !u!114 &713992167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1882415057}
+  m_GameObject: {fileID: 713992164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &745928086
 GameObject:
   m_ObjectHideFlags: 0
@@ -5944,6 +6219,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 761928303}
   - 114: {fileID: 761928304}
+  - 114: {fileID: 761928306}
   m_Layer: 0
   m_Name: Casa01
   m_TagString: House
@@ -5982,6 +6258,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 2118247157}
   highlightSprite: {fileID: 751614486}
   isHighLighted: 0
+--- !u!114 &761928306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1394716101}
+  m_GameObject: {fileID: 761928302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &763103477
 Prefab:
   m_ObjectHideFlags: 0
@@ -6760,6 +7051,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 904776214}
   - 114: {fileID: 904776213}
+  - 114: {fileID: 904776215}
   m_Layer: 0
   m_Name: BoardBrain
   m_TagString: Untagged
@@ -6781,7 +7073,7 @@ MonoBehaviour:
   intro: {fileID: 430965112}
   bg: {fileID: 2069088147}
   housesHolder: {fileID: 1970338726}
-  houses: []
+  housesGameObject: []
   cameraScript: {fileID: 260569006}
 --- !u!4 &904776214
 Transform:
@@ -6795,6 +7087,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &904776215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 904776212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7bb7e4b7c9ebe84f96481c15d20dadb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlFile: {fileID: 4900000, guid: e3a45842afee67447a3eb9f09573d43c, type: 3}
 --- !u!1001 &909768043
 Prefab:
   m_ObjectHideFlags: 0
@@ -6864,6 +7168,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 922573943}
   - 114: {fileID: 922573942}
+  - 114: {fileID: 922573944}
   m_Layer: 0
   m_Name: Casa08
   m_TagString: House
@@ -6902,6 +7207,21 @@ Transform:
   - {fileID: 1836081808}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 7
+--- !u!114 &922573944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 220306778}
+  m_GameObject: {fileID: 922573941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &930594057
 Prefab:
   m_ObjectHideFlags: 0
@@ -7031,6 +7351,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 960409929}
   - 114: {fileID: 960409930}
+  - 114: {fileID: 960409931}
   m_Layer: 0
   m_Name: Casa27
   m_TagString: House
@@ -7069,6 +7390,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 649778013}
   highlightSprite: {fileID: 856847669}
   isHighLighted: 0
+--- !u!114 &960409931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 439885034}
+  m_GameObject: {fileID: 960409928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &974104727
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,6 +7730,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1010370685}
   - 114: {fileID: 1010370684}
+  - 114: {fileID: 1010370686}
   m_Layer: 0
   m_Name: Casa18
   m_TagString: House
@@ -7432,6 +7769,21 @@ Transform:
   - {fileID: 585013945}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 17
+--- !u!114 &1010370686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 648318845}
+  m_GameObject: {fileID: 1010370683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &1027984002
 Prefab:
   m_ObjectHideFlags: 0
@@ -8132,6 +8484,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1090850543}
   - 114: {fileID: 1090850544}
+  - 114: {fileID: 1090850545}
   m_Layer: 0
   m_Name: Casa28
   m_TagString: House
@@ -8170,6 +8523,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1264644645}
   highlightSprite: {fileID: 835257608}
   isHighLighted: 0
+--- !u!114 &1090850545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 371349552}
+  m_GameObject: {fileID: 1090850542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1096267082
 GameObject:
   m_ObjectHideFlags: 0
@@ -8367,6 +8735,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1121071289}
   - 114: {fileID: 1121071288}
+  - 114: {fileID: 1121071290}
   m_Layer: 0
   m_Name: Casa41
   m_TagString: House
@@ -8405,6 +8774,21 @@ Transform:
   - {fileID: 1087632646}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 40
+--- !u!114 &1121071290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1391114077}
+  m_GameObject: {fileID: 1121071287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1128764809
 GameObject:
   m_ObjectHideFlags: 0
@@ -8940,7 +9324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1178146307
 Transform:
   m_ObjectHideFlags: 0
@@ -9118,6 +9502,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1198193885}
   - 114: {fileID: 1198193886}
+  - 114: {fileID: 1198193887}
   m_Layer: 0
   m_Name: Casa10
   m_TagString: House
@@ -9156,6 +9541,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1516082029}
   highlightSprite: {fileID: 31621909}
   isHighLighted: 0
+--- !u!114 &1198193887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 12714053}
+  m_GameObject: {fileID: 1198193884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1201993486
 GameObject:
   m_ObjectHideFlags: 0
@@ -9310,6 +9710,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1208212112}
   - 114: {fileID: 1208212113}
+  - 114: {fileID: 1208212114}
   m_Layer: 0
   m_Name: Casa37
   m_TagString: House
@@ -9348,6 +9749,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1136636621}
   highlightSprite: {fileID: 819981478}
   isHighLighted: 0
+--- !u!114 &1208212114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 552146136}
+  m_GameObject: {fileID: 1208212111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1212972759
 GameObject:
   m_ObjectHideFlags: 0
@@ -9357,6 +9773,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1212972761}
   - 114: {fileID: 1212972760}
+  - 114: {fileID: 1212972762}
   m_Layer: 0
   m_Name: Casa17
   m_TagString: House
@@ -9395,6 +9812,21 @@ Transform:
   - {fileID: 1201993487}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 16
+--- !u!114 &1212972762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1911517153}
+  m_GameObject: {fileID: 1212972759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1223319224
 GameObject:
   m_ObjectHideFlags: 0
@@ -9652,6 +10084,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1256172204}
   - 114: {fileID: 1256172203}
+  - 114: {fileID: 1256172205}
   m_Layer: 0
   m_Name: Casa38
   m_TagString: House
@@ -9690,6 +10123,21 @@ Transform:
   - {fileID: 230041170}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 37
+--- !u!114 &1256172205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1070692777}
+  m_GameObject: {fileID: 1256172202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1264644645
 GameObject:
   m_ObjectHideFlags: 0
@@ -9776,6 +10224,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1293845568}
   - 114: {fileID: 1293845569}
+  - 114: {fileID: 1293845570}
   m_Layer: 0
   m_Name: Casa20
   m_TagString: House
@@ -9814,6 +10263,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1832139046}
   highlightSprite: {fileID: 1168054046}
   isHighLighted: 0
+--- !u!114 &1293845570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1941892809}
+  m_GameObject: {fileID: 1293845567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1296936029
 GameObject:
   m_ObjectHideFlags: 0
@@ -10410,6 +10874,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1429261752}
   - 114: {fileID: 1429261753}
+  - 114: {fileID: 1429261754}
   m_Layer: 0
   m_Name: Casa30
   m_TagString: House
@@ -10448,6 +10913,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 2099914838}
   highlightSprite: {fileID: 1742144460}
   isHighLighted: 0
+--- !u!114 &1429261754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 171211565}
+  m_GameObject: {fileID: 1429261751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1436780920
 GameObject:
   m_ObjectHideFlags: 0
@@ -10602,6 +11082,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1437418819}
   - 114: {fileID: 1437418820}
+  - 114: {fileID: 1437418821}
   m_Layer: 0
   m_Name: Casa02
   m_TagString: House
@@ -10640,6 +11121,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 39794419}
   highlightSprite: {fileID: 1867074528}
   isHighLighted: 0
+--- !u!114 &1437418821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1844586561}
+  m_GameObject: {fileID: 1437418818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1445423928
 GameObject:
   m_ObjectHideFlags: 0
@@ -10743,6 +11239,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1466849102}
   - 114: {fileID: 1466849103}
+  - 114: {fileID: 1466849104}
   m_Layer: 0
   m_Name: Casa19
   m_TagString: House
@@ -10781,6 +11278,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 745928086}
   highlightSprite: {fileID: 2005888929}
   isHighLighted: 0
+--- !u!114 &1466849104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 399741382}
+  m_GameObject: {fileID: 1466849101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1485879685
 GameObject:
   m_ObjectHideFlags: 0
@@ -10790,6 +11302,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1485879686}
   - 114: {fileID: 1485879687}
+  - 114: {fileID: 1485879688}
   m_Layer: 0
   m_Name: Casa16
   m_TagString: House
@@ -10828,6 +11341,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1967272324}
   highlightSprite: {fileID: 114749048}
   isHighLighted: 0
+--- !u!114 &1485879688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1773870013}
+  m_GameObject: {fileID: 1485879685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1515350792
 GameObject:
   m_ObjectHideFlags: 0
@@ -10931,6 +11459,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1515936809}
   - 114: {fileID: 1515936810}
+  - 114: {fileID: 1515936811}
   m_Layer: 0
   m_Name: Casa26
   m_TagString: House
@@ -10969,6 +11498,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 470279278}
   highlightSprite: {fileID: 1044625327}
   isHighLighted: 0
+--- !u!114 &1515936811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 510947659}
+  m_GameObject: {fileID: 1515936808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1516082029
 GameObject:
   m_ObjectHideFlags: 0
@@ -11055,6 +11599,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1518250368}
   - 114: {fileID: 1518250369}
+  - 114: {fileID: 1518250370}
   m_Layer: 0
   m_Name: Casa21
   m_TagString: House
@@ -11093,6 +11638,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1885507455}
   highlightSprite: {fileID: 671550074}
   isHighLighted: 0
+--- !u!114 &1518250370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 183035840}
+  m_GameObject: {fileID: 1518250367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1525535755
 GameObject:
   m_ObjectHideFlags: 0
@@ -11102,6 +11662,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1525535756}
   - 114: {fileID: 1525535757}
+  - 114: {fileID: 1525535758}
   m_Layer: 0
   m_Name: Casa03
   m_TagString: House
@@ -11140,6 +11701,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 351920618}
   highlightSprite: {fileID: 630199836}
   isHighLighted: 0
+--- !u!114 &1525535758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 154009339}
+  m_GameObject: {fileID: 1525535755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1530329595
 GameObject:
   m_ObjectHideFlags: 0
@@ -12178,6 +12754,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1666583731}
   - 114: {fileID: 1666583730}
+  - 114: {fileID: 1666583732}
   m_Layer: 0
   m_Name: Casa11
   m_TagString: House
@@ -12216,6 +12793,21 @@ Transform:
   - {fileID: 591532026}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 10
+--- !u!114 &1666583732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 656471337}
+  m_GameObject: {fileID: 1666583729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1686720067
 GameObject:
   m_ObjectHideFlags: 0
@@ -12874,6 +13466,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1830528696}
   - 114: {fileID: 1830528695}
+  - 114: {fileID: 1830528697}
   m_Layer: 0
   m_Name: Casa44
   m_TagString: House
@@ -12912,6 +13505,21 @@ Transform:
   - {fileID: 766891056}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 43
+--- !u!114 &1830528697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 2138575729}
+  m_GameObject: {fileID: 1830528694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1832139046
 GameObject:
   m_ObjectHideFlags: 0
@@ -13152,6 +13760,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1859053658}
   - 114: {fileID: 1859053659}
+  - 114: {fileID: 1859053660}
   m_Layer: 0
   m_Name: Casa12
   m_TagString: House
@@ -13190,6 +13799,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1186255033}
   highlightSprite: {fileID: 1609361592}
   isHighLighted: 0
+--- !u!114 &1859053660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 550220931}
+  m_GameObject: {fileID: 1859053657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1867074528
 GameObject:
   m_ObjectHideFlags: 0
@@ -13250,6 +13874,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1869925438}
   - 114: {fileID: 1869925437}
+  - 114: {fileID: 1869925439}
   m_Layer: 0
   m_Name: Casa06
   m_TagString: House
@@ -13288,6 +13913,21 @@ Transform:
   - {fileID: 1550166607}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 5
+--- !u!114 &1869925439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 437475809}
+  m_GameObject: {fileID: 1869925436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &1882415057
 Prefab:
   m_ObjectHideFlags: 0
@@ -14004,6 +14644,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1979330272}
   - 114: {fileID: 1979330273}
+  - 114: {fileID: 1979330274}
   m_Layer: 0
   m_Name: Casa15
   m_TagString: House
@@ -14042,6 +14683,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 118720322}
   highlightSprite: {fileID: 2071519970}
   isHighLighted: 0
+--- !u!114 &1979330274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 2110935629}
+  m_GameObject: {fileID: 1979330271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1987286614
 GameObject:
   m_ObjectHideFlags: 0
@@ -14273,6 +14929,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1993128719}
   - 114: {fileID: 1993128720}
+  - 114: {fileID: 1993128721}
   m_Layer: 0
   m_Name: Casa35
   m_TagString: House
@@ -14311,6 +14968,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 2028380104}
   highlightSprite: {fileID: 1541155903}
   isHighLighted: 0
+--- !u!114 &1993128721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1394617111}
+  m_GameObject: {fileID: 1993128718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &1995191866
 GameObject:
   m_ObjectHideFlags: 0
@@ -14320,6 +14992,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1995191867}
   - 114: {fileID: 1995191868}
+  - 114: {fileID: 1995191869}
   m_Layer: 0
   m_Name: Casa04
   m_TagString: House
@@ -14358,6 +15031,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 262722819}
   highlightSprite: {fileID: 1599732144}
   isHighLighted: 0
+--- !u!114 &1995191869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 2138314020}
+  m_GameObject: {fileID: 1995191866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &2005888929
 GameObject:
   m_ObjectHideFlags: 0
@@ -14700,6 +15388,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2055717822}
   - 114: {fileID: 2055717821}
+  - 114: {fileID: 2055717823}
   m_Layer: 0
   m_Name: Casa09
   m_TagString: House
@@ -14738,6 +15427,21 @@ Transform:
   - {fileID: 1658483720}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 8
+--- !u!114 &2055717823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 287060974}
+  m_GameObject: {fileID: 2055717820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &2064975974
 GameObject:
   m_ObjectHideFlags: 0
@@ -14747,6 +15451,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2064975975}
   - 114: {fileID: 2064975976}
+  - 114: {fileID: 2064975977}
   m_Layer: 0
   m_Name: Casa13
   m_TagString: House
@@ -14785,6 +15490,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1884807982}
   highlightSprite: {fileID: 473341085}
   isHighLighted: 0
+--- !u!114 &2064975977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 2133115752}
+  m_GameObject: {fileID: 2064975974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &2069088147
 GameObject:
   m_ObjectHideFlags: 0
@@ -14920,6 +15640,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2097621464}
   - 114: {fileID: 2097621463}
+  - 114: {fileID: 2097621465}
   m_Layer: 0
   m_Name: Casa32
   m_TagString: House
@@ -14958,6 +15679,21 @@ Transform:
   - {fileID: 504655297}
   m_Father: {fileID: 1970338727}
   m_RootOrder: 31
+--- !u!114 &2097621465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 768798031}
+  m_GameObject: {fileID: 2097621462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &2099020679
 GameObject:
   m_ObjectHideFlags: 0
@@ -15121,6 +15857,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2105811057}
   - 114: {fileID: 2105811058}
+  - 114: {fileID: 2105811059}
   m_Layer: 0
   m_Name: Casa34
   m_TagString: House
@@ -15159,6 +15896,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1044130653}
   highlightSprite: {fileID: 40631671}
   isHighLighted: 0
+--- !u!114 &2105811059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1027984002}
+  m_GameObject: {fileID: 2105811056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &2110339653
 GameObject:
   m_ObjectHideFlags: 0
@@ -15356,6 +16108,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2129619073}
   - 114: {fileID: 2129619074}
+  - 114: {fileID: 2129619075}
   m_Layer: 0
   m_Name: Casa33
   m_TagString: House
@@ -15394,6 +16147,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1991783460}
   highlightSprite: {fileID: 759502487}
   isHighLighted: 0
+--- !u!114 &2129619075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 956771189}
+  m_GameObject: {fileID: 2129619072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1 &2132360257
 GameObject:
   m_ObjectHideFlags: 0
@@ -15403,6 +16171,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2132360258}
   - 114: {fileID: 2132360259}
+  - 114: {fileID: 2132360260}
   m_Layer: 0
   m_Name: Casa43
   m_TagString: House
@@ -15441,6 +16210,21 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 155357729}
   highlightSprite: {fileID: 1752684308}
   isHighLighted: 0
+--- !u!114 &2132360260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862,
+    type: 2}
+  m_PrefabInternal: {fileID: 219799584}
+  m_GameObject: {fileID: 2132360257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a485d75a7ad98bd40b55089cba58e1a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energiesSpent: 0
+  dificulty: 0
+  gameType: 0
 --- !u!1001 &2133115752
 Prefab:
   m_ObjectHideFlags: 0

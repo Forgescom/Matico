@@ -12,9 +12,9 @@ public class SettingsHandler : MonoBehaviour {
 	public AvatarPiker avatarSettings;
 
 	//SOUNDS
-	bool fxSoundOn = true;
+	/*bool fxSoundOn = true;
 	bool musicSounOn = true;
-	bool maticoSoundOn = true;
+	bool maticoSoundOn = true;*/
 	public BtHandler btSoundFx;
 	public BtHandler btSoundAmbiente;
 	public BtHandler btSoundMatico;

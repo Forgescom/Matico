@@ -17,7 +17,7 @@ public class SoundClickHandler : MonoBehaviour {
 	void Update () {
 		if( Input.touchCount >= 1 )
 		{
-			Ray cursorRay = Camera.main.ScreenPointToRay( iPhoneInput.GetTouch(0).position );
+			Ray cursorRay = Camera.main.ScreenPointToRay( Input.GetTouch(0).position );
 			RaycastHit hit;
 			if( collider.Raycast( cursorRay, out hit, 1000.0f ) )
 			{
