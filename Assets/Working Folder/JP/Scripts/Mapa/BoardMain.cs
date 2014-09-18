@@ -22,6 +22,7 @@ public class BoardMain : MonoBehaviour {
 		ShowObjects ();
 		UnlockHouses ();
 
+
 	}
 
 	void ShowObjects(){

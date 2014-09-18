@@ -107,7 +107,7 @@ public class CameraMovesHandler : MonoBehaviour {
 			camera.orthographicSize = Mathf.Min(camera.orthographicSize, 5f);
 		}
 
-
+		ClampCameraMovement ();
 
 		//VERSION2
 	/*	curDist = inputValues[0].position - inputValues[1].position; //current distance between finger touches

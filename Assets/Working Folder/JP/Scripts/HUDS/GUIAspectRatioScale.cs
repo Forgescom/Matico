@@ -12,7 +12,10 @@ public class GUIAspectRatioScale : MonoBehaviour {
 		myTrans = transform;
 		SetScale();
 	}
-
+	void Update()
+	{
+		SetScale ();
+	}
 
 	//call on an event that tells if the aspect ratio changed
 	void SetScale()
