@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum TypeOfGames{
+	shooter,
+	accelerometer,
+	scratchcard,
+	tilt
+};
+
 public class CasaValues : MonoBehaviour {
 
-	public enum TypeOfGames{
-		shooter,
-		accelerometer,
-		scratchcard,
-		tilt
-	};
+
 
 	public int energiesSpent;
 	public int dificulty;

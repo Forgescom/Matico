@@ -51,28 +51,31 @@ public class BoardMain : MonoBehaviour {
 	}
 
 	void LoadHousesSettings()
-	{
-	
+	{	
 		for (int i = 0; i < houses.Count; i++) {
 			string houseName;
 			houses[i].TryGetValue("HouseName",out houseName);
 	
 			if(houseName == housesGameObject[i].name)
 			{
+				string typeOfGame;
+				houses[i].TryGetValue("Typeofgame",out typeOfGame);
+				switch(typeOfGame)
+				{
+					case "shooter": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.shooter; break;
+					case "accelerometer": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.accelerometer; break;
+					case "scratchcard": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.scratchcard; break;
+					case "tilt": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.tilt; break;
+				}
+
 				string energiesSpent;
 				houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
 				housesGameObject[i].GetComponent<CasaValues>().energiesSpent = int.Parse(energiesSpent);
-
+				
 				string dificulty;
 				houses[i].TryGetValue("Dificulty",out dificulty);
 				housesGameObject[i].GetComponent<CasaValues>().dificulty = int.Parse(dificulty);
-
-				string typeOfGame;
-				houses[i].TryGetValue("Typeofgame",out typeOfGame);
-				housesGameObject[i].GetComponent<CasaValues>().gameType =;
-
 			}
-
 		}
 	}
 

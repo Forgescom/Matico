@@ -1,12 +1,22 @@
 <GameLevelInfo>
 	<level id="Casa01" blocked= "false"><!-- level 1 ! -->
-		<typeofgame>Shooter</typeofgame>
+		<typeofgame>shooter</typeofgame>
 		<energiesspent>2</energiesspent>
 		<levelofdificulty>1</levelofdificulty>
 	</level>
 	<level id="Casa02" blocked= "false"><!-- level 1 ! -->
-		<typeofgame>Acelerometer</typeofgame>
+		<typeofgame>accelerometer</typeofgame>
 		<energiesspent>4</energiesspent>
+		<levelofdificulty>5</levelofdificulty>
+	</level>
+	<level id="Casa03" blocked= "false"><!-- level 1 ! -->
+		<typeofgame>scratchcard</typeofgame>
+		<energiesspent>1</energiesspent>
+		<levelofdificulty>5</levelofdificulty>
+	</level>
+	<level id="Casa04" blocked= "false"><!-- level 1 ! -->
+		<typeofgame>tilt</typeofgame>
+		<energiesspent>3</energiesspent>
 		<levelofdificulty>5</levelofdificulty>
 	</level>
 </GameLevelInfo>

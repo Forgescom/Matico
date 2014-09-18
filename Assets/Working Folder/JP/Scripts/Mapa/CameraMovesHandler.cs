@@ -27,6 +27,8 @@ public class CameraMovesHandler : MonoBehaviour {
 	Vector3 startPos;
 	Vector3 endPos;
 	float transitionDuration = 1.5f;
+
+	public float orthoZoomSpeed = 0.005f;
 	
 	// Use this for initialization
 	void Start () {
@@ -35,7 +37,10 @@ public class CameraMovesHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.touchCount == 2)
+		{
+			ZoomInOutCamera();
+		}
 	}
 
 
@@ -72,8 +77,40 @@ public class CameraMovesHandler : MonoBehaviour {
 		ClampCameraMovement ();		
 	}
 	
-	void ZoomInOutCamera(Touch[] inputValues ){
-		curDist = inputValues[0].position - inputValues[1].position; //current distance between finger touches
+	void ZoomInOutCamera(Touch[] inputValues = null ){
+
+		//VERSION 1
+
+		// Store both touches.
+		Touch touchZero = Input.GetTouch(0);
+		Touch touchOne = Input.GetTouch(1);
+		
+		// Find the position in the previous frame of each touch.
+		Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+		Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+		
+		// Find the magnitude of the vector (the distance) between the touches in each frame.
+		float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+		float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+		
+		// Find the difference in the distances between each frame.
+		float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+		
+		// If the camera is orthographic...
+		if (camera.isOrthoGraphic)
+		{
+			// ... change the orthographic size based on the change in distance between the touches.
+			camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+			
+			// Make sure the orthographic size never drops below zero.
+			camera.orthographicSize = Mathf.Max(camera.orthographicSize, 2f);
+			camera.orthographicSize = Mathf.Min(camera.orthographicSize, 5f);
+		}
+
+
+
+		//VERSION2
+	/*	curDist = inputValues[0].position - inputValues[1].position; //current distance between finger touches
 		prevDist = ((inputValues[0].position - inputValues[0].deltaPosition) - (inputValues[1].position - inputValues[1].deltaPosition)); //difference in previous locations using delta positions
 		touchDelta = curDist.magnitude - prevDist.magnitude;
 		speedTouch0 = inputValues[0].deltaPosition.magnitude / inputValues[0].deltaTime;
@@ -89,7 +126,7 @@ public class CameraMovesHandler : MonoBehaviour {
 			transform.camera.orthographicSize = Mathf.Clamp(transform.camera.orthographicSize - (1 * speed),MINSCALE,MAXSCALE);
 		}
 		
-		ClampCameraMovement ();
+		ClampCameraMovement ();*/
 	}
 	
 	//CLAMP DEPENDING ON CAMERA SIZE
