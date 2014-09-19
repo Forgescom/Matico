@@ -26,7 +26,7 @@ public class BoardMain : MonoBehaviour {
 	}
 
 	void ShowObjects(){
-		Main.CURRENT_LEVEL = 5;
+		Main.CURRENT_LEVEL = 1;
 		if (Main.CURRENT_LEVEL <= 1) {
 			intro.SetActive(true);
 			bg.GetComponent<BackgroundTouch>().enabled = false;

@@ -3,7 +3,12 @@ using System.Collections;
 
 public class LifesHandler : MonoBehaviour {
 
-	int currentLives = 4;
+	public GUITexture avatar;
+	public GUITexture lives;
+
+	public Texture [] livesTextures;
+
+	int currentLives = 2;
 
 	// Use this for initialization
 	void Start () {
@@ -12,14 +17,31 @@ public class LifesHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 	
 	}
 
-	void AddLives(){
+	void OnMouseDown()
+	{
+		RemoveLives ();
+	}
 
+	void OnMouseEnter()
+	{
+		AddLives ();
+	}
+
+	void AddLives(){
+		if (currentLives <= 4) {
+			currentLives ++;
+			lives.texture = livesTextures[currentLives -1];
+		}
 	}
 
 	void RemoveLives(){
-
+		if (currentLives > 1) {
+			currentLives --;
+			lives.texture = livesTextures[currentLives -1];
+		}
 	}
 }
