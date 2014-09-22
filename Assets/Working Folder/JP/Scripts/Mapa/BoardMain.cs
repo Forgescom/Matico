@@ -14,7 +14,7 @@ public class BoardMain : MonoBehaviour {
 	public CameraMovesHandler cameraScript;
 	public List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 
-
+	public string currentGame;
 
 	void Start(){
 		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
@@ -69,6 +69,8 @@ public class BoardMain : MonoBehaviour {
 					case "tilt": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.tilt; break;
 				}
 
+				currentGame = typeOfGame;
+
 				string energiesSpent;
 				houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
 				housesGameObject[i].GetComponent<CasaValues>().energiesSpent = int.Parse(energiesSpent);
@@ -82,7 +84,8 @@ public class BoardMain : MonoBehaviour {
 
 	void StartLevel(string houseCliked)
 	{
-
+		DontDestroyOnLoad (transform.gameObject);
+		Application.LoadLevel ("TiltGame");
 	}
 
 
