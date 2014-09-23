@@ -11,17 +11,17 @@ public class CameraMovesHandler : MonoBehaviour {
 	public float [] boundaries = new float[2];
 	
 	//ZOOM
-	
-	float speed = 0.05f; 
-	float MINSCALE = 2.0F; 
 	float MAXSCALE = 5F; 
+	/*float speed = 0.05f; 
+	float MINSCALE = 2.0F; 
+
 	float minPinchSpeed = 5.0F; 
 	float varianceInDistances = 5.0F; 
 	float touchDelta = 0.0F; 
 	Vector2 prevDist = new Vector2(0,0); 
 	Vector2 curDist = new Vector2(0,0); 
 	float speedTouch0 = 0.0F; 
-	float speedTouch1 = 0.0F;
+	float speedTouch1 = 0.0F;*/
 
 	//BOARD START ANIMATION
 	Vector3 startPos;

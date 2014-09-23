@@ -14,7 +14,24 @@ public class BoardMain : MonoBehaviour {
 	public CameraMovesHandler cameraScript;
 	public List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 
-	public string currentGame;
+	public static string currentLevelType;
+	public static int currentLevel;
+	public static int currentLevelDificulty;
+	public static int energies = 4;
+
+	public static BoardMain control;
+
+	void Awake(){
+		if (control == null)
+		{
+			DontDestroyOnLoad(gameObject);
+			control = this;
+		}
+		else if (control != this)
+		{
+			Destroy(gameObject);
+		}
+	}
 
 	void Start(){
 		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
@@ -30,13 +47,11 @@ public class BoardMain : MonoBehaviour {
 		if (Main.CURRENT_LEVEL <= 1) {
 			intro.SetActive(true);
 			bg.GetComponent<BackgroundTouch>().enabled = false;
-
 		}
 		else
 		{
 			intro.SetActive(false);
 			bg.SetActive(true);
-
 		}
 	}
 
@@ -69,7 +84,7 @@ public class BoardMain : MonoBehaviour {
 					case "tilt": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.tilt; break;
 				}
 
-				currentGame = typeOfGame;
+				currentLevelType = typeOfGame;
 
 				string energiesSpent;
 				houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
@@ -82,12 +97,44 @@ public class BoardMain : MonoBehaviour {
 		}
 	}
 
-	void StartLevel(string houseCliked)
+	void StartLevel(Transform houseCliked)
 	{
-		DontDestroyOnLoad (transform.gameObject);
-		Application.LoadLevel ("TiltGame");
+
+		currentLevelType = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
+		currentLevel = int.Parse(houseCliked.name.Substring (4, 2));
+
+		currentLevelDificulty = houseCliked.GetComponent<CasaValues> ().dificulty;
+
+		switch (currentLevelType) {
+			case "shooter":
+				Application.LoadLevel ("Shooter");			
+				break;
+			case "accelerometer":
+				Application.LoadLevel ("Accelerometer");			
+				break;
+			case "scratchcard":
+				Application.LoadLevel ("Scratchcard");			
+				break;
+			case "tilt":
+				Application.LoadLevel ("TiltGame");			
+				break;
+		}	
 	}
 
+
+	void LevelEnd()
+	{
+		/*IF WINS 
+		 * INCREMENT LEVEL NUMBER
+		 * UNLOCK AND HIGHLIGHT NEXT LEVEL
+		 * SAVE GAME
+		 * 
+		 * IF LOOSES
+		 * SAVE SPEN ENERGIES ON GAME
+		 * REMOVE ENERGI
+		 * 
+		 * */
+	}
 
 	void EnableMap()
 	{
