@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - House
+  - North
+  - South
+  - East
+  - West
+  - Errado
+  - Certo
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
