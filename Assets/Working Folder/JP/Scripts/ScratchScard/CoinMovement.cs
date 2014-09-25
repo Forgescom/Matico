@@ -5,12 +5,12 @@ public class CoinMovement : MonoBehaviour {
 
 	public ParticleSystem particulasScratch;
 
-	int startAlpha = 1;
-	float endAlpha;
-	Color32 colorFinal;
+	Vector3 startPosition;
+
+	
 	// Use this for initialization
 	void Start () {
-	
+		startPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -39,6 +39,7 @@ public class CoinMovement : MonoBehaviour {
 		}
 		else
 		{
+			transform.position = startPosition;
 			return false;
 		}
 	}
@@ -50,19 +51,19 @@ public class CoinMovement : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D col)
 	{
+		col.SendMessage ("Scratch", true);
 
-		col.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(col.renderer.material.color.a,0,Time.deltaTime /10f)));
+
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		//print ("COLIDI COM " + col.name);
 		particulasScratch.Play ();
 
 	
 	}
 	void OnTriggerExit2D(Collider2D col){
-		print ("COLIDI COM " + col.name);
-		particulasScratch.Stop ();
+		col.SendMessage ("Scratch", false);
+
 		
 	}
 

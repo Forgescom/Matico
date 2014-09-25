@@ -6,12 +6,15 @@ using System.Xml;
 using System.IO;
 
 public class XmlQuestionsLoader : MonoBehaviour {
-	
-	
-	
+
+	public delegate void XmlReady();
+	public static event XmlReady xmlLoaded;
+
 	public TextAsset xmlFile;
-	List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
+	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
 	Dictionary<string,string> questionDetails;
+
+	public GameObject questionHolder;
 	
 	
 	// Use this for initialization
@@ -52,8 +55,13 @@ public class XmlQuestionsLoader : MonoBehaviour {
 			questions.Add(questionDetails);
 			
 		}
-		
-		transform.SendMessage ("LoadHousesSettings");
+
+		if (xmlLoaded != null) {
+			xmlLoaded();
+			
+		}
+
+		//	questionHolder.transform.SendMessage ("LoadHousesSettings");
 		
 	}
 }
