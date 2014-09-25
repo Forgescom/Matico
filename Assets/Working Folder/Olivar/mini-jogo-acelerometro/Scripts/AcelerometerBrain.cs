@@ -66,6 +66,9 @@ public class AcelerometerBrain : MonoBehaviour {
 	public void CollisionOccur (GameObject collisionWith)
 	{
 		Handheld.Vibrate ();
+
+		collisionWith.animation.Play("pop");
+
 		Destroy(collisionWith);
 
 		if (collisionWith.tag == "Certo")
