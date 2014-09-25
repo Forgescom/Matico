@@ -10,6 +10,6 @@ public class bubblepop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 }
