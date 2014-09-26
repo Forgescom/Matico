@@ -70,7 +70,6 @@ public class AcelerometerBrain : MonoBehaviour {
 		Animator bubleAnmiator = collisionWith.transform.GetComponent<Animator> ();
 		bubleAnmiator.SetBool ("pop",true);
 
-
 		//Destroy(collisionWith);
 
 		if (collisionWith.tag == "Certo")

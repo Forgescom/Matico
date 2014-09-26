@@ -1,17 +1,18 @@
 fileFormatVersion: 2
-guid: a9b18c86092cbcc44b2966993b3552ea
+guid: 693b22d99448a644b965ec0911325ded
 TextureImporter:
   fileIDToRecycleName:
-    21300000: buble-17
-    21300002: bubblepop
-    21300004: bubblepop_1
-    21300006: bubblepop_2
-    21300008: bubblepop_3
-    21300010: bubblepop_4
-    21300012: bubblepop_5
-    21300014: bubblepop_6
-    21300016: iddle
-    21300018: bubblepop_7
+    21300000: buble-17_0
+    21300002: buble-17_1
+    21300004: buble-17_2
+    21300006: buble-17_3
+    21300008: buble-17_4
+    21300010: buble-17_5
+    21300012: buble-17_6
+    21300014: buble-17_8
+    21300016: buble-17_10
+    21300018: buble-17_11
+    21300020: buble-17_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,83 +54,83 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: bubblepop_1
+    - name: buble-17_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 16
+        width: 323
+        height: 326
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buble-17_1
       rect:
         serializedVersion: 2
         x: 456
-        y: 14
+        y: 16
         width: 324
+        height: 323
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buble-17_2
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 16
+        width: 334
+        height: 323
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buble-17_3
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 16
+        width: 329
+        height: 318
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: buble-17_4
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 16
+        width: 329
         height: 326
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bubblepop_2
+    - name: buble-17_5
       rect:
         serializedVersion: 2
-        x: 916
-        y: 14
-        width: 328
+        x: 2256
+        y: 13
+        width: 331
         height: 326
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bubblepop_3
+    - name: buble-17_6
       rect:
         serializedVersion: 2
-        x: 1361
-        y: 14
-        width: 325
-        height: 326
+        x: 2705
+        y: 16
+        width: 334
+        height: 321
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bubblepop_4
+    - name: buble-17_7
       rect:
         serializedVersion: 2
-        x: 1811
-        y: 14
-        width: 328
-        height: 329
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bubblepop_5
-      rect:
-        serializedVersion: 2
-        x: 2260
-        y: 14
-        width: 328
-        height: 326
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bubblepop_6
-      rect:
-        serializedVersion: 2
-        x: 2709
-        y: 14
-        width: 328
-        height: 326
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: bubblepop_7
-      rect:
-        serializedVersion: 2
-        x: 3166
-        y: 14
-        width: 328
-        height: 326
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: iddle
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 14
+        x: 3163
+        y: 16
         width: 324
-        height: 326
+        height: 323
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
