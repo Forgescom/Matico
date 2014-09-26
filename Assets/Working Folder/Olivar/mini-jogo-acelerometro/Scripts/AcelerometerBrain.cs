@@ -25,6 +25,9 @@ public class AcelerometerBrain : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.LoadLevel(1);
+		}
 		vidasText.text = "Vidas: " + vidas.ToString();
 	}
 
@@ -66,7 +69,11 @@ public class AcelerometerBrain : MonoBehaviour {
 	public void CollisionOccur (GameObject collisionWith)
 	{
 		Handheld.Vibrate ();
-		Destroy(collisionWith);
+
+		Animator bubleAnmiator = collisionWith.transform.GetComponent<Animator> ();
+		bubleAnmiator.SetBool ("pop",true);
+
+		//Destroy(collisionWith);
 
 		if (collisionWith.tag == "Certo")
 		{

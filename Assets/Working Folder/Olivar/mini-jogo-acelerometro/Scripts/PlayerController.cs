@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 	void Start () {
 		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
 	}
 	
 	void Update()
