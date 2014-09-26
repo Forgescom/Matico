@@ -45,7 +45,6 @@ MonoBehaviour:
   housesHolder: {fileID: 0}
   housesGameObject: []
   cameraScript: {fileID: 0}
-  currentGame: 
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

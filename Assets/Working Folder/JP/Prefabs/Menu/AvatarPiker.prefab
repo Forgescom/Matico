@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d522df3b6433954fa29f9e4213b07a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainBrain: {fileID: 0}
   faceHolder: {fileID: 21200000}
   faces:
   - {fileID: 21300002, guid: b7385256fe6d75948963f32522386013, type: 3}
@@ -169,6 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 100000}
+  overState: {fileID: 0}
+  normalState: {fileID: 0}
+  toggleButton: 0
+  buttonOn: 0
+  toggleOff: {fileID: 0}
+  toggleOn: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +188,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 100000}
+  overState: {fileID: 0}
+  normalState: {fileID: 0}
+  toggleButton: 0
+  buttonOn: 0
+  toggleOff: {fileID: 0}
+  toggleOn: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

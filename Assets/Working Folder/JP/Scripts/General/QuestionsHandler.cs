@@ -45,10 +45,9 @@ public class QuestionsHandler : MonoBehaviour {
 		string answerD;
 		XmlQuestionsLoader.questions [randomQuestionNumber].TryGetValue ("correct", out answerD);
 		answer4.transform.parent.tag = "Certo";
+		answer4.transform.parent.SendMessage ("SetSprites");
 		answer4.text = answerD;
 
-		
-		print(XmlQuestionsLoader.questions.Count);
 	}
 
 	void OnEnable()

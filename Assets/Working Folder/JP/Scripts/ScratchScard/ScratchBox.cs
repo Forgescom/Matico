@@ -3,46 +3,61 @@ using System.Collections;
 
 public class ScratchBox : MonoBehaviour {
 
-	TextMesh textAnswer;
 	float minAlpha = 0.2f;
-	ParticleSystem particleSystem;
+	public ParticleSystem particlesSystem;
+	public TextMesh textAnswer;
+	public GameObject answerSprite;
+
+	public Sprite correctSprite;
+	public Sprite wrongSprite;
+
+	private bool enable = true;
+
 
 	// Use this for initialization
 	void Start () {
-		textAnswer = transform.FindChild ("text").GetComponent<TextMesh>();
-		particleSystem = transform.FindChild ("particles").GetComponent<ParticleSystem> ();
-		particleSystem.enableEmission = false;
+		particlesSystem.enableEmission = false;
+
+
 	}
-	
+
+	public void SetSprites()
+	{
+		if (transform.tag == "Certo") {
+			answerSprite.GetComponent<SpriteRenderer>().sprite = correctSprite;
+		}
+		else
+		{
+			answerSprite.GetComponent<SpriteRenderer>().sprite = wrongSprite;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	void Scratch(bool state)
 	{
-		particleSystem.enableEmission = true;
-		//particleSystem.Play ();
-
-		if(state == true)
+		if(state == true && enable == true)
 		{
 			if(transform.renderer.material.color.a >= minAlpha)
 			{
-				//transform.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(transform.renderer.material.color.a,0,Time.deltaTime /5f)));
-				textAnswer.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(textAnswer.renderer.material.color.a,0,Time.deltaTime /5f)));
-				print("IF1");
+				transform.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(transform.renderer.material.color.a,0,Time.deltaTime /5f)));
+				textAnswer.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(textAnswer.renderer.material.color.a,0,Time.deltaTime /5f)));				
+				particlesSystem.enableEmission = true;
 			}
 			else
 			{
-
-				transform.gameObject.SetActive(false);
+				answerSprite.animation.Play("AnswerPop");
+				transform.renderer.material.color = new Color(1,1,1,0);
+				textAnswer.renderer.material.color = new Color(1,1,1,0);	
+				enable = false;
 			}
 		}
 		else{
-		//	particleSystem.Stop();
-			particleSystem.enableEmission = false;
-			print("IF2");
+			particlesSystem.enableEmission = false;
 		}
-		//print (particleSystem.isPlaying);
+
 	}
 }

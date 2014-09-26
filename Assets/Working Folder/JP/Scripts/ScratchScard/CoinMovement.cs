@@ -29,7 +29,8 @@ public class CoinMovement : MonoBehaviour {
 			Vector2 touchPos  = new Vector2(wp.x, wp.y);
 			Collider2D hit = Physics2D.OverlapPoint(touchPos);
 			
-			if(hit){
+			if(hit && hit.name == "moeda"){
+				print (hit.name);
 				return true;
 			}
 			else

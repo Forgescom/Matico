@@ -22,6 +22,7 @@ public class BoardMain : MonoBehaviour {
 	public static BoardMain control;
 
 	void Awake(){
+		print ("BU");
 		if (control == null)
 		{
 			DontDestroyOnLoad(gameObject);
@@ -31,19 +32,27 @@ public class BoardMain : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+		
+		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
+		
+		ShowObjects ();
+		UnlockHouses ();
+		LoadHousesSettings ();
 	}
 
 	void Start(){
-		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
+		print ("BU2");
+		/*housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
 		ShowObjects ();
 		UnlockHouses ();
+		LoadHousesSettings ();
 
-
+*/
 	}
 
 	void ShowObjects(){
-		Main.CURRENT_LEVEL = 1;
+		Main.CURRENT_LEVEL = 2;
 		if (Main.CURRENT_LEVEL <= 1) {
 			intro.SetActive(true);
 			bg.GetComponent<BackgroundTouch>().enabled = false;
@@ -110,7 +119,7 @@ public class BoardMain : MonoBehaviour {
 				Application.LoadLevel ("Shooter");			
 				break;
 			case "accelerometer":
-				Application.LoadLevel ("Accelerometer");			
+				Application.LoadLevel ("ocean");			
 				break;
 			case "scratchcard":
 				Application.LoadLevel ("Scratchcard");			
@@ -138,8 +147,10 @@ public class BoardMain : MonoBehaviour {
 
 	void EnableMap()
 	{
-		bg.GetComponent<BackgroundTouch>().enabled = true;
-		cameraScript.startAnimBoard (housesGameObject [Main.CURRENT_LEVEL].transform.position);
+		if (Application.loadedLevelName == "Board") {
+			bg.GetComponent<BackgroundTouch> ().enabled = true;
+			cameraScript.startAnimBoard (housesGameObject [Main.CURRENT_LEVEL].transform.position);
+		}
 	}
 
 	void OnEnable()
