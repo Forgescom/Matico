@@ -25,6 +25,9 @@ public class AcelerometerBrain : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.LoadLevel(1);
+		}
 		vidasText.text = "Vidas: " + vidas.ToString();
 	}
 
