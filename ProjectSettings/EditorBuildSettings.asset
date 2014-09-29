@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Working Folder/JP/Scenes/Menu.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Working Folder/JP/Scenes/Board.unity
   - enabled: 1
     path: Assets/Working Folder/Olivar/mini-jogo-acelerometro/Scenes/ocean.unity

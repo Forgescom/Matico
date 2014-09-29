@@ -15,6 +15,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	int result;
 
 	public GameObject boia;
+	public GameObject sharkfin;
 
 	int vidas = 3;
 
@@ -70,8 +71,10 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		Handheld.Vibrate ();
 
-		Animator bubleAnmiator = collisionWith.transform.GetComponent<Animator> ();
-		bubleAnmiator.SetBool ("pop",true);
+		Animator bubbleAnimator = collisionWith.transform.GetComponent<Animator> ();
+		bubbleAnimator.SetBool ("pop",true);
+
+		Animator boiaAnimator = boia.transform.GetComponent<Animator> ();
 
 		//Destroy(collisionWith);
 
@@ -79,15 +82,60 @@ public class AcelerometerBrain : MonoBehaviour {
 		{
 			GameEnd("Vitoria", vidas);
 		}
-		else if (collisionWith.tag == "Errado") 
+		else if (collisionWith.tag == "Errado")
 		{
+			DisableCollider(collisionWith);
 			vidas--;
+
+			if(vidas == 2)
+			{
+				boiaAnimator = boia.transform.GetComponent<Animator> ();
+				boiaAnimator.SetBool ("Damage1", true);
+				vidasText.text = vidas.ToString();
+			}
+			if(vidas == 1)
+			{
+				boiaAnimator = boia.transform.GetComponent<Animator> ();
+				boiaAnimator.SetBool ("Damage2", true);
+				vidasText.text = vidas.ToString();
+			}
 			if(vidas == 0)
 			{
+				boiaAnimator = boia.transform.GetComponent<Animator> ();
+				boiaAnimator.SetBool ("FinalDamage", true);
 				vidasText.text = vidas.ToString();
 				GameEnd("Derrota", vidas);
 			}
 		}
+		else if (collisionWith.tag == "Shark")
+		{
+			vidas--;
+			
+			if(vidas == 2)
+			{
+				boiaAnimator = boia.transform.GetComponent<Animator> ();
+				boiaAnimator.SetBool ("Damage1", true);
+				vidasText.text = vidas.ToString();
+			}
+			if(vidas == 1)
+			{
+				boiaAnimator = boia.transform.GetComponent<Animator> ();
+				boiaAnimator.SetBool ("Damage2", true);
+				vidasText.text = vidas.ToString();
+			}
+			if(vidas == 0)
+			{
+				boiaAnimator = boia.transform.GetComponent<Animator> ();
+				boiaAnimator.SetBool ("FinalDamage", true);
+				vidasText.text = vidas.ToString();
+				GameEnd("Derrota", vidas);
+			}
+		}
+	}
+
+	void DisableCollider(GameObject col)
+	{
+		col.GetComponent<BoxCollider2D> ().enabled = false;
 	}
 
 	public void GameEnd(string outcome, int vidas)
