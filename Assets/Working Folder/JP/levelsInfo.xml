@@ -4,7 +4,7 @@
 		<energiesspent>2</energiesspent>
 		<levelofdificulty>1</levelofdificulty>
 	</level>
-	<level id="Casa02" blocked= "true"><!-- level 1 ! -->
+	<level id="Casa02" blocked= "false"><!-- level 1 ! -->
 		<typeofgame>accelerometer</typeofgame>
 		<energiesspent>4</energiesspent>
 		<levelofdificulty>5</levelofdificulty>

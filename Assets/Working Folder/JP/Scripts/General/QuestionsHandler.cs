@@ -52,11 +52,11 @@ public class QuestionsHandler : MonoBehaviour {
 
 	void OnEnable()
 	{
-		XmlQuestionsLoader.xmlLoaded += SetQuestionValues;
+		//XmlQuestionsLoader.xmlLoaded += SetQuestionValues;
 	}
 
 	void OnDisable()
 	{
-		XmlQuestionsLoader.xmlLoaded -= SetQuestionValues;
+	//	XmlQuestionsLoader.xmlLoaded -= SetQuestionValues;
 	}
 }

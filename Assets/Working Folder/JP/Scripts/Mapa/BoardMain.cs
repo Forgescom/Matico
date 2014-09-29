@@ -12,79 +12,55 @@ public class BoardMain : MonoBehaviour {
 	public GameObject [] housesGameObject;
 
 	public CameraMovesHandler cameraScript;
-	public List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
-
-	public static string currentLevelType;
-	public static int currentLevel;
-	public static int currentLevelDificulty;
-	public static int energies = 4;
 
 	public static BoardMain control;
 
-	void Awake(){
-		print ("BU");
-		if (control == null)
-		{
-			DontDestroyOnLoad(gameObject);
-			control = this;
-		}
-		else if (control != this)
-		{
-			Destroy(gameObject);
-		}
-		
-		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
-		
-		ShowObjects ();
-		UnlockHouses ();
-		LoadHousesSettings ();
-	}
 
 	void Start(){
-		print ("BU2");
-		/*housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
+		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
-		ShowObjects ();
+		ShowIntro ();
 		UnlockHouses ();
-		LoadHousesSettings ();
+		AssignHousesSettings ();
 
-*/
+
 	}
 
-	void ShowObjects(){
-		Main.CURRENT_LEVEL = 2;
-		if (Main.CURRENT_LEVEL <= 1) {
+	void ShowIntro(){
+		if (GameController.CURRENT_LEVEL <= 1) {
 			intro.SetActive(true);
 			bg.GetComponent<BackgroundTouch>().enabled = false;
 		}
 		else
 		{
 			intro.SetActive(false);
-			bg.SetActive(true);
+			EnableMap();
 		}
 	}
 
 	void UnlockHouses()
 	{
-		for (int i = 0; i<Main.CURRENT_LEVEL; i ++) {
+		print ("BU" + GameController.CURRENT_LEVEL);
+		for (int i = 0; i<GameController.CURRENT_LEVEL; i ++) {
 			housesGameObject[i].GetComponent<CasaController>().UnlockButton();
-			if(i == (Main.CURRENT_LEVEL -1))
+			if(i == (GameController.CURRENT_LEVEL -1))
 			{
 				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
 			}
+			print ("BU");
 		}
 	}
 
-	void LoadHousesSettings()
+	void AssignHousesSettings()
 	{	
-		for (int i = 0; i < houses.Count; i++) {
+		for (int i = 0; i < GameController.houses.Count; i++) {
 			string houseName;
-			houses[i].TryGetValue("HouseName",out houseName);
+			GameController.houses[i].TryGetValue("HouseName",out houseName);
 	
 			if(houseName == housesGameObject[i].name)
 			{
 				string typeOfGame;
-				houses[i].TryGetValue("Typeofgame",out typeOfGame);
+				GameController.houses[i].TryGetValue("Typeofgame",out typeOfGame);
 				switch(typeOfGame)
 				{
 					case "shooter": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.shooter; break;
@@ -93,14 +69,14 @@ public class BoardMain : MonoBehaviour {
 					case "tilt": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.tilt; break;
 				}
 
-				currentLevelType = typeOfGame;
+			//	currentLevelType = typeOfGame;
 
 				string energiesSpent;
-				houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
+				GameController.houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
 				housesGameObject[i].GetComponent<CasaValues>().energiesSpent = int.Parse(energiesSpent);
 				
 				string dificulty;
-				houses[i].TryGetValue("Dificulty",out dificulty);
+				GameController.houses[i].TryGetValue("Dificulty",out dificulty);
 				housesGameObject[i].GetComponent<CasaValues>().dificulty = int.Parse(dificulty);
 			}
 		}
@@ -108,13 +84,13 @@ public class BoardMain : MonoBehaviour {
 
 	void StartLevel(Transform houseCliked)
 	{
+		string gameToOpen = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
+		//currentLevelType = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
+		//currentLevel = int.Parse(houseCliked.name.Substring (4, 2));
 
-		currentLevelType = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
-		currentLevel = int.Parse(houseCliked.name.Substring (4, 2));
+		//currentLevelDificulty = houseCliked.GetComponent<CasaValues> ().dificulty;
 
-		currentLevelDificulty = houseCliked.GetComponent<CasaValues> ().dificulty;
-
-		switch (currentLevelType) {
+		switch (gameToOpen) {
 			case "shooter":
 				Application.LoadLevel ("Shooter");			
 				break;
@@ -149,7 +125,7 @@ public class BoardMain : MonoBehaviour {
 	{
 		if (Application.loadedLevelName == "Board") {
 			bg.GetComponent<BackgroundTouch> ().enabled = true;
-			cameraScript.startAnimBoard (housesGameObject [Main.CURRENT_LEVEL].transform.position);
+			cameraScript.startAnimBoard (housesGameObject [GameController.CURRENT_LEVEL].transform.position);
 		}
 	}
 

@@ -7,22 +7,19 @@ using System.IO;
 
 public class XmlLoader : MonoBehaviour {
 
-
-
 	public TextAsset xmlFile;
 	List<Dictionary<string,string>> housesXml;
 	Dictionary<string,string> houseDetails;
 	void Awake()
 	{
-		housesXml = transform.GetComponent<BoardMain> ().houses;
+		//housesXml = transform.GetComponent<BoardMain> ().houses;
+		housesXml = GameController.houses;
 		ReadXML ();
 	}
 
 	// Use this for initialization
 	void Start () {
-		//housesXml = transform.GetComponent<BoardMain> ().houses;
-		//ReadXML ();
-		DontDestroyOnLoad (gameObject);
+	
 	}
 	
 	// Update is called once per frame
@@ -41,6 +38,7 @@ public class XmlLoader : MonoBehaviour {
 			houseDetails = new Dictionary<string,string >();
 
 			houseDetails.Add("HouseName",levelInfo.Attributes["id"].Value);
+			houseDetails.Add("Blocked",levelInfo.Attributes["blocked"].Value);
 
 			foreach(XmlNode levelsItems in levelContent)
 			{
@@ -56,7 +54,7 @@ public class XmlLoader : MonoBehaviour {
 
 		}
 
-		transform.SendMessage ("LoadHousesSettings");
+		//transform.SendMessage ("LoadHousesSettings");
 
 	}
 }

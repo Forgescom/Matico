@@ -12,8 +12,8 @@ public class ScratchController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		explanationScreen.SetActive (false);
-		introScreen.SetActive (false);
-		scratchCard.SetActive(true);
+		introScreen.SetActive (true);
+		scratchCard.SetActive(false);
 	}
 	
 	// Update is called once per frame

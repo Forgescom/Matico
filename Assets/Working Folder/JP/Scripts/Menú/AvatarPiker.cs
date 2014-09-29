@@ -2,27 +2,50 @@
 using System.Collections;
 
 public class AvatarPiker : MonoBehaviour {
-	public Main mainBrain;
 
+
+	//Face
 	public SpriteRenderer faceHolder;
 	public Sprite [] faces;
 	public int currentFaceIndex = 0;
 
+	//NAME
+	TouchScreenKeyboard keyboard;
+	public TextMesh avatarName;
+
+
+
 	// Use this for initialization
 	void Start () {
+		print (GameController.PLAYER_NAME);
+		avatarName.text = GameController.PLAYER_NAME;
+		currentFaceIndex = GameController.PLAYER_FACE;
 
+
+		SetValues (currentFaceIndex,avatarName.text);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		if(TouchScreenKeyboard.visible ==true)
+			avatarName.text = keyboard.text;
+
+		if(avatarName.text.Length >= 10)
+			keyboard.active = false;
+
+		if(keyboard!=null)
+			if(keyboard.done)
+				GameController.SavePlayerPref(avatarName.text,currentFaceIndex);
+
 	}
 
-	public void SetCurrentFaceIndex(int index)
+	public void SetValues(int avatarIndex, string avatarNameIn)
 	{
-		faceHolder.sprite = faces [index];
-		currentFaceIndex = index;
+		faceHolder.sprite = faces [avatarIndex];
+		currentFaceIndex = avatarIndex;
+		avatarName.text = avatarNameIn;
 	}
 
 	void btClick(GameObject bt)
@@ -34,40 +57,19 @@ public class AvatarPiker : MonoBehaviour {
 			case "BtAnterior":
 				ChangeFace("Previous");
 				break;
+			case "NameHolder":
+				InsertName();
+			break;		
 
 		}
 	}
 
-	void btEnter(GameObject bt)
-	{
-		switch (bt.name) {
-		case "BtJogar":
-			
-			break;
-		case "BtPrograma":
-			
-			break;
-		case "BtDefinicoes":
-			
-			break;	
-			
-		}
+	void InsertName(){
+
+		keyboard = TouchScreenKeyboard.Open (GameController.PLAYER_NAME);		
+
 	}
-	
-	void btExit(GameObject bt)
-	{
-		switch (bt.name) {
-		case "BtJogar":
-			//bt.GetComponent<SpriteRenderer> ().sprite = btJogarNormal;
-			break;
-		case "BtPrograma":
-			
-			break;	
-		case "BtDefinicoes":
-			
-			break;	
-		}
-	}
+
 
 	void ChangeFace(string direction)
 	{
@@ -88,6 +90,6 @@ public class AvatarPiker : MonoBehaviour {
 		}
 
 		faceHolder.sprite = faces [currentFaceIndex];
-		Main.SavePlayerPref(null,currentFaceIndex);		
+		GameController.SavePlayerPref(avatarName.text,currentFaceIndex);
 	}
 }

@@ -7,19 +7,16 @@ using System.IO;
 
 public class XmlQuestionsLoader : MonoBehaviour {
 
-	public delegate void XmlReady();
-	public static event XmlReady xmlLoaded;
+//	public delegate void XmlReady();
+//	public static event XmlReady xmlLoaded;
 
 	public TextAsset xmlFile;
 	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
 	Dictionary<string,string> questionDetails;
 
-	public GameObject questionHolder;
-	
-	
 	// Use this for initialization
 	void Start () {
-
+		questions = GameController.questions;
 		ReadXML ();
 	}
 	
@@ -56,10 +53,10 @@ public class XmlQuestionsLoader : MonoBehaviour {
 			
 		}
 
-		if (xmlLoaded != null) {
+		/*if (xmlLoaded != null) {
 			xmlLoaded();
 			
-		}
+		}*/
 
 		//	questionHolder.transform.SendMessage ("LoadHousesSettings");
 		
