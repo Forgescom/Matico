@@ -98,19 +98,7 @@ public class BoardMain : MonoBehaviour {
 	}
 
 
-	void LevelEnd()
-	{
-		/*IF WINS 
-		 * INCREMENT LEVEL NUMBER
-		 * UNLOCK AND HIGHLIGHT NEXT LEVEL
-		 * SAVE GAME
-		 * 
-		 * IF LOOSES
-		 * SAVE SPEN ENERGIES ON GAME
-		 * REMOVE ENERGI
-		 * 
-		 * */
-	}
+
 
 	void EnableMap()
 	{
