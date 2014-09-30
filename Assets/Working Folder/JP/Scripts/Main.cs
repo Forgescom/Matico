@@ -12,29 +12,11 @@ public class Main : MonoBehaviour {
 	GameObject activeMenu;
 
 
-	//PLAYER PREFS KEYS
-	public static string PREFS_PLAYER_NAME = "PlayerName";
-	public static string PREFS_PLAYER_AVATAR = "PlayerAvatar";
-	public static string PREFS_PLAYER_CURRENTLEVEL = "PlayerLevel";
-	public static string PREFS_PLAYER_SOUNDFX = "SoundFx";
-	public static string PREFS_PLAYER_SOUNDAMBIENTE = "SoundAmbiente";
-	public static string PREFS_PLAYER_SOUNDMATICO = "SoundMatico";
-
-
-
-	//PLAYER VALUES
-	public static string PLAYER_NAME;
-	public static int CURRENT_LEVEL;
-
-
 	// Use this for initialization
 	void Start () {
 
-		//SHOW/HIDE MENUS
-		ShowHideMenus ();
-
-		//LOAD PLAYERPREFS AND CHOOSE WHETER TO SHOW OR NOT AVATAR MENU
-		LoadPlayerPrefs ();
+		//SHOW MENUS
+		ShowMenu ();
 
 	}
 	
@@ -43,16 +25,6 @@ public class Main : MonoBehaviour {
 	
 	}
 
-	public static void SavePlayerPref(string nome = null, int avatarNumber = 99, int newLevel =0)
-	{
-		if(nome != null)
-			PlayerPrefs.SetString (PREFS_PLAYER_NAME, nome);
-		if(avatarNumber!=99)
-			PlayerPrefs.SetInt (PREFS_PLAYER_AVATAR, avatarNumber);
-		if(newLevel !=0)
-			PlayerPrefs.SetInt (PREFS_PLAYER_CURRENTLEVEL, newLevel);
-
-	}
 
 	public void ChangeMenu(GameObject closeMenu, GameObject openMenu)
 	{
@@ -74,32 +46,22 @@ public class Main : MonoBehaviour {
 		ChangeMenu (activeMenu, mainMenu);
 	}
 
-	void LoadPlayerPrefs()
+	void ShowMenu()
 	{
-
-		if (PlayerPrefs.GetString (PREFS_PLAYER_NAME) == "") {
+		//IF WE ALREADY HAVE A NAME GO FOR INITIAL SCREEN
+		//OTHERWISE SHOW CHARATCER SELECTION MENU
+		if (PlayerPrefs.GetString (GameController.PREFS_PLAYER_NAME) == "") {
 			mainMenu.SetActive (false);
 			avatarMenu.SetActive(true);
-			PLAYER_NAME = "Nome";
-			//CHANGE ACTIVE MENU NAME
 			activeMenu = avatarMenu;
 		}
 		else
 		{
 			mainMenu.SetActive (true);
 			avatarMenu.SetActive(false);
-			PLAYER_NAME = PlayerPrefs.GetString (PREFS_PLAYER_NAME) ;
 			activeMenu = mainMenu;
 		}
-
-		if (PlayerPrefs.HasKey (PREFS_PLAYER_CURRENTLEVEL)) {
-			CURRENT_LEVEL = PlayerPrefs.GetInt (PREFS_PLAYER_CURRENTLEVEL);
-		}
 	}
 
-	void ShowHideMenus()
-	{
-		settingsMenu.SetActive (false);
-		programaMenu.SetActive (false);
-	}
+
 }

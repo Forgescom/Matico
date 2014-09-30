@@ -17,15 +17,15 @@ public class HUDClick : MonoBehaviour {
 	public Texture toggleOn;
 	
 	//SCRIPT ANIMATION
-	float startSize;
-	float sizeProportion = 1.2f;
+	/*float startSize;
+	float sizeProportion = 1.2f;*/
 	bool over =false;
 	
 	
 	
 	// Use this for initialization
 	void Start () {
-		startSize = transform.localScale.x;
+		//startSize = transform.localScale.x;
 		spriteActive = GetComponent<GUITexture> ();
 	}
 	

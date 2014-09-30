@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CasaController : MonoBehaviour {
 
-	public delegate void HouseClicked(string houseName);
+	public delegate void HouseClicked(Transform house);
 	public static event HouseClicked throwGame;
 
 	public GameObject bloqueadoSprite;
@@ -34,7 +34,7 @@ public class CasaController : MonoBehaviour {
 	
 	void ButtonPressed(){
 		if (throwGame != null) {
-			throwGame (transform.name);
+			throwGame (transform);
 		}
 	}
 	

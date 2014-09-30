@@ -8,7 +8,7 @@ public class BackgroundTouch : MonoBehaviour {
 	Vector3 currentPosition = Vector3.zero;
 	
 	//ZOOM 
-	Touch [] zoomValues = new Touch[2];
+
 	
 	//MAIN CAMERA
 	public Camera mainCamera;
@@ -33,16 +33,7 @@ public class BackgroundTouch : MonoBehaviour {
 			}
 			
 		}
-		else if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved) 
-		{
-			
-			/*if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved) 
-			{
-				zoomValues[0] = Input.GetTouch(0);
-				zoomValues[1] = Input.GetTouch(1);
-				mainCamera.SendMessage("ZoomInOutCamera",zoomValues);				
-			}    */ 			
-		}     
+
 	}
 	
 	

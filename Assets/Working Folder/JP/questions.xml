@@ -1,0 +1,19 @@
+<Questions>
+	<questionDetails id="question1" level="1" typeofgame="scratchcard"><!-- level 1 ! -->
+		<question>1 + 1 = </question>
+		<false1>23</false1>
+		<false2>21</false2>
+		<false3>22</false3>
+		<correct>2</correct>
+		
+	</questionDetails>
+	<questionDetails id="question2" level="1" typeofgame="scratchcard"><!-- level 1 ! -->
+		<question>2 + 2 = </question>
+		<false1>2</false1>
+		<false2>22</false2>
+		<false3>21</false3>
+		<correct>4</correct>
+		
+	</questionDetails>
+	
+</Questions>

@@ -7,60 +7,57 @@ public class BoardMain : MonoBehaviour {
 
 	public GameObject intro;
 	public GameObject bg;
-	public GameObject housesHolder;
 
 	public GameObject [] housesGameObject;
 
 	public CameraMovesHandler cameraScript;
-	public List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 
 
 
 	void Start(){
 		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
-		ShowObjects ();
+		ShowIntro ();
 		UnlockHouses ();
+		AssignHousesSettings ();
 
 
 	}
 
-	void ShowObjects(){
-		Main.CURRENT_LEVEL = 1;
-		if (Main.CURRENT_LEVEL <= 1) {
+	void ShowIntro(){
+		if (GameController.CURRENT_LEVEL <= 1) {
 			intro.SetActive(true);
 			bg.GetComponent<BackgroundTouch>().enabled = false;
-
 		}
 		else
 		{
 			intro.SetActive(false);
-			bg.SetActive(true);
-
+			EnableMap();
 		}
 	}
 
 	void UnlockHouses()
 	{
-		for (int i = 0; i<Main.CURRENT_LEVEL; i ++) {
+		for (int i = 0; i<GameController.CURRENT_LEVEL; i ++) {
 			housesGameObject[i].GetComponent<CasaController>().UnlockButton();
-			if(i == (Main.CURRENT_LEVEL -1))
+			if(i == (GameController.CURRENT_LEVEL -1))
 			{
 				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
 			}
+			print ("BU");
 		}
 	}
 
-	void LoadHousesSettings()
+	void AssignHousesSettings()
 	{	
-		for (int i = 0; i < houses.Count; i++) {
+		for (int i = 0; i < GameController.houses.Count; i++) {
 			string houseName;
-			houses[i].TryGetValue("HouseName",out houseName);
+			GameController.houses[i].TryGetValue("HouseName",out houseName);
 	
 			if(houseName == housesGameObject[i].name)
 			{
 				string typeOfGame;
-				houses[i].TryGetValue("Typeofgame",out typeOfGame);
+				GameController.houses[i].TryGetValue("Typeofgame",out typeOfGame);
 				switch(typeOfGame)
 				{
 					case "shooter": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.shooter; break;
@@ -70,26 +67,57 @@ public class BoardMain : MonoBehaviour {
 				}
 
 				string energiesSpent;
-				houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
+				GameController.houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
 				housesGameObject[i].GetComponent<CasaValues>().energiesSpent = int.Parse(energiesSpent);
 				
 				string dificulty;
-				houses[i].TryGetValue("Dificulty",out dificulty);
+				GameController.houses[i].TryGetValue("Dificulty",out dificulty);
 				housesGameObject[i].GetComponent<CasaValues>().dificulty = int.Parse(dificulty);
 			}
 		}
 	}
 
-	void StartLevel(string houseCliked)
+	void StartLevel(Transform houseCliked)
 	{
+		string gameToOpen = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
 
+		switch (gameToOpen) {
+			case "shooter":
+				Application.LoadLevel ("Shooter");			
+				break;
+			case "accelerometer":
+				Application.LoadLevel ("ocean");			
+				break;
+			case "scratchcard":
+				Application.LoadLevel ("Scratchcard");			
+				break;
+			case "tilt":
+				Application.LoadLevel ("TiltGame");			
+				break;
+		}	
 	}
 
 
+	void LevelEnd()
+	{
+		/*IF WINS 
+		 * INCREMENT LEVEL NUMBER
+		 * UNLOCK AND HIGHLIGHT NEXT LEVEL
+		 * SAVE GAME
+		 * 
+		 * IF LOOSES
+		 * SAVE SPEN ENERGIES ON GAME
+		 * REMOVE ENERGI
+		 * 
+		 * */
+	}
+
 	void EnableMap()
 	{
-		bg.GetComponent<BackgroundTouch>().enabled = true;
-		cameraScript.startAnimBoard (housesGameObject [Main.CURRENT_LEVEL].transform.position);
+		if (Application.loadedLevelName == "Board") {
+			bg.GetComponent<BackgroundTouch> ().enabled = true;
+			cameraScript.startAnimBoard (housesGameObject [GameController.CURRENT_LEVEL].transform.position);
+		}
 	}
 
 	void OnEnable()

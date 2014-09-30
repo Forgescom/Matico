@@ -13,7 +13,7 @@ public class Intro : MonoBehaviour {
 
 	void Start()
 	{
-		playerName.text= PlayerPrefs.GetString (Main.PREFS_PLAYER_NAME);
+		playerName.text= PlayerPrefs.GetString (GameController.PREFS_PLAYER_NAME);
 		StartCoroutine ("ExitAnim");
 	}
 

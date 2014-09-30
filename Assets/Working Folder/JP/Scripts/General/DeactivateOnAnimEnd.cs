@@ -8,11 +8,12 @@ public class DeactivateOnAnimEnd : MonoBehaviour {
 
 	void Desativar()
 	{
-		transform.gameObject.SetActive (false);
+
 
 		if (animationFinish != null) {
 			animationFinish();
 
 		}
+		transform.gameObject.SetActive (false);
 	}
 }

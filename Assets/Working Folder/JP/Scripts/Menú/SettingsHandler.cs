@@ -2,14 +2,6 @@
 using System.Collections;
 
 public class SettingsHandler : MonoBehaviour {
-	public Main mainBrain;
-
-
-	//AVATAR
-	string nomeActual;
-	int indiceAvatar;
-	public TextMesh nameMesh;
-	public AvatarPiker avatarSettings;
 
 	//SOUNDS
 	/*bool fxSoundOn = true;
@@ -22,26 +14,23 @@ public class SettingsHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		nomeActual = PlayerPrefs.GetString (Main.PREFS_PLAYER_NAME);
-		indiceAvatar = PlayerPrefs.GetInt (Main.PREFS_PLAYER_AVATAR);
-		avatarSettings.SetCurrentFaceIndex (indiceAvatar);
-		nameMesh.text = nomeActual;
+	
 
 		bool soundFxOn;
 		bool soundMaticoOn;
 		bool soundAmbienteOn;
 
-		int soundMaticoPrefs = PlayerPrefs.GetInt (Main.PREFS_PLAYER_SOUNDMATICO);
+		int soundMaticoPrefs = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDMATICO);
 		soundMaticoOn = (soundMaticoPrefs == 0) ? false : true;
 		btSoundMatico.buttonOn = soundMaticoOn;
 		btSoundMatico.updateButton ();
 
-		int soundFxPrefs = PlayerPrefs.GetInt (Main.PREFS_PLAYER_SOUNDFX);
+		int soundFxPrefs = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDFX);
 		soundFxOn = (soundFxPrefs == 0) ? false : true;
 		btSoundFx.buttonOn = soundFxOn;
 		btSoundFx.updateButton ();
 
-		int soundAmbientePrefs = PlayerPrefs.GetInt (Main.PREFS_PLAYER_SOUNDAMBIENTE);
+		int soundAmbientePrefs = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDAMBIENTE);
 		soundAmbienteOn = (soundAmbientePrefs == 0) ? false : true;
 		btSoundAmbiente.buttonOn = soundAmbienteOn;
 		btSoundAmbiente.updateButton ();
@@ -60,13 +49,13 @@ public class SettingsHandler : MonoBehaviour {
 
 		switch (bt.name) {
 			case "BtSoundMatico":
-				PlayerPrefs.SetInt(Main.PREFS_PLAYER_SOUNDMATICO, boolInt);				
+			PlayerPrefs.SetInt(GameController.PREFS_PLAYER_SOUNDMATICO, boolInt);				
 				break;
 			case "BtSoundAmbiente":
-				PlayerPrefs.SetInt(Main.PREFS_PLAYER_SOUNDAMBIENTE, boolInt);	
+			PlayerPrefs.SetInt(GameController.PREFS_PLAYER_SOUNDAMBIENTE, boolInt);	
 				break;
 			case "BtSoundFx":
-				PlayerPrefs.SetInt(Main.PREFS_PLAYER_SOUNDFX, boolInt);	
+			PlayerPrefs.SetInt(GameController.PREFS_PLAYER_SOUNDFX, boolInt);	
 				break;
 			
 		}

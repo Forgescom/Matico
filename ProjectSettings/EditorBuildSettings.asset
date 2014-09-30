@@ -10,4 +10,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Working Folder/JP/Scenes/Board.unity
   - enabled: 1
+    path: Assets/Working Folder/JP/Scenes/ScratchCard.unity
+  - enabled: 1
+    path: Assets/Working Folder/JP/Scenes/TiltGame.unity
+  - enabled: 1
     path: Assets/Working Folder/Olivar/mini-jogo-acelerometro/Scenes/ocean.unity

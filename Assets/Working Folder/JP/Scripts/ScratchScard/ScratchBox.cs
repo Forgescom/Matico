@@ -1,0 +1,63 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class ScratchBox : MonoBehaviour {
+
+	float minAlpha = 0.2f;
+	public ParticleSystem particlesSystem;
+	public TextMesh textAnswer;
+	public GameObject answerSprite;
+
+	public Sprite correctSprite;
+	public Sprite wrongSprite;
+
+	private bool enable = true;
+
+
+	// Use this for initialization
+	void Start () {
+		particlesSystem.enableEmission = false;
+
+
+	}
+
+	public void SetSprites()
+	{
+		if (transform.tag == "Certo") {
+			answerSprite.GetComponent<SpriteRenderer>().sprite = correctSprite;
+		}
+		else
+		{
+			answerSprite.GetComponent<SpriteRenderer>().sprite = wrongSprite;
+		}
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+	void Scratch(bool state)
+	{
+		if(state == true && enable == true)
+		{
+			if(transform.renderer.material.color.a >= minAlpha)
+			{
+				transform.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(transform.renderer.material.color.a,0,Time.deltaTime /5f)));
+				textAnswer.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(textAnswer.renderer.material.color.a,0,Time.deltaTime /5f)));				
+				particlesSystem.enableEmission = true;
+			}
+			else
+			{
+				answerSprite.animation.Play("AnswerPop");
+				transform.renderer.material.color = new Color(1,1,1,0);
+				textAnswer.renderer.material.color = new Color(1,1,1,0);	
+				enable = false;
+			}
+		}
+		else{
+			particlesSystem.enableEmission = false;
+		}
+
+	}
+}

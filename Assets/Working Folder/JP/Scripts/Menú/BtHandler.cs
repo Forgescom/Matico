@@ -61,14 +61,11 @@ public class BtHandler : MonoBehaviour {
 	}
 	
 	void OnMouseUp (){
-		print (over + transform.name);
 
 		if (over == true) {
 			menuController.SendMessage ("btClick", transform.gameObject);
 			ToggleButton ();
-		}
-
-	
+		}	
 	}
 
 	void ToggleButton(){
