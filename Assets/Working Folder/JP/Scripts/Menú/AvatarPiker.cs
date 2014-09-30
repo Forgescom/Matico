@@ -65,7 +65,7 @@ public class AvatarPiker : MonoBehaviour {
 	}
 
 	void InsertName(){
-
+		avatarName.text = "";
 		keyboard = TouchScreenKeyboard.Open (GameController.PLAYER_NAME);		
 
 	}

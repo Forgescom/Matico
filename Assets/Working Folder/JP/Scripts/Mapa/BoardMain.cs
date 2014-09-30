@@ -7,13 +7,11 @@ public class BoardMain : MonoBehaviour {
 
 	public GameObject intro;
 	public GameObject bg;
-	public GameObject housesHolder;
 
 	public GameObject [] housesGameObject;
 
 	public CameraMovesHandler cameraScript;
 
-	public static BoardMain control;
 
 
 	void Start(){
@@ -40,7 +38,6 @@ public class BoardMain : MonoBehaviour {
 
 	void UnlockHouses()
 	{
-		print ("BU" + GameController.CURRENT_LEVEL);
 		for (int i = 0; i<GameController.CURRENT_LEVEL; i ++) {
 			housesGameObject[i].GetComponent<CasaController>().UnlockButton();
 			if(i == (GameController.CURRENT_LEVEL -1))
@@ -69,8 +66,6 @@ public class BoardMain : MonoBehaviour {
 					case "tilt": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.tilt; break;
 				}
 
-			//	currentLevelType = typeOfGame;
-
 				string energiesSpent;
 				GameController.houses[i].TryGetValue("EnergiesSpent",out energiesSpent);
 				housesGameObject[i].GetComponent<CasaValues>().energiesSpent = int.Parse(energiesSpent);
@@ -85,10 +80,6 @@ public class BoardMain : MonoBehaviour {
 	void StartLevel(Transform houseCliked)
 	{
 		string gameToOpen = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
-		//currentLevelType = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
-		//currentLevel = int.Parse(houseCliked.name.Substring (4, 2));
-
-		//currentLevelDificulty = houseCliked.GetComponent<CasaValues> ().dificulty;
 
 		switch (gameToOpen) {
 			case "shooter":

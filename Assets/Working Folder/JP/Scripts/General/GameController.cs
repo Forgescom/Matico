@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
 	//PLAYER VALUES
 	public static string PLAYER_NAME;
 	public static int PLAYER_FACE;
-	public static int CURRENT_LEVEL =2;
+	public static int CURRENT_LEVEL;
 	public static int CURRENT_LIVES;
 
 
@@ -84,7 +84,6 @@ public class GameController : MonoBehaviour {
 
 	void CheckUnlocked()
 	{
-		print ("AKI");
 		for (int i = 0; i<houses.Count; i ++) {
 			string block;
 			houses[i].TryGetValue("Blocked",out block);
@@ -94,7 +93,6 @@ public class GameController : MonoBehaviour {
 				CURRENT_LEVEL ++;
 			}
 		}
-		print (CURRENT_LEVEL);
 
 	}
 

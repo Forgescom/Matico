@@ -6,7 +6,7 @@ public class CoinMovement : MonoBehaviour {
 	public ParticleSystem particulasScratch;
 
 	Vector3 startPosition;
-
+	bool grabed = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -15,7 +15,7 @@ public class CoinMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (CheckFingerTouch() == true) {
+		if (CheckFingerTouch() == true || grabed == true) {
 			DragCoin();
 		}
 
@@ -23,6 +23,7 @@ public class CoinMovement : MonoBehaviour {
 
 	bool CheckFingerTouch()
 	{
+
 		if (Input.touchCount > 0) {
 			
 			Vector3 wp  = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
@@ -31,6 +32,7 @@ public class CoinMovement : MonoBehaviour {
 			
 			if(hit && hit.name == "moeda"){
 				print (hit.name);
+				grabed = true;
 				return true;
 			}
 			else
@@ -41,6 +43,7 @@ public class CoinMovement : MonoBehaviour {
 		else
 		{
 			transform.position = startPosition;
+			grabed = false;
 			return false;
 		}
 	}

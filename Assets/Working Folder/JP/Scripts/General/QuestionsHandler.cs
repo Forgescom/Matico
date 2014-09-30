@@ -11,7 +11,7 @@ public class QuestionsHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		SetQuestionValues ();
 
 
 	}
@@ -22,30 +22,38 @@ public class QuestionsHandler : MonoBehaviour {
 	}
 	void SetQuestionValues()
 	{
-		int randomQuestionNumber = Random.Range (0, XmlQuestionsLoader.questions.Count);
+		int randomQuestionNumber = Random.Range (0, GameController.questions.Count);
 
-		print (randomQuestionNumber);
+		//print (GameController.questions.Count);
 
 		string questionNumber;
-		XmlQuestionsLoader.questions [randomQuestionNumber].TryGetValue ("question", out questionNumber);
+		GameController.questions [randomQuestionNumber].TryGetValue ("question", out questionNumber);
 		questionHolder.text = questionNumber;
 
 		string answerA;
-		XmlQuestionsLoader.questions [randomQuestionNumber].TryGetValue ("false1", out answerA);
+		GameController.questions [randomQuestionNumber].TryGetValue ("false1", out answerA);
 		answer1.text = answerA;
+		//print (answer1.transform.parent.GetComponent<ScratchBox>().SetSprites());
+		answer1.transform.parent.GetComponent<ScratchBox>().SetSprites();
+		//answer1.transform.parent.SendMessage ("SetSprites");
 
 		string answerB;
-		XmlQuestionsLoader.questions [randomQuestionNumber].TryGetValue ("false2", out answerB);
+		GameController.questions [randomQuestionNumber].TryGetValue ("false2", out answerB);
 		answer2.text = answerB;
+		//answer2.transform.parent.SendMessage ("SetSprites");
+		answer2.transform.parent.GetComponent<ScratchBox>().SetSprites();
 
 		string answerC;
-		XmlQuestionsLoader.questions [randomQuestionNumber].TryGetValue ("false3", out answerC);
+		GameController.questions [randomQuestionNumber].TryGetValue ("false3", out answerC);
 		answer3.text = answerC;
+		//answer3.transform.parent.SendMessage ("SetSprites");
+		answer3.transform.parent.GetComponent<ScratchBox>().SetSprites();
 
 		string answerD;
-		XmlQuestionsLoader.questions [randomQuestionNumber].TryGetValue ("correct", out answerD);
+		GameController.questions [randomQuestionNumber].TryGetValue ("correct", out answerD);
 		answer4.transform.parent.tag = "Certo";
-		answer4.transform.parent.SendMessage ("SetSprites");
+	//	answer4.transform.parent.SendMessage ("SetSprites");
+		answer4.transform.parent.GetComponent<ScratchBox>().SetSprites();
 		answer4.text = answerD;
 
 	}

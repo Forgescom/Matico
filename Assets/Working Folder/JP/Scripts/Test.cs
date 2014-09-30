@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Test : MonoBehaviour {
 
+	//TENTAR ELIMINAR PIXEIS DA IMAGEM
+
 	void Start() {
 		Texture2D texture = new Texture2D(128, 128);
 		renderer.material.mainTexture = texture;
