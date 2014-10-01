@@ -96,6 +96,25 @@ public class GameController : MonoBehaviour {
 
 	}
 
+	public static void MiniGamelEnd(string outCome)
+	{
+		switch (outCome) {
+		case "Won":
+			CURRENT_LEVEL ++;
+			Application.LoadLevel("Board");
+			break;
+		case "NextLevel":
+			CURRENT_LEVEL ++;
+
+			//GameObject board = GameObject.Find("BoardBrain");
+			//board.SendMessage("NextLevel");
+			//board.NextLevel();
+
+			break;
+		
+		
+		}
+	}
 
 	
 	

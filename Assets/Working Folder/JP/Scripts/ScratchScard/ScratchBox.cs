@@ -37,6 +37,9 @@ public class ScratchBox : MonoBehaviour {
 
 	}
 
+	public delegate void ScratchFinish(string state);
+	public static event ScratchFinish finishEvent;
+
 	void Scratch(bool state)
 	{
 		if(state == true && enable == true)
@@ -53,11 +56,22 @@ public class ScratchBox : MonoBehaviour {
 				transform.renderer.material.color = new Color(1,1,1,0);
 				textAnswer.renderer.material.color = new Color(1,1,1,0);	
 				enable = false;
+				StartCoroutine("FinishGame");
+
 			}
 		}
 		else{
 			particlesSystem.enableEmission = false;
 		}
 
+	}
+
+	IEnumerator FinishGame()
+	{
+		yield return new WaitForSeconds(2f);
+		if(finishEvent !=null)
+		{
+			finishEvent(transform.tag);
+		}
 	}
 }

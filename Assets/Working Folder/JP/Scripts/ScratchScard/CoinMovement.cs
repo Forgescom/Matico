@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CoinMovement : MonoBehaviour {
 
-	public ParticleSystem particulasScratch;
+
 
 	Vector3 startPosition;
 	bool grabed = false;
@@ -55,16 +55,16 @@ public class CoinMovement : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D col)
 	{
-		col.SendMessage ("Scratch", true);
-
+		if (Input.touchCount>0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
+			col.SendMessage ("Scratch", true);
+		}
+		else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary){
+			col.SendMessage ("Scratch", false);
+		}
 
 	}
 
-	void OnTriggerEnter2D(Collider2D col){
-		particulasScratch.Play ();
 
-	
-	}
 	void OnTriggerExit2D(Collider2D col){
 		col.SendMessage ("Scratch", false);
 
