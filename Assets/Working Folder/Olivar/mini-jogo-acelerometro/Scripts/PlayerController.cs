@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject boia;
 
 	public float speed = 1.5f;
-	public float speedAc = 5;
+//	public float speedAc = 5;
 
 	// Coordenadas limite
 	public float[] boundaries;
@@ -49,33 +49,27 @@ public class PlayerController : MonoBehaviour
 
 	public void CollisionOccur (GameObject collisionWith)
 	{
-
 		if (collisionWith.tag == "North")
 		{
-
+			print("North");
 		}
 		else if (collisionWith.tag == "South") 
 		{
-
+			print("South");
 		}
 		else if (collisionWith.tag == "East") 
 		{
-
+			print("East");
 		}
 		else if (collisionWith.tag == "West") 
 		{
-
+			print("West");
 		}
 	}
-
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		brain.SendMessage("CollisionOccur",col.gameObject);
-
 	}
 	
 }
-
-
-

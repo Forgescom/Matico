@@ -13,7 +13,7 @@ public class bubbleMove : MonoBehaviour {
 	void Update () 
 	{
 		Vector3 start = transform.position;
-		Vector3 target = new Vector3 (start.x + Random.Range (2f, -2f), start.y + Random.Range (-2f, 2f), -1);
+		Vector3 target = new Vector3 (start.x + Random.Range (2f, -2f), start.y + Random.Range (-2f, 2f), -2);
 
 		Vector3 pos = transform.position;
 
@@ -27,7 +27,7 @@ public class bubbleMove : MonoBehaviour {
 			target = start;
 			if (pos == start)
 			{
-				target = new Vector3 (Random.Range (1f, -1f), Random.Range (-2f, 2f), -1);
+				target = new Vector3 (Random.Range (2f, -2f), Random.Range (-2f, 2f), -2);
 			}
 		}
 	}

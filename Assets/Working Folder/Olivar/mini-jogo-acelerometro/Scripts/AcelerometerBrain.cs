@@ -72,18 +72,19 @@ public class AcelerometerBrain : MonoBehaviour {
 		Handheld.Vibrate ();
 
 		Animator bubbleAnimator = collisionWith.transform.GetComponent<Animator> ();
-		bubbleAnimator.SetBool ("pop",true);
+//		bubbleAnimator.SetBool ("pop", true);
 
 		Animator boiaAnimator = boia.transform.GetComponent<Animator> ();
 
-		//Destroy(collisionWith);
-
 		if (collisionWith.tag == "Certo")
 		{
+			bubbleAnimator.SetBool ("pop", true);
 			GameEnd("Vitoria", vidas);
 		}
-		else if (collisionWith.tag == "Errado")
+
+		if (collisionWith.tag == "Errado")
 		{
+			bubbleAnimator.SetBool ("pop", true);
 			DisableCollider(collisionWith);
 			vidas--;
 
@@ -107,10 +108,11 @@ public class AcelerometerBrain : MonoBehaviour {
 				GameEnd("Derrota", vidas);
 			}
 		}
-		else if (collisionWith.tag == "Shark")
+
+		if (collisionWith.tag == "Shark")
 		{
 			vidas--;
-			
+
 			if(vidas == 2)
 			{
 				boiaAnimator = boia.transform.GetComponent<Animator> ();
@@ -128,7 +130,7 @@ public class AcelerometerBrain : MonoBehaviour {
 				boiaAnimator = boia.transform.GetComponent<Animator> ();
 				boiaAnimator.SetBool ("FinalDamage", true);
 				vidasText.text = vidas.ToString();
-				GameEnd("Derrota", vidas);
+				GameEnd("Derrotatubarao", vidas);
 			}
 		}
 	}
@@ -151,11 +153,14 @@ public class AcelerometerBrain : MonoBehaviour {
 		}
 		else if(outcome == "Derrota")
 		{
-			finalMessage.text = "Essa nao e' a resposta certa, tenta outra vez!";
+			finalMessage.text = "Perdeste todas as vidas, tenta outra vez!";
+		}
+		else if(outcome == "Derrotatubarao")
+		{
+			finalMessage.text = "Foste apanhado pelo tubarao! Tenta outra vez!";
 		}
 		boia.GetComponent<PlayerController> ().canMove = false;
 		sharkfin.GetComponent<SharkFin> ().enabled = false;
 	}
-
 }
 

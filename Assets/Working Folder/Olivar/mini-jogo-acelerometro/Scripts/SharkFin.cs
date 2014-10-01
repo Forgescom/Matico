@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class SharkFin : MonoBehaviour {
+	public GameObject brain;
+
 	void start()
 	{
 	}
@@ -32,5 +34,11 @@ public class SharkFin : MonoBehaviour {
 		//move towards the player
 //		transform.position += transform.forward * speed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-	}	
+	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		brain.SendMessage("CollisionOccur",col.gameObject);
+	}
+
 }
