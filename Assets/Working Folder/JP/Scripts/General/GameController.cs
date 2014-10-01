@@ -98,16 +98,22 @@ public class GameController : MonoBehaviour {
 
 	public static void MiniGamelEnd(string outCome)
 	{
-		/*IF WINS 
-		 * INCREMENT LEVEL NUMBER
-		 * UNLOCK AND HIGHLIGHT NEXT LEVEL
-		 * SAVE GAME
-		 * 
-		 * IF LOOSES
-		 * SAVE SPEN ENERGIES ON GAME
-		 * REMOVE ENERGI
-		 * 
-		 * */
+		switch (outCome) {
+		case "Won":
+			CURRENT_LEVEL ++;
+			Application.LoadLevel("Board");
+			break;
+		case "NextLevel":
+			CURRENT_LEVEL ++;
+
+			//GameObject board = GameObject.Find("BoardBrain");
+			//board.SendMessage("NextLevel");
+			//board.NextLevel();
+
+			break;
+		
+		
+		}
 	}
 
 	

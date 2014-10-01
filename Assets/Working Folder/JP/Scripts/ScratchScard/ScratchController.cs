@@ -63,7 +63,7 @@ public class ScratchController : MonoBehaviour {
 			GameController.MiniGamelEnd("Won");
 			break;
 		case "BtRepeat":
-			//GameController.MiniGamelEnd("Won");
+			Application.LoadLevel("ScratchCard");
 			break;
 		case "BtNext":
 			GameController.MiniGamelEnd("NextLevel");

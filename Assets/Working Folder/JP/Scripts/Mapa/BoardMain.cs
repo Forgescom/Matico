@@ -61,8 +61,8 @@ public class BoardMain : MonoBehaviour {
 				switch(typeOfGame)
 				{
 					case "shooter": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.shooter; break;
-					case "accelerometer": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.accelerometer; break;
-					case "scratchcard": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.scratchcard; break;
+					case "Acelerometer": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.accelerometer; break;
+					case "ScratchCard": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.scratchcard; break;
 					case "tilt": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.tilt; break;
 				}
 
@@ -77,7 +77,7 @@ public class BoardMain : MonoBehaviour {
 		}
 	}
 
-	void StartLevel(Transform houseCliked)
+	public void StartLevel(Transform houseCliked)
 	{
 		string gameToOpen = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
 
@@ -97,7 +97,10 @@ public class BoardMain : MonoBehaviour {
 		}	
 	}
 
-
+	public void NextLevel()
+	{
+		StartLevel (housesGameObject [GameController.CURRENT_LEVEL - 1].transform);
+	}
 
 
 	void EnableMap()

@@ -7760,6 +7760,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
+      propertyPath: board
+      value: 
+      objectReference: {fileID: 904776213}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
   m_RootGameObject: {fileID: 471059808}
