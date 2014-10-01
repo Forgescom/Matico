@@ -21,6 +21,7 @@ public class BoardMain : MonoBehaviour {
 		UnlockHouses ();
 		AssignHousesSettings ();
 
+		print ("BU");
 
 	}
 
@@ -38,14 +39,30 @@ public class BoardMain : MonoBehaviour {
 
 	void UnlockHouses()
 	{
-		for (int i = 0; i<GameController.CURRENT_LEVEL; i ++) {
+		/*for (int i = 0; i<GameController.CURRENT_LEVEL; i ++) {
 			housesGameObject[i].GetComponent<CasaController>().UnlockButton();
 			if(i == (GameController.CURRENT_LEVEL -1))
 			{
 				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
 			}
-			print ("BU");
+		}*/
+		for (int i = 0; i<GameController.houses.Count; i ++) {
+
+			string locked;
+			GameController.houses[i].TryGetValue("Blocked",out locked);
+
+			if(locked == "false")
+			{
+				housesGameObject[i].GetComponent<CasaController>().UnlockButton();
+			}
+
+
+			if(i == (GameController.CURRENT_LEVEL -1))
+			{
+				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
+			}
 		}
+
 	}
 
 	void AssignHousesSettings()
@@ -54,6 +71,11 @@ public class BoardMain : MonoBehaviour {
 			string houseName;
 			GameController.houses[i].TryGetValue("HouseName",out houseName);
 	
+			string locked;
+			GameController.houses[i].TryGetValue("Blocked",out locked);
+			housesGameObject[i].GetComponent<CasaValues>().locked = (locked == "false") ? false:true;
+
+
 			if(houseName == housesGameObject[i].name)
 			{
 				string typeOfGame;
@@ -97,9 +119,22 @@ public class BoardMain : MonoBehaviour {
 		}	
 	}
 
-	public void NextLevel()
+	public void UnlockNextLevel()
 	{
-		StartLevel (housesGameObject [GameController.CURRENT_LEVEL - 1].transform);
+		print (housesGameObject.Length);	
+
+
+		for (int i = 0; i < housesGameObject.Length; i++) {			
+
+			if(	housesGameObject[i].GetComponent<CasaValues>().locked == true)
+			{
+				housesGameObject[i].GetComponent<CasaValues>().locked = false;
+				GameController.CURRENT_LEVEL = i;
+				break;
+			}
+		}
+
+
 	}
 
 
@@ -115,11 +150,13 @@ public class BoardMain : MonoBehaviour {
 	{
 		DeactivateOnAnimEnd.animationFinish += EnableMap;
 		CasaController.throwGame += StartLevel;
+		GameController.loadNewLevel += UnlockNextLevel;
 	}
 
 	void OnDisable()
 	{
 		DeactivateOnAnimEnd.animationFinish -= EnableMap;
 		CasaController.throwGame -= StartLevel;
+		GameController.loadNewLevel += UnlockNextLevel;
 	}
 }

@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour {
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
 
+
+
 	void Awake()
 	{
 		if (controller == null)
@@ -99,25 +101,20 @@ public class GameController : MonoBehaviour {
 	public static void MiniGamelEnd(string outCome)
 	{
 		switch (outCome) {
-		case "Won":
-			CURRENT_LEVEL ++;
-			Application.LoadLevel("Board");
-			break;
-		case "NextLevel":
-			CURRENT_LEVEL ++;
+			case "Won":
 
-			//GameObject board = GameObject.Find("BoardBrain");
-			//board.SendMessage("NextLevel");
-			//board.NextLevel();
+				Application.LoadLevel("Board");
+				break;
+			case "NextLevel":
+			
+				Application.LoadLevel("Board");
 
-			break;
+				/*if (loadNewLevel != null) {
+					loadNewLevel();			
+				}*/
+				break;
 		
 		
 		}
 	}
-
-	
-	
-	
-	
 }

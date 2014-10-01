@@ -46,8 +46,8 @@ public class ScratchBox : MonoBehaviour {
 		{
 			if(transform.renderer.material.color.a >= minAlpha)
 			{
-				transform.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(transform.renderer.material.color.a,0,Time.deltaTime /5f)));
-				textAnswer.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(textAnswer.renderer.material.color.a,0,Time.deltaTime /5f)));				
+				transform.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(transform.renderer.material.color.a,0,Time.deltaTime /2f)));
+				textAnswer.renderer.material.color = new Color(1,1,1,( Mathf.Lerp(textAnswer.renderer.material.color.a,0,Time.deltaTime /2f)));				
 				particlesSystem.enableEmission = true;
 			}
 			else
