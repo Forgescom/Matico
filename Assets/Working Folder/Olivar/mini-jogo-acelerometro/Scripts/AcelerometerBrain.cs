@@ -8,6 +8,8 @@ public class AcelerometerBrain : MonoBehaviour {
 	public TextMesh calculoText;	
 	public TextMesh finalMessage;
 	public TextMesh vidasText;
+	public GameObject successScreen;
+	public GameObject failureScreen;
 
 	int num1;
 	int num2;
@@ -22,6 +24,10 @@ public class AcelerometerBrain : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		set_values ();
+
+		successScreen.SetActive(false);
+		failureScreen.SetActive (false);
+
 	}
 	
 	// Update is called once per frame
@@ -65,6 +71,11 @@ public class AcelerometerBrain : MonoBehaviour {
 				j++;			
 			}
 		}
+	}
+
+	void btClick(GameObject btClicked)
+	{
+		print (btClicked.name);
 	}
 
 	public void CollisionOccur (GameObject collisionWith)
@@ -144,20 +155,25 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		if ((outcome == "Vitoria") && (vidas == 3)) {
 			finalMessage.text = "Resposta certa, excelente!";
+			successScreen.SetActive(true);
 		}
 		else if ((outcome == "Vitoria") && (vidas == 2)) {
 			finalMessage.text = "Resposta certa, bom jogo!";
+			successScreen.SetActive(true);
 		}
 		else if ((outcome == "Vitoria") && (vidas == 1)) {
 			finalMessage.text = "Resposta certa, foi por pouco!";
+			successScreen.SetActive(true);
 		}
 		else if(outcome == "Derrota")
 		{
 			finalMessage.text = "Perdeste todas as vidas, tenta outra vez!";
+			failureScreen.SetActive (true);
 		}
 		else if(outcome == "Derrotatubarao")
 		{
 			finalMessage.text = "Foste apanhado pelo tubarao! Tenta outra vez!";
+			failureScreen.SetActive (true);
 		}
 		boia.GetComponent<PlayerController> ().canMove = false;
 		sharkfin.GetComponent<SharkFin> ().enabled = false;
