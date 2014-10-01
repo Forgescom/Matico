@@ -150,13 +150,13 @@ public class BoardMain : MonoBehaviour {
 	{
 		DeactivateOnAnimEnd.animationFinish += EnableMap;
 		CasaController.throwGame += StartLevel;
-		GameController.loadNewLevel += UnlockNextLevel;
+		//GameController.loadNewLevel += UnlockNextLevel;
 	}
 
 	void OnDisable()
 	{
 		DeactivateOnAnimEnd.animationFinish -= EnableMap;
 		CasaController.throwGame -= StartLevel;
-		GameController.loadNewLevel += UnlockNextLevel;
+		//GameController.loadNewLevel += UnlockNextLevel;
 	}
 }
