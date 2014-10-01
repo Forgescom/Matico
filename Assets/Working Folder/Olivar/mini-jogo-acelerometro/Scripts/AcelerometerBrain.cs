@@ -154,6 +154,7 @@ public class AcelerometerBrain : MonoBehaviour {
 			finalMessage.text = "Essa nao e' a resposta certa, tenta outra vez!";
 		}
 		boia.GetComponent<PlayerController> ().canMove = false;
+		sharkfin.GetComponent<SharkFin> ().enabled = false;
 	}
 
 }

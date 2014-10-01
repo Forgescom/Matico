@@ -10,9 +10,6 @@ public class PlayerController : MonoBehaviour
 	public float speed = 1.5f;
 	public float speedAc = 5;
 
-	int xVelocity = 3;
-	int yVelocity = 4;
-
 	// Coordenadas limite
 	public float[] boundaries;
 	public bool canMove = true;
