@@ -19,7 +19,7 @@ public class bubbleMove : MonoBehaviour {
 
 		if (pos != target) 
 		{
-			transform.position = Vector3.MoveTowards(pos, target, 0.06f);
+			transform.position = Vector3.MoveTowards(pos, target, 0.01f);
 		}
 
 		else
