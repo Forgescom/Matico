@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour {
 	public static int CURRENT_LIVES;
 
 
+	public static GameObject SUCCESS_SCREEN;
+	public static GameObject FAILURE_SUCESS;
+
 
 	//XML VALUES
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
@@ -54,7 +57,7 @@ public class GameController : MonoBehaviour {
 		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
 
 
-		CheckUnlocked ();
+
 
 	}
 	
@@ -84,34 +87,19 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	void CheckUnlocked()
-	{
-		for (int i = 0; i<houses.Count; i ++) {
-			string block;
-			houses[i].TryGetValue("Blocked",out block);
 
-			if(block == "false")
-			{
-				CURRENT_LEVEL ++;
-			}
-		}
-
-	}
 
 	public static void MiniGamelEnd(string outCome)
 	{
 		switch (outCome) {
 			case "Won":
-
+				houses[CURRENT_LEVEL]["Blocked"] = "false";
 				Application.LoadLevel("Board");
 				break;
 			case "NextLevel":
 			
 				Application.LoadLevel("Board");
-
-				/*if (loadNewLevel != null) {
-					loadNewLevel();			
-				}*/
+				
 				break;
 		
 		

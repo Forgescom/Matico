@@ -10,16 +10,13 @@ public class XmlLoader : MonoBehaviour {
 	public TextAsset xmlFile;
 	List<Dictionary<string,string>> housesXml;
 	Dictionary<string,string> houseDetails;
-	void Awake()
-	{
-		//housesXml = transform.GetComponent<BoardMain> ().houses;
-		housesXml = GameController.houses;
-		ReadXML ();
-	}
+
 
 	// Use this for initialization
 	void Start () {
-	
+		housesXml = GameController.houses;
+		housesXml.Clear ();
+		ReadXML ();
 	}
 	
 	// Update is called once per frame

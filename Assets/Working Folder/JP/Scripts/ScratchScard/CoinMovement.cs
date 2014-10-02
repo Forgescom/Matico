@@ -31,7 +31,6 @@ public class CoinMovement : MonoBehaviour {
 			Collider2D hit = Physics2D.OverlapPoint(touchPos);
 			
 			if(hit && hit.name == "moeda"){
-				print (hit.name);
 				grabed = true;
 				return true;
 			}
