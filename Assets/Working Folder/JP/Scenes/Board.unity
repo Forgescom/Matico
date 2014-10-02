@@ -715,6 +715,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &71570256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1223,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &153015394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,6 +1595,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &171211565
 Prefab:
   m_ObjectHideFlags: 0
@@ -1827,6 +1830,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &194602156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2414,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &260569005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,6 +3352,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &399741382
 Prefab:
   m_ObjectHideFlags: 0
@@ -3470,6 +3476,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &425279625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,6 +3752,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &437475809
 Prefab:
   m_ObjectHideFlags: 0
@@ -4748,6 +4756,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &581471612
 GameObject:
   m_ObjectHideFlags: 0
@@ -4811,6 +4820,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &585013944
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,6 +5549,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &648292965
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,6 +5988,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &683700731
 GameObject:
   m_ObjectHideFlags: 0
@@ -6040,6 +6052,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &705029901
 Prefab:
   m_ObjectHideFlags: 0
@@ -6214,6 +6227,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &722064516
 GameObject:
   m_ObjectHideFlags: 0
@@ -6567,6 +6581,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &763103477
 Prefab:
   m_ObjectHideFlags: 0
@@ -7661,6 +7676,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &930594057
 Prefab:
   m_ObjectHideFlags: 0
@@ -7892,6 +7908,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &974104727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8271,6 +8288,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &1027984002
 Prefab:
   m_ObjectHideFlags: 0
@@ -9025,6 +9043,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1096267082
 GameObject:
   m_ObjectHideFlags: 0
@@ -9276,6 +9295,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1128764809
 GameObject:
   m_ObjectHideFlags: 0
@@ -10104,6 +10124,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1201993486
 GameObject:
   m_ObjectHideFlags: 0
@@ -10312,6 +10333,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1212972759
 GameObject:
   m_ObjectHideFlags: 0
@@ -10375,6 +10397,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1223319224
 GameObject:
   m_ObjectHideFlags: 0
@@ -10686,6 +10709,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1264644645
 GameObject:
   m_ObjectHideFlags: 0
@@ -10826,6 +10850,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1296936029
 GameObject:
   m_ObjectHideFlags: 0
@@ -11537,6 +11562,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1436780920
 GameObject:
   m_ObjectHideFlags: 0
@@ -11745,6 +11771,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1445423928
 GameObject:
   m_ObjectHideFlags: 0
@@ -11902,6 +11929,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1485879685
 GameObject:
   m_ObjectHideFlags: 0
@@ -11965,6 +11993,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1515350792
 GameObject:
   m_ObjectHideFlags: 0
@@ -12122,6 +12151,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1516082029
 GameObject:
   m_ObjectHideFlags: 0
@@ -12262,6 +12292,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1525535755
 GameObject:
   m_ObjectHideFlags: 0
@@ -12325,6 +12356,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1541155903
 GameObject:
   m_ObjectHideFlags: 0
@@ -13449,6 +13481,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1686720067
 GameObject:
   m_ObjectHideFlags: 0
@@ -14161,6 +14194,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1832139046
 GameObject:
   m_ObjectHideFlags: 0
@@ -14455,6 +14489,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1867074528
 GameObject:
   m_ObjectHideFlags: 0
@@ -14569,6 +14604,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &1882415057
 Prefab:
   m_ObjectHideFlags: 0
@@ -15339,6 +15375,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1987286614
 GameObject:
   m_ObjectHideFlags: 0
@@ -15624,6 +15661,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &1995191866
 GameObject:
   m_ObjectHideFlags: 0
@@ -15687,6 +15725,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &2005888929
 GameObject:
   m_ObjectHideFlags: 0
@@ -16083,6 +16122,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &2064975974
 GameObject:
   m_ObjectHideFlags: 0
@@ -16146,6 +16186,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &2069088147
 GameObject:
   m_ObjectHideFlags: 0
@@ -16335,6 +16376,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &2099020679
 GameObject:
   m_ObjectHideFlags: 0
@@ -16552,6 +16594,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &2110339653
 GameObject:
   m_ObjectHideFlags: 0
@@ -16803,6 +16846,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1 &2132360257
 GameObject:
   m_ObjectHideFlags: 0
@@ -16866,6 +16910,7 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
+  locked: 1
 --- !u!1001 &2133115752
 Prefab:
   m_ObjectHideFlags: 0

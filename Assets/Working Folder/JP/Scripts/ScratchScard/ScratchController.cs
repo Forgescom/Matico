@@ -45,7 +45,9 @@ public class ScratchController : MonoBehaviour {
 	{
 		if (inParam == "Certo")
 		{
-			//GameController.MiniGamelEnd("Win");
+			GameController.houses[GameController.CURRENT_LEVEL]["Blocked"] = "false";
+
+
 			sucessScreen.SetActive(true);
 
 		}				
