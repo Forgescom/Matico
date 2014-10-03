@@ -17,11 +17,11 @@ public class BoardMain : MonoBehaviour {
 	void Start(){
 		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
-		ShowIntro ();
 		UnlockHouses ();
+		ShowIntro ();
+
 		AssignHousesSettings ();
 
-		print ("BU");
 
 	}
 
@@ -54,6 +54,12 @@ public class BoardMain : MonoBehaviour {
 			if(locked == "false")
 			{
 				housesGameObject[i].GetComponent<CasaController>().UnlockButton();
+				print ("NEW LEVEL " + housesGameObject[i].name.Substring(4,2));
+
+				int currentLevelNumber =0;
+				int.TryParse(housesGameObject[i].name.Substring(4,2),out currentLevelNumber);
+				GameController.CURRENT_LEVEL = currentLevelNumber;
+
 			}
 
 
@@ -73,7 +79,15 @@ public class BoardMain : MonoBehaviour {
 	
 			string locked;
 			GameController.houses[i].TryGetValue("Blocked",out locked);
-			housesGameObject[i].GetComponent<CasaValues>().locked = (locked == "false") ? false:true;
+
+			if(locked == "false")
+			{
+				housesGameObject[i].GetComponent<CasaValues>().locked = false;
+				housesGameObject[i].GetComponent<CasaController>().UnlockButton();
+			}
+			else{
+				housesGameObject[i].GetComponent<CasaValues>().locked = true;
+			}
 
 
 			if(houseName == housesGameObject[i].name)
@@ -121,7 +135,6 @@ public class BoardMain : MonoBehaviour {
 
 	public void UnlockNextLevel()
 	{
-		print (housesGameObject.Length);	
 
 
 		for (int i = 0; i < housesGameObject.Length; i++) {			
@@ -129,7 +142,7 @@ public class BoardMain : MonoBehaviour {
 			if(	housesGameObject[i].GetComponent<CasaValues>().locked == true)
 			{
 				housesGameObject[i].GetComponent<CasaValues>().locked = false;
-				GameController.CURRENT_LEVEL = i;
+			//	GameController.CURRENT_LEVEL = i;
 				break;
 			}
 		}

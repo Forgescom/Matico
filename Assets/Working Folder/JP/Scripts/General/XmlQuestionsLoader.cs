@@ -17,6 +17,7 @@ public class XmlQuestionsLoader : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		questions = GameController.questions;
+		questions.Clear ();
 		ReadXML ();
 	}
 	
