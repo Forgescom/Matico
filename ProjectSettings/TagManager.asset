@@ -47,3 +47,19 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Background
+    userID: 1
+    uniqueID: 2166895539
+    locked: 0
+  - name: Games
+    userID: 2
+    uniqueID: 3932735155
+    locked: 0
+  - name: ForeGround
+    userID: 3
+    uniqueID: 1055829409
+    locked: 0
+  - name: GUIS
+    userID: 4
+    uniqueID: 1064027971
+    locked: 0

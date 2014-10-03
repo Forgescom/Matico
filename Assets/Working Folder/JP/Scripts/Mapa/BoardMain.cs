@@ -39,33 +39,13 @@ public class BoardMain : MonoBehaviour {
 
 	void UnlockHouses()
 	{
-		/*for (int i = 0; i<GameController.CURRENT_LEVEL; i ++) {
-			housesGameObject[i].GetComponent<CasaController>().UnlockButton();
-			if(i == (GameController.CURRENT_LEVEL -1))
-			{
-				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
-			}
-		}*/
 		for (int i = 0; i<GameController.houses.Count; i ++) {
-
 			string locked;
 			GameController.houses[i].TryGetValue("Blocked",out locked);
 
 			if(locked == "false")
 			{
 				housesGameObject[i].GetComponent<CasaController>().UnlockButton();
-				print ("NEW LEVEL " + housesGameObject[i].name.Substring(4,2));
-
-				int currentLevelNumber =0;
-				int.TryParse(housesGameObject[i].name.Substring(4,2),out currentLevelNumber);
-				GameController.CURRENT_LEVEL = currentLevelNumber;
-
-			}
-
-
-			if(i == (GameController.CURRENT_LEVEL -1))
-			{
-				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
 			}
 		}
 
@@ -88,7 +68,6 @@ public class BoardMain : MonoBehaviour {
 			else{
 				housesGameObject[i].GetComponent<CasaValues>().locked = true;
 			}
-
 
 			if(houseName == housesGameObject[i].name)
 			{
@@ -116,6 +95,11 @@ public class BoardMain : MonoBehaviour {
 	public void StartLevel(Transform houseCliked)
 	{
 		string gameToOpen = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
+	
+		
+		int currentLevelNumber =0;
+		int.TryParse(houseCliked.name.Substring(4,2),out currentLevelNumber);
+		GameController.CURRENT_LEVEL = currentLevelNumber;
 
 		switch (gameToOpen) {
 			case "shooter":

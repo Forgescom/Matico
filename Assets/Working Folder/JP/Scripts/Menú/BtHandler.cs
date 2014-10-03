@@ -27,6 +27,7 @@ public class BtHandler : MonoBehaviour {
 	void Start () {
 		startSize = transform.localScale.x;
 		spriteActive = GetComponent<SpriteRenderer> ();
+
 	}
 	
 	// Update is called once per frame
@@ -63,6 +64,7 @@ public class BtHandler : MonoBehaviour {
 	void OnMouseUp (){
 
 		if (over == true) {
+			menuController = GameObject.Find(menuController.name);
 			menuController.SendMessage ("btClick", transform.gameObject);
 			ToggleButton ();
 		}	

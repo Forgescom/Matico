@@ -6,18 +6,21 @@ public class ScratchController : MonoBehaviour {
 	public GameObject introScreen;
 	public GameObject explanationScreen;
 	public GameObject scratchCard;
-	public GameObject sucessScreen;
-	public GameObject failureScreen;
+
 
 	int currentScreen = 0;
+
+	//EVENTS FOR GAME END
+	public delegate void GameEnd(string test);
+	public static event GameEnd GameEnded;
+
 
 	// Use this for initialization
 	void Start () {
 		explanationScreen.SetActive (false);
 		introScreen.SetActive (true);
 		scratchCard.SetActive(false);
-		sucessScreen.SetActive (false);
-		failureScreen.SetActive(false);
+		print (GameController.CURRENT_LEVEL);
 	}
 	
 	// Update is called once per frame
@@ -43,35 +46,11 @@ public class ScratchController : MonoBehaviour {
 
 	void ScratchFinish(string inParam)
 	{
-		if (inParam == "Certo")
-		{
-
-
-
-			sucessScreen.SetActive(true);
-
-		}				
-		else{
-			//GameController.MiniGamelEnd("Loose");
-			failureScreen.SetActive(true);
-		}
-		
+		if (GameEnded != null) {		
+			GameEnded(inParam);			
+		}		
 	}
-
-	void btClick(GameObject btClicked)
-	{
-		switch (btClicked.name) {
-		case "BtMap":
-			GameController.MiniGamelEnd("Won");
-			break;
-		case "BtRepeat":
-			Application.LoadLevel("ScratchCard");
-			break;
-		case "BtNext":
-			GameController.MiniGamelEnd("NextLevel");
-			break;
-		}
-	}
+	
 
 	void OnEnable()
 	{

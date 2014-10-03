@@ -22,8 +22,9 @@ public class GameController : MonoBehaviour {
 	public static int CURRENT_LIVES;
 
 
-	public static GameObject SUCCESS_SCREEN;
-	public static GameObject FAILURE_SUCESS;
+	public GameObject SUCCESS_SCREEN;
+	public GameObject FAILURE_SCREEN;
+
 
 
 	//XML VALUES
@@ -56,9 +57,6 @@ public class GameController : MonoBehaviour {
 	
 		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
 
-
-
-
 	}
 	
 	// Update is called once per frame
@@ -82,14 +80,24 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	public static void ChangeScene(string newScene)
+	public void ShowScreen(string outComeIn)
 	{
-
+		if (outComeIn == "Certo") {
+			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
+		}
+		else if (outComeIn == "Errado"){
+			Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity);
+		}
 	}
 
 
+	void btClick(GameObject bt)
+	{
+		//MiniGamelEnd ("Won");
+		
+	}
 
-	public static void MiniGamelEnd(string outCome)
+	/*public static void MiniGamelEnd(string outCome)
 	{
 		switch (outCome) {
 			case "Won":
@@ -104,5 +112,14 @@ public class GameController : MonoBehaviour {
 		
 		
 		}
+	}*/
+
+	void OnEnable()
+	{
+		ScratchController.GameEnded += ShowScreen;
+	}
+	void OnDisable()
+	{
+		ScratchController.GameEnded -= ShowScreen;
 	}
 }
