@@ -21,11 +21,15 @@ public class GameController : MonoBehaviour {
 	public static int CURRENT_LEVEL;
 	public static int CURRENT_LIVES;
 
-
+	//MINI GAMES FINAL SCREEN
 	public GameObject SUCCESS_SCREEN;
 	public GameObject FAILURE_SCREEN;
 
-
+	//TUTORIALS
+	public static bool SCRATCHCARD_TUT = true;
+	public static bool ACELEROMETER_TUT = true;
+	public static bool FLIP_TUT = true;
+	public static bool SHOOTER_TUT = true;
 
 	//XML VALUES
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
@@ -80,7 +84,7 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	public void ShowScreen(string outComeIn)
+	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
@@ -93,11 +97,11 @@ public class GameController : MonoBehaviour {
 
 	void btClick(GameObject bt)
 	{
-		//MiniGamelEnd ("Won");
+		MiniGamelEnd ("Won");
 		
 	}
 
-	/*public static void MiniGamelEnd(string outCome)
+	public static void MiniGamelEnd(string outCome)
 	{
 		switch (outCome) {
 			case "Won":
@@ -112,14 +116,14 @@ public class GameController : MonoBehaviour {
 		
 		
 		}
-	}*/
+	}
 
 	void OnEnable()
 	{
-		ScratchController.GameEnded += ShowScreen;
+		ScratchController.GameEnded += ShowMiniGameFinalScreen;
 	}
 	void OnDisable()
 	{
-		ScratchController.GameEnded -= ShowScreen;
+		ScratchController.GameEnded -= ShowMiniGameFinalScreen;
 	}
 }

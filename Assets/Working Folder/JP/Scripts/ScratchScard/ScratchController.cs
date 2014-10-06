@@ -17,10 +17,14 @@ public class ScratchController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		currentScreen = (GameController.SCRATCHCARD_TUT == true) ? 0 : 1;
+
+		print (currentScreen);
+
 		explanationScreen.SetActive (false);
 		introScreen.SetActive (true);
 		scratchCard.SetActive(false);
-		print (GameController.CURRENT_LEVEL);
+
 	}
 	
 	// Update is called once per frame
@@ -35,6 +39,7 @@ public class ScratchController : MonoBehaviour {
 		if (currentScreen == 0) {
 			explanationScreen.SetActive(true);
 			explanationScreen.animation.Play("Explanation");
+			GameController.SCRATCHCARD_TUT = false;
 			currentScreen ++;
 		}
 		else if(currentScreen == 1)

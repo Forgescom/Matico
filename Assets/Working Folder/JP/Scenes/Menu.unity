@@ -2768,6 +2768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74522ef9bf640e24aa49ebed72964273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SUCCESS_SCREEN: {fileID: 100004, guid: f15a71795a1bc9c4493c5b95eb49255a, type: 2}
+  FAILURE_SCREEN: {fileID: 100004, guid: e09e98f9637225d439aa2683c389ee98, type: 2}
 --- !u!4 &1718154752
 Transform:
   m_ObjectHideFlags: 0
