@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: dc76ba4f39967ed4194ac8964d957e27
+guid: bee3780132b9e944aa135e4b519b31bf
 TextureImporter:
   fileIDToRecycleName:
-    21300000: raspadinha_bg2
+    21300000: pergunta_raspadinha
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,7 +22,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
