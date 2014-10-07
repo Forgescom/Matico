@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400004}
+  - 111: {fileID: 11100000}
   m_Layer: 0
   m_Name: SuccessScreen
   m_TagString: Untagged
@@ -269,6 +270,21 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .790000021, y: .790000021}
   m_Center: {x: 0, y: 0}
+--- !u!111 &11100000
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d6fe10bc8664312419d47b0c9305ab07, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d6fe10bc8664312419d47b0c9305ab07, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1

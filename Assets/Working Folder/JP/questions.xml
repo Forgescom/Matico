@@ -1,9 +1,8 @@
 <Questions>
 	<questionDetails id="question1" level="1" typeofgame="scratchcard">r
 		<question>Numa prova de atletismo, o Nuno ficou em 4º lugar.
-			A Joana ficou 4 lugares à sua frente e a Sofia chegou 
-			cinco lugares depois do 2º.
-      Escreve em que lugar ficou a Joana?</question>
+			A Joana ficou 4 lugares à sua frente e a Sofia chegou cinco lugares depois do 2º.
+			Escreve em que lugar ficou a Joana?</question>
 		<false1>18</false1>
 		<false2>4</false2>
 		<false3>15</false3>
