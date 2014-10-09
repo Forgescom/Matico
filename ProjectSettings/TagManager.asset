@@ -9,6 +9,11 @@ TagManager:
   - West
   - Errado
   - Certo
+  - Shark
+  - Limit
+  - Player
+  - House
+  - Wave
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

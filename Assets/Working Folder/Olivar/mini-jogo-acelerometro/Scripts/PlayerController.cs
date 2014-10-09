@@ -5,31 +5,31 @@ using System.Collections;
 public class PlayerController : MonoBehaviour 
 {
 	public GameObject brain;
-	public GameObject boia;
 
-	public float speed = 1.5f;
-	public float speedAc = 5;
-
-	int xVelocity = 3;
-	int yVelocity = 4;
+	public float speed = 0.5f;
 
 	// Coordenadas limite
 	public float[] boundaries;
-	public bool canMove = true;
+	public bool canMove = false;
+
+	int currentState = 0;
+
 
 	void Start () {
 		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}
-	
+
 	void Update()
 	{
 		if(canMove)
 			HandleMovement ();
+	
 	}
 
 	void HandleMovement()
 	{
+
 		if (SystemInfo.deviceType == DeviceType.Desktop) {
 			
 			var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
@@ -42,7 +42,9 @@ public class PlayerController : MonoBehaviour
 		}
 		else 
 		{
-			transform.Translate(Input.acceleration.x, Input.acceleration.y, 0);
+			float smoothSpeed = 8f * Time.deltaTime;
+
+			transform.Translate(Input.acceleration.x * smoothSpeed, Input.acceleration.y * smoothSpeed, 0);
 			
 			transform.position = new Vector3 (Mathf.Clamp (transform.position.x,boundaries[0], boundaries[1]),
 			                                  Mathf.Clamp (transform.position.y, boundaries[2], boundaries[3]),
@@ -50,34 +52,63 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public void CollisionOccur (GameObject collisionWith)
-	{
-
-		if (collisionWith.tag == "North")
-		{
-
-		}
-		else if (collisionWith.tag == "South") 
-		{
-
-		}
-		else if (collisionWith.tag == "East") 
-		{
-
-		}
-		else if (collisionWith.tag == "West") 
-		{
-
-		}
-	}
 
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		brain.SendMessage("CollisionOccur",col.gameObject);
 
+		if(col.name.Contains("hip"))
+		{
+			col.SendMessage("AnimAndDestroy");
+			if(col.tag =="Errado")
+				brain.SendMessage("AnswerHit",false);
+			else if (col.tag == "Certo")
+				brain.SendMessage("AnswerHit",true);
+		}
+		else if (col.tag =="Shark")
+		{
+			currentState ++;	
+			string animatorKey = "Damage"+ currentState;
+
+			transform.GetComponent<Animator>().SetBool(animatorKey,true);			
+
+
+			brain.SendMessage("ObjectHit");
+		}
+		else if (col.tag =="Wave")
+		{
+			AddWaveForce();
+		}
+	}
+
+	void AddWaveForce()
+	{
+		// VER QUAL O LADO QUE COLIDE E DETERMINAR FORÇA/DIREÇAO
+		transform.rigidbody2D.AddForce(Vector3.left * 10);
+
+		canMove = false;
+		StartCoroutine ("WaveEffect");
+	}
+
+	IEnumerator WaveEffect()
+	{
+		yield return new WaitForSeconds (4f);
+		canMove = true;
+	}
+
+	void StartMovement()
+	{
+		canMove = true;
+		print ("LIGUEI BOIA");
+	}
+
+	void OnEnable()
+	{
+		AcelerometerBrain.startGame += StartMovement;
+	}
+
+	void OnDisable()
+	{
+		AcelerometerBrain.startGame -= StartMovement;
 	}
 }
-
-
-
