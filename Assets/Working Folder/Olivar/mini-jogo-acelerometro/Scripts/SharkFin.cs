@@ -4,41 +4,43 @@ using System.Collections;
 public class SharkFin : MonoBehaviour {
 	public GameObject brain;
 
+	bool canMove = false;
+
 	void start()
 	{
 	}
 
 	void Update()
 	{
-		Transform target;
-		float speed = 1f;
+		if (canMove == true) {
+			Transform target;
+			float speed = 1f;
 
-		target = GameObject.FindWithTag ("Player").transform;
-//		Vector3 targetHeading = target.position - transform.position;
-//		Vector3 targetDirection = targetHeading.normalized;
-		
-		//rotate to look at the player
-		/*transform.rotation = Quaternion.LookRotation(targetDirection); // Converts target direction vector to Quaternion
-		transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 50f, 0);*/
+			target = GameObject.FindWithTag ("Player").transform;
 
-		if (target.position.x < transform.position.x) {
-			transform.localScale = new Vector3(0.75f,0.75f,1);
+			if (target.position.x < transform.position.x) {
+				transform.localScale = new Vector3(0.75f,0.75f,1);
+			}
+			else {
+				transform.localScale = new Vector3(-0.75f,0.75f,1);
+			}
+			transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 		}
-		else {
-			transform.localScale = new Vector3(-0.75f,0.75f,1);
-		}
-
-//		transform.LookAt(targetDirection);
-//		transform.Rotate(new Vector3(0,90,0), Space.Self);//correcting the original rotation
-
-		//move towards the player
-//		transform.position += transform.forward * speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 	}
-
-	void OnTriggerEnter2D(Collider2D col)
+	void StartMovement()
 	{
-		brain.SendMessage("CollisionOccur",col.gameObject);
+		canMove = true;
+		print ("LIGUEI TUBARAO");
+	}
+	
+	void OnEnable()
+	{
+		AcelerometerBrain.startGame += StartMovement;
+	}
+	
+	void OnDisable()
+	{
+		AcelerometerBrain.startGame -= StartMovement;
 	}
 
 }

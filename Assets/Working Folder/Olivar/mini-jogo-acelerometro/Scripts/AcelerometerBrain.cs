@@ -8,25 +8,53 @@ public class AcelerometerBrain : MonoBehaviour {
 	public TextMesh calculoText;	
 	public TextMesh finalMessage;
 	public TextMesh vidasText;
-	public GameObject successScreen;
-	public GameObject failureScreen;
+
+	public GameObject introScreen;
+	public GameObject explanationScreen;
+	public GameObject accelerometer;
+
+
+
+
+	int currentScreen = 0;
 
 	int num1;
 	int num2;
 	int num3;
 	int result;
 
+	public float hoverForce;
+
 	public GameObject boia;
 	public GameObject sharkfin;
+	public GameObject waves;
 
 	int vidas = 3;
 
+
+	//EVENTS
+	public delegate void StartGameDelegate();
+	public static event StartGameDelegate startGame;
+	public delegate void EndGameDelegate(string outcome);
+	public static event EndGameDelegate endGame;
+
+
 	// Use this for initialization
 	void Start () {
-		set_values ();
+		/*introScreen.SetActive (true);
+		explanationScreen.SetActive (false);
+		accelerometer.SetActive(false);*/
 
-		successScreen.SetActive(false);
-		failureScreen.SetActive (false);
+
+
+		if(startGame !=null)
+		{
+			startGame();
+		}
+		
+		set_values ();
+		vidasText.text = "Vidas: " + vidas.ToString();
+		//bloquear objectos antes de ecras desaparecerem
 
 	}
 	
@@ -35,125 +63,71 @@ public class AcelerometerBrain : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Escape)) {
 			Application.LoadLevel(1);
 		}
-		vidasText.text = "Vidas: " + vidas.ToString();
+
 	}
 
-	void set_values()
+	void ChangeScreen()
 	{
-		num1 = Random.Range(1, 20);
-		num2 = Random.Range(1, 20);
-		num3 = Random.Range(1, 20);
-		
-		calculoText.text = "Calculo: " + num1.ToString() +" + "+ num2.ToString() +" + "+ num3.ToString() + " =? ";
-		
-		result = num1 + num2 + num3;
-
-		int i = 0;
-		int j = 1;
-
-		int randomPositionForCorrect = Random.Range (0, 10);
-		bolhas[randomPositionForCorrect].text = result.ToString ();
-		bolhas[randomPositionForCorrect].transform.parent.tag = "Certo";
-		
-		for(i = 0; i < bolhas.Length; i++)
+		if (currentScreen == 0) {
+			explanationScreen.SetActive(true);
+			explanationScreen.animation.Play("Explanation");
+			currentScreen ++;
+		}
+		else if(currentScreen == 1)
 		{
-			if(bolhas[i].text != result.ToString()){
-				bolhas[i].transform.parent.tag = "Errado";
-				if (i % 2 != 0) {
-					//erro[i].transform.parent.position  = Random.insideUnitSphere * 10;					
-					bolhas[i].text = (result + j).ToString();
-				}
-				else {
-					//erro[i].transform.parent.position  = Random.insideUnitSphere * 10;
-					
-					bolhas[i].text = (result - j).ToString();
-				}
-				j++;			
+			accelerometer.SetActive(true);
+			currentScreen ++;
+			if(startGame !=null)
+			{
+				startGame();
 			}
 		}
 	}
 
-	void btClick(GameObject btClicked)
-	{
-		print (btClicked.name);
-	}
 
-	public void CollisionOccur (GameObject collisionWith)
+
+
+
+	void AnswerHit(bool correct)
 	{
 		Handheld.Vibrate ();
 
-		Animator bubbleAnimator = collisionWith.transform.GetComponent<Animator> ();
-//		bubbleAnimator.SetBool ("pop", true);
-
-		Animator boiaAnimator = boia.transform.GetComponent<Animator> ();
-
-		if (collisionWith.tag == "Certo")
-		{
-			bubbleAnimator.SetBool ("pop", true);
-			GameEnd("Vitoria", vidas);
-		}
-
-		if (collisionWith.tag == "Errado")
-		{
-			bubbleAnimator.SetBool ("pop", true);
-			DisableCollider(collisionWith);
-			vidas--;
-
-			if(vidas == 2)
+		if(correct)
+		{		
+			if(endGame != null)
 			{
-				boiaAnimator = boia.transform.GetComponent<Animator> ();
-				boiaAnimator.SetBool ("Damage1", true);
-				vidasText.text = vidas.ToString();
-			}
-			if(vidas == 1)
-			{
-				boiaAnimator = boia.transform.GetComponent<Animator> ();
-				boiaAnimator.SetBool ("Damage2", true);
-				vidasText.text = vidas.ToString();
-			}
-			if(vidas == 0)
-			{
-				boiaAnimator = boia.transform.GetComponent<Animator> ();
-				boiaAnimator.SetBool ("FinalDamage", true);
-				vidasText.text = vidas.ToString();
-				GameEnd("Derrota", vidas);
+				endGame("Certo");
 			}
 		}
-
-		if (collisionWith.tag == "Shark")
-		{
-			vidas--;
-
-			if(vidas == 2)
+		else
+		{			
+			if(endGame != null)
 			{
-				boiaAnimator = boia.transform.GetComponent<Animator> ();
-				boiaAnimator.SetBool ("Damage1", true);
-				vidasText.text = vidas.ToString();
-			}
-			if(vidas == 1)
-			{
-				boiaAnimator = boia.transform.GetComponent<Animator> ();
-				boiaAnimator.SetBool ("Damage2", true);
-				vidasText.text = vidas.ToString();
-			}
-			if(vidas == 0)
-			{
-				boiaAnimator = boia.transform.GetComponent<Animator> ();
-				boiaAnimator.SetBool ("FinalDamage", true);
-				vidasText.text = vidas.ToString();
-				GameEnd("Derrotatubarao", vidas);
+				endGame("Errado");
 			}
 		}
 	}
 
-	void DisableCollider(GameObject col)
+	void ObjectHit()
 	{
-		col.GetComponent<BoxCollider2D> ().enabled = false;
+		vidas --;
+
+		if (vidas == 0) {
+			if(endGame != null)
+			{
+				endGame("Errado");
+			}
+		}
 	}
+
 
 	public void GameEnd(string outcome, int vidas)
 	{
-		if ((outcome == "Vitoria") && (vidas == 3)) {
+
+
+		//FINAL SCREEN DEPENDING ON LIVES
+
+		/*if ((outcome == "Vitoria") && (vidas == 3)) {
 			finalMessage.text = "Resposta certa, excelente!";
 			successScreen.SetActive(true);
 		}
@@ -177,6 +151,67 @@ public class AcelerometerBrain : MonoBehaviour {
 		}
 		boia.GetComponent<PlayerController> ().canMove = false;
 		sharkfin.GetComponent<SharkFin> ().enabled = false;
+		waves.GetComponent<WaveController> ().enabled = false;*/
+	}
+
+	void btClick(GameObject btClicked)
+	{
+		switch (btClicked.name) {
+		case "BtMap":
+			GameController.MiniGamelEnd("Won");
+			break;
+		case "BtRepeat":
+			Application.LoadLevel("Accelerometer");
+			break;
+		case "BtNext":
+			GameController.MiniGamelEnd("NextLevel");
+			break;
+		}
+	}
+
+	void OnEnable()
+	{
+		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+//		AccelerometerBox.finishEvent += AccelerometerFinish;
+	}
+	
+	void OnDisable()
+	{
+		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+//		AccelerometerBox.finishEvent -= AccelerometerFinish;
+	}
+
+
+	void set_values()
+	{
+		num1 = Random.Range(1, 20);
+		num2 = Random.Range(1, 20);
+		num3 = Random.Range(1, 20);
+		
+		calculoText.text = "Calculo: " + num1.ToString() +" + "+ num2.ToString() +" + "+ num3.ToString() + " =? ";
+		
+		result = num1 + num2 + num3;
+		
+		int i = 0;
+		int j = 1;
+		
+		int randomPositionForCorrect = Random.Range (0, 10);
+		bolhas[randomPositionForCorrect].text = result.ToString ();
+		bolhas[randomPositionForCorrect].transform.parent.tag = "Certo";
+		
+		for(i = 0; i < bolhas.Length; i++)
+		{
+			if(bolhas[i].text != result.ToString()){
+				bolhas[i].transform.parent.tag = "Errado";
+				if (i % 2 != 0) {
+					bolhas[i].text = (result + j).ToString();
+				}
+				else {
+					bolhas[i].text = (result - j).ToString();
+				}
+				j++;			
+			}
+		}
 	}
 }
 

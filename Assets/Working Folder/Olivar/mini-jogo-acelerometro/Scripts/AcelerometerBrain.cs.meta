@@ -2,7 +2,15 @@ fileFormatVersion: 2
 guid: 3ec289ed2fef01843958fd26799b4a18
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - calculoText: {instanceID: 0}
+  - finalMessage: {instanceID: 0}
+  - vidasText: {instanceID: 0}
+  - successScreen: {instanceID: 0}
+  - failureScreen: {instanceID: 0}
+  - boia: {instanceID: 0}
+  - sharkfin: {instanceID: 0}
+  - waves: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
