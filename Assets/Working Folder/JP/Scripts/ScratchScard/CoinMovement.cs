@@ -31,6 +31,7 @@ public class CoinMovement : MonoBehaviour {
 			Collider2D hit = Physics2D.OverlapPoint(touchPos);
 			
 			if(hit && hit.name == "moeda"){
+				print("ACERTEI NA MOEDA");
 				grabed = true;
 				return true;
 			}
@@ -54,11 +55,14 @@ public class CoinMovement : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D col)
 	{
-		if (Input.touchCount>0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
-			col.SendMessage ("Scratch", true);
-		}
-		else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary){
-			col.SendMessage ("Scratch", false);
+		if(grabed)
+		{
+			if (Input.touchCount>0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
+				col.SendMessage ("Scratch", true);
+			}
+			else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary){
+				col.SendMessage ("Scratch", false);
+			}
 		}
 
 	}

@@ -4,67 +4,53 @@ using System.Collections;
 public class QuestionsHandler : MonoBehaviour {
 
 	public TextMesh questionHolder;
-	public TextMesh answer1;
-	public TextMesh answer2;
-	public TextMesh answer3;
-	public TextMesh answer4;
+	public TextMesh [] answers;
 
 	// Use this for initialization
 	void Start () {
 		SetQuestionValues ();
-
-
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 	void SetQuestionValues()
 	{
+		//PICK RANDOM QUESTION NUMBER
 		int randomQuestionNumber = Random.Range (0, GameController.questions.Count);
 
-		//print (GameController.questions.Count);
-
+		//PICK QUESTION TEXT FROM PREVIOUS NUMBER
 		string questionNumber;
 		GameController.questions [randomQuestionNumber].TryGetValue ("question", out questionNumber);
 		questionHolder.text = questionNumber;
 
-		string answerA;
-		GameController.questions [randomQuestionNumber].TryGetValue ("false1", out answerA);
-		answer1.text = answerA;
-		//print (answer1.transform.parent.GetComponent<ScratchBox>().SetSprites());
-		answer1.transform.parent.GetComponent<ScratchBox>().SetSprites();
-		//answer1.transform.parent.SendMessage ("SetSprites");
+		//RANDOM NUMBER TO PLACE THE CORRECT ANSWER
+		int randomCorrectAnswerNumber = Random.Range (0, answers.Length);
 
-		string answerB;
-		GameController.questions [randomQuestionNumber].TryGetValue ("false2", out answerB);
-		answer2.text = answerB;
-		//answer2.transform.parent.SendMessage ("SetSprites");
-		answer2.transform.parent.GetComponent<ScratchBox>().SetSprites();
+		//INDEX TO GET THE WRONG ANSWER ON DICTIONARY
+		int wrongAnswerNr = 1;
 
-		string answerC;
-		GameController.questions [randomQuestionNumber].TryGetValue ("false3", out answerC);
-		answer3.text = answerC;
-		//answer3.transform.parent.SendMessage ("SetSprites");
-		answer3.transform.parent.GetComponent<ScratchBox>().SetSprites();
 
-		string answerD;
-		GameController.questions [randomQuestionNumber].TryGetValue ("correct", out answerD);
-		answer4.transform.parent.tag = "Certo";
-	//	answer4.transform.parent.SendMessage ("SetSprites");
-		answer4.transform.parent.GetComponent<ScratchBox>().SetSprites();
-		answer4.text = answerD;
+		//ASSIGN VALUES
+		for (int i= 0; i <answers.Length; i++) {
+
+			if(i == randomCorrectAnswerNumber)
+			{
+				string correctAnswerText;
+				GameController.questions [randomQuestionNumber].TryGetValue ("correct", out correctAnswerText);
+				answers[i].transform.parent.tag = "Certo";
+				answers[i].transform.parent.GetComponent<ScratchBox>().SetSprites();
+				answers[i].text = correctAnswerText;
+			}
+			else{
+				string wrongAnswerText;
+				string questionDictionayKey = "false" + wrongAnswerNr.ToString();
+				GameController.questions [randomQuestionNumber].TryGetValue (questionDictionayKey, out wrongAnswerText);
+				answers[i].text = wrongAnswerText;
+				answers[i].transform.parent.GetComponent<ScratchBox>().SetSprites();
+				wrongAnswerNr ++;
+			}
+
+		}
 
 	}
 
-	void OnEnable()
-	{
-		//XmlQuestionsLoader.xmlLoaded += SetQuestionValues;
-	}
-
-	void OnDisable()
-	{
-	//	XmlQuestionsLoader.xmlLoaded -= SetQuestionValues;
-	}
 }

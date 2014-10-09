@@ -13,20 +13,26 @@ public class ScratchController : MonoBehaviour {
 	//EVENTS FOR GAME END
 	public delegate void GameEnd(string test);
 	public static event GameEnd GameEnded;
-
+	public delegate void GameNewTry();
+	public static event GameNewTry GameTryAgain;
 
 	// Use this for initialization
 	void Start () {
+		Init ();
+
+	}
+
+
+	void Init()
+	{
 		currentScreen = (GameController.SCRATCHCARD_TUT == true) ? 0 : 1;
-
-		print (currentScreen);
-
-		explanationScreen.SetActive (false);
 		introScreen.SetActive (true);
+		explanationScreen.SetActive (false);
 		scratchCard.SetActive(false);
 
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.Escape)) {
@@ -45,6 +51,7 @@ public class ScratchController : MonoBehaviour {
 		else if(currentScreen == 1)
 		{
 			scratchCard.SetActive(true);
+			scratchCard.animation.Play("ScratchCardIn");
 			currentScreen ++;
 		}
 	}
@@ -55,18 +62,34 @@ public class ScratchController : MonoBehaviour {
 			GameEnded(inParam);			
 		}		
 	}
-	
+
+	void RestartGame()
+	{
+		scratchCard.animation.Play("ScratchCardOut");
+		StartCoroutine ("ChangeQuestion");
+	}
+
+	IEnumerator ChangeQuestion(){
+		yield return new WaitForSeconds (1.5F);
+		if (GameTryAgain != null) {		
+			GameTryAgain();			
+		}	
+		transform.SendMessage ("SetQuestionValues");
+		scratchCard.animation.Play ("ScratchCardIn");
+	}
 
 	void OnEnable()
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		ScratchBox.finishEvent += ScratchFinish;
+		FailureScreen.RestartGame += RestartGame;
 	}
 
 	void OnDisable()
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		ScratchBox.finishEvent -= ScratchFinish;
+		FailureScreen.RestartGame -= RestartGame;
 	}
 
 }

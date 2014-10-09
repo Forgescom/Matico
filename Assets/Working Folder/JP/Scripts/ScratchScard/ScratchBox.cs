@@ -30,6 +30,7 @@ public class ScratchBox : MonoBehaviour {
 		{
 			answerSprite.GetComponent<SpriteRenderer>().sprite = wrongSprite;
 		}
+		answerSprite.SetActive (false);
 	}
 
 	// Update is called once per frame
@@ -52,6 +53,7 @@ public class ScratchBox : MonoBehaviour {
 			}
 			else
 			{
+				answerSprite.SetActive (true);
 				answerSprite.animation.Play("AnswerPop");
 				transform.renderer.material.color = new Color(1,1,1,0);
 				textAnswer.renderer.material.color = new Color(1,1,1,0);	
@@ -74,4 +76,25 @@ public class ScratchBox : MonoBehaviour {
 			finishEvent(transform.tag);
 		}
 	}
+
+	void RestartShapes()
+	{
+		transform.renderer.material.color = new Color(1,1,1,1);
+		textAnswer.renderer.material.color = new Color(1,1,1,1);
+		answerSprite.SetActive (false);
+
+		enable = true;
+	}
+
+	void OnEnable()
+	{
+		ScratchController.GameTryAgain += RestartShapes;
+
+	}
+	void OnDisable()
+	{
+		ScratchController.GameTryAgain -= RestartShapes;
+		
+	}
+
 }

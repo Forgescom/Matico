@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour {
 	public GameObject FAILURE_SCREEN;
 
 	//TUTORIALS
-	public static bool SCRATCHCARD_TUT = true;
+	public static bool SCRATCHCARD_TUT = false;
 	public static bool ACELEROMETER_TUT = true;
 	public static bool FLIP_TUT = true;
 	public static bool SHOOTER_TUT = true;
@@ -117,6 +117,8 @@ public class GameController : MonoBehaviour {
 		
 		}
 	}
+
+
 
 	void OnEnable()
 	{
