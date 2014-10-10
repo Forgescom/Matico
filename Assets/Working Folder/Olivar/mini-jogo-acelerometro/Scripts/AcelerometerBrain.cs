@@ -76,7 +76,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		if (currentScreen == 0) {
 			explanationScreen.SetActive(true);
-			explanationScreen.animation.Play("Explanation");
+			explanationScreen.animation.Play("boiaExplanation");
 			currentScreen ++;
 		}
 		else if(currentScreen == 1)
@@ -117,7 +117,7 @@ public class AcelerometerBrain : MonoBehaviour {
 		if (vidas == 0) {
 			if(endGame != null)
 			{
-			//	endGame("Errado");
+				endGame("Tubarao");
 			}
 		}
 	}
@@ -125,8 +125,6 @@ public class AcelerometerBrain : MonoBehaviour {
 
 	public void GameEnd(string outcome, int vidas)
 	{
-
-
 		//FINAL SCREEN DEPENDING ON LIVES
 
 		/*if ((outcome == "Vitoria") && (vidas == 3)) {
