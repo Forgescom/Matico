@@ -72,6 +72,7 @@ public class QuestionsHandler : MonoBehaviour {
 					else {
 						answers[i].text =  (correctAnswerFloat - j).ToString();
 					}
+					answers[i].transform.parent.tag = "Errado";
 
 					j++;
 
