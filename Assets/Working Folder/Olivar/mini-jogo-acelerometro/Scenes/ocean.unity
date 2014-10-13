@@ -3087,24 +3087,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec289ed2fef01843958fd26799b4a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bolhas:
-  - {fileID: 599407947}
-  - {fileID: 230076740}
-  - {fileID: 1620708833}
-  - {fileID: 1713685384}
-  - {fileID: 2070126488}
-  - {fileID: 1714645363}
-  - {fileID: 797602159}
-  - {fileID: 1457743428}
-  - {fileID: 132297079}
-  - {fileID: 1206793672}
-  calculoText: {fileID: 390081772}
-  finalMessage: {fileID: 540175079}
   vidasText: {fileID: 2054666165}
   introScreen: {fileID: 493198248}
   explanationScreen: {fileID: 1984693912}
   accelerometer: {fileID: 449156013}
-  hoverForce: 10
   boia: {fileID: 1086326219}
   sharkfin: {fileID: 1269206967}
   waves: {fileID: 100000, guid: 0b8819b63c519e04ea4432a976f65a21, type: 2}
@@ -3126,13 +3112,24 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1463604786}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8806f421f4760e4a9c876983aa436a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionHolder: {fileID: 0}
-  answers: []
+  questionHolder: {fileID: 390081772}
+  answers:
+  - {fileID: 599407947}
+  - {fileID: 230076740}
+  - {fileID: 1620708833}
+  - {fileID: 1713685384}
+  - {fileID: 2070126488}
+  - {fileID: 1714645363}
+  - {fileID: 797602159}
+  - {fileID: 1457743428}
+  - {fileID: 132297079}
+  - {fileID: 1206793672}
+  randomAnswers: 1
 --- !u!1 &1577030505
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -60,19 +61,21 @@ public class PlayerController : MonoBehaviour
 		if(col.name.Contains("hip"))
 		{
 			col.SendMessage("AnimAndDestroy");
-			if(col.tag =="Errado")
-				brain.SendMessage("AnswerHit",false);
-			else if (col.tag == "Certo")
-				brain.SendMessage("AnswerHit",true);
+			if(col.tag == "Errado") {
+				print("Errado");
+				brain.SendMessage("AnswerHit", false);
+			}
+			else if (col.tag == "Certo") {
+				print("Certo");
+				brain.SendMessage("AnswerHit", true);
+			}
 		}
 		else if (col.tag =="Shark")
 		{
 			currentState ++;	
 			string animatorKey = "Damage"+ currentState;
 
-			transform.GetComponent<Animator>().SetBool(animatorKey,true);			
-
-
+			transform.GetComponent<Animator>().SetBool(animatorKey,true);
 			brain.SendMessage("ObjectHit");
 		}
 		else if (col.tag =="Wave")

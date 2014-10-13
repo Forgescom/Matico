@@ -127,7 +127,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -346,6 +346,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233f682502d976049b9379077422c3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CannonState: 0
+  LeftCannonOrigin: {fileID: 0}
+  RightCannonOrigin: {fileID: 0}
+  CannonLineRenderer1: {fileID: 0}
+  CannonLineRenderer2: {fileID: 0}
+  TrajectoryLineRenderer: {fileID: 0}
+  PandaToThrow: {fileID: 0}
+  PandaWaitPosition: {fileID: 0}
+  ThrowSpeed: 0
+  TimeSinceThrown: 0
 --- !u!120 &318220703
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -567,6 +577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19531e29e0c91c446b9d93f78c227f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 0}
+  cannon: {fileID: 0}
 --- !u!4 &504010335
 Transform:
   m_ObjectHideFlags: 0
@@ -715,6 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc682b55ccd5aa94c9e1cf1ce408354f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParallaxFactor: 0
 --- !u!1001 &574079846
 Prefab:
   m_ObjectHideFlags: 0
@@ -862,6 +875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc23879ff5d5424c9b33ac948dac731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perspectiveZoomSpeed: .5
+  orthoZoomSpeed: .5
 --- !u!114 &683266628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0a9cd5afbf6f941b1c6d3a2c0d0854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cannon: {fileID: 0}
 --- !u!114 &683266630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,6 +911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63fdc71a170a2af4b91d5c07860159b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartingPosition: {x: 0, y: 0, z: 0}
+  IsFollowing: 0
+  PandaToFollow: {fileID: 0}
 --- !u!1001 &820727017
 Prefab:
   m_ObjectHideFlags: 0
@@ -1478,7 +1497,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1660,7 +1679,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0

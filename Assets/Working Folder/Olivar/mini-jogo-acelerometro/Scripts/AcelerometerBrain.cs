@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class AcelerometerBrain : MonoBehaviour {
 
-	//TEXTO NAS BOLHAS 
-	public TextMesh[] bolhas = new TextMesh[10];
-	public TextMesh calculoText;	
-	public TextMesh finalMessage;
+	//TEXTO NAS BOLHAS 	
 	public TextMesh vidasText;
 
 	public GameObject introScreen;
@@ -14,16 +13,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	public GameObject accelerometer;
 
 
-
-
-	int currentScreen = 0;
-
-	int num1;
-	int num2;
-	int num3;
-	int result;
-
-	public float hoverForce;
+	int currentScreen = 0;	
 
 	public GameObject boia;
 	public GameObject sharkfin;
@@ -58,8 +48,8 @@ public class AcelerometerBrain : MonoBehaviour {
 			startGame();
 		}
 		
-		set_values ();
-		vidasText.text = "Vidas: " + vidas.ToString();
+//		vidasText.text = "Vidas: " + GameController.CURRENT_LIVES.ToString ();
+		vidasText.text = "Vidas: " + vidas.ToString ();
 		//bloquear objectos antes de ecras desaparecerem
 	}
 	
@@ -94,7 +84,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		Handheld.Vibrate ();
 
-		if(correct)
+		if(correct == true)
 		{		
 			if(endGame != null)
 			{
@@ -112,12 +102,14 @@ public class AcelerometerBrain : MonoBehaviour {
 
 	void ObjectHit()
 	{
-		vidas --;
+		print ("Menos uma!");
+		vidas--;
+		vidasText.text = "Vidas: " + vidas.ToString ();
 
 		if (vidas == 0) {
 			if(endGame != null)
 			{
-				endGame("Tubarao");
+				endGame("Errado");
 			}
 		}
 	}
@@ -187,38 +179,6 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		if(restartGame != null){
 			restartGame();
-		}
-	}
-
-	void set_values()
-	{
-		num1 = Random.Range(1, 20);
-		num2 = Random.Range(1, 20);
-		num3 = Random.Range(1, 20);
-		
-		calculoText.text = "Calculo: " + num1.ToString() +" + "+ num2.ToString() +" + "+ num3.ToString() + " =? ";
-		
-		result = num1 + num2 + num3;
-		
-		int i = 0;
-		int j = 1;
-		
-		int randomPositionForCorrect = Random.Range (0, 10);
-		bolhas[randomPositionForCorrect].text = result.ToString ();
-		bolhas[randomPositionForCorrect].transform.parent.tag = "Certo";
-		
-		for(i = 0; i < bolhas.Length; i++)
-		{
-			if(bolhas[i].text != result.ToString()){
-				bolhas[i].transform.parent.tag = "Errado";
-				if (i % 2 != 0) {
-					bolhas[i].text = (result + j).ToString();
-				}
-				else {
-					bolhas[i].text = (result - j).ToString();
-				}
-				j++;			
-			}
 		}
 	}
 }

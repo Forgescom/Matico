@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class SharkFin : MonoBehaviour {
 	public GameObject brain;
@@ -29,13 +31,16 @@ public class SharkFin : MonoBehaviour {
 			}
 			transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 		}
+		else if (canMove == false) {
+			transform.position = Vector3.zero;
+		}
 	}
 	void StartMovement()
 	{
 		canMove = true;
-		print ("LIGUEI TUBARAO");
+		print ("TUBARAO ON");
 	}
-	
+
 	void OnEnable()
 	{
 		AcelerometerBrain.startGame += StartMovement;
