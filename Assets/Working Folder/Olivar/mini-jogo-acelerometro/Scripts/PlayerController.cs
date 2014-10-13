@@ -83,7 +83,9 @@ public class PlayerController : MonoBehaviour
 
 	void AddWaveForce()
 	{
-		float force = 50;
+		float force = 100;
+
+
 		// VER QUAL O LADO QUE COLIDE E DETERMINAR FORÇA/DIREÇAO
 		transform.rigidbody2D.AddForce(Vector3.right * force * Time.deltaTime);
 
