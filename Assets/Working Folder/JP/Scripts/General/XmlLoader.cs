@@ -1,36 +1,85 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Xml;
-using System.IO;
+
 
 public class XmlLoader : MonoBehaviour {
 
-	public TextAsset xmlFile;
 	List<Dictionary<string,string>> housesXml;
 	Dictionary<string,string> houseDetails;
 
+	public TextAsset xmlFile;
+	string xmlToString;
+	FileInfo fileXmlHouses;
 
 	// Use this for initialization
 	void Start () {
 		housesXml = GameController.houses;
 		housesXml.Clear ();
-		ReadXML ();
+
+		fileXmlHouses = new FileInfo (Application.persistentDataPath + "\\" + "levelsInfo.xml");
+	
+
+		xmlToString = xmlFile.text;
+		print (xmlFile.text);
+		if(!fileXmlHouses.Exists)
+		{
+			Save(xmlToString);
+			Load();
+		}
+		else
+		{
+			Load();
+		}
 	}
+
+
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.A))
 		{
 			WriteToXml();
+	
+
 		}
+	}
+
+	void Save(string fileToSave)
+	{
+		StreamWriter w;
+
+		if(!fileXmlHouses.Exists)
+		{
+			w = fileXmlHouses.CreateText();
+			w.WriteLine(fileToSave);
+		}
+		else{
+			fileXmlHouses.Delete();
+			w = fileXmlHouses.CreateText();
+			print (fileToSave);
+			w.WriteLine(fileToSave);
+		}
+		w.Close ();
+	}
+
+	void Load()
+	{
+		StreamReader r = File.OpenText (Application.persistentDataPath + "\\" + "levelsInfo.xml");
+		string info = r.ReadToEnd ();
+
+		r.Close ();
+		xmlToString = info;
+		ReadXML ();
 	}
 
 	void ReadXML()
 	{
 		XmlDocument xmlDoc = new XmlDocument ();
-		xmlDoc.LoadXml (xmlFile.text);
+		xmlDoc.LoadXml (xmlToString);
 		XmlNodeList housesXmlNodes = xmlDoc.GetElementsByTagName ("level");
 
 		foreach (XmlNode levelInfo in housesXmlNodes) {
@@ -60,45 +109,39 @@ public class XmlLoader : MonoBehaviour {
 
 	public void WriteToXml()
 	{
+
+		XmlDocument xmlDoc = new XmlDocument ();
+		xmlDoc.LoadXml(xmlToString);
 		
-		string filepath = Application.dataPath + "/test.xml";
+		XmlElement elmRoot = xmlDoc.DocumentElement;
+		
+		elmRoot.RemoveAll(); // remove all inside the transforms node.
+		
+		for(int i = 0; i<housesXml.Count; i++)
+		{				
+			XmlElement elmNew = xmlDoc.CreateElement("level"); // create the rotation node.
+			elmNew.SetAttribute("id",housesXml [i]["HouseName"]);
+			elmNew.SetAttribute("blocked",housesXml [i]["Blocked"]);				
 
-		print (filepath);
-		XmlDocument xmlDoc = new XmlDocument();
-
-
-		if(File.Exists (filepath))
-		{
-			for(int i = 0; i<GameController.houses.Count; i++)
-			{
-				xmlDoc.Load(filepath);
-				
-				XmlElement elmRoot = xmlDoc.DocumentElement;
-				
-				//elmRoot.RemoveAll(); // remove all inside the transforms node.
-				
-				XmlElement elmNew = xmlDoc.CreateElement("level"); // create the rotation node.
-				elmNew.SetAttribute("id","Casa"+i.ToString());
-				elmNew.SetAttribute("blocked","fuckyou");
-				
-				
-				XmlElement rotation_X = xmlDoc.CreateElement("typeofgame"); // create the x node.
-				rotation_X.InnerText = "scratch"; // apply to the node text the values of the variable.
-				
-				XmlElement rotation_Y = xmlDoc.CreateElement("energiesspent"); // create the y node.
-				rotation_Y.InnerText = "1"; // apply to the node text the values of the variable.
-				
-				XmlElement rotation_Z = xmlDoc.CreateElement("levelofdificulty"); // create the z node.
-				rotation_Z.InnerText = "1"; // apply to the node text the values of the variable.
-				
-				elmNew.AppendChild(rotation_X); // make the rotation node the parent.
-				elmNew.AppendChild(rotation_Y); // make the rotation node the parent.
-				elmNew.AppendChild(rotation_Z); // make the rotation node the parent.
-				elmRoot.AppendChild(elmNew); // make the transform node the parent.
-				
-				xmlDoc.Save(filepath); // save file.
-			}
+			XmlElement typeofgame = xmlDoc.CreateElement("typeofgame"); // create the x node.
+			typeofgame.InnerText = housesXml[i]["Typeofgame"]; // apply to the node text the values of the variable.
+			
+			XmlElement energiesspent = xmlDoc.CreateElement("energiesspent"); // create the y node.
+			energiesspent.InnerText = housesXml[i]["EnergiesSpent"]; // apply to the node text the values of the variable.
+			
+			XmlElement levelofdificulty = xmlDoc.CreateElement("levelofdificulty"); // create the z node.
+			levelofdificulty.InnerText = housesXml[i]["Dificulty"]; // apply to the node text the values of the variable.
+			
+			elmNew.AppendChild(typeofgame); // make the rotation node the parent.
+			elmNew.AppendChild(energiesspent); // make the rotation node the parent.
+			elmNew.AppendChild(levelofdificulty); // make the rotation node the parent.
+			elmRoot.AppendChild(elmNew); // make the transform node the parent.
 
 		}
+		
+		xmlToString = xmlDoc.InnerXml;
+		
+		Save (xmlToString);
+					
 	}
 }

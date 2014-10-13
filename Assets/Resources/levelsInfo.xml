@@ -1,0 +1,227 @@
+<GameLevelInfo>
+  <level id="Casa01" blocked="false">
+    <typeofgame>Acelerometer</typeofgame>
+    <energiesspent>2</energiesspent>
+    <levelofdificulty>1</levelofdificulty>
+  </level>
+  <level id="Casa02" blocked="true">
+    <typeofgame>Acelerometer</typeofgame>
+    <energiesspent>4</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa03" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>1</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa04" blocked="true">
+    <typeofgame>Acelerometer</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa05" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa06" blocked="true">
+    <typeofgame>Acelerometer</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa07" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa08" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa09" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa10" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa11" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa12" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa13" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa14" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa15" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa16" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa17" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa18" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa19" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa20" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa21" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa22" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa23" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa24" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa25" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa26" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa27" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa28" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa29" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa30" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa31" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa32" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa33" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa34" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa35" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa36" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa37" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa38" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa39" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa40" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa41" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa42" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa43" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa44" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+  <level id="Casa45" blocked="true">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>3</energiesspent>
+    <levelofdificulty>5</levelofdificulty>
+  </level>
+</GameLevelInfo>

@@ -8120,6 +8120,14 @@ Prefab:
       propertyPath: board
       value: 
       objectReference: {fileID: 904776213}
+    - target: {fileID: 11400004, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
+      propertyPath: texto
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
+      propertyPath: xmlFile
+      value: 
+      objectReference: {fileID: 4900000, guid: e3a45842afee67447a3eb9f09573d43c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
   m_RootGameObject: {fileID: 471059808}

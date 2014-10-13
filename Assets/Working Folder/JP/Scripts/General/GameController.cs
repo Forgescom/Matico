@@ -98,6 +98,8 @@ public class GameController : MonoBehaviour {
 	void btClick(GameObject bt)
 	{
 		MiniGamelEnd ("Won");
+		transform.SendMessage ("WriteToXml");
+		print ("Gravei");
 		
 	}
 
@@ -106,6 +108,7 @@ public class GameController : MonoBehaviour {
 		switch (outCome) {
 			case "Won":
 				houses[CURRENT_LEVEL]["Blocked"] = "false";
+
 				Application.LoadLevel("Board");
 				break;
 			case "NextLevel":
