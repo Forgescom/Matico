@@ -83,8 +83,11 @@ public class PlayerController : MonoBehaviour
 
 	void AddWaveForce()
 	{
+		float force = 100;
+
+
 		// VER QUAL O LADO QUE COLIDE E DETERMINAR FORÇA/DIREÇAO
-		transform.rigidbody2D.AddForce(Vector3.left * 10);
+		transform.rigidbody2D.AddForce(Vector3.right * force * Time.deltaTime);
 
 		canMove = false;
 		StartCoroutine ("WaveEffect");
@@ -92,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator WaveEffect()
 	{
-		yield return new WaitForSeconds (4f);
+		yield return new WaitForSeconds (0.75f);
 		canMove = true;
 	}
 

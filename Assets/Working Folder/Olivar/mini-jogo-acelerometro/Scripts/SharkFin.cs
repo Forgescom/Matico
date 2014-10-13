@@ -5,9 +5,12 @@ public class SharkFin : MonoBehaviour {
 	public GameObject brain;
 
 	bool canMove = false;
+	Vector3 startPos;
 
-	void start()
+	void Start()
 	{
+		startPos = transform.position;
+		print (startPos);
 	}
 
 	void Update()
@@ -36,11 +39,18 @@ public class SharkFin : MonoBehaviour {
 	void OnEnable()
 	{
 		AcelerometerBrain.startGame += StartMovement;
+		AcelerometerBrain.restartGame += RestartValues;
 	}
 	
 	void OnDisable()
 	{
 		AcelerometerBrain.startGame -= StartMovement;
+		AcelerometerBrain.restartGame -= RestartValues;
+	}
+
+	void RestartValues(){
+		transform.position = startPos;
+		canMove = true;
 	}
 
 }

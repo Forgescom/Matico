@@ -38,15 +38,21 @@ public class AcelerometerBrain : MonoBehaviour {
 	public delegate void EndGameDelegate(string outcome);
 	public static event EndGameDelegate endGame;
 
+	public delegate void RestartGameDelegate();
+	public static event RestartGameDelegate restartGame;
+
 
 	// Use this for initialization
 	void Start () {
-		/*introScreen.SetActive (true);
+		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
-		accelerometer.SetActive(false);*/
+		accelerometer.SetActive(false);
+	
+		Init ();
+	}
 
-
-
+	void Init() 
+	{
 		if(startGame !=null)
 		{
 			startGame();
@@ -55,13 +61,13 @@ public class AcelerometerBrain : MonoBehaviour {
 		set_values ();
 		vidasText.text = "Vidas: " + vidas.ToString();
 		//bloquear objectos antes de ecras desaparecerem
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.Escape)) {
-			Application.LoadLevel(1);
+//			Application.LoadLevel(1);
+			RestartGame();
 		}
 
 	}
@@ -70,7 +76,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		if (currentScreen == 0) {
 			explanationScreen.SetActive(true);
-			explanationScreen.animation.Play("Explanation");
+			explanationScreen.animation.Play("boiaExplanation");
 			currentScreen ++;
 		}
 		else if(currentScreen == 1)
@@ -83,11 +89,7 @@ public class AcelerometerBrain : MonoBehaviour {
 			}
 		}
 	}
-
-
-
-
-
+	
 	void AnswerHit(bool correct)
 	{
 		Handheld.Vibrate ();
@@ -115,7 +117,7 @@ public class AcelerometerBrain : MonoBehaviour {
 		if (vidas == 0) {
 			if(endGame != null)
 			{
-				endGame("Errado");
+				endGame("Tubarao");
 			}
 		}
 	}
@@ -123,8 +125,6 @@ public class AcelerometerBrain : MonoBehaviour {
 
 	public void GameEnd(string outcome, int vidas)
 	{
-
-
 		//FINAL SCREEN DEPENDING ON LIVES
 
 		/*if ((outcome == "Vitoria") && (vidas == 3)) {
@@ -172,15 +172,23 @@ public class AcelerometerBrain : MonoBehaviour {
 	void OnEnable()
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+		FailureScreen.RestartGame += RestartGame;
 //		AccelerometerBox.finishEvent += AccelerometerFinish;
 	}
 	
 	void OnDisable()
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+		FailureScreen.RestartGame -= RestartGame;
 //		AccelerometerBox.finishEvent -= AccelerometerFinish;
 	}
 
+	void RestartGame()
+	{
+		if(restartGame != null){
+			restartGame();
+		}
+	}
 
 	void set_values()
 	{
