@@ -24,7 +24,7 @@ public class XmlLoader : MonoBehaviour {
 	
 
 		xmlToString = xmlFile.text;
-		print (xmlFile.text);
+
 		if(!fileXmlHouses.Exists)
 		{
 			Save(xmlToString);

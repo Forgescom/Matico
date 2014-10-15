@@ -15,9 +15,11 @@ public class BoardMain : MonoBehaviour {
 
 
 	void Start(){
+
+
 		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
-
+		TurnOffOnSound ();
 		AssignHousesSettings ();
 
 		if(showIntro == true)
@@ -124,14 +126,28 @@ public class BoardMain : MonoBehaviour {
 		}
 	}
 
+	void TurnOffOnSound()
+	{
+
+		if (GameController.musicSoundOn == false) {
+			transform.GetComponent<AudioSource>().Stop();
+		}
+		else{
+			transform.GetComponent<AudioSource>().Play();
+			//transform.audio.Play();
+		}
+	}
+
 	void OnEnable()
 	{
 		DeactivateOnAnimEnd.animationFinish += EnableMap;
 		CasaController.throwGame += StartLevel;
+		GameController.updateSoundVolume += TurnOffOnSound;
 	}
 
 	void OnDisable()
 	{
+		GameController.updateSoundVolume -= TurnOffOnSound;
 		DeactivateOnAnimEnd.animationFinish -= EnableMap;
 		CasaController.throwGame -= StartLevel;
 	}

@@ -8,11 +8,12 @@ public class LifesHandler : MonoBehaviour {
 
 	public Texture [] livesTextures;
 
-	int currentLives = 2;
+	int currentLives;
 
 	// Use this for initialization
 	void Start () {
-	
+		currentLives = GameController.CURRENT_LIVES;
+		lives.texture = livesTextures [currentLives];
 	}
 	
 	// Update is called once per frame
@@ -21,27 +22,33 @@ public class LifesHandler : MonoBehaviour {
 	
 	}
 
-	void OnMouseDown()
+	void UpdateLives(string outCome)
 	{
-		RemoveLives ();
-	}
-
-	void OnMouseEnter()
-	{
-		AddLives ();
-	}
-
-	void AddLives(){
-		if (currentLives <= 4) {
-			currentLives ++;
-			lives.texture = livesTextures[currentLives -1];
+		if(outCome == "Errado")
+		{
+			if (currentLives > 1) {
+				currentLives --;
+				lives.texture = livesTextures[currentLives -1];
+			}
+		}
+		else 
+		{
+			if (currentLives <= 4) {
+				currentLives ++;
+				lives.texture = livesTextures[currentLives -1];
+			}
 		}
 	}
 
-	void RemoveLives(){
-		if (currentLives > 1) {
-			currentLives --;
-			lives.texture = livesTextures[currentLives -1];
-		}
+
+	void OnEnable()
+	{
+		ScratchController.GameEnded += UpdateLives;
+		AcelerometerBrain.endGame += UpdateLives;
+	}
+	void OnDisable()
+	{
+		ScratchController.GameEnded -= UpdateLives;
+		AcelerometerBrain.endGame -= UpdateLives;
 	}
 }

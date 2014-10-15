@@ -17,7 +17,7 @@ public class AvatarPiker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		print (GameController.PLAYER_NAME);
+
 		avatarName.text = GameController.PLAYER_NAME;
 		currentFaceIndex = GameController.PLAYER_FACE;
 

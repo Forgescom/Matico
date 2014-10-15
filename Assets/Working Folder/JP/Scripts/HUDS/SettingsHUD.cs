@@ -32,7 +32,7 @@ public class SettingsHUD : MonoBehaviour {
 				}
 			break;
 			case "somFx":
-				print ("DESLIGA SOM");
+			GameController.SwitchOnOffSound("Music");
 			break;
 		
 		}

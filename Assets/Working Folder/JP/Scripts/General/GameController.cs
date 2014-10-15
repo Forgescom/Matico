@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
 	public static string PLAYER_NAME;
 	public static int PLAYER_FACE;
 	public static int CURRENT_LEVEL;
-	public static int CURRENT_LIVES;
+	public static int CURRENT_LIVES = 4;
 
 	//MINI GAMES FINAL SCREEN
 	public GameObject SUCCESS_SCREEN;
@@ -35,37 +35,81 @@ public class GameController : MonoBehaviour {
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
 
+	//SOUND VALUES
+	public static bool fxSoundOn = true;
+	public static bool musicSoundOn = true;
+
+	//EVENTS AND DELEGATES
+	public delegate void SoundDelegate();
+	public static event SoundDelegate updateSoundVolume;
 
 
 	void Awake()
 	{
-		if (controller == null)
-		{
+		if (controller == null){
 			DontDestroyOnLoad(gameObject);
 			controller = this;
 		}
-		else if (controller != this)
-		{
+		else if (controller != this){
 			Destroy(gameObject);
 		}
+
+
+		//THROW EVENT TO TURN ON/OFF SOUNDS
+		if (updateSoundVolume != null) {
+			updateSoundVolume();
+		}
+		print ("THROW");
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		Init ();
+
+
+
+
+
+	}
+	void Init(){
 		if (PlayerPrefs.GetString (PREFS_PLAYER_NAME) == "")
 			PLAYER_NAME = "Nome";	
 		else 
 			PLAYER_NAME = PlayerPrefs.GetString (PREFS_PLAYER_NAME);
-	
-	
-		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
 
-	}
+
+		int musicSoundOnINT = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDAMBIENTE);
+		musicSoundOn = (musicSoundOnINT == 0) ? false : true;
+		int fxSoundOnINT = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDFX);
+		fxSoundOn = (fxSoundOnINT == 0) ? false : true;
+
 	
+		//THROW EVENT TO TURN ON/OFF SOUNDS
+		if (updateSoundVolume != null) {
+			updateSoundVolume();
+		}
+
+
+
+		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
+	}
 	// Update is called once per frame
 	void Update () {
-	
+
+	}
+
+	public static void SwitchOnOffSound(string sound)
+	{
+		if (sound == "FX") {
+			fxSoundOn = !fxSoundOn;
+		}
+		if(sound == "Music"){
+			musicSoundOn = !musicSoundOn;
+		}
+
+		if (updateSoundVolume != null) {
+			updateSoundVolume();
+		}
 	}
 
 
@@ -87,9 +131,12 @@ public class GameController : MonoBehaviour {
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
+			CURRENT_LIVES ++;
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
 		}
 		else if (outComeIn == "Errado"){
+			CURRENT_LIVES --;
+			LifesHandler.
 			Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity);
 		}
 	}
@@ -99,7 +146,7 @@ public class GameController : MonoBehaviour {
 	{
 		MiniGamelEnd ("Won");
 		transform.SendMessage ("WriteToXml");
-		print ("Gravei");
+
 		
 	}
 
@@ -120,7 +167,6 @@ public class GameController : MonoBehaviour {
 		
 		}
 	}
-
 
 
 	void OnEnable()

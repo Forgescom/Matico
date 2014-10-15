@@ -18,6 +18,8 @@ public class Main : MonoBehaviour {
 		//SHOW MENUS
 		ShowMenu ();
 
+		//SOUND
+		TurnOffOnSound ();
 	}
 	
 	// Update is called once per frame
@@ -61,6 +63,27 @@ public class Main : MonoBehaviour {
 			avatarMenu.SetActive(false);
 			activeMenu = mainMenu;
 		}
+	}
+
+	void TurnOffOnSound()
+	{
+		if (GameController.musicSoundOn == false) {
+			transform.GetComponent<AudioSource>().Stop();
+		}
+		else{
+			transform.GetComponent<AudioSource>().Play();
+			//transform.audio.Play();
+		}
+	}
+
+	void OnEnable()
+	{
+		GameController.updateSoundVolume += TurnOffOnSound;
+	}
+
+	void OnDisable()
+	{
+		GameController.updateSoundVolume -= TurnOffOnSound;
 	}
 
 

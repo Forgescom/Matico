@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &35235555
 Transform:
   m_ObjectHideFlags: 0
@@ -629,6 +629,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 325029629}
   - 114: {fileID: 325029630}
+  - 82: {fileID: 325029631}
   m_Layer: 0
   m_Name: MainMenuController
   m_TagString: Untagged
@@ -664,6 +665,64 @@ MonoBehaviour:
   settingsMenu: {fileID: 1073245865}
   programaMenu: {fileID: 1506207825}
   backButton: {fileID: 37451398}
+--- !u!82 &325029631
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325029628}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 142e24d5ffc23e9448f0a5ff42e14df3, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &345279484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,7 +1750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1073245866
 Transform:
   m_ObjectHideFlags: 0
@@ -2101,7 +2160,6 @@ GameObject:
   - 20: {fileID: 1267377447}
   - 92: {fileID: 1267377446}
   - 124: {fileID: 1267377445}
-  - 81: {fileID: 1267377444}
   - 114: {fileID: 1267377449}
   m_Layer: 0
   m_Name: Main Camera
@@ -2110,13 +2168,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1267377444
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1267377443}
-  m_Enabled: 1
 --- !u!124 &1267377445
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2749,6 +2800,7 @@ GameObject:
   - 114: {fileID: 1718154751}
   - 114: {fileID: 1718154754}
   - 114: {fileID: 1718154753}
+  - 81: {fileID: 1718154755}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2808,6 +2860,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xmlFile: {fileID: 4900000, guid: e3a45842afee67447a3eb9f09573d43c, type: 3}
+--- !u!81 &1718154755
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8100000, guid: 69a062f79ff249845b5e382fc185fbbd,
+    type: 2}
+  m_PrefabInternal: {fileID: 492862145}
+  m_GameObject: {fileID: 1718154750}
+  m_Enabled: 1
 --- !u!1 &1828257546
 GameObject:
   m_ObjectHideFlags: 0
