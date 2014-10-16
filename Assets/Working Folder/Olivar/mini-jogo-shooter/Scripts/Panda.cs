@@ -35,7 +35,7 @@ public class Panda : MonoBehaviour {
 	public void OnThrow()
 	{
 		//play the sound
-		GetComponent<AudioSource>().Play();
+//		GetComponent<AudioSource>().Play();
 		//show the trail renderer
 		GetComponent<TrailRenderer>().enabled = true;
 		//allow for gravity forces

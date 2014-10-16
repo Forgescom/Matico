@@ -17,7 +17,7 @@ public class Target : MonoBehaviour
 	{
 		if (col.gameObject.GetComponent<Rigidbody2D>() == null) return;
 		
-		//if we are hit by a bird
+		//if we are hit by a panda
 		if (col.gameObject.tag == "Panda")
 		{
 			//            GetComponent<AudioSource>().Play();

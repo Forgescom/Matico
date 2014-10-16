@@ -13,11 +13,14 @@ public class Cannon : MonoBehaviour
 	public CannonState CannonState;
 	
 	//the left and right parts of the slingshot
-	public Transform LeftCannonOrigin, RightCannonOrigin;
+	public Transform CannonOrigin;
+//	public Transform LeftCannonOrigin, RightCannonOrigin;
 	
 	//two line renderers to simulate the "strings" of the slingshot
-	public LineRenderer CannonLineRenderer1;
-	public LineRenderer CannonLineRenderer2;
+	public LineRenderer CannonLineRenderer;
+
+//	public LineRenderer CannonLineRenderer1;
+//	public LineRenderer CannonLineRenderer2;
 	
 	//this linerenderer will draw the projected trajectory of the thrown panda
 	public LineRenderer TrajectoryLineRenderer;
@@ -33,6 +36,8 @@ public class Cannon : MonoBehaviour
 	
 	[HideInInspector]
 	public float TimeSinceThrown;
+
+	public float RotationSpeed = 5;
 	
 	// Use this for initialization
 	void Start()
@@ -41,104 +46,119 @@ public class Cannon : MonoBehaviour
 		//for the slingshot renderers this did not work so I
 		//set the z on the background sprites to 10
 		//hope there's a better way around that!
-		CannonLineRenderer1.sortingLayerName = "Foreground";
-		CannonLineRenderer2.sortingLayerName = "Foreground";
+		CannonLineRenderer.sortingLayerName = "Foreground";
+
+//		CannonLineRenderer1.sortingLayerName = "Foreground";
+//		CannonLineRenderer2.sortingLayerName = "Foreground";
 		TrajectoryLineRenderer.sortingLayerName = "Foreground";
 		
 		CannonState = CannonState.Idle;
-		CannonLineRenderer1.SetPosition(0, LeftCannonOrigin.position);
-		CannonLineRenderer2.SetPosition(0, RightCannonOrigin.position);
+
+		CannonLineRenderer.SetPosition(0, CannonOrigin.position);
+//		CannonLineRenderer1.SetPosition(0, LeftCannonOrigin.position);
+//		CannonLineRenderer2.SetPosition(0, RightCannonOrigin.position);
 		
 		//pointing at the middle position of the two vectors
-		CannonMiddleVector = new Vector3((LeftCannonOrigin.position.x + RightCannonOrigin.position.x) / 2,
+		CannonMiddleVector = new Vector3((CannonOrigin.position.x * 1.5f) / 2, (CannonOrigin.position.y * 1.5f) / 2, 0);
+
+/*		CannonMiddleVector = new Vector3((LeftCannonOrigin.position.x + RightCannonOrigin.position.x) / 2,
 		                                 (LeftCannonOrigin.position.y + RightCannonOrigin.position.y) / 2, 0);
-	}
+*/
+}
 	
 	// Update is called once per frame
 	void Update()
 	{
 		switch (CannonState)
 		{
-		case CannonState.Idle:
-			//fix panda's position
-			InitializePanda();
-			//display the slingshot "strings"
-			DisplayCannonLineRenderers();
-			if (Input.GetMouseButtonDown(0))
-			{
-				//get the point on screen user has tapped
-				Vector3 location = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				//if user has tapped onto the panda
-				if (PandaToThrow.GetComponent<CircleCollider2D>() == Physics2D.OverlapPoint(location))
+			case CannonState.Idle:
+				//fix panda's position
+				InitializePanda();
+				//display the cannon "trigger"
+				DisplayCannonLineRenderer();
+				if (Input.GetMouseButtonDown(0))
 				{
-					CannonState = CannonState.UserPulling;
+					//get the point on screen user has tapped
+					Vector3 location = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+					//if user has tapped onto the panda
+					if (PandaToThrow.GetComponent<CircleCollider2D>() == Physics2D.OverlapPoint(location))
+					{
+						CannonState = CannonState.UserPulling;
+					}
 				}
-			}
-			break;
-		case CannonState.UserPulling:
-			DisplayCannonLineRenderers();
-			
-			if (Input.GetMouseButton(0))
-			{
-				//get where user is tapping
-				Vector3 location = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				location.z = 0;
-				//we will let the user pull the panda up to a maximum distance
-				if (Vector3.Distance(location, CannonMiddleVector) > 1.5f)
+				break;
+			case CannonState.UserPulling:
+				DisplayCannonLineRenderer();
+				
+				if (Input.GetMouseButton(0))
 				{
-					//basic vector maths :)
-					var maxPosition = (location - CannonMiddleVector).normalized * 1.5f + CannonMiddleVector;
-					PandaToThrow.transform.position = maxPosition;
+					//get where user is tapping
+					Vector3 location = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+					location.z = 0;
+					//we will let the user pull the panda up to a maximum distance
+					if (Vector3.Distance(location, CannonMiddleVector) > 1.5f)
+					{
+						//basic vector maths :)
+						var maxPosition = (location - CannonMiddleVector).normalized * 1.5f + CannonMiddleVector;
+						PandaToThrow.transform.position = maxPosition;
+					}
+					else
+					{
+						PandaToThrow.transform.position = location;
+					}
+					float distance = Vector3.Distance(CannonMiddleVector, PandaToThrow.transform.position);
+					//display projected trajectory based on the distance
+					DisplayTrajectoryLineRenderer(distance);
 				}
-				else
+				else//user has removed the tap 
 				{
-					PandaToThrow.transform.position = location;
+					SetTrajectoryLineRenderesActive(false);
+					//throw the panda!!!
+					TimeSinceThrown = Time.time;
+					float distance = Vector3.Distance(CannonMiddleVector, PandaToThrow.transform.position);
+					if (distance > 1)
+					{
+						SetCannonLineRendererActive(false);
+						CannonState = CannonState.PandaFlying;
+						ThrowPanda(distance);
+					}
+					else//not pulled long enough, so reinitiate it
+					{
+						//distance/10 was found with trial and error :)
+						//animate the panda to the wait position
+						PandaToThrow.transform.positionTo(distance / 10, //duration
+						                                  PandaWaitPosition.transform.position). //final position
+							setOnCompleteHandler((x) =>
+							                     {
+								x.complete();
+								x.destroy();
+								InitializePanda();
+							});
+					}
 				}
-				float distance = Vector3.Distance(CannonMiddleVector, PandaToThrow.transform.position);
-				//display projected trajectory based on the distance
-				DisplayTrajectoryLineRenderer2(distance);
-			}
-			else//user has removed the tap 
-			{
-				SetTrajectoryLineRenderesActive(false);
-				//throw the panda!!!
-				TimeSinceThrown = Time.time;
-				float distance = Vector3.Distance(CannonMiddleVector, PandaToThrow.transform.position);
-				if (distance > 1)
-				{
-					SetSlingshotLineRenderersActive(false);
-					CannonState = CannonState.PandaFlying;
-					ThrowPanda(distance);
-				}
-				else//not pulled long enough, so reinitiate it
-				{
-					//distance/10 was found with trial and error :)
-					//animate the panda to the wait position
-					/*PandaToThrow.transform.positionTo(distance / 10, //duration
-					                                  PandaWaitPosition.transform.position). //final position
-						setOnCompleteHandler((x) =>
-						                     {
-							x.complete();
-							x.destroy();
-							InitializePanda();
-						});*/
-					
-				}
-			}
-			break;
-		case CannonState.PandaFlying:
-			break;
-		default:
-			break;
+				break;
+			case CannonState.PandaFlying:
+				break;
+			default:
+				break;
 		}
-		
+
 	}
-	
+
 	private void ThrowPanda(float distance)
 	{
+//		transform.GetComponent<Animator> ().SetBool ("Fire", true);
+
+
+		animation.PlayQueued("Fire");
+		WaitForAnimation(animation);
+
 		//get velocity
 		Vector3 velocity = CannonMiddleVector - PandaToThrow.transform.position;
 		PandaToThrow.GetComponent<Panda>().OnThrow(); //make the panda aware of it
+
+		PandaToThrow.GetComponent<Panda>().transform.GetComponent<Animator> ().SetBool ("Mooving", true);
+
 		//old and alternative way
 		//PandaToThrow.GetComponent<Rigidbody2D>().AddForce
 		//    (new Vector2(v2.x, v2.y) * ThrowSpeed * distance * 300 * Time.deltaTime);
@@ -152,25 +172,37 @@ public class Cannon : MonoBehaviour
 	}
 	
 	public event EventHandler PandaThrown;
-	
+
+	private IEnumerator WaitForAnimation (Animation animation)
+	{
+		do
+		{
+			yield return null;
+		} while (animation.isPlaying);
+	}
+
 	private void InitializePanda()
 	{
 		//initialization of the ready to be thrown panda
 		PandaToThrow.transform.position = PandaWaitPosition.position;
 		CannonState = CannonState.Idle;
-		SetSlingshotLineRenderersActive(true);
+		SetCannonLineRendererActive(true);
 	}
 	
-	void DisplayCannonLineRenderers()
+	void DisplayCannonLineRenderer()
 	{
-		CannonLineRenderer1.SetPosition(1, PandaToThrow.transform.position);
-		CannonLineRenderer2.SetPosition(1, PandaToThrow.transform.position);
+		CannonLineRenderer.SetPosition(1, PandaToThrow.transform.position);
+
+//		CannonLineRenderer1.SetPosition(1, PandaToThrow.transform.position);
+//		CannonLineRenderer2.SetPosition(1, PandaToThrow.transform.position);
 	}
 	
-	void SetSlingshotLineRenderersActive(bool active)
+	void SetCannonLineRendererActive(bool active)
 	{
-		CannonLineRenderer1.enabled = active;
-		CannonLineRenderer2.enabled = active;
+		CannonLineRenderer.enabled = active;
+
+//		CannonLineRenderer1.enabled = active;
+//		CannonLineRenderer2.enabled = active;
 	}
 	
 	void SetTrajectoryLineRenderesActive(bool active)
@@ -184,7 +216,7 @@ public class Cannon : MonoBehaviour
 	/// http://wiki.unity3d.com/index.php?title=Trajectory_Simulation
 	/// </summary>
 	/// <param name="distance"></param>
-	void DisplayTrajectoryLineRenderer2(float distance)
+	void DisplayTrajectoryLineRenderer(float distance)
 	{
 		SetTrajectoryLineRenderesActive(true);
 		Vector3 v2 = CannonMiddleVector - PandaToThrow.transform.position;

@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 	public float[] boundaries;
 	public bool canMove = false;
 
+//	public GameObject questionArea;
+	GameObject questionArea;
+
 	int currentState = 0;
 
 
@@ -23,9 +26,10 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		if(canMove)
+		if(canMove == true)
 			HandleMovement ();
-	
+
+		ClampMovement ();
 	}
 
 	void HandleMovement()
@@ -36,9 +40,7 @@ public class PlayerController : MonoBehaviour
 			var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
 			transform.position += move * speed * Time.deltaTime;
 			
-			transform.position = new Vector3 (Mathf.Clamp (transform.position.x,boundaries[0], boundaries[1]),
-			                                  Mathf.Clamp (transform.position.y, boundaries[2], boundaries[3]),
-			                                  transform.position.z);
+			ClampMovement();
 				
 		}
 		else 
@@ -46,27 +48,35 @@ public class PlayerController : MonoBehaviour
 			float smoothSpeed = 8f * Time.deltaTime;
 
 			transform.Translate(Input.acceleration.x * smoothSpeed, Input.acceleration.y * smoothSpeed, 0);
-			
-			transform.position = new Vector3 (Mathf.Clamp (transform.position.x,boundaries[0], boundaries[1]),
-			                                  Mathf.Clamp (transform.position.y, boundaries[2], boundaries[3]),
-			                                  transform.position.z);
+			ClampMovement();
+
 		}
 	}
+	void ClampMovement()
+	{
+		transform.position = new Vector3 (Mathf.Clamp (transform.position.x,boundaries[0], boundaries[1]),
+		                                  Mathf.Clamp (transform.position.y, boundaries[2], boundaries[3]),
+		                                  transform.position.z);
+	}
 
-
-
+	void OnTriggerExit2D(Collider2D col)
+	{
+		HideQuestion (false);
+	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
 
 		if(col.name.Contains("hip"))
 		{
 			col.SendMessage("AnimAndDestroy");
+			transform.position = Vector3.zero;
+
 			if(col.tag == "Errado") {
-				print("Errado");
+
 				brain.SendMessage("AnswerHit", false);
 			}
 			else if (col.tag == "Certo") {
-				print("Certo");
+			
 				brain.SendMessage("AnswerHit", true);
 			}
 		}
@@ -82,18 +92,30 @@ public class PlayerController : MonoBehaviour
 		{
 			AddWaveForce();
 		}
+		else if (col.tag == "Question")
+		{
+			HideQuestion(true);
+		}
+	}
+
+	void HideQuestion(bool hide)
+	{
+		questionArea = GameObject.FindGameObjectWithTag ("Question");
+		if(hide)		
+			questionArea.renderer.material.color = new Color (1, 1, 1, 0.5f);
+		else
+			questionArea.renderer.material.color = new Color (1, 1, 1, 1);
 	}
 
 	void AddWaveForce()
 	{
-		float force = 100;
-
-
+		/*float force = 100;
+		 * 
 		// VER QUAL O LADO QUE COLIDE E DETERMINAR FORÇA/DIREÇAO
 		transform.rigidbody2D.AddForce(Vector3.right * force * Time.deltaTime);
 
 		canMove = false;
-		StartCoroutine ("WaveEffect");
+		StartCoroutine ("WaveEffect");*/
 	}
 
 	IEnumerator WaveEffect()
@@ -105,16 +127,25 @@ public class PlayerController : MonoBehaviour
 	void StartMovement()
 	{
 		canMove = true;
-		print ("LIGUEI BOIA");
+
+	}
+
+	void StopMovement(string outcome){
+		transform.rigidbody2D.velocity  = new Vector2(0,0);
+		//transform.position = Vector3.zero;
+		canMove = false;
+
 	}
 
 	void OnEnable()
 	{
 		AcelerometerBrain.startGame += StartMovement;
+		AcelerometerBrain.endGame += StopMovement;
 	}
 
 	void OnDisable()
 	{
 		AcelerometerBrain.startGame -= StartMovement;
+		AcelerometerBrain.endGame -= StopMovement;
 	}
 }

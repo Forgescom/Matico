@@ -13,14 +13,12 @@ public class AcelerometerBrain : MonoBehaviour {
 	public GameObject accelerometer;
 
 
-	int currentScreen = 0;	
-
-	public GameObject boia;
-	public GameObject sharkfin;
-	public GameObject waves;
-
+	int currentScreen = 1;	
 	int vidas = 3;
-
+	
+	// Iniciar Jogo
+	public TextMesh startText;
+	bool start = false;
 
 	//EVENTS
 	public delegate void StartGameDelegate();
@@ -37,13 +35,14 @@ public class AcelerometerBrain : MonoBehaviour {
 		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
 		accelerometer.SetActive(false);
-	
-		Init ();
+		//Init ();
 	}
 
 	void Init() 
 	{
-		if(startGame !=null)
+	
+
+		if (startGame != null)
 		{
 			startGame();
 		}
@@ -55,12 +54,24 @@ public class AcelerometerBrain : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (start == false) {
+			startText.text = "Toca no ecran para o jogo iniciar";
+			if(Input.touchCount >0)
+			{
+				Init();
+				startText.transform.position = new Vector3(100,0,0);
+				start = true;
+			}
+		}
+
 		if (Input.GetKey (KeyCode.Escape)) {
 //			Application.LoadLevel(1);
 			RestartGame();
 		}
 
 	}
+
 
 	void ChangeScreen()
 	{
@@ -73,10 +84,10 @@ public class AcelerometerBrain : MonoBehaviour {
 		{
 			accelerometer.SetActive(true);
 			currentScreen ++;
-			if(startGame !=null)
+			/*if(startGame !=null)
 			{
 				startGame();
-			}
+			}*/
 		}
 	}
 	
@@ -85,17 +96,19 @@ public class AcelerometerBrain : MonoBehaviour {
 		Handheld.Vibrate ();
 
 		if(correct == true)
-		{		
+		{
 			if(endGame != null)
 			{
 				endGame("Certo");
+
 			}
 		}
 		else
-		{			
+		{
 			if(endGame != null)
 			{
 				endGame("Errado");
+
 			}
 		}
 	}
@@ -110,6 +123,7 @@ public class AcelerometerBrain : MonoBehaviour {
 			if(endGame != null)
 			{
 				endGame("Errado");
+
 			}
 		}
 	}
@@ -170,7 +184,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	
 	void OnDisable()
 	{
-		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
 		FailureScreen.RestartGame -= RestartGame;
 //		AccelerometerBox.finishEvent -= AccelerometerFinish;
 	}
@@ -181,5 +195,19 @@ public class AcelerometerBrain : MonoBehaviour {
 			restartGame();
 		}
 	}
+/*
+	void OnGUI()
+	{
+		AutoResize(800, 480);
+		switch (CurrentGameState)
+		{
+		case GameState.Start:
+			GUI.Label(new Rect(0, 150, 200, 100), "Tap the screen to start");
+			break;
+		default:
+			break;
+		}
+	}
+*/
 }
 
