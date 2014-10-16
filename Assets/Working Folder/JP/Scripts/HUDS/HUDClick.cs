@@ -58,8 +58,11 @@ public class HUDClick : MonoBehaviour {
 	void OnMouseUp (){
 		
 		if (over == true) {
-			menuController.SendMessage ("btClick", transform.gameObject);
 			ToggleButton ();
+			buttonOn = !buttonOn;
+
+			menuController.SendMessage ("btClick", transform.gameObject);
+
 		}
 		
 		
@@ -68,15 +71,16 @@ public class HUDClick : MonoBehaviour {
 	void ToggleButton(){
 		
 		if (toggleButton) {
+			print (buttonOn);
 			if(buttonOn)
 			{
 				spriteActive.texture = toggleOff;
-				buttonOn =false;
+
 			}
 			else
 			{
 				spriteActive.texture = toggleOn;
-				buttonOn =true;
+
 			}
 		}
 		

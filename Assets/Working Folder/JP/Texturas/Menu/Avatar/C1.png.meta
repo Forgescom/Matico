@@ -4,6 +4,8 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: c3
     21300002: CaraMulher
+    21300004: GameController.PLAYER_FACE
+    21300006: C1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

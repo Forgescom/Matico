@@ -131,7 +131,8 @@ public class GameController : MonoBehaviour {
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
-			CURRENT_LIVES ++;
+			if(CURRENT_LIVES <4)
+				CURRENT_LIVES ++;
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
 		}
 		else if (outComeIn == "Errado"){

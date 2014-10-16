@@ -7,6 +7,7 @@ public class BoardMain : MonoBehaviour {
 
 	public GameObject intro;
 	public GameObject bg;
+	public GameObject clouds;
 
 	public GameObject [] housesGameObject;
 
@@ -123,6 +124,7 @@ public class BoardMain : MonoBehaviour {
 		if (Application.loadedLevelName == "Board") {
 			bg.GetComponent<BackgroundTouch> ().enabled = true;
 			cameraScript.startAnimBoard (housesGameObject [GameController.CURRENT_LEVEL].transform.position);
+			clouds.GetComponent<Animation>().Play("CloudOpen");
 		}
 	}
 

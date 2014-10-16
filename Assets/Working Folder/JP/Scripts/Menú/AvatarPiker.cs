@@ -13,10 +13,14 @@ public class AvatarPiker : MonoBehaviour {
 	TouchScreenKeyboard keyboard;
 	public TextMesh avatarName;
 
+	void Awake()
+	{
 
+	}
 
 	// Use this for initialization
 	void Start () {
+
 
 		avatarName.text = GameController.PLAYER_NAME;
 		currentFaceIndex = GameController.PLAYER_FACE;

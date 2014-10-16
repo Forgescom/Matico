@@ -7,13 +7,19 @@ public class LifesHandler : MonoBehaviour {
 	public GUITexture lives;
 
 	public Texture [] livesTextures;
+	public Texture [] faces;
 
 	int currentLives;
 
 	// Use this for initialization
 	void Start () {
 		currentLives = GameController.CURRENT_LIVES;
+		print (currentLives);
 		lives.texture = livesTextures [currentLives];
+
+
+	
+		avatar.texture = faces [GameController.PLAYER_FACE];
 	}
 	
 	// Update is called once per frame

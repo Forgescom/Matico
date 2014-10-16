@@ -68,6 +68,7 @@ public class Main : MonoBehaviour {
 	void TurnOffOnSound()
 	{
 		if (GameController.musicSoundOn == false) {
+			print ("OF");
 			transform.GetComponent<AudioSource>().Stop();
 		}
 		else{
