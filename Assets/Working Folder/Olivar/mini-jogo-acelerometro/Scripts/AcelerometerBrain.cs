@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class AcelerometerBrain : MonoBehaviour {
 
-	//TEXTO NAS BOLHAS 
-	public TextMesh[] bolhas = new TextMesh[10];
-	public TextMesh calculoText;	
-	public TextMesh finalMessage;
+	//TEXTO NAS BOLHAS 	
 	public TextMesh vidasText;
 
 	public GameObject introScreen;
@@ -14,23 +13,12 @@ public class AcelerometerBrain : MonoBehaviour {
 	public GameObject accelerometer;
 
 
-
-
-	int currentScreen = 0;
-
-	int num1;
-	int num2;
-	int num3;
-	int result;
-
-	public float hoverForce;
-
-	public GameObject boia;
-	public GameObject sharkfin;
-	public GameObject waves;
-
+	int currentScreen = 1;	
 	int vidas = 3;
-
+	
+	// Iniciar Jogo
+	public TextMesh startText;
+	bool start = false;
 
 	//EVENTS
 	public delegate void StartGameDelegate();
@@ -47,30 +35,43 @@ public class AcelerometerBrain : MonoBehaviour {
 		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
 		accelerometer.SetActive(false);
-	
-		Init ();
+		//Init ();
 	}
 
 	void Init() 
 	{
-		if(startGame !=null)
+	
+
+		if (startGame != null)
 		{
 			startGame();
 		}
 		
-		set_values ();
-		vidasText.text = "Vidas: " + vidas.ToString();
+//		vidasText.text = "Vidas: " + GameController.CURRENT_LIVES.ToString ();
+		vidasText.text = "Vidas: " + vidas.ToString ();
 		//bloquear objectos antes de ecras desaparecerem
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (start == false) {
+			startText.text = "Toca no ecran para o jogo iniciar";
+			if(Input.touchCount >0)
+			{
+				Init();
+				startText.transform.position = new Vector3(100,0,0);
+				start = true;
+			}
+		}
+
 		if (Input.GetKey (KeyCode.Escape)) {
 //			Application.LoadLevel(1);
 			RestartGame();
 		}
 
 	}
+
 
 	void ChangeScreen()
 	{
@@ -83,10 +84,10 @@ public class AcelerometerBrain : MonoBehaviour {
 		{
 			accelerometer.SetActive(true);
 			currentScreen ++;
-			if(startGame !=null)
+			/*if(startGame !=null)
 			{
 				startGame();
-			}
+			}*/
 		}
 	}
 	
@@ -94,30 +95,35 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		Handheld.Vibrate ();
 
-		if(correct)
-		{		
+		if(correct == true)
+		{
 			if(endGame != null)
 			{
 				endGame("Certo");
+
 			}
 		}
 		else
-		{			
+		{
 			if(endGame != null)
 			{
 				endGame("Errado");
+
 			}
 		}
 	}
 
 	void ObjectHit()
 	{
-		vidas --;
+		print ("Menos uma!");
+		vidas--;
+		vidasText.text = "Vidas: " + vidas.ToString ();
 
 		if (vidas == 0) {
 			if(endGame != null)
 			{
-				endGame("Tubarao");
+				endGame("Errado");
+
 			}
 		}
 	}
@@ -178,7 +184,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	
 	void OnDisable()
 	{
-		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
 		FailureScreen.RestartGame -= RestartGame;
 //		AccelerometerBox.finishEvent -= AccelerometerFinish;
 	}
@@ -189,37 +195,19 @@ public class AcelerometerBrain : MonoBehaviour {
 			restartGame();
 		}
 	}
-
-	void set_values()
+/*
+	void OnGUI()
 	{
-		num1 = Random.Range(1, 20);
-		num2 = Random.Range(1, 20);
-		num3 = Random.Range(1, 20);
-		
-		calculoText.text = "Calculo: " + num1.ToString() +" + "+ num2.ToString() +" + "+ num3.ToString() + " =? ";
-		
-		result = num1 + num2 + num3;
-		
-		int i = 0;
-		int j = 1;
-		
-		int randomPositionForCorrect = Random.Range (0, 10);
-		bolhas[randomPositionForCorrect].text = result.ToString ();
-		bolhas[randomPositionForCorrect].transform.parent.tag = "Certo";
-		
-		for(i = 0; i < bolhas.Length; i++)
+		AutoResize(800, 480);
+		switch (CurrentGameState)
 		{
-			if(bolhas[i].text != result.ToString()){
-				bolhas[i].transform.parent.tag = "Errado";
-				if (i % 2 != 0) {
-					bolhas[i].text = (result + j).ToString();
-				}
-				else {
-					bolhas[i].text = (result - j).ToString();
-				}
-				j++;			
-			}
+		case GameState.Start:
+			GUI.Label(new Rect(0, 150, 200, 100), "Tap the screen to start");
+			break;
+		default:
+			break;
 		}
 	}
+*/
 }
 

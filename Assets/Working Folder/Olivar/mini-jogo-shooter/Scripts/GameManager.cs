@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public CameraFollow cameraFollow;
     int currentPandaIndex;
     public Cannon cannon;
-    [HideInInspector]
+//    [HideInInspector]
     public static GameState CurrentGameState = GameState.Start;
     private List<GameObject> Pandas;
 	private List<GameObject> Bamboos;
@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
                 //to the slingshot
                 if (Input.GetMouseButtonUp(0))
                 {
-                    AnimatePandaToSlingshot();
+                    AnimatePandaToCannon();
                 }
                 break;
-            case GameState.PandaMovingToSlingshot:
+            case GameState.PandaMovingToCannon:
                 //do nothing
                 break;
             case GameState.Playing:
@@ -52,19 +52,15 @@ public class GameManager : MonoBehaviour
                 //or there has been 5 seconds since we threw the panda
                 //animate the camera to the start position
               
-
-			/*if (cannon.CannonState == cannon.CannonState.PandaFlying &&
-                    (PandasBamboosTargetsStoppedMoving() || Time.time - cannon.TimeSinceThrown > 5f))
-                {
-                    cannon.enabled = false;
-                    AnimateCameraToStartPosition();
-                    CurrentGameState = GameState.PandaMovingToSlingshot;
-                }*/
-
-
-
-
-                break;
+/*
+			if (cannon.CannonState == cannon.CannonState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - cannon.TimeSinceThrown > 5f))
+			{
+			    cannon.enabled = false;
+			    AnimateCameraToStartPosition();
+			    CurrentGameState = GameState.PandaMovingToCannon;
+			}
+*/
+            break;
             //if we have won or lost, we will restart the level
             //in a normal game, we would show the "Won" screen 
             //and on tap the user would go to the next level
@@ -104,7 +100,7 @@ public class GameManager : MonoBehaviour
 
 
 
-       /* Camera.main.transform.positionTo
+        Camera.main.transform.positionTo
             (duration,
             cameraFollow.StartingPosition). //end position
             setOnCompleteHandler((x) =>
@@ -122,22 +118,22 @@ public class GameManager : MonoBehaviour
                             }
                             else
                             {
-                                cannon.CannonState = SlingshotState.Idle;
+                                cannon.CannonState = CannonState.Idle;
                                 //panda to throw is the next on the list
                                 currentPandaIndex++;
-                                AnimatePandaToSlingshot();
+                                AnimatePandaToCannon();
                             }
-                        });*/
+                        });
     }
 
     /// <summary>
     /// Animates the panda from the waiting position to the slingshot
     /// </summary>
-    void AnimatePandaToSlingshot()
+    void AnimatePandaToCannon()
     {
-        CurrentGameState = GameState.PandaMovingToSlingshot;
+        CurrentGameState = GameState.PandaMovingToCannon;
      
-		/*Pandas[currentPandaIndex].transform.positionTo
+		Pandas[currentPandaIndex].transform.positionTo
             (Vector2.Distance(Pandas[currentPandaIndex].transform.position / 10,
             cannon.PandaWaitPosition.transform.position) / 10, //duration
 			 cannon.PandaWaitPosition.transform.position). //final position
@@ -149,7 +145,7 @@ public class GameManager : MonoBehaviour
                             cannon.enabled = true; //enable slingshot
                             //current panda is the current in the list
 							cannon.PandaToThrow = Pandas[currentPandaIndex];
-                        });*/
+                        });
 
 
     }

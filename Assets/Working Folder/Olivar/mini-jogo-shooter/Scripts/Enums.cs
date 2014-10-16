@@ -17,7 +17,7 @@ namespace Assets.Scripts
     public enum GameState
     {
         Start,
-        PandaMovingToSlingshot,
+        PandaMovingToCannon,
         Playing,
         Won,
         Lost

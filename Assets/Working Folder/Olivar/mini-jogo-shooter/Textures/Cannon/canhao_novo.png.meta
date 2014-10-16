@@ -54,8 +54,8 @@ TextureImporter:
         y: 10
         width: 382
         height: 216
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .553045154, y: .0778491125}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: canhao_novo_1
       rect:

@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 233f682502d976049b9379077422c3e5
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CannonOrigin: {instanceID: 0}
+  - CannonLineRenderer: {instanceID: 0}
+  - TrajectoryLineRenderer: {instanceID: 0}
+  - PandaToThrow: {fileID: 100000, guid: 1085173a74023624aae364d71ae86139, type: 2}
+  - PandaWaitPosition: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
