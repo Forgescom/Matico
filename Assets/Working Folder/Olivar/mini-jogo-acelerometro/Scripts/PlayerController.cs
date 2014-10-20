@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 //	public GameObject questionArea;
 	GameObject questionArea;
 
-	int currentState = 0;
+	public int currentState = 0;
 
 
 	void Start () {
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 	{
 		HideQuestion (false);
 	}
+
 	void OnTriggerEnter2D(Collider2D col)
 	{
 

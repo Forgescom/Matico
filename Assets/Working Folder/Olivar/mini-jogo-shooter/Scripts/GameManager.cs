@@ -15,6 +15,15 @@ public class GameManager : MonoBehaviour
 	private List<GameObject> Bamboos;
     private List<GameObject> Targets;
 
+	//EVENTS
+	public delegate void StartGameDelegate();
+	public static event StartGameDelegate startGame;
+	public delegate void EndGameDelegate(string outcome);
+	public static event EndGameDelegate endGame;
+
+	public delegate void RestartGameDelegate();
+	public static event RestartGameDelegate restartGame;
+
     // Use this for initialization
     void Start()
     {
@@ -52,14 +61,14 @@ public class GameManager : MonoBehaviour
                 //or there has been 5 seconds since we threw the panda
                 //animate the camera to the start position
               
-/*
-			if (cannon.CannonState == cannon.CannonState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - cannon.TimeSinceThrown > 5f))
+
+			if (cannon.CannonState == CannonState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - cannon.TimeSinceThrown > 5f))
 			{
 			    cannon.enabled = false;
 			    AnimateCameraToStartPosition();
 			    CurrentGameState = GameState.PandaMovingToCannon;
 			}
-*/
+
             break;
             //if we have won or lost, we will restart the level
             //in a normal game, we would show the "Won" screen 
@@ -190,6 +199,29 @@ public class GameManager : MonoBehaviour
         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
     }
 
+	void AnswerHit(bool correct)
+	{
+		Handheld.Vibrate ();
+		
+		if(correct == true)
+		{
+			if(endGame != null)
+			{
+				endGame("Certo");
+				print("Acertou!!!");
+				
+			}
+		}
+		else
+		{
+			if(endGame != null)
+			{
+				endGame("Errado");
+				
+			}
+		}
+	}
+
     /// <summary>
     /// Shows relevant GUI depending on the current game state
     /// </summary>
@@ -211,6 +243,34 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+	void RestartGame()
+	{
+		//		accelerometer.animation.Play("");
+		StartCoroutine ("ChangeQuestion");
+	}
+/*	
+	IEnumerator ChangeQuestion(){
+		yield return new WaitForSeconds (1.5F);
+		if (GameTryAgain != null) {		
+			GameTryAgain();			
+		}	
+		transform.SendMessage ("SetQuestionValues");
+	}
+*/
+	void OnEnable()
+	{
+//		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+		FailureScreen.RestartGame += RestartGame;
+		//		AccelerometerBox.finishEvent += AccelerometerFinish;
+	}
+	
+	void OnDisable()
+	{
+//		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
+		FailureScreen.RestartGame -= RestartGame;
+		//		AccelerometerBox.finishEvent -= AccelerometerFinish;
+	}
 
 
 }

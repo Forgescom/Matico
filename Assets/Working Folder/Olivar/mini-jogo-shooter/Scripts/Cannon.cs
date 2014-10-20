@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Assets.Scripts;
 using System;
@@ -54,7 +54,7 @@ public class Cannon : MonoBehaviour
 		
 		CannonState = CannonState.Idle;
 
-		CannonLineRenderer.SetPosition(0, CannonOrigin.position);
+//		CannonLineRenderer.SetPosition(0, CannonOrigin.position);
 //		CannonLineRenderer1.SetPosition(0, LeftCannonOrigin.position);
 //		CannonLineRenderer2.SetPosition(0, RightCannonOrigin.position);
 		
@@ -75,7 +75,7 @@ public class Cannon : MonoBehaviour
 				//fix panda's position
 				InitializePanda();
 				//display the cannon "trigger"
-				DisplayCannonLineRenderer();
+//				DisplayCannonLineRenderer();
 				if (Input.GetMouseButtonDown(0))
 				{
 					//get the point on screen user has tapped
@@ -88,18 +88,25 @@ public class Cannon : MonoBehaviour
 				}
 				break;
 			case CannonState.UserPulling:
-				DisplayCannonLineRenderer();
+//				DisplayCannonLineRenderer();
 				
 				if (Input.GetMouseButton(0))
 				{
 					//get where user is tapping
 					Vector3 location = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 					location.z = 0;
+					
+					transform.LookAt(location);
+
+					transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.z * 2f));
+
+
 					//we will let the user pull the panda up to a maximum distance
 					if (Vector3.Distance(location, CannonMiddleVector) > 1.5f)
 					{
 						//basic vector maths :)
 						var maxPosition = (location - CannonMiddleVector).normalized * 1.5f + CannonMiddleVector;
+						
 						PandaToThrow.transform.position = maxPosition;
 					}
 					else
@@ -147,12 +154,12 @@ public class Cannon : MonoBehaviour
 
 	private void ThrowPanda(float distance)
 	{
-//		transform.GetComponent<Animator> ().SetBool ("Fire", true);
+		transform.GetComponent<Animator> ().SetBool ("Fire", true);
 
-
+/*
 		animation.PlayQueued("Fire");
 		WaitForAnimation(animation);
-
+*/
 		//get velocity
 		Vector3 velocity = CannonMiddleVector - PandaToThrow.transform.position;
 		PandaToThrow.GetComponent<Panda>().OnThrow(); //make the panda aware of it
@@ -163,7 +170,7 @@ public class Cannon : MonoBehaviour
 		//PandaToThrow.GetComponent<Rigidbody2D>().AddForce
 		//    (new Vector2(v2.x, v2.y) * ThrowSpeed * distance * 300 * Time.deltaTime);
 		//set the velocity
-		PandaToThrow.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x, velocity.y) * ThrowSpeed * distance;
+		PandaToThrow.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x, -velocity.y) * ThrowSpeed * distance;
 		
 		
 		//notify interested parties that the panda was thrown
@@ -185,13 +192,14 @@ public class Cannon : MonoBehaviour
 	{
 		//initialization of the ready to be thrown panda
 		PandaToThrow.transform.position = PandaWaitPosition.position;
+
 		CannonState = CannonState.Idle;
 		SetCannonLineRendererActive(true);
 	}
 	
 	void DisplayCannonLineRenderer()
 	{
-		CannonLineRenderer.SetPosition(1, PandaToThrow.transform.position);
+//		CannonLineRenderer.SetPosition(100, PandaToThrow.transform.position);
 
 //		CannonLineRenderer1.SetPosition(1, PandaToThrow.transform.position);
 //		CannonLineRenderer2.SetPosition(1, PandaToThrow.transform.position);
@@ -220,6 +228,7 @@ public class Cannon : MonoBehaviour
 	{
 		SetTrajectoryLineRenderesActive(true);
 		Vector3 v2 = CannonMiddleVector - PandaToThrow.transform.position;
+
 		int segmentCount = 15;
 		float segmentScale = 2;
 		Vector2[] segments = new Vector2[segmentCount];
@@ -228,10 +237,13 @@ public class Cannon : MonoBehaviour
 		segments[0] = PandaToThrow.transform.position;
 		
 		// The initial velocity
-		Vector2 segVelocity = new Vector2(v2.x, v2.y) * ThrowSpeed * distance;
+		Vector2 segVelocity = new Vector2(v2.x, -v2.y) * ThrowSpeed * distance;
 		
 		float angle = Vector2.Angle(segVelocity, new Vector2(1, 0));
 		float time = segmentScale / segVelocity.magnitude;
+
+		transform.Rotate(transform.position.x, transform.position.y, transform.position.z + 0.5f*angle);
+
 		for (int i = 1; i < segmentCount; i++)
 		{
 			//x axis: spaceX = initialSpaceX + velocityX * time
