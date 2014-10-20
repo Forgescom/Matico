@@ -83,6 +83,7 @@ public class ScratchController : MonoBehaviour {
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		ScratchBox.finishEvent += ScratchFinish;
 		FailureScreen.RestartGame += RestartGame;
+		GameController.RestartGame += RestartGame;
 	}
 
 	void OnDisable()
@@ -90,6 +91,7 @@ public class ScratchController : MonoBehaviour {
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		ScratchBox.finishEvent -= ScratchFinish;
 		FailureScreen.RestartGame -= RestartGame;
+		GameController.RestartGame -= RestartGame;
 	}
 
 }

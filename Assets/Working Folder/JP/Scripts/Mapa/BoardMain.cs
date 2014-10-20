@@ -75,7 +75,7 @@ public class BoardMain : MonoBehaviour {
 			GameController.houses[i].TryGetValue("Typeofgame",out typeOfGame);
 			switch(typeOfGame)
 			{
-				case "shooter": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.shooter; break;
+				case "Shooter": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.shooter; break;
 				case "Acelerometer": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.accelerometer; break;
 				case "ScratchCard": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.scratchcard; break;
 				case "tilt": housesGameObject[i].GetComponent<CasaValues>().gameType = TypeOfGames.tilt; break;
@@ -95,11 +95,13 @@ public class BoardMain : MonoBehaviour {
 	public void StartLevel(Transform houseCliked)
 	{
 		string gameToOpen = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
-	
+		int dificulty = houseCliked.GetComponent<CasaValues> ().dificulty;
 		
 		int currentLevelNumber =0;
 		int.TryParse(houseCliked.name.Substring(4,2),out currentLevelNumber);
 		GameController.CURRENT_LEVEL = currentLevelNumber;
+		GameController.CURRENT_LEVEL_DIFICULTY = dificulty;
+		GameController.CURRENT_LEVEL_TYPE = gameToOpen;
 
 		switch (gameToOpen) {
 			case "shooter":
@@ -130,7 +132,6 @@ public class BoardMain : MonoBehaviour {
 
 	void TurnOffOnSound()
 	{
-
 		if (GameController.musicSoundOn == false) {
 			transform.GetComponent<AudioSource>().Stop();
 		}

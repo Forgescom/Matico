@@ -11,7 +11,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: Forgescom
-  productName: Matico
+  productName: Atico
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
@@ -100,12 +100,25 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
-  resolutionDialogBanner: {fileID: 0}
+  resolutionDialogBanner: {fileID: 2800000, guid: dc82e33fd9d3aa540b190a95c603c393,
+    type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
     - m_Icon: {fileID: 0}
       m_Size: 128
+  - m_BuildTarget: Android
+    m_Icons:
+    - m_Icon: {fileID: 2800000, guid: dc82e33fd9d3aa540b190a95c603c393, type: 3}
+      m_Size: 144
+    - m_Icon: {fileID: 2800000, guid: 301ffcd6c4768724c8500c84ac189b06, type: 3}
+      m_Size: 96
+    - m_Icon: {fileID: 2800000, guid: 6de39e852c92d0c4a97ce4e83dcd1313, type: 3}
+      m_Size: 72
+    - m_Icon: {fileID: 2800000, guid: 49734aa066ebccf47a84afea63a87d69, type: 3}
+      m_Size: 48
+    - m_Icon: {fileID: 2800000, guid: 9a890ac4ce7617a4783a3b2338735558, type: 3}
+      m_Size: 36
   m_BuildTargetBatching: []
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}

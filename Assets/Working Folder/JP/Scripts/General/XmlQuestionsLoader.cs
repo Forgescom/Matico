@@ -37,6 +37,8 @@ public class XmlQuestionsLoader : MonoBehaviour {
 			questionDetails = new Dictionary<string,string >();
 			
 			questionDetails.Add("QuestionNumber",levelInfo.Attributes["id"].Value);
+			questionDetails.Add("QuestionLevel",levelInfo.Attributes["level"].Value);
+			questionDetails.Add("QuestionType",levelInfo.Attributes["typeofgame"].Value);
 			
 			foreach(XmlNode levelsItems in levelContent)
 			{

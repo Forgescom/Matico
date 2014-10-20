@@ -1708,7 +1708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1073245866
 Transform:
   m_ObjectHideFlags: 0
@@ -2058,7 +2058,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1194775761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.51782799, z: 0}
+  m_LocalPosition: {x: 0, y: -.222581863, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2125,7 +2125,6 @@ GameObject:
   - 92: {fileID: 1267377446}
   - 124: {fileID: 1267377445}
   - 114: {fileID: 1267377449}
-  - 114: {fileID: 1267377444}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2133,19 +2132,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1267377444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1267377443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c82304511ce0a547b86d9e55f4548d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  folder: ScreenshotFolder
-  frameRate: 25
 --- !u!124 &1267377445
 Behaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,11 @@ public class GameController : MonoBehaviour {
 	public static string PLAYER_NAME;
 	public static int PLAYER_FACE;
 	public static int CURRENT_LEVEL;
+	public static int CURRENT_LEVEL_DIFICULTY;
+	public static string CURRENT_LEVEL_TYPE;
+	public static int CURRENT_LIVES_LOST =0;
+
+
 	public static int CURRENT_LIVES = 4;
 
 	//MINI GAMES FINAL SCREEN
@@ -42,7 +47,8 @@ public class GameController : MonoBehaviour {
 	//EVENTS AND DELEGATES
 	public delegate void SoundDelegate();
 	public static event SoundDelegate updateSoundVolume;
-
+	public delegate void RestartDelegate();
+	public static event RestartDelegate RestartGame;
 
 	void Awake()
 	{
@@ -59,11 +65,13 @@ public class GameController : MonoBehaviour {
 		if (updateSoundVolume != null) {
 			updateSoundVolume();
 		}
-		print ("THROW");
+		//print ("THROW");
 	}
 
 	// Use this for initialization
 	void Start () {
+		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDAMBIENTE, 1);
+		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDFX, 1);
 		Init ();
 
 
@@ -98,6 +106,7 @@ public class GameController : MonoBehaviour {
 
 	}
 
+
 	public static void SwitchOnOffSound(string sound)
 	{
 		if (sound == "FX") {
@@ -112,7 +121,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-
+	//SAVE PLAYER VALUES FROM MAIN MENU
 	public static void SavePlayerPref(string nome = null, int avatarNumber = 99, int newLevel =0)
 	{
 		if(nome != null)
@@ -127,46 +136,41 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-
+	//HANDLE EVENTS FROM MINI GAMES
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
 			if(CURRENT_LIVES <4)
 				CURRENT_LIVES ++;
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
+			houses[CURRENT_LEVEL]["Blocked"] = "false";
 		}
 		else if (outComeIn == "Errado"){
 			CURRENT_LIVES --;
-			LifesHandler.
+			CURRENT_LIVES_LOST ++;
+			houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
 			Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity);
 		}
 	}
 
-
+	//HANDLE CLICK FROM SUCCESS SCREEN
 	void btClick(GameObject bt)
 	{
-		MiniGamelEnd ("Won");
-		transform.SendMessage ("WriteToXml");
 
-		
-	}
-
-	public static void MiniGamelEnd(string outCome)
-	{
-		switch (outCome) {
-			case "Won":
-				houses[CURRENT_LEVEL]["Blocked"] = "false";
-
-				Application.LoadLevel("Board");
-				break;
-			case "NextLevel":
-			
-				Application.LoadLevel("Board");
-				
-				break;
-		
-		
+		switch (bt.name) {
+		case "BtRepeat":
+			if(RestartGame!=null)
+			{
+				RestartGame();
+			}
+			Destroy(bt.transform.root.gameObject);
+			break;
+		case "BtNext":
+			Application.LoadLevel("Board");
+			transform.SendMessage ("WriteToXml");
+			break;
 		}
+		
 	}
 
 

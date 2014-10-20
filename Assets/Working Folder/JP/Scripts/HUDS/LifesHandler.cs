@@ -14,7 +14,7 @@ public class LifesHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentLives = GameController.CURRENT_LIVES;
-		print (currentLives);
+		//print (currentLives);
 		lives.texture = livesTextures [currentLives];
 
 
@@ -28,19 +28,19 @@ public class LifesHandler : MonoBehaviour {
 	
 	}
 
-	void UpdateLives(string outCome)
+	public void UpdateLives(string outCome)
 	{
 		if(outCome == "Errado")
 		{
 			if (currentLives > 1) {
-				currentLives --;
+				//currentLives --;
 				lives.texture = livesTextures[currentLives -1];
 			}
 		}
 		else 
 		{
 			if (currentLives <= 4) {
-				currentLives ++;
+				//currentLives ++;
 				lives.texture = livesTextures[currentLives -1];
 			}
 		}

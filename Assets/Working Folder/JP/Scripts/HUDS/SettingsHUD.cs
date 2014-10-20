@@ -5,7 +5,8 @@ public class SettingsHUD : MonoBehaviour {
 
 	bool open = false;
 
-
+	AudioClip backGroundMusic;
+	
 	// Use this for initialization
 	void Start () {
 

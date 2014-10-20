@@ -27,6 +27,7 @@ public class HUDClick : MonoBehaviour {
 	void Start () {
 		//startSize = transform.localScale.x;
 		spriteActive = GetComponent<GUITexture> ();
+
 	}
 	
 	// Update is called once per frame
