@@ -51,31 +51,31 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12
-        y: 10
-        width: 382
-        height: 216
+        y: 5
+        width: 384
+        height: 222
       alignment: 9
-      pivot: {x: .553045154, y: .0778491125}
+      pivot: {x: .555766642, y: .0717848465}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: canhao_novo_1
       rect:
         serializedVersion: 2
         x: 441
-        y: 10
+        y: 5
         width: 407
-        height: 216
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        height: 222
+      alignment: 9
+      pivot: {x: .527468204, y: .0607306585}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: canhao_novo_2
       rect:
         serializedVersion: 2
         x: 862
-        y: 10
+        y: 5
         width: 455
-        height: 216
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        height: 222
+      alignment: 9
+      pivot: {x: .483907372, y: .0586698577}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

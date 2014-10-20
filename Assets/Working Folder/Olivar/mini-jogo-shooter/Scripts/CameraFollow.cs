@@ -30,8 +30,8 @@ public class CameraFollow : MonoBehaviour
 	[HideInInspector]
 	public Vector3 StartingPosition;
 
-	private const float minCameraX = -20;
-	private const float maxCameraX = 16;
+	private const float minCameraX = -6.7f;
+	private const float maxCameraX = 6.7f;
 	[HideInInspector]
 	public bool IsFollowing;
 	[HideInInspector]
