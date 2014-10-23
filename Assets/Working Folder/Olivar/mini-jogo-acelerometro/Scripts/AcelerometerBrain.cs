@@ -5,73 +5,68 @@ using System.Linq;
 
 public class AcelerometerBrain : MonoBehaviour {
 
-	//TEXTO NAS BOLHAS 	
-	public TextMesh vidasText;
+	//EVENTS
+	public delegate void StartGameDelegate();
+	public static event StartGameDelegate startGame;
+	
+	public delegate void EndGameDelegate(string outcome);
+	public static event EndGameDelegate endGame;
+	
+	public delegate void RestartGameDelegate();
+	public static event RestartGameDelegate restartGame;
+
+
+	//GAMEOBJECTS	
+
+	public GUITexture [] vidasTexture;
+	int vidas = 4;
 
 	public GameObject introScreen;
 	public GameObject explanationScreen;
 	public GameObject accelerometer;
+	public GameObject screenLock;
 	public GameObject sharkFin;
 	public GameObject boia;
 
 
-	int currentScreen = 1;	
-	int vidas = 3;
+	int currentScreen = 0;	
+	bool lostByShark = false;
+
 	
 	// Iniciar Jogo
-	public TextMesh startText;
+
 	bool start = false;
-
-	//EVENTS
-	public delegate void StartGameDelegate();
-	public static event StartGameDelegate startGame;
-	public delegate void EndGameDelegate(string outcome);
-	public static event EndGameDelegate endGame;
-
-	public delegate void RestartGameDelegate();
-	public static event RestartGameDelegate restartGame;
-
-	//EVENTS FOR GAME END
-	public delegate void gameEnd(string test);
-	public static event gameEnd GameEnded;
-	public delegate void GameNewTry();
-	public static event GameNewTry GameTryAgain;
-
 
 	// Use this for initialization
 	void Start () {
 		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
 		accelerometer.SetActive(false);
-		boia.GetComponent<PlayerController>().canMove = false;
-		//Init ();
+		screenLock.SetActive(false);
+
 	}
 
-	void Init() 
-	{
-		if (startGame != null)
+	void Init(){
+	
+
+
+		foreach (GUITexture obj in vidasTexture) {
+			obj.gameObject.SetActive (true);
+		}
+		vidas = 4;
+		vidasTexture [vidas-1].gameObject.SetActive (false);
+
+		if(startGame != null)
 		{
 			startGame();
-			boia.GetComponent<PlayerController>().canMove = true;
 		}
-		
-//		vidasText.text = "Vidas: " + GameController.CURRENT_LIVES.ToString ();
-		vidasText.text = "Vidas: " + vidas.ToString ();
-		//bloquear objectos antes de ecras desaparecerem
+
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
-
-		if (start == false) {
-			startText.text = "Toca no ecran para o jogo iniciar";
-			if(Input.touchCount > 0)
-			{
-				Init();
-				startText.transform.position = new Vector3(100, 0, 0);
-				start = true;
-			}
-		}
+	
 
 		if (Input.GetKey (KeyCode.Escape)) {
 //			Application.LoadLevel(1);
@@ -79,7 +74,7 @@ public class AcelerometerBrain : MonoBehaviour {
 		}
 
 	}
-	
+
 	void ChangeScreen()
 	{
 		if (currentScreen == 0) {
@@ -89,12 +84,11 @@ public class AcelerometerBrain : MonoBehaviour {
 		}
 		else if(currentScreen == 1)
 		{
+			screenLock.SetActive(true);
 			accelerometer.SetActive(true);
+
 			currentScreen ++;
-			/*if(startGame !=null)
-			{
-				startGame();
-			}*/
+
 		}
 	}
 	
@@ -122,75 +116,70 @@ public class AcelerometerBrain : MonoBehaviour {
 
 	void ObjectHit()
 	{
-		vidas--;
-		vidasText.text = "Vidas: " + vidas.ToString ();
 
-		if (vidas == 0) {
+
+
+		vidas--;
+
+		if (vidas != 0) {
+			//StartCoroutine ("CreateNewBoia");
+			Invoke("CreateNewBoia",2);
+
+		}
+		else if (vidas == 0) {
+			lostByShark = true;
 			if(endGame != null)
 			{
 				endGame("Errado");
 			}
 		}
+
+
+
 	}
 
-
-	public void GameEnd(string outcome, int vidas)
+	void CreateNewBoia()
 	{
-		//FINAL SCREEN DEPENDING ON LIVES
+	
+		GameObject novaBoia = Instantiate (boia, Vector3.zero, Quaternion.identity) as GameObject;
+		novaBoia.transform.parent = accelerometer.transform;
+		
+		novaBoia.SendMessage ("ChangeSkin",vidas-1);
+		
+		novaBoia.GetComponent<PlayerController> ().canMove = true;
+		novaBoia.tag = "Player";
 
-		/*if ((outcome == "Vitoria") && (vidas == 3)) {
-			finalMessage.text = "Resposta certa, excelente!";
-			successScreen.SetActive(true);
-		}
-		else if ((outcome == "Vitoria") && (vidas == 2)) {
-			finalMessage.text = "Resposta certa, bom jogo!";
-			successScreen.SetActive(true);
-		}
-		else if ((outcome == "Vitoria") && (vidas == 1)) {
-			finalMessage.text = "Resposta certa, foi por pouco!";
-			successScreen.SetActive(true);
-		}
-		else if(outcome == "Derrota")
-		{
-			finalMessage.text = "Perdeste todas as vidas, tenta outra vez!";
-			failureScreen.SetActive (true);
-		}
-		else if(outcome == "Derrotatubarao")
-		{
-			finalMessage.text = "Foste apanhado pelo tubarao! Tenta outra vez!";
-			failureScreen.SetActive (true);
-		}
-		boia.GetComponent<PlayerController> ().canMove = false;
-		sharkfin.GetComponent<SharkFin> ().enabled = false;
-		waves.GetComponent<WaveController> ().enabled = false;*/
+		vidasTexture [vidas-1].gameObject.SetActive (false);
+		sharkFin.GetComponent<SharkFin> ().target = novaBoia.transform;
 	}
 
-	void btClick(GameObject btClicked)
-	{
-		switch (btClicked.name) {
-		case "BtMap":
-			GameController.MiniGamelEnd("Won");
-			break;
-		case "BtRepeat":
-			Application.LoadLevel("Accelerometer");
-			break;
-		case "BtNext":
-			GameController.MiniGamelEnd("NextLevel");
-			break;
-		}
-	}
+
+
+
 
 	void RestartGame()
 	{
 		//		accelerometer.animation.Play("");
+	
+		Init ();
+		if (lostByShark == true) {
+			CreateNewBoia();
+		}
+
 		StartCoroutine ("ChangeQuestion");
+
+		screenLock.SetActive(true);
+
+		if (restartGame != null) {
+			restartGame();
+		}
 	}
 	
 	IEnumerator ChangeQuestion(){
 		yield return new WaitForSeconds (1.5F);
-		if (GameTryAgain != null) {		
+		/*if (GameTryAgain != null) {		
 			GameTryAgain();			
-		}	
+		}	*/
 		transform.SendMessage ("SetQuestionValues");
 	}
 
@@ -198,14 +187,17 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		FailureScreen.RestartGame += RestartGame;
-//		AccelerometerBox.finishEvent += AccelerometerFinish;
+		ClickToUnlock.unlockScreen += Init;
+		GameController.RestartGame += RestartGame;
+
 	}
 	
 	void OnDisable()
 	{
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
 		FailureScreen.RestartGame -= RestartGame;
-//		AccelerometerBox.finishEvent -= AccelerometerFinish;
+		ClickToUnlock.unlockScreen -= Init;
+		GameController.RestartGame -= RestartGame;
 	}
 }
 

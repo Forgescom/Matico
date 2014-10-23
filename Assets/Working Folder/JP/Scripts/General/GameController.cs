@@ -52,6 +52,9 @@ public class GameController : MonoBehaviour {
 
 	void Awake()
 	{
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
 		if (controller == null){
 			DontDestroyOnLoad(gameObject);
 			controller = this;

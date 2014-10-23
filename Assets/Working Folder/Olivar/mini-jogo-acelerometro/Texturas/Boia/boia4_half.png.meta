@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: d3949c5035f0e8045be4224162084cce
+guid: 0c3e70c380d71cd4999e170e896e780f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: janela_informacao
+    21300000: boia4_half
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,12 +23,12 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 1024
+  maxTextureSize: 128
   textureSettings:
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

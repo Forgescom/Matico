@@ -5,9 +5,18 @@ using System.Linq;
 
 public class SharkFin : MonoBehaviour {
 //	public GameObject brain;
-
+	public Transform target;
 	public bool canMove = false;
+	bool pursuit = true;
 	Vector3 startPos;
+
+	public SpriteRenderer boiaAnim;
+	public SpriteRenderer halfBoiaAnim;
+
+	public Sprite [] skins;
+	public Sprite [] halfSkins;
+
+	int currentSkin = 0;
 
 	void Start()
 	{
@@ -19,32 +28,72 @@ public class SharkFin : MonoBehaviour {
 	{
 		if (canMove == true)
 			SharkMovement();
+
 	}
 
 	void SharkMovement() {
-		Transform target;
+
 		float speed = 1f;
-		
-		target = GameObject.FindWithTag ("Player").transform;
-		
-		if (target.position.x < transform.position.x) {
-			transform.localScale = new Vector3(0.75f,0.75f,1);
+
+
+		if(pursuit && target!=null){
+
+			transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+			var dir = target.position - transform.position;
+			var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+			angle = angle - 180;
+			Quaternion newRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, 0.02f);
 		}
-		else {
-			transform.localScale = new Vector3(-0.75f,0.75f,1);
+		else{
+
+			transform.position = Vector3.MoveTowards(transform.position,startPos,5f*Time.deltaTime);
+			if(transform.position == startPos)
+			{
+				pursuit = true;
+				transform.animation.Play("Idle");
+
+			}
 		}
-		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 	}
 
 	void StartMovement()
 	{
 		canMove = true;
+		pursuit = true;
+		currentSkin = 0;
 
 	}
 	void StopMovement(string result)
 	{
+		transform.position = startPos;
 		canMove = false;
+		pursuit = false;
 	}
+
+	void AnimEndStopPursuit()
+	{
+		canMove = true;
+		pursuit = false;
+	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.tag == "Player") {
+
+			//print ("VOU COMEÇAR A ANIMAR O TUBARAO");
+			halfBoiaAnim.sprite = halfSkins[currentSkin];
+			boiaAnim.sprite = skins[currentSkin];
+			transform.animation.Play("Stuck");
+			canMove = false;
+			currentSkin ++;
+
+
+		}
+	}
+
+
+
 
 	void OnEnable()
 	{

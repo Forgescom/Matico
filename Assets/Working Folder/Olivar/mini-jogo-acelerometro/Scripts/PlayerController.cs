@@ -5,23 +5,24 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour 
 {
-	public GameObject brain;
+	GameObject brain;
 
 	public float speed = 0.5f;
 
 	// Coordenadas limite
 	public float[] boundaries;
 	public bool canMove = false;
+	public Sprite [] skins;
 
 //	public GameObject questionArea;
 	GameObject questionArea;
 
-	public int currentState = 0;
+	int currentState = 0;
 
 
 	void Start () {
-		Screen.orientation = ScreenOrientation.LandscapeLeft;
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		brain = GameObject.Find ("GameBrain");
+	
 	}
 
 	void Update()
@@ -59,18 +60,15 @@ public class PlayerController : MonoBehaviour
 		                                  transform.position.z);
 	}
 
-	void OnTriggerExit2D(Collider2D col)
-	{
-		HideQuestion (false);
-	}
+
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-
+	
 		if(col.name.Contains("hip"))
 		{
 			col.SendMessage("AnimAndDestroy");
-			transform.position = Vector3.zero;
+
 
 			if(col.tag == "Errado") {
 
@@ -83,29 +81,22 @@ public class PlayerController : MonoBehaviour
 		}
 		else if (col.tag =="Shark")
 		{
-			currentState ++;	
-			string animatorKey = "Damage"+ currentState;
-
-			transform.GetComponent<Animator>().SetBool(animatorKey,true);
 			brain.SendMessage("ObjectHit");
+			Destroy(gameObject);
+
 		}
 		else if (col.tag =="Wave")
 		{
 			AddWaveForce();
 		}
-		else if (col.tag == "Question")
-		{
-			HideQuestion(true);
-		}
+
 	}
 
-	void HideQuestion(bool hide)
+	public void ChangeSkin(int index)
 	{
-		questionArea = GameObject.FindGameObjectWithTag ("Question");
-		if(hide)		
-			questionArea.renderer.material.color = new Color (1, 1, 1, 0.5f);
-		else
-			questionArea.renderer.material.color = new Color (1, 1, 1, 1);
+		print ("INDEX  " + index);
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [index];
+
 	}
 
 	void AddWaveForce()
@@ -128,6 +119,7 @@ public class PlayerController : MonoBehaviour
 	void StartMovement()
 	{
 		canMove = true;
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [0];
 
 	}
 
@@ -138,14 +130,22 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+	void RestartValues(){
+		currentState = 0;
+		transform.position = Vector3.zero;
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [0];
+	}
+
 	void OnEnable()
 	{
+		AcelerometerBrain.restartGame += RestartValues;
 		AcelerometerBrain.startGame += StartMovement;
 		AcelerometerBrain.endGame += StopMovement;
 	}
 
 	void OnDisable()
 	{
+		AcelerometerBrain.restartGame -= RestartValues;
 		AcelerometerBrain.startGame -= StartMovement;
 		AcelerometerBrain.endGame -= StopMovement;
 	}
