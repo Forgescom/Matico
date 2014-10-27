@@ -2,7 +2,14 @@ fileFormatVersion: 2
 guid: 2ecb14c92f91013439356025fefb6056
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
-  executionOrder: 0
+  defaultReferences:
+  - LeftSlingshotOrigin: {instanceID: 0}
+  - RightSlingshotOrigin: {instanceID: 0}
+  - SlingshotLineRenderer1: {instanceID: 0}
+  - SlingshotLineRenderer2: {instanceID: 0}
+  - TrajectoryLineRenderer: {instanceID: 0}
+  - PandaToThrow: {instanceID: 0}
+  - PandaWaitPosition: {instanceID: 0}
+  executionOrder: 300
   icon: {instanceID: 0}
   userData: 

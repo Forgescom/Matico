@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 	public GameObject introScreen;
 	public GameObject explanationScreen;
 	public GameObject shooter;
+	public GameObject target;
 
 	int currentScreen = 1;
 
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     public CameraFollow cameraFollow;
     int currentPandaIndex;
     public SlingShot slingshot;
-//    [HideInInspector]
+    [HideInInspector]
     public static GameState CurrentGameState = GameState.Start;
     private List<GameObject> Pandas;
 	private List<GameObject> Bamboos;
@@ -39,8 +40,6 @@ public class GameManager : MonoBehaviour
 		introScreen.SetActive (true);
 //		explanationScreen.SetActive(false);
 		shooter.SetActive(false);
-
-//		Init ();
     }
 
 	void Init() 
@@ -51,9 +50,14 @@ public class GameManager : MonoBehaviour
 		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
 		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
 		Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
+		print (Pandas.Count);
+		print (Bamboos.Count);
+		print (Targets.Count);
 		//unsubscribe and resubscribe from the event
 		//this ensures that we subscribe only once
-		slingshot.PandaThrown -= Slingshot_PandaThrown; slingshot.PandaThrown += Slingshot_PandaThrown;
+		slingshot.PandaThrown -= Slingshot_PandaThrown; 
+		slingshot.PandaThrown += Slingshot_PandaThrown;
+		AnimatePandaToSlingshot();
 	}
 	
 	
@@ -153,8 +157,6 @@ public class GameManager : MonoBehaviour
         if (duration == 0.0f) duration = 0.1f;
         //animate the camera to start
 
-
-
         Camera.main.transform.positionTo
             (duration,
             cameraFollow.StartingPosition). //end position
@@ -163,18 +165,26 @@ public class GameManager : MonoBehaviour
                             cameraFollow.IsFollowing = false;
                             if (AllTargetsDestroyed())
                             {
-                                CurrentGameState = GameState.Won;
+								print("Continua1");
+								slingshot.slingshotState = SlingshotState.Idle;
+								//bird to throw is the next on the list
+								currentPandaIndex++;
+								AnimatePandaToSlingshot();
+
+//                          	CurrentGameState = GameState.Won;
+//								print("Ganhou");
                             }
-                            //animate the next panda, if available
+                            //animate the next bird, if available
                             else if (currentPandaIndex == Pandas.Count - 1)
                             {
-                                //no more pandas, go to finished
+                                //no more birds, go to finished
                                 CurrentGameState = GameState.Lost;
                             }
                             else
                             {
+								print("Continua2");
                                 slingshot.slingshotState = SlingshotState.Idle;
-                                //panda to throw is the next on the list
+                                //bird to throw is the next on the list
                                 currentPandaIndex++;
                                 AnimatePandaToSlingshot();
                             }
@@ -187,7 +197,6 @@ public class GameManager : MonoBehaviour
     void AnimatePandaToSlingshot()
     {
         CurrentGameState = GameState.PandaMovingToSlingshot;
-     
 		Pandas[currentPandaIndex].transform.positionTo
             (Vector2.Distance(Pandas[currentPandaIndex].transform.position / 10,
             slingshot.PandaWaitPosition.transform.position) / 10, //duration

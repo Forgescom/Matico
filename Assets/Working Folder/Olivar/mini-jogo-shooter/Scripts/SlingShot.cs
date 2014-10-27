@@ -5,6 +5,7 @@ using System;
 
 public class SlingShot : MonoBehaviour
 {
+	public GameObject gManager;
 	
 	//a vector that points in the middle between left and right parts of the slingshot
 	private Vector3 SlingshotMiddleVector;
@@ -19,14 +20,14 @@ public class SlingShot : MonoBehaviour
 	public LineRenderer SlingshotLineRenderer1;
 	public LineRenderer SlingshotLineRenderer2;
 	
-	//this linerenderer will draw the projected trajectory of the thrown panda
+	//this linerenderer will draw the projected trajectory of the thrown bird
 	public LineRenderer TrajectoryLineRenderer;
 	
-	[HideInInspector]
-	//the panda to throw
+//	[HideInInspector]
+	//the bird to throw
 	public GameObject PandaToThrow;
 	
-	//the position of the panda tied to the slingshot
+	//the position of the bird tied to the slingshot
 	public Transform PandaWaitPosition;
 	
 	public float ThrowSpeed;
@@ -60,7 +61,7 @@ public class SlingShot : MonoBehaviour
 		switch (slingshotState)
 		{
 		case SlingshotState.Idle:
-			//fix panda's position
+			//fix bird's position
 			InitializePanda();
 			//display the slingshot "strings"
 			DisplaySlingshotLineRenderers();
@@ -68,7 +69,7 @@ public class SlingShot : MonoBehaviour
 			{
 				//get the point on screen user has tapped
 				Vector3 location = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				//if user has tapped onto the panda
+				//if user has tapped onto the bird
 				if (PandaToThrow.GetComponent<CircleCollider2D>() == Physics2D.OverlapPoint(location))
 				{
 					slingshotState = SlingshotState.UserPulling;
@@ -83,11 +84,11 @@ public class SlingShot : MonoBehaviour
 				//get where user is tapping
 				Vector3 location = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				location.z = 0;
-				//we will let the user pull the panda up to a maximum distance
-				if (Vector3.Distance(location, SlingshotMiddleVector) > 1.5f)
+				//we will let the user pull the bird up to a maximum distance
+				if (Vector3.Distance(location, SlingshotMiddleVector) > 2.5f)
 				{
 					//basic vector maths :)
-					var maxPosition = (location - SlingshotMiddleVector).normalized * 1.5f + SlingshotMiddleVector;
+					var maxPosition = (location - SlingshotMiddleVector).normalized * 2.5f + SlingshotMiddleVector;
 					PandaToThrow.transform.position = maxPosition;
 				}
 				else
@@ -101,7 +102,7 @@ public class SlingShot : MonoBehaviour
 			else//user has removed the tap 
 			{
 				SetTrajectoryLineRenderesActive(false);
-				//throw the panda!!!
+				//throw the bird!!!
 				TimeSinceThrown = Time.time;
 				float distance = Vector3.Distance(SlingshotMiddleVector, PandaToThrow.transform.position);
 				if (distance > 1)
@@ -113,7 +114,7 @@ public class SlingShot : MonoBehaviour
 				else//not pulled long enough, so reinitiate it
 				{
 					//distance/10 was found with trial and error :)
-					//animate the panda to the wait position
+					//animate the bird to the wait position
 					PandaToThrow.transform.positionTo(distance / 10, //duration
 					                                 PandaWaitPosition.transform.position). //final position
 						setOnCompleteHandler((x) =>
@@ -126,7 +127,7 @@ public class SlingShot : MonoBehaviour
 				}
 			}
 			break;
-//		case SlingshotState.Pandalying:
+		case SlingshotState.PandaFlying:
 			break;
 		default:
 			break;
@@ -136,17 +137,20 @@ public class SlingShot : MonoBehaviour
 	
 	private void ThrowPanda(float distance)
 	{
+
 		//get velocity
 		Vector3 velocity = SlingshotMiddleVector - PandaToThrow.transform.position;
-		PandaToThrow.GetComponent<Panda>().OnThrow(); //make the panda aware of it
+		PandaToThrow.GetComponent<Panda>().OnThrow(); //make the bird aware of it
+
+		PandaToThrow.GetComponent<Panda>().transform.GetComponent<Animator> ().SetBool ("Mooving", true);
 		//old and alternative way
-		//PandaToThrow.GetComponent<Rigidbody2D>().AddForce
+		//BirdToThrow.GetComponent<Rigidbody2D>().AddForce
 		//    (new Vector2(v2.x, v2.y) * ThrowSpeed * distance * 300 * Time.deltaTime);
 		//set the velocity
 		PandaToThrow.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x, velocity.y) * ThrowSpeed * distance;
 		
 		
-		//notify interested parties that the panda was thrown
+		//notify interested parties that the bird was thrown
 		if (PandaThrown != null)
 			PandaThrown(this, EventArgs.Empty);
 	}
@@ -155,7 +159,7 @@ public class SlingShot : MonoBehaviour
 	
 	private void InitializePanda()
 	{
-		//initialization of the ready to be thrown panda
+		//initialization of the ready to be thrown bird
 		PandaToThrow.transform.position = PandaWaitPosition.position;
 		slingshotState = SlingshotState.Idle;
 		SetSlingshotLineRenderersActive(true);
@@ -177,7 +181,25 @@ public class SlingShot : MonoBehaviour
 	{
 		TrajectoryLineRenderer.enabled = active;
 	}
-	
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		
+		if(col.name.Contains("Target"))
+		{
+			transform.position = Vector3.zero;
+			
+			if(col.tag == "Errado") {
+				
+				gManager.SendMessage("AnswerHit", false);
+			}
+			else if (col.tag == "Certo") {
+				
+				gManager.SendMessage("AnswerHit", true);
+			}
+		}
+	}
+
 	
 	/// <summary>
 	/// Another solution (a great one) can be found here

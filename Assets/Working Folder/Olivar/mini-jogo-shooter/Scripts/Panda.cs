@@ -11,7 +11,7 @@ public class Panda : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		//trailrenderer is not visible until we throw the bird
+		//trailrenderer is not visible until we throw the panda
 		GetComponent<TrailRenderer>().enabled = false;
 		GetComponent<TrailRenderer>().sortingLayerName = "Foreground";
 		//no gravity at first
@@ -25,7 +25,7 @@ public class Panda : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		//if we've thrown the bird
+		//if we've thrown the panda
 		//and its speed is very small
 		if (State == PandaState.Thrown &&
 		    GetComponent<Rigidbody2D>().velocity.sqrMagnitude <= Constants.MinVelocity)
