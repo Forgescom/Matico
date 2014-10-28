@@ -1,5 +1,5 @@
 <Questions>
-	<questionDetails id="question1" level="1" typeofgame="scratchcard">r
+	<questionDetails id="question1" level="1" typeofgame="scratchcard accelerometer shooter">
 		<question>Numa prova de atletismo, o Nuno ficou em 4º lugar.
 			A Joana ficou 4 lugares à sua frente e a Sofia chegou cinco lugares depois do 2º.
 			Escreve em que lugar ficou a Joana?</question>
@@ -10,7 +10,7 @@
 	</questionDetails>
 
 //----------------------	
-	<questionDetails id="question2" level="1" typeofgame="scratchcard"><!-- level 1 ! -->
+	<questionDetails id="question2" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>A Rute tem 15 rebuçados e quer dividir igualmente esses rebuçados por 3 amigos.
 Quantos rebuçados ficarão para cada amigo?</question>
 		<false1>8</false1>
@@ -19,7 +19,7 @@ Quantos rebuçados ficarão para cada amigo?</question>
 		<correct>5</correct>		
 	</questionDetails>
 //----------------------	
-	<questionDetails id="question3" level="1" typeofgame="scratchcard"><!-- level 1 ! -->
+	<questionDetails id="question3" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>Um prédio tem 4 andares e cada andar tem 5 apartamentos. 
 Quantos apartamentos tem o edifício?</question>
 		<false1>4</false1>
@@ -28,7 +28,7 @@ Quantos apartamentos tem o edifício?</question>
 		<correct>20</correct>		
 	</questionDetails>
 //----------------------	
-	<questionDetails id="question4" level="1" typeofgame="scratchcard"><!-- level 1 ! -->
+	<questionDetails id="question4" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>O João tem 8 anos e o seu irmão o dobro da sua idade.
 Quantos anos tem o irmão do João?</question>
 		<false1>8</false1>
@@ -37,13 +37,49 @@ Quantos anos tem o irmão do João?</question>
 		<correct>16</correct>		
 	</questionDetails>
 //----------------------	
-	<questionDetails id="question5" level="1" typeofgame="scratchcard"><!-- level 1 ! -->
+	<questionDetails id="question5" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>A Cláudia tem 250 selos. A tia deu-lhe mais duas dezenas e meia.
 Com quantos selos ficou a Cláudia?</question>
 		<false1>250</false1>
 		<false2>230</false2>
 		<false3>252</false3>
 		<correct>275</correct>		
+	</questionDetails>
+//----------------------	
+	<questionDetails id="question6" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>A Inês tinha 20€ e foi as compras. Comprou 1 camisola que custou
+		7,5€ e uma t-shirt que custou 5,5€. Com quanto dinheiro ficou a Inês?</question>
+		<false1>20</false1>
+		<false2>13</false2>
+		<false3>8</false3>
+		<correct>7</correct>		
+	</questionDetails>
+//----------------------	
+	<questionDetails id="question7" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Uma fábrica produz setecentos e quarenta e duas dezenas
+		de rolhas por semana. Qual o número que indica a sua produçao semanal?</question>
+		<false1>724</false1>
+		<false2>760</false2>
+		<false3>740</false3>
+		<correct>742</correct>		
+	</questionDetails>
+//----------------------	
+	<questionDetails id="question8" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Um comboio chega a uma estação com 241 passageiros. Aí, saem 160 
+			e entram 210. Quantos passageiros vão, agora, no comboio?</question>
+		<false1>230</false1>
+		<false2>281</false2>
+		<false3>680</false3>
+		<correct>291</correct>		
+	</questionDetails>
+//----------------------	
+	<questionDetails id="question9" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
+			galinhas e metade dos patos. QUantas aves ficaram na quinta?</question>
+		<false1>423</false1>
+		<false2>123</false2>
+		<false3>18</false3>
+		<correct>151</correct>		
 	</questionDetails>
 	
 </Questions>

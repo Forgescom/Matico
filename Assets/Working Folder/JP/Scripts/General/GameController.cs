@@ -19,7 +19,11 @@ public class GameController : MonoBehaviour {
 	public static string PLAYER_NAME;
 	public static int PLAYER_FACE;
 	public static int CURRENT_LEVEL;
+	public static int CURRENT_LEVEL_DIFICULTY;
+	public static string CURRENT_LEVEL_TYPE;
+	public static int CURRENT_LIVES_LOST;
 	public static int CURRENT_LIVES;
+	public static int CURRENT_LEVEL_STEP;
 
 	//MINI GAMES FINAL SCREEN
 	public GameObject SUCCESS_SCREEN;
@@ -27,7 +31,7 @@ public class GameController : MonoBehaviour {
 
 	//TUTORIALS
 	public static bool SCRATCHCARD_TUT = false;
-	public static bool ACELEROMETER_TUT = true;
+	public static bool ACELEROMETER_TUT = false;
 	public static bool FLIP_TUT = true;
 	public static bool SHOOTER_TUT = true;
 
@@ -35,40 +39,98 @@ public class GameController : MonoBehaviour {
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
 
+	//SOUND VALUES
+	public static bool fxSoundOn = true;
+	public static bool musicSoundOn = true;
+
+	//EVENTS AND DELEGATES
+	public delegate void SoundDelegate();
+	public static event SoundDelegate updateSoundVolume;
+	public delegate void RestartDelegate();
+	public static event RestartDelegate RestartGame;
+	public delegate void CheckPrices();
+	public static event CheckPrices checkStepPrices;
+
 
 
 	void Awake()
 	{
-		if (controller == null)
-		{
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+		if (controller == null){
 			DontDestroyOnLoad(gameObject);
 			controller = this;
 		}
-		else if (controller != this)
-		{
+		else if (controller != this){
 			Destroy(gameObject);
 		}
+
+
+		//THROW EVENT TO TURN ON/OFF SOUNDS
+		if (updateSoundVolume != null) {
+			updateSoundVolume();
+		}
+		//print ("THROW");
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDAMBIENTE, 1);
+		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDFX, 1);
+
+		CURRENT_LEVEL_STEP = 0;
+
+		Init ();
+
+
+
+
+
+	}
+	void Init(){
 		if (PlayerPrefs.GetString (PREFS_PLAYER_NAME) == "")
 			PLAYER_NAME = "Nome";	
 		else 
 			PLAYER_NAME = PlayerPrefs.GetString (PREFS_PLAYER_NAME);
-	
-	
-		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
 
-	}
+
+		int musicSoundOnINT = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDAMBIENTE);
+		musicSoundOn = (musicSoundOnINT == 0) ? false : true;
+		int fxSoundOnINT = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDFX);
+		fxSoundOn = (fxSoundOnINT == 0) ? false : true;
+
 	
+		//THROW EVENT TO TURN ON/OFF SOUNDS
+		if (updateSoundVolume != null) {
+			updateSoundVolume();
+		}
+
+
+
+		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
+	}
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 
+	public static void SwitchOnOffSound(string sound)
+	{
+		if (sound == "FX") {
+			fxSoundOn = !fxSoundOn;
+		}
+		if(sound == "Music"){
+			musicSoundOn = !musicSoundOn;
+		}
+
+		if (updateSoundVolume != null) {
+			updateSoundVolume();
+		}
+	}
+
+	//SAVE PLAYER VALUES FROM MAIN MENU
 	public static void SavePlayerPref(string nome = null, int avatarNumber = 99, int newLevel =0)
 	{
 		if(nome != null)
@@ -83,54 +145,68 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-
+	//HANDLE EVENTS FROM MINI GAMES
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
+			if(CURRENT_LIVES <4)
+				CURRENT_LIVES ++;
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
+
+
 		}
 		else if (outComeIn == "Errado"){
+			CURRENT_LIVES --;
+			CURRENT_LIVES_LOST ++;
+			houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
 			Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity);
 		}
 	}
 
-
+	//HANDLE CLICK FROM SUCCESS SCREEN
 	void btClick(GameObject bt)
 	{
-		MiniGamelEnd ("Won");
-		transform.SendMessage ("WriteToXml");
-		print ("Gravei");
-		
-	}
 
-	public static void MiniGamelEnd(string outCome)
-	{
-		switch (outCome) {
-			case "Won":
-				houses[CURRENT_LEVEL]["Blocked"] = "false";
+		switch (bt.name) {
+		case "BtRepeat":
+			if(RestartGame!=null)
+			{
+				RestartGame();
+			}
+			Destroy(bt.transform.root.gameObject);
+			break;
+		case "BtNext":
+			houses[CURRENT_LEVEL]["Blocked"] = "false";
+			Application.LoadLevel("Board");
 
-				Application.LoadLevel("Board");
-				break;
-			case "NextLevel":
-			
-				Application.LoadLevel("Board");
-				
-				break;
-		
-		
+			StartCoroutine("WaitForBoardLoad");
+
+			break;
 		}
+		
 	}
 
+	IEnumerator WaitForBoardLoad()
+	{
+		yield return new WaitForSeconds (2f);
+		if(checkStepPrices != null)
+		{		
+			checkStepPrices();
+		}
 
-
+		transform.SendMessage ("WriteToXml");
+	}
+	
 	void OnEnable()
 	{
 		ScratchController.GameEnded += ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame += ShowMiniGameFinalScreen;
+		GameManager.endGame += ShowMiniGameFinalScreen;
 	}
 	void OnDisable()
 	{
 		ScratchController.GameEnded -= ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame -= ShowMiniGameFinalScreen;
+		GameManager.endGame -= ShowMiniGameFinalScreen;
 	}
 }

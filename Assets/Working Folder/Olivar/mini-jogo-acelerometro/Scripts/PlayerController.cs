@@ -5,23 +5,32 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour 
 {
-	public GameObject brain;
-
-	public float speed = 0.5f;
+	//EVENT FOR COLLISION WITH OTHER OBJECTS
+	public delegate void PlayerHit(string objectHited,bool correct = false);
+	public static event PlayerHit boiaHit;
 
 	// Coordenadas limite
 	public float[] boundaries;
+	public Sprite [] skins;
+
+	//CONSTRAINTS
 	public bool canMove = false;
+	public float speed = 0.5f;
 
-//	public GameObject questionArea;
-	GameObject questionArea;
-
-	public int currentState = 0;
 
 
 	void Start () {
-		Screen.orientation = ScreenOrientation.LandscapeLeft;
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		//ASSIGN TEXTUR
+		//RESET POSITION
+		//RESET CONSTRAINTS
+
+
+	}
+
+	void Init(){
+		canMove = true;
+		transform.position = Vector3.zero;
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.CURRENT_SKIN_INDEX];
 	}
 
 	void Update()
@@ -35,23 +44,17 @@ public class PlayerController : MonoBehaviour
 	void HandleMovement()
 	{
 
-		if (SystemInfo.deviceType == DeviceType.Desktop) {
-			
+		if (SystemInfo.deviceType == DeviceType.Desktop) {			
 			var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-			transform.position += move * speed * Time.deltaTime;
-			
-			ClampMovement();
-				
+			transform.position += move * speed * Time.deltaTime;				
 		}
 		else 
 		{
 			float smoothSpeed = 8f * Time.deltaTime;
-
 			transform.Translate(Input.acceleration.x * smoothSpeed, Input.acceleration.y * smoothSpeed, 0);
-			ClampMovement();
-
 		}
 	}
+
 	void ClampMovement()
 	{
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x,boundaries[0], boundaries[1]),
@@ -59,53 +62,53 @@ public class PlayerController : MonoBehaviour
 		                                  transform.position.z);
 	}
 
-	void OnTriggerExit2D(Collider2D col)
-	{
-		HideQuestion (false);
-	}
+
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-
+		//COLLISION WITH BUBBLE
 		if(col.name.Contains("hip"))
 		{
 			col.SendMessage("AnimAndDestroy");
-			transform.position = Vector3.zero;
+
 
 			if(col.tag == "Errado") {
+				//THROW EVENT FOR ACCELEROMETER BRAIN
+				if(boiaHit !=null)
+				{
+					boiaHit("Bubble",false);
+				}
 
-				brain.SendMessage("AnswerHit", false);
 			}
 			else if (col.tag == "Certo") {
-			
-				brain.SendMessage("AnswerHit", true);
+				if(boiaHit !=null)
+				{
+					boiaHit("Bubble",true);
+				}
 			}
 		}
+		//COLLISION WITH SHARK
 		else if (col.tag =="Shark")
 		{
-			currentState ++;	
-			string animatorKey = "Damage"+ currentState;
+			if(boiaHit !=null)
+			{
+				boiaHit(col.tag);
+			}
+			Destroy(gameObject);
 
-			transform.GetComponent<Animator>().SetBool(animatorKey,true);
-			brain.SendMessage("ObjectHit");
 		}
 		else if (col.tag =="Wave")
 		{
 			AddWaveForce();
 		}
-		else if (col.tag == "Question")
-		{
-			HideQuestion(true);
-		}
+
 	}
 
-	void HideQuestion(bool hide)
+	public void ChangeSkin()
 	{
-		questionArea = GameObject.FindGameObjectWithTag ("Question");
-		if(hide)		
-			questionArea.renderer.material.color = new Color (1, 1, 1, 0.5f);
-		else
-			questionArea.renderer.material.color = new Color (1, 1, 1, 1);
+		//print ("ABOUT TO CHANGE SKIN TO THIS INDEX :" + AcelerometerBrain.CURRENT_SKIN_INDEX);
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.CURRENT_SKIN_INDEX];
+
 	}
 
 	void AddWaveForce()
@@ -125,28 +128,26 @@ public class PlayerController : MonoBehaviour
 		canMove = true;
 	}
 
-	void StartMovement()
-	{
-		canMove = true;
 
-	}
 
 	void StopMovement(string outcome){
 		transform.rigidbody2D.velocity  = new Vector2(0,0);
-		//transform.position = Vector3.zero;
 		canMove = false;
 
 	}
 
+
 	void OnEnable()
 	{
-		AcelerometerBrain.startGame += StartMovement;
+		//AcelerometerBrain.restartGame += RestartValues;
+		AcelerometerBrain.startGame += Init;
 		AcelerometerBrain.endGame += StopMovement;
 	}
 
 	void OnDisable()
 	{
-		AcelerometerBrain.startGame -= StartMovement;
+		//AcelerometerBrain.restartGame -= RestartValues;
+		AcelerometerBrain.startGame -= Init;
 		AcelerometerBrain.endGame -= StopMovement;
 	}
 }

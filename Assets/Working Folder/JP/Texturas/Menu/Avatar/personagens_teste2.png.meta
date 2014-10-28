@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: 964973193edf9644da01deef73ae953b
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: personagens_teste2
+    21300002: personagem_1
+    21300004: personagem_2
+    21300006: personagem_3
+    21300008: personagem_4
+    21300010: personagem_5
+    21300012: personagem_7
+    21300014: personagem_8
+    21300016: personagem_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: personagem_1
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 27
+        width: 386
+        height: 387
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: personagem_2
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 22
+        width: 493
+        height: 412
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: personagem_3
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 22
+        width: 478
+        height: 392
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: personagem_4
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 22
+        width: 415
+        height: 397
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: personagem_5
+      rect:
+        serializedVersion: 2
+        x: 2537
+        y: 32
+        width: 459
+        height: 377
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: personagem_7
+      rect:
+        serializedVersion: 2
+        x: 3777
+        y: 17
+        width: 420
+        height: 407
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: personagem_8
+      rect:
+        serializedVersion: 2
+        x: 4382
+        y: 17
+        width: 406
+        height: 377
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: personagem_6
+      rect:
+        serializedVersion: 2
+        x: 3132
+        y: 22
+        width: 410
+        height: 407
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

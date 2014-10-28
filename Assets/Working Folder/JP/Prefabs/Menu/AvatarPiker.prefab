@@ -238,8 +238,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceHolder: {fileID: 21200000}
   faces:
-  - {fileID: 21300002, guid: b7385256fe6d75948963f32522386013, type: 3}
-  - {fileID: 21300004, guid: c1b483e9684517146915042afbd754bd, type: 3}
+  - {fileID: 21300006, guid: b7385256fe6d75948963f32522386013, type: 3}
+  - {fileID: 21300002, guid: 9da8aaea1e23d8640b2ac3c64e2355d9, type: 3}
+  - {fileID: 21300002, guid: 9838317cb7c747e449d83e312e98de0e, type: 3}
+  - {fileID: 21300002, guid: c68c58bee2c53074b9b1923756f9bf14, type: 3}
+  - {fileID: 21300002, guid: 0c920cda29eee7e48bdc7f5815195ee3, type: 3}
+  - {fileID: 21300002, guid: 0e025391b97bfd942bb0eb6035f1fe9c, type: 3}
+  - {fileID: 21300002, guid: 6c19188223021ba4a86e8e7cbbcf8c54, type: 3}
+  - {fileID: 21300004, guid: 506bd86db621dfb4b92f8c75377bf569, type: 3}
   currentFaceIndex: 0
   avatarName: {fileID: 10200000}
 --- !u!114 &11400002
@@ -316,7 +322,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300002, guid: b7385256fe6d75948963f32522386013, type: 3}
+  m_Sprite: {fileID: 21300006, guid: b7385256fe6d75948963f32522386013, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21200002
 SpriteRenderer:

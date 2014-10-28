@@ -11,7 +11,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 102: {fileID: 10200000}
   m_Layer: 0
-  m_Name: hip1Text
+  m_Name: hip2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,9 +28,8 @@ GameObject:
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   - 58: {fileID: 5800000}
-  - 58: {fileID: 5800002}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Bubblev2
   m_TagString: Untagged
@@ -45,8 +44,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.172245026, y: -.056593895, z: -1}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: -.002576828, y: -.0141763687, z: -1}
+  m_LocalScale: {x: .100000001, y: .100000001, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 0
@@ -57,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.6485596, y: -6.16603708, z: -1}
+  m_LocalPosition: {x: 5.05335045, y: 3.92235422, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -94,17 +93,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: .319999993
   m_Center: {x: 0, y: 0}
---- !u!58 &5800002
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Radius: .319999993
-  m_Center: {x: 0, y: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -117,7 +105,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: d673c8d0e831ace4f8f1074d4d2de6ff, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!102 &10200000
@@ -134,9 +122,9 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 40
   m_FontStyle: 0
-  m_RichText: 1
+  m_RichText: 0
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
@@ -160,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55cbf0239753d2d46bd801b882f9ee74, type: 3}
+  m_Script: {fileID: 11500000, guid: dcc3f4fa2f4af1d42936ab0f2073003e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000

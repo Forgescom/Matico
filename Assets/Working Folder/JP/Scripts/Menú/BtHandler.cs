@@ -42,6 +42,7 @@ public class BtHandler : MonoBehaviour {
 
 
 
+
 	}
 
 	void OnMouseEnter(){
@@ -64,9 +65,10 @@ public class BtHandler : MonoBehaviour {
 	void OnMouseUp (){
 
 		if (over == true) {
+			ToggleButton ();
 			menuController = GameObject.Find(menuController.name);
 			menuController.SendMessage ("btClick", transform.gameObject);
-			ToggleButton ();
+
 		}	
 	}
 

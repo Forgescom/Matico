@@ -1,46 +1,80 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BubbleHandler : MonoBehaviour {
+
+	public GameObject [] bubbles;
+
+	List<GameObject> shownBubbles = new List<GameObject>();
+
+
+
+	int maxShownBubbles = 5;
 
 	// Use this for initialization
 	void Start () 
 	{
-		
+
+
 	}
+
+	void Init(){
+		foreach (GameObject bub in bubbles) {
+			bub.SetActive(false);
+		}
+		InvokeRepeating("ShowBubble", 1,2); 
+	}
+
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		MoveBubble ();
+
 	}
 
-	void MoveBubble()
+	void ShowBubble()
 	{
-		Vector3 start = transform.position;
-		Vector3 target = new Vector3 (start.x + Random.Range (2f, -2f), start.y + Random.Range (-2f, 2f), -2);
-		
-		Vector3 pos = transform.position;
-		
-		if (pos != target) 
-		{
-			transform.position = Vector3.MoveTowards(pos, target, 0.01f);
+
+		int randomBubble = Random.Range (0, bubbles.Length);
+
+
+		bubbles [randomBubble].SetActive (true);
+
+		if (shownBubbles.Contains (bubbles [randomBubble]) == false) {
+			shownBubbles.Add (bubbles [randomBubble]);
 		}
-		
-		else
-		{
-			target = start;
-			if (pos == start)
-			{
-				target = new Vector3 (Random.Range (2f, -2f), Random.Range (-2f, 2f), -2);
-			}
+
+		if (shownBubbles.Count > maxShownBubbles) {
+			shownBubbles[0].SetActive(false);
+			shownBubbles.RemoveAt(0);
 		}
 	}
 
-	void AnimAndDestroy()
-	{
-		transform.collider2D.enabled = false;
-		Animator bubbleAnimator = transform.GetComponent<Animator> ();
-		bubbleAnimator.SetBool ("pop", true);
+	void EndGame(string outCome){
+		CancelInvoke ();
 	}
+
+	void RestartValues()
+	{
+		foreach (GameObject bub in bubbles) {
+			bub.SetActive(true);
+			bub.GetComponent<CircleCollider2D>().enabled = true;
+		}
+	}
+
+	void OnEnable(){
+
+		AcelerometerBrain.startGame += Init;
+		AcelerometerBrain.endGame += EndGame;
+	//	AcelerometerBrain.restartGame += RestartValues;
+
+	}
+
+	void OnDisable(){
+		AcelerometerBrain.startGame -= Init;
+		AcelerometerBrain.endGame -= EndGame;
+		//AcelerometerBrain.restartGame -= RestartValues;
+	}
+
 }

@@ -5,7 +5,8 @@ public class SettingsHUD : MonoBehaviour {
 
 	bool open = false;
 
-
+	AudioClip backGroundMusic;
+	
 	// Use this for initialization
 	void Start () {
 
@@ -32,7 +33,7 @@ public class SettingsHUD : MonoBehaviour {
 				}
 			break;
 			case "somFx":
-				print ("DESLIGA SOM");
+			GameController.SwitchOnOffSound("Music");
 			break;
 		
 		}

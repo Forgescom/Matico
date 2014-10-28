@@ -13,11 +13,60 @@ public class QuestionsHandler : MonoBehaviour {
 		SetQuestionValues ();
 	}
 	
+	bool TypeGameEquals(int index, string currentType, int currentDificulty)
+	{
+		//DIFICULTY
+		string dificulty;
+		GameController.questions [index].TryGetValue ("QuestionLevel", out dificulty);
+		int dificultyInt;
+		int.TryParse(dificulty,out dificultyInt);
+
+		//TYPE OF GAME
+		string type;
+		GameController.questions [index].TryGetValue ("QuestionType", out type);
+
+
+		//AVAILABLE TYPE OF GAMES
+		string[] strArr = null;
+		int count = 0;
+		char[] splitchar = { ' ' };		
+		strArr = type.Split(splitchar);
+
+		bool foundEqual = false;
+
+		for (count = 0; count <= strArr.Length - 1; count++)
+		{
+			strArr[count].Trim();
+			if(currentType == strArr[count])
+			{
+				foundEqual =true;
+			}
+
+		}
+
+		if (currentDificulty != dificultyInt) {
+			foundEqual = false;
+		}
+	
+		return foundEqual;
+	}
+
+
 
 	void SetQuestionValues()
 	{
-		//PICK RANDOM QUESTION NUMBER
-		int randomQuestionNumber = Random.Range (0, GameController.questions.Count);
+		//PICK RANDOM QUESTION 
+		int randomQuestionNumber = 0;
+	
+
+	/*	//ENSURE THAT RANDOM QUESTION IS SAME LEVEL DIFICULTY AS CURRENT LEVEL
+		do {
+
+			randomQuestionNumber = Random.Range (0, GameController.questions.Count);		
+
+		} while (TypeGameEquals(randomQuestionNumber,GameController.CURRENT_LEVEL_TYPE,GameController.CURRENT_LEVEL_DIFICULTY) != true);
+*/
+
 
 		//PICK QUESTION TEXT FROM PREVIOUS NUMBER
 		string questionNumber;
@@ -65,7 +114,6 @@ public class QuestionsHandler : MonoBehaviour {
 					wrongAnswerNr ++;
 				}
 				else{
-
 					if (i % 2 != 0) {
 						answers[i].text =  (correctAnswerFloat + j).ToString();
 					}
@@ -75,11 +123,10 @@ public class QuestionsHandler : MonoBehaviour {
 					answers[i].transform.parent.tag = "Errado";
 
 					j++;
-
 				}
 			}
-
 		}
+		GameController.questions.RemoveAt (randomQuestionNumber);
 
 	}
 

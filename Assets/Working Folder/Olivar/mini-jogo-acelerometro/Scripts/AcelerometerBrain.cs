@@ -5,81 +5,73 @@ using System.Linq;
 
 public class AcelerometerBrain : MonoBehaviour {
 
-	//TEXTO NAS BOLHAS 	
-	public TextMesh vidasText;
-
-	public GameObject introScreen;
-	public GameObject explanationScreen;
-	public GameObject accelerometer;
-	public GameObject sharkFin;
-	public GameObject boia;
-
-
-	int currentScreen = 1;	
-	int vidas = 3;
-	
-	// Iniciar Jogo
-	public TextMesh startText;
-	bool start = false;
-
 	//EVENTS
 	public delegate void StartGameDelegate();
 	public static event StartGameDelegate startGame;
+	
 	public delegate void EndGameDelegate(string outcome);
 	public static event EndGameDelegate endGame;
+	
+	/*public delegate void RestartGameDelegate();
+	public static event RestartGameDelegate restartGame;*/
 
-	public delegate void RestartGameDelegate();
-	public static event RestartGameDelegate restartGame;
 
-	//EVENTS FOR GAME END
-	public delegate void gameEnd(string test);
-	public static event gameEnd GameEnded;
-	public delegate void GameNewTry();
-	public static event GameNewTry GameTryAgain;
+	//GAMEOBJECTS	
+	public GameObject introScreen;
+	public GameObject explanationScreen;
+	public GameObject accelerometer;
+	public GameObject screenLock;
+	public GameObject sharkFin;
+	public GameObject boia;
 
+	//STARTING POINT
+	public GUITexture [] vidasTexture;
+	int vidas;
+	int currentScreen;	
+
+	//STATIC VARIABLES FOR GAME OBJECTS
+	public static int CURRENT_SKIN_INDEX = 0;
+
+	
 
 	// Use this for initialization
 	void Start () {
+
 		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
 		accelerometer.SetActive(false);
-		boia.GetComponent<PlayerController>().canMove = false;
-		//Init ();
+		screenLock.SetActive(false);
+		currentScreen = (GameController.ACELEROMETER_TUT == true) ? 0 : 1;
+
 	}
 
-	void Init() 
-	{
-		if (startGame != null)
-		{
-			startGame();
-			boia.GetComponent<PlayerController>().canMove = true;
+	void Init(){
+
+		CURRENT_SKIN_INDEX = 0;
+		vidas = 4;
+		vidasTexture [CURRENT_SKIN_INDEX].gameObject.SetActive (false);
+
+		foreach (GUITexture obj in vidasTexture) {
+			obj.gameObject.SetActive (true);
 		}
-		
-//		vidasText.text = "Vidas: " + GameController.CURRENT_LIVES.ToString ();
-		vidasText.text = "Vidas: " + vidas.ToString ();
-		//bloquear objectos antes de ecras desaparecerem
+
+		CreateNewBoia ();
+
+		//TELL OTHER OBJECTS TO START GAME
+		if (startGame != null) {
+			startGame();
+		}
+
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
-
-		if (start == false) {
-			startText.text = "Toca no ecran para o jogo iniciar";
-			if(Input.touchCount > 0)
-			{
-				Init();
-				startText.transform.position = new Vector3(100, 0, 0);
-				start = true;
-			}
-		}
-
-		if (Input.GetKey (KeyCode.Escape)) {
-//			Application.LoadLevel(1);
-			RestartGame();
-		}
+	
+	
 
 	}
-	
+
 	void ChangeScreen()
 	{
 		if (currentScreen == 0) {
@@ -89,123 +81,111 @@ public class AcelerometerBrain : MonoBehaviour {
 		}
 		else if(currentScreen == 1)
 		{
+			screenLock.SetActive(true);
 			accelerometer.SetActive(true);
+
 			currentScreen ++;
-			/*if(startGame !=null)
-			{
-				startGame();
-			}*/
 		}
 	}
-	
-	void AnswerHit(bool correct)
+
+
+	void PlayerHit(string colObj, bool outCome)
 	{
+		//print ("Colidi com : " + colObj + " e foi este o resultado" + outCome);
 		Handheld.Vibrate ();
 
-		if(correct == true)
-		{
-			if(endGame != null)
-			{
-				endGame("Certo");
-
-			}
-		}
-		else
-		{
-			if(endGame != null)
-			{
-				endGame("Errado");
-
-			}
-		}
-	}
-
-	void ObjectHit()
-	{
-		vidas--;
-		vidasText.text = "Vidas: " + vidas.ToString ();
-
-		if (vidas == 0) {
-			if(endGame != null)
-			{
-				endGame("Errado");
-			}
-		}
-	}
-
-
-	public void GameEnd(string outcome, int vidas)
-	{
-		//FINAL SCREEN DEPENDING ON LIVES
-
-		/*if ((outcome == "Vitoria") && (vidas == 3)) {
-			finalMessage.text = "Resposta certa, excelente!";
-			successScreen.SetActive(true);
-		}
-		else if ((outcome == "Vitoria") && (vidas == 2)) {
-			finalMessage.text = "Resposta certa, bom jogo!";
-			successScreen.SetActive(true);
-		}
-		else if ((outcome == "Vitoria") && (vidas == 1)) {
-			finalMessage.text = "Resposta certa, foi por pouco!";
-			successScreen.SetActive(true);
-		}
-		else if(outcome == "Derrota")
-		{
-			finalMessage.text = "Perdeste todas as vidas, tenta outra vez!";
-			failureScreen.SetActive (true);
-		}
-		else if(outcome == "Derrotatubarao")
-		{
-			finalMessage.text = "Foste apanhado pelo tubarao! Tenta outra vez!";
-			failureScreen.SetActive (true);
-		}
-		boia.GetComponent<PlayerController> ().canMove = false;
-		sharkfin.GetComponent<SharkFin> ().enabled = false;
-		waves.GetComponent<WaveController> ().enabled = false;*/
-	}
-
-	void btClick(GameObject btClicked)
-	{
-		switch (btClicked.name) {
-		case "BtMap":
-			GameController.MiniGamelEnd("Won");
+		switch (colObj) {
+			case "Bubble":
+				if(outCome == true)
+				{
+					print("FIM DO JOGO   ACERTEI");
+					if(endGame != null)
+					{
+						endGame("Certo");						
+					}
+				}
+				else
+				{
+					print("FIM DO JOGO ERREI");
+					if(endGame != null)
+					{
+						endGame("Errado");						
+					}
+				}
 			break;
-		case "BtRepeat":
-			Application.LoadLevel("Accelerometer");
-			break;
-		case "BtNext":
-			GameController.MiniGamelEnd("NextLevel");
+
+			case "Shark":
+				vidas--;
+				//print("TENHO ESTAS VIDAS :" + vidas);
+				if (vidas != 0) {
+
+				//print("ADICIONA NOVA BOIA");
+					//ESPERAR 3 SEGUNDOS E LANÇAR NOVA BOIA
+					CURRENT_SKIN_INDEX ++;
+					Invoke("CreateNewBoia",3);
+					
+				}
+				else if (vidas == 0) {
+				//	print("FIM DO JOGO  FIQUEI SEM BOIAS");
+
+					if(endGame != null)
+					{
+						Init ();
+						//startGame();
+						endGame("Errado");	
+					}
+				}			
+
 			break;
 		}
 	}
 
-	void RestartGame()
+
+
+
+	void CreateNewBoia()
 	{
-		//		accelerometer.animation.Play("");
-		StartCoroutine ("ChangeQuestion");
+	
+		GameObject novaBoia = Instantiate (boia, Vector3.zero, Quaternion.identity) as GameObject;
+		novaBoia.transform.parent = accelerometer.transform;
+		novaBoia.tag = "Player";
+		novaBoia.SendMessage ("ChangeSkin");		
+		novaBoia.GetComponent<PlayerController> ().canMove = true;
+
+
+
+		vidasTexture [CURRENT_SKIN_INDEX].gameObject.SetActive (false);
+		sharkFin.GetComponent<SharkFin> ().target = novaBoia.transform;
+
 	}
+
+
 	
 	IEnumerator ChangeQuestion(){
 		yield return new WaitForSeconds (1.5F);
-		if (GameTryAgain != null) {		
+		/*if (GameTryAgain != null) {		
 			GameTryAgain();			
-		}	
+		}	*/
 		transform.SendMessage ("SetQuestionValues");
 	}
 
 	void OnEnable()
 	{
+		PlayerController.boiaHit += PlayerHit;
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
-		FailureScreen.RestartGame += RestartGame;
-//		AccelerometerBox.finishEvent += AccelerometerFinish;
+		FailureScreen.RestartGame += Init;
+		ClickToUnlock.unlockScreen += Init;
+		GameController.RestartGame += Init;
+
 	}
 	
 	void OnDisable()
 	{
+		PlayerController.boiaHit -= PlayerHit;
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
-		FailureScreen.RestartGame -= RestartGame;
-//		AccelerometerBox.finishEvent -= AccelerometerFinish;
+		FailureScreen.RestartGame -= Init;
+		ClickToUnlock.unlockScreen -= Init;
+		GameController.RestartGame -= Init;
 	}
 }
 

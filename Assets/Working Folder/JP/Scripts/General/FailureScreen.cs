@@ -13,7 +13,7 @@ public class FailureScreen : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (CheckFingerTouch() == true) {
+		if (CheckFingerTouch() == true || Input.GetMouseButtonUp(0) == true) {
 			if(RestartGame !=  null)
 			{
 				RestartGame();

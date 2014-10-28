@@ -60,6 +60,7 @@ public class ScratchBox : MonoBehaviour {
 				enable = false;
 				StartCoroutine("FinishGame");
 
+
 			}
 		}
 		else{
@@ -70,6 +71,7 @@ public class ScratchBox : MonoBehaviour {
 
 	IEnumerator FinishGame()
 	{
+		CoinMovement.CANMOVE = false;
 		yield return new WaitForSeconds(2f);
 		if(finishEvent !=null)
 		{
@@ -86,14 +88,21 @@ public class ScratchBox : MonoBehaviour {
 		enable = true;
 	}
 
+	void GameEnded(string tag)
+	{
+		enable = false;
+	}
+
 	void OnEnable()
 	{
 		ScratchController.GameTryAgain += RestartShapes;
+		ScratchBox.finishEvent += GameEnded;
 
 	}
 	void OnDisable()
 	{
 		ScratchController.GameTryAgain -= RestartShapes;
+		ScratchBox.finishEvent -= GameEnded;
 		
 	}
 
