@@ -102,6 +102,7 @@ public class BoardMain : MonoBehaviour {
 		GameController.CURRENT_LEVEL = currentLevelNumber;
 		GameController.CURRENT_LEVEL_DIFICULTY = dificulty;
 		GameController.CURRENT_LEVEL_TYPE = gameToOpen;
+		GameController.CURRENT_LIVES_LOST = 0;
 
 		switch (gameToOpen) {
 			case "shooter":

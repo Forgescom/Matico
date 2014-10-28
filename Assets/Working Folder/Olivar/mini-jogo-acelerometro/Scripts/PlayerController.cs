@@ -5,24 +5,32 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour 
 {
-	GameObject brain;
-
-	public float speed = 0.5f;
+	//EVENT FOR COLLISION WITH OTHER OBJECTS
+	public delegate void PlayerHit(string objectHited,bool correct = false);
+	public static event PlayerHit boiaHit;
 
 	// Coordenadas limite
 	public float[] boundaries;
-	public bool canMove = false;
 	public Sprite [] skins;
 
-//	public GameObject questionArea;
-	GameObject questionArea;
+	//CONSTRAINTS
+	public bool canMove = false;
+	public float speed = 0.5f;
 
-	int currentState = 0;
 
 
 	void Start () {
-		brain = GameObject.Find ("GameBrain");
-	
+		//ASSIGN TEXTUR
+		//RESET POSITION
+		//RESET CONSTRAINTS
+
+
+	}
+
+	void Init(){
+		canMove = true;
+		transform.position = Vector3.zero;
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.CURRENT_SKIN_INDEX];
 	}
 
 	void Update()
@@ -36,23 +44,17 @@ public class PlayerController : MonoBehaviour
 	void HandleMovement()
 	{
 
-		if (SystemInfo.deviceType == DeviceType.Desktop) {
-			
+		if (SystemInfo.deviceType == DeviceType.Desktop) {			
 			var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-			transform.position += move * speed * Time.deltaTime;
-			
-			ClampMovement();
-				
+			transform.position += move * speed * Time.deltaTime;				
 		}
 		else 
 		{
 			float smoothSpeed = 8f * Time.deltaTime;
-
 			transform.Translate(Input.acceleration.x * smoothSpeed, Input.acceleration.y * smoothSpeed, 0);
-			ClampMovement();
-
 		}
 	}
+
 	void ClampMovement()
 	{
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x,boundaries[0], boundaries[1]),
@@ -64,24 +66,34 @@ public class PlayerController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-	
+		//COLLISION WITH BUBBLE
 		if(col.name.Contains("hip"))
 		{
 			col.SendMessage("AnimAndDestroy");
 
 
 			if(col.tag == "Errado") {
+				//THROW EVENT FOR ACCELEROMETER BRAIN
+				if(boiaHit !=null)
+				{
+					boiaHit("Bubble",false);
+				}
 
-				brain.SendMessage("AnswerHit", false);
 			}
 			else if (col.tag == "Certo") {
-			
-				brain.SendMessage("AnswerHit", true);
+				if(boiaHit !=null)
+				{
+					boiaHit("Bubble",true);
+				}
 			}
 		}
+		//COLLISION WITH SHARK
 		else if (col.tag =="Shark")
 		{
-			brain.SendMessage("ObjectHit");
+			if(boiaHit !=null)
+			{
+				boiaHit(col.tag);
+			}
 			Destroy(gameObject);
 
 		}
@@ -92,10 +104,10 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	public void ChangeSkin(int index)
+	public void ChangeSkin()
 	{
-		print ("INDEX  " + index);
-		transform.GetComponent<SpriteRenderer> ().sprite = skins [index];
+		//print ("ABOUT TO CHANGE SKIN TO THIS INDEX :" + AcelerometerBrain.CURRENT_SKIN_INDEX);
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.CURRENT_SKIN_INDEX];
 
 	}
 
@@ -116,37 +128,26 @@ public class PlayerController : MonoBehaviour
 		canMove = true;
 	}
 
-	void StartMovement()
-	{
-		canMove = true;
-		transform.GetComponent<SpriteRenderer> ().sprite = skins [0];
 
-	}
 
 	void StopMovement(string outcome){
 		transform.rigidbody2D.velocity  = new Vector2(0,0);
-		//transform.position = Vector3.zero;
 		canMove = false;
 
 	}
 
-	void RestartValues(){
-		currentState = 0;
-		transform.position = Vector3.zero;
-		transform.GetComponent<SpriteRenderer> ().sprite = skins [0];
-	}
 
 	void OnEnable()
 	{
-		AcelerometerBrain.restartGame += RestartValues;
-		AcelerometerBrain.startGame += StartMovement;
+		//AcelerometerBrain.restartGame += RestartValues;
+		AcelerometerBrain.startGame += Init;
 		AcelerometerBrain.endGame += StopMovement;
 	}
 
 	void OnDisable()
 	{
-		AcelerometerBrain.restartGame -= RestartValues;
-		AcelerometerBrain.startGame -= StartMovement;
+		//AcelerometerBrain.restartGame -= RestartValues;
+		AcelerometerBrain.startGame -= Init;
 		AcelerometerBrain.endGame -= StopMovement;
 	}
 }

@@ -12,15 +12,11 @@ public class AcelerometerBrain : MonoBehaviour {
 	public delegate void EndGameDelegate(string outcome);
 	public static event EndGameDelegate endGame;
 	
-	public delegate void RestartGameDelegate();
-	public static event RestartGameDelegate restartGame;
+	/*public delegate void RestartGameDelegate();
+	public static event RestartGameDelegate restartGame;*/
 
 
 	//GAMEOBJECTS	
-
-	public GUITexture [] vidasTexture;
-	int vidas = 4;
-
 	public GameObject introScreen;
 	public GameObject explanationScreen;
 	public GameObject accelerometer;
@@ -28,36 +24,41 @@ public class AcelerometerBrain : MonoBehaviour {
 	public GameObject sharkFin;
 	public GameObject boia;
 
+	//STARTING POINT
+	public GUITexture [] vidasTexture;
+	int vidas;
+	int currentScreen;	
 
-	int currentScreen = 0;	
-	bool lostByShark = false;
+	//STATIC VARIABLES FOR GAME OBJECTS
+	public static int CURRENT_SKIN_INDEX = 0;
 
 	
-	// Iniciar Jogo
-
-	bool start = false;
 
 	// Use this for initialization
 	void Start () {
+
 		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
 		accelerometer.SetActive(false);
 		screenLock.SetActive(false);
+		currentScreen = (GameController.ACELEROMETER_TUT == true) ? 0 : 1;
 
 	}
 
 	void Init(){
-	
 
+		CURRENT_SKIN_INDEX = 0;
+		vidas = 4;
+		vidasTexture [CURRENT_SKIN_INDEX].gameObject.SetActive (false);
 
 		foreach (GUITexture obj in vidasTexture) {
 			obj.gameObject.SetActive (true);
 		}
-		vidas = 4;
-		vidasTexture [vidas-1].gameObject.SetActive (false);
 
-		if(startGame != null)
-		{
+		CreateNewBoia ();
+
+		//TELL OTHER OBJECTS TO START GAME
+		if (startGame != null) {
 			startGame();
 		}
 
@@ -67,11 +68,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-
-		if (Input.GetKey (KeyCode.Escape)) {
-//			Application.LoadLevel(1);
-			RestartGame();
-		}
+	
 
 	}
 
@@ -88,92 +85,81 @@ public class AcelerometerBrain : MonoBehaviour {
 			accelerometer.SetActive(true);
 
 			currentScreen ++;
-
 		}
 	}
-	
-	void AnswerHit(bool correct)
+
+
+	void PlayerHit(string colObj, bool outCome)
 	{
+		//print ("Colidi com : " + colObj + " e foi este o resultado" + outCome);
 		Handheld.Vibrate ();
 
-		if(correct == true)
-		{
-			if(endGame != null)
-			{
-				endGame("Certo");
+		switch (colObj) {
+			case "Bubble":
+				if(outCome == true)
+				{
+					print("FIM DO JOGO   ACERTEI");
+					if(endGame != null)
+					{
+						endGame("Certo");						
+					}
+				}
+				else
+				{
+					print("FIM DO JOGO ERREI");
+					if(endGame != null)
+					{
+						endGame("Errado");						
+					}
+				}
+			break;
 
-			}
-		}
-		else
-		{
-			if(endGame != null)
-			{
-				endGame("Errado");
+			case "Shark":
+				vidas--;
+				//print("TENHO ESTAS VIDAS :" + vidas);
+				if (vidas != 0) {
 
-			}
+				//print("ADICIONA NOVA BOIA");
+					//ESPERAR 3 SEGUNDOS E LANÇAR NOVA BOIA
+					CURRENT_SKIN_INDEX ++;
+					Invoke("CreateNewBoia",3);
+					
+				}
+				else if (vidas == 0) {
+				//	print("FIM DO JOGO  FIQUEI SEM BOIAS");
+
+					if(endGame != null)
+					{
+						Init ();
+						//startGame();
+						endGame("Errado");	
+					}
+				}			
+
+			break;
 		}
 	}
 
-	void ObjectHit()
-	{
 
 
-
-		vidas--;
-
-		if (vidas != 0) {
-			//StartCoroutine ("CreateNewBoia");
-			Invoke("CreateNewBoia",2);
-
-		}
-		else if (vidas == 0) {
-			lostByShark = true;
-			if(endGame != null)
-			{
-				endGame("Errado");
-			}
-		}
-
-
-
-	}
 
 	void CreateNewBoia()
 	{
 	
 		GameObject novaBoia = Instantiate (boia, Vector3.zero, Quaternion.identity) as GameObject;
 		novaBoia.transform.parent = accelerometer.transform;
-		
-		novaBoia.SendMessage ("ChangeSkin",vidas-1);
-		
-		novaBoia.GetComponent<PlayerController> ().canMove = true;
 		novaBoia.tag = "Player";
+		novaBoia.SendMessage ("ChangeSkin");		
+		novaBoia.GetComponent<PlayerController> ().canMove = true;
 
-		vidasTexture [vidas-1].gameObject.SetActive (false);
+
+
+		vidasTexture [CURRENT_SKIN_INDEX].gameObject.SetActive (false);
 		sharkFin.GetComponent<SharkFin> ().target = novaBoia.transform;
+
 	}
 
 
-
-
-
-	void RestartGame()
-	{
-		//		accelerometer.animation.Play("");
-	
-		Init ();
-		if (lostByShark == true) {
-			CreateNewBoia();
-		}
-
-		StartCoroutine ("ChangeQuestion");
-
-		screenLock.SetActive(true);
-
-		if (restartGame != null) {
-			restartGame();
-		}
-	}
 	
 	IEnumerator ChangeQuestion(){
 		yield return new WaitForSeconds (1.5F);
@@ -185,19 +171,21 @@ public class AcelerometerBrain : MonoBehaviour {
 
 	void OnEnable()
 	{
+		PlayerController.boiaHit += PlayerHit;
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
-		FailureScreen.RestartGame += RestartGame;
+		FailureScreen.RestartGame += Init;
 		ClickToUnlock.unlockScreen += Init;
-		GameController.RestartGame += RestartGame;
+		GameController.RestartGame += Init;
 
 	}
 	
 	void OnDisable()
 	{
+		PlayerController.boiaHit -= PlayerHit;
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
-		FailureScreen.RestartGame -= RestartGame;
+		FailureScreen.RestartGame -= Init;
 		ClickToUnlock.unlockScreen -= Init;
-		GameController.RestartGame -= RestartGame;
+		GameController.RestartGame -= Init;
 	}
 }
 

@@ -75,12 +75,12 @@ MonoBehaviour:
   - 9.14999962
   - -4.94999981
   - 4.94999981
-  canMove: 0
+  canMove: 1
   skins:
-  - {fileID: 21300000, guid: c8d8b29efd236854db4552603ffecea8, type: 3}
-  - {fileID: 21300000, guid: 22ace228975dfef429d91778fad851b0, type: 3}
-  - {fileID: 21300002, guid: 189592854d778c24c9a9b2c64ae9a8c2, type: 3}
   - {fileID: 21300000, guid: 06476d4ca98839c4c9681f70d5a1c4b2, type: 3}
+  - {fileID: 21300002, guid: 189592854d778c24c9a9b2c64ae9a8c2, type: 3}
+  - {fileID: 21300000, guid: 22ace228975dfef429d91778fad851b0, type: 3}
+  - {fileID: 21300000, guid: c8d8b29efd236854db4552603ffecea8, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,17 +5,17 @@
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa02" blocked="true">
-    <typeofgame>Acelerometer</typeofgame>
+    <typeofgame>ScratchCard</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa03" blocked="true">
-    <typeofgame>Shooter</typeofgame>
+    <typeofgame>ScratchCard</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa04" blocked="true">
-    <typeofgame>Acelerometer</typeofgame>
+    <typeofgame>ScratchCard</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
@@ -30,17 +30,17 @@
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa07" blocked="true">
-    <typeofgame>ScratchCard</typeofgame>
+    <typeofgame>Acelerometer</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa08" blocked="true">
-    <typeofgame>ScratchCard</typeofgame>
+    <typeofgame>Acelerometer</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa09" blocked="true">
-    <typeofgame>ScratchCard</typeofgame>
+    <typeofgame>Acelerometer</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>

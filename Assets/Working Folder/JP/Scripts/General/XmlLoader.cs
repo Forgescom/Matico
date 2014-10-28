@@ -59,8 +59,7 @@ public class XmlLoader : MonoBehaviour {
 		}
 		else{
 			fileXmlHouses.Delete();
-			w = fileXmlHouses.CreateText();
-			print (fileToSave);
+			w = fileXmlHouses.CreateText();		
 			w.WriteLine(fileToSave);
 		}
 		w.Close ();

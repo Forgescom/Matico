@@ -15,14 +15,15 @@ public class BubbleHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		foreach (GameObject bub in bubbles) {
-			bub.SetActive(true);
-		}
+
 
 	}
 
 	void Init(){
-		//InvokeRepeating("ShowBubble", 1,2); 
+		foreach (GameObject bub in bubbles) {
+			bub.SetActive(false);
+		}
+		InvokeRepeating("ShowBubble", 1,2); 
 	}
 
 	
@@ -50,6 +51,10 @@ public class BubbleHandler : MonoBehaviour {
 		}
 	}
 
+	void EndGame(string outCome){
+		CancelInvoke ();
+	}
+
 	void RestartValues()
 	{
 		foreach (GameObject bub in bubbles) {
@@ -61,13 +66,15 @@ public class BubbleHandler : MonoBehaviour {
 	void OnEnable(){
 
 		AcelerometerBrain.startGame += Init;
-		AcelerometerBrain.restartGame += RestartValues;
+		AcelerometerBrain.endGame += EndGame;
+	//	AcelerometerBrain.restartGame += RestartValues;
 
 	}
 
 	void OnDisable(){
 		AcelerometerBrain.startGame -= Init;
-		AcelerometerBrain.restartGame -= RestartValues;
+		AcelerometerBrain.endGame -= EndGame;
+		//AcelerometerBrain.restartGame -= RestartValues;
 	}
 
 }

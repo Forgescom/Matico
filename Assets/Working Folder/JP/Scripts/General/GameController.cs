@@ -21,10 +21,9 @@ public class GameController : MonoBehaviour {
 	public static int CURRENT_LEVEL;
 	public static int CURRENT_LEVEL_DIFICULTY;
 	public static string CURRENT_LEVEL_TYPE;
-	public static int CURRENT_LIVES_LOST =0;
-
-
-	public static int CURRENT_LIVES = 4;
+	public static int CURRENT_LIVES_LOST;
+	public static int CURRENT_LIVES;
+	public static int CURRENT_LEVEL_STEP;
 
 	//MINI GAMES FINAL SCREEN
 	public GameObject SUCCESS_SCREEN;
@@ -32,7 +31,7 @@ public class GameController : MonoBehaviour {
 
 	//TUTORIALS
 	public static bool SCRATCHCARD_TUT = false;
-	public static bool ACELEROMETER_TUT = true;
+	public static bool ACELEROMETER_TUT = false;
 	public static bool FLIP_TUT = true;
 	public static bool SHOOTER_TUT = true;
 
@@ -49,6 +48,10 @@ public class GameController : MonoBehaviour {
 	public static event SoundDelegate updateSoundVolume;
 	public delegate void RestartDelegate();
 	public static event RestartDelegate RestartGame;
+	public delegate void CheckPrices();
+	public static event CheckPrices checkStepPrices;
+
+
 
 	void Awake()
 	{
@@ -75,6 +78,9 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDAMBIENTE, 1);
 		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDFX, 1);
+
+		CURRENT_LEVEL_STEP = 0;
+
 		Init ();
 
 
@@ -146,7 +152,8 @@ public class GameController : MonoBehaviour {
 			if(CURRENT_LIVES <4)
 				CURRENT_LIVES ++;
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
-			houses[CURRENT_LEVEL]["Blocked"] = "false";
+
+
 		}
 		else if (outComeIn == "Errado"){
 			CURRENT_LIVES --;
@@ -169,14 +176,27 @@ public class GameController : MonoBehaviour {
 			Destroy(bt.transform.root.gameObject);
 			break;
 		case "BtNext":
+			houses[CURRENT_LEVEL]["Blocked"] = "false";
 			Application.LoadLevel("Board");
-			transform.SendMessage ("WriteToXml");
+
+			StartCoroutine("WaitForBoardLoad");
+
 			break;
 		}
 		
 	}
 
+	IEnumerator WaitForBoardLoad()
+	{
+		yield return new WaitForSeconds (2f);
+		if(checkStepPrices != null)
+		{		
+			checkStepPrices();
+		}
 
+		transform.SendMessage ("WriteToXml");
+	}
+	
 	void OnEnable()
 	{
 		ScratchController.GameEnded += ShowMiniGameFinalScreen;
