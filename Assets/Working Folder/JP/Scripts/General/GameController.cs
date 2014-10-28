@@ -201,10 +201,12 @@ public class GameController : MonoBehaviour {
 	{
 		ScratchController.GameEnded += ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame += ShowMiniGameFinalScreen;
+		GameManager.endGame += ShowMiniGameFinalScreen;
 	}
 	void OnDisable()
 	{
 		ScratchController.GameEnded -= ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame -= ShowMiniGameFinalScreen;
+		GameManager.endGame -= ShowMiniGameFinalScreen;
 	}
 }
