@@ -5,11 +5,21 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+	public GameObject introScreen;
+	public GameObject explanationScreen;
+	public GameObject shooter;
+	public GameObject target;
+
+	int currentScreen = 1;
+
+	// Iniciar Jogo
+	public TextMesh startText;
+	bool start = false;
 
     public CameraFollow cameraFollow;
     int currentPandaIndex;
-    public Cannon cannon;
-//    [HideInInspector]
+    public SlingShot slingshot;
+    [HideInInspector]
     public static GameState CurrentGameState = GameState.Start;
     private List<GameObject> Pandas;
 	private List<GameObject> Bamboos;
@@ -27,32 +37,54 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        CurrentGameState = GameState.Start;
-        cannon.enabled = false;
-        //find all relevant game objects
-        Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
-        Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
-        Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
-        //unsubscribe and resubscribe from the event
-        //this ensures that we subscribe only once
-        cannon.PandaThrown -= Cannon_PandaThrown; cannon.PandaThrown += Cannon_PandaThrown;
+		introScreen.SetActive (true);
+//		explanationScreen.SetActive(false);
+		shooter.SetActive(false);
     }
 
-
-    // Update is called once per frame
-    void Update()
+	void Init() 
+	{
+		CurrentGameState = GameState.Start;
+		slingshot.enabled = false;
+		//find all relevant game objects
+		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
+		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
+		Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
+		print (Pandas.Count);
+		print (Bamboos.Count);
+		print (Targets.Count);
+		//unsubscribe and resubscribe from the event
+		//this ensures that we subscribe only once
+		slingshot.PandaThrown -= Slingshot_PandaThrown; 
+		slingshot.PandaThrown += Slingshot_PandaThrown;
+		AnimatePandaToSlingshot();
+	}
+	
+	
+	// Update is called once per frame
+	void Update()
     {
-        switch (CurrentGameState)
+		if (start == false) {
+			startText.text = "Toca no ecra para o jogo iniciar";
+			if(Input.touchCount > 0)
+			{
+				Init();
+				startText.transform.position = new Vector3(100, 0, 0);
+				start = true;
+			}
+		}
+
+		switch (CurrentGameState)
         {
             case GameState.Start:
                 //if player taps, begin animating the pandas 
                 //to the slingshot
                 if (Input.GetMouseButtonUp(0))
                 {
-                    AnimatePandaToCannon();
+                    AnimatePandaToSlingshot();
                 }
                 break;
-            case GameState.PandaMovingToCannon:
+            case GameState.PandaMovingToSlingshot:
                 //do nothing
                 break;
             case GameState.Playing:
@@ -62,11 +94,11 @@ public class GameManager : MonoBehaviour
                 //animate the camera to the start position
               
 
-			if (cannon.CannonState == CannonState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - cannon.TimeSinceThrown > 5f))
+			if (slingshot.slingshotState == SlingshotState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - slingshot.TimeSinceThrown > 5f))
 			{
-			    cannon.enabled = false;
+			    slingshot.enabled = false;
 			    AnimateCameraToStartPosition();
-			    CurrentGameState = GameState.PandaMovingToCannon;
+			    CurrentGameState = GameState.PandaMovingToSlingshot;
 			}
 
             break;
@@ -84,6 +116,24 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+	void ChangeScreen()
+	{
+		if (currentScreen == 0) {
+//			explanationScreen.SetActive(true);
+//			explanationScreen.animation.Play("boiaExplanation");
+			currentScreen ++;
+		}
+		else if(currentScreen == 1)
+		{
+			shooter.SetActive(true);
+			currentScreen ++;
+			/*if(startGame !=null)
+			{
+				startGame();
+			}*/
+		}
+	}
 
 
     /// <summary>
@@ -107,8 +157,6 @@ public class GameManager : MonoBehaviour
         if (duration == 0.0f) duration = 0.1f;
         //animate the camera to start
 
-
-
         Camera.main.transform.positionTo
             (duration,
             cameraFollow.StartingPosition). //end position
@@ -117,20 +165,28 @@ public class GameManager : MonoBehaviour
                             cameraFollow.IsFollowing = false;
                             if (AllTargetsDestroyed())
                             {
-                                CurrentGameState = GameState.Won;
+								print("Continua1");
+								slingshot.slingshotState = SlingshotState.Idle;
+								//bird to throw is the next on the list
+								currentPandaIndex++;
+								AnimatePandaToSlingshot();
+
+//                          	CurrentGameState = GameState.Won;
+//								print("Ganhou");
                             }
-                            //animate the next panda, if available
+                            //animate the next bird, if available
                             else if (currentPandaIndex == Pandas.Count - 1)
                             {
-                                //no more pandas, go to finished
+                                //no more birds, go to finished
                                 CurrentGameState = GameState.Lost;
                             }
                             else
                             {
-                                cannon.CannonState = CannonState.Idle;
-                                //panda to throw is the next on the list
+								print("Continua2");
+                                slingshot.slingshotState = SlingshotState.Idle;
+                                //bird to throw is the next on the list
                                 currentPandaIndex++;
-                                AnimatePandaToCannon();
+                                AnimatePandaToSlingshot();
                             }
                         });
     }
@@ -138,22 +194,21 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Animates the panda from the waiting position to the slingshot
     /// </summary>
-    void AnimatePandaToCannon()
+    void AnimatePandaToSlingshot()
     {
-        CurrentGameState = GameState.PandaMovingToCannon;
-     
+        CurrentGameState = GameState.PandaMovingToSlingshot;
 		Pandas[currentPandaIndex].transform.positionTo
             (Vector2.Distance(Pandas[currentPandaIndex].transform.position / 10,
-            cannon.PandaWaitPosition.transform.position) / 10, //duration
-			 cannon.PandaWaitPosition.transform.position). //final position
+            slingshot.PandaWaitPosition.transform.position) / 10, //duration
+			 slingshot.PandaWaitPosition.transform.position). //final position
                 setOnCompleteHandler((x) =>
                         {
                             x.complete();
                             x.destroy(); //destroy the animation
                             CurrentGameState = GameState.Playing;
-                            cannon.enabled = true; //enable slingshot
+                            slingshot.enabled = true; //enable slingshot
                             //current panda is the current in the list
-							cannon.PandaToThrow = Pandas[currentPandaIndex];
+							slingshot.PandaToThrow = Pandas[currentPandaIndex];
                         });
 
 
@@ -164,7 +219,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void Cannon_PandaThrown(object sender, System.EventArgs e)
+    private void Slingshot_PandaThrown(object sender, System.EventArgs e)
     {
         cameraFollow.PandaToFollow = Pandas[currentPandaIndex].transform;
         cameraFollow.IsFollowing = true;
@@ -178,10 +233,14 @@ public class GameManager : MonoBehaviour
     {
         foreach (var item in Bamboos.Union(Pandas).Union(Targets))
         {
-            if (item != null && item.rigidbody2D.velocity.sqrMagnitude > Constants.MinVelocity)
-            {
-                return false;
-            }
+			if(item!=null && item.rigidbody2D !=null)
+			{
+				if (item != null && item.rigidbody2D.velocity.sqrMagnitude > Constants.MinVelocity)
+				{
+					return false;
+				}
+			}
+            
         }
 
         return true;
@@ -225,25 +284,25 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Shows relevant GUI depending on the current game state
     /// </summary>
-    void OnGUI()
+/*    void OnGUI()
     {
         AutoResize(800, 480);
         switch (CurrentGameState)
         {
             case GameState.Start:
-                GUI.Label(new Rect(0, 150, 200, 100), "Tap the screen to start");
+                GUI.Label(new Rect(0, 150, 200, 100), "Toca no ecra para iniciar");
                 break;
             case GameState.Won:
-                GUI.Label(new Rect(0, 150, 200, 100), "You won! Tap the screen to restart");
+                GUI.Label(new Rect(0, 150, 200, 100), "Ganhaste! Toca no ecra para reiniciar");
                 break;
             case GameState.Lost:
-                GUI.Label(new Rect(0, 150, 200, 100), "You lost! Tap the screen to restart");
+                GUI.Label(new Rect(0, 150, 200, 100), "Perdeste! Toca no ecra para reiniciar");
                 break;
             default:
                 break;
         }
     }
-
+*/
 	void RestartGame()
 	{
 		//		accelerometer.animation.Play("");
@@ -260,14 +319,14 @@ public class GameManager : MonoBehaviour
 */
 	void OnEnable()
 	{
-//		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
+		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		FailureScreen.RestartGame += RestartGame;
 		//		AccelerometerBox.finishEvent += AccelerometerFinish;
 	}
 	
 	void OnDisable()
 	{
-//		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
+		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
 		FailureScreen.RestartGame -= RestartGame;
 		//		AccelerometerBox.finishEvent -= AccelerometerFinish;
 	}

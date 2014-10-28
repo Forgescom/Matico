@@ -9,7 +9,7 @@ public class CameraMove : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Cannon.CannonState == CannonState.Idle && GameManager.CurrentGameState == GameState.Playing)
+		if ( GameManager.CurrentGameState == GameState.Playing)
 		{
 			//drag start
 			if (Input.GetMouseButtonDown(0))
@@ -46,5 +46,5 @@ public class CameraMove : MonoBehaviour
 	private float timeDragStarted;
 	private Vector3 previousPosition = Vector3.zero;
 	
-	public Cannon Cannon;
+	public SlingShot Slingshot;
 }
