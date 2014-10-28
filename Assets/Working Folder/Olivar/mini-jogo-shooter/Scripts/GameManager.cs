@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using System.Linq;
@@ -34,6 +35,17 @@ public class GameManager : MonoBehaviour
 	public delegate void RestartGameDelegate();
 	public static event RestartGameDelegate restartGame;
 
+	//EVENTS FOR GAME END
+	public delegate void gameEnd(string test);
+	public static event gameEnd GameEnded;
+	public delegate void GameNewTry();
+	public static event GameNewTry GameTryAgain;
+
+
+
+	private bool won;
+	private bool nolives;
+
     // Use this for initialization
     void Start()
     {
@@ -44,6 +56,11 @@ public class GameManager : MonoBehaviour
 
 	void Init() 
 	{
+		if (startGame != null)
+		{
+			startGame();
+
+		}
 		CurrentGameState = GameState.Start;
 		slingshot.enabled = false;
 		//find all relevant game objects
@@ -53,6 +70,8 @@ public class GameManager : MonoBehaviour
 		print (Pandas.Count);
 		print (Bamboos.Count);
 		print (Targets.Count);
+		won = false;
+		nolives = false;
 		//unsubscribe and resubscribe from the event
 		//this ensures that we subscribe only once
 		slingshot.PandaThrown -= Slingshot_PandaThrown; 
@@ -146,6 +165,8 @@ public class GameManager : MonoBehaviour
         return Targets.All(x => x == null);
     }
 
+
+
     /// <summary>
     /// Animates the camera to the original location
     /// When it finishes, it checks if we have lost, won or we have other pandas
@@ -161,37 +182,48 @@ public class GameManager : MonoBehaviour
             (duration,
             cameraFollow.StartingPosition). //end position
             setOnCompleteHandler((x) =>
-                        {
-                            cameraFollow.IsFollowing = false;
-                            if (AllTargetsDestroyed())
-                            {
-								print("Continua1");
-								slingshot.slingshotState = SlingshotState.Idle;
-								//bird to throw is the next on the list
-								currentPandaIndex++;
-								AnimatePandaToSlingshot();
+	        {
+	            cameraFollow.IsFollowing = false;
+						
 
-//                          	CurrentGameState = GameState.Won;
-//								print("Ganhou");
-                            }
-                            //animate the next bird, if available
-                            else if (currentPandaIndex == Pandas.Count - 1)
-                            {
-                                //no more birds, go to finished
-                                CurrentGameState = GameState.Lost;
-                            }
-                            else
-                            {
-								print("Continua2");
-                                slingshot.slingshotState = SlingshotState.Idle;
-                                //bird to throw is the next on the list
-                                currentPandaIndex++;
-                                AnimatePandaToSlingshot();
-                            }
-                        });
-    }
-
-    /// <summary>
+				if (won == true)
+	            {
+/*					print("Continua1");
+					slingshot.slingshotState = SlingshotState.Idle;
+					//bird to throw is the next on the list
+					currentPandaIndex++;
+					AnimatePandaToSlingshot();
+*/
+					print("Ganhou?");
+					print(won);
+					
+					
+//	          		CurrentGameState = GameState.Won;
+	            }
+	            //animate the next bird, if available
+	            else 
+					if (currentPandaIndex == Pandas.Count - 1)
+                    {
+                        //no more birds, go to finished
+                        CurrentGameState = GameState.Lost;
+						nolives = true;
+						print("Nao tem vidas?");
+						print (nolives);
+                    }
+					else
+                    {
+						print("Ganhou?");
+						print(won);
+						print("Continua...");
+                        slingshot.slingshotState = SlingshotState.Idle;
+                        //bird to throw is the next on the list
+                        currentPandaIndex++;
+                        AnimatePandaToSlingshot();
+                    }
+	        });
+	}
+	
+	/// <summary>
     /// Animates the panda from the waiting position to the slingshot
     /// </summary>
     void AnimatePandaToSlingshot()
@@ -202,14 +234,14 @@ public class GameManager : MonoBehaviour
             slingshot.PandaWaitPosition.transform.position) / 10, //duration
 			 slingshot.PandaWaitPosition.transform.position). //final position
                 setOnCompleteHandler((x) =>
-                        {
-                            x.complete();
-                            x.destroy(); //destroy the animation
-                            CurrentGameState = GameState.Playing;
-                            slingshot.enabled = true; //enable slingshot
-                            //current panda is the current in the list
+	                {
+	                    x.complete();
+	                    x.destroy(); //destroy the animation
+	                    CurrentGameState = GameState.Playing;
+	                    slingshot.enabled = true; //enable slingshot
+	                    //current panda is the current in the list
 							slingshot.PandaToThrow = Pandas[currentPandaIndex];
-                        });
+	                });
 
 
     }
@@ -258,29 +290,31 @@ public class GameManager : MonoBehaviour
         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
     }
 
+		
 	void AnswerHit(bool correct)
 	{
 		Handheld.Vibrate ();
-		
+
 		if(correct == true)
 		{
 			if(endGame != null)
 			{
+				won = true;
 				endGame("Certo");
-				print("Acertou!!!");
-				
+				print("Message: Certo");
 			}
 		}
 		else
 		{
 			if(endGame != null)
 			{
+				won = false;
 				endGame("Errado");
-				
+				print("Message: Errado");
 			}
 		}
 	}
-
+	
     /// <summary>
     /// Shows relevant GUI depending on the current game state
     /// </summary>
@@ -303,12 +337,30 @@ public class GameManager : MonoBehaviour
         }
     }
 */
+
+
+	void btClick(GameObject btClicked)
+	{
+		switch (btClicked.name) {
+		case "BtMap":
+			GameController.MiniGamelEnd("Won");
+			break;
+		case "BtRepeat":
+			Application.LoadLevel("Accelerometer");
+			break;
+		case "BtNext":
+			GameController.MiniGamelEnd("NextLevel");
+			break;
+		}
+	}
+
 	void RestartGame()
 	{
-		//		accelerometer.animation.Play("");
+//		shooter.animation.Play("");
 		StartCoroutine ("ChangeQuestion");
 	}
-/*	
+
+
 	IEnumerator ChangeQuestion(){
 		yield return new WaitForSeconds (1.5F);
 		if (GameTryAgain != null) {		
@@ -316,19 +368,18 @@ public class GameManager : MonoBehaviour
 		}	
 		transform.SendMessage ("SetQuestionValues");
 	}
-*/
+
+
 	void OnEnable()
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		FailureScreen.RestartGame += RestartGame;
-		//		AccelerometerBox.finishEvent += AccelerometerFinish;
 	}
 	
 	void OnDisable()
 	{
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
 		FailureScreen.RestartGame -= RestartGame;
-		//		AccelerometerBox.finishEvent -= AccelerometerFinish;
 	}
 
 

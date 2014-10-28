@@ -514,6 +514,14 @@ Prefab:
       propertyPath: m_TagString
       value: Target
       objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800002, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
+      propertyPath: m_Radius
+      value: .699999988
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
   m_RootGameObject: {fileID: 1831132594}
@@ -672,7 +680,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 683266621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.80631542, y: -1.75826836, z: -10}
+  m_LocalPosition: {x: -10.7270231, y: -1.75826836, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -786,6 +794,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1085173a74023624aae364d71ae86139, type: 2}
+      propertyPath: GManager
+      value: 
+      objectReference: {fileID: 504010332}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1085173a74023624aae364d71ae86139, type: 2}
   m_RootGameObject: {fileID: 820059758}
@@ -837,6 +849,14 @@ Prefab:
     - target: {fileID: 100000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800002, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
+      propertyPath: m_Radius
+      value: .699999988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
@@ -930,7 +950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddcc603f7c2f9b49af8ecd03a625930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gManager: {fileID: 504010332}
 --- !u!58 &820059762
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1565,6 +1584,7 @@ GameObject:
   - 58: {fileID: 1237304086}
   - 50: {fileID: 1237304085}
   - 114: {fileID: 1237304084}
+  - 58: {fileID: 1237304088}
   m_Layer: 0
   m_Name: Target
   m_TagString: Target
@@ -1648,6 +1668,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2521f15f8ef950a44875bbc22f30b7be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!58 &1237304088
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800002, guid: 26203cdfb746a984a88de49b3cb6bab2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1732722780}
+  m_GameObject: {fileID: 1237304082}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: .699999988
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1322598453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,7 +1820,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 1351940129}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Points:
   - {x: -19.4899998, y: 0}
   - {x: 19.4899998, y: 0}
@@ -1958,7 +1990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddcc603f7c2f9b49af8ecd03a625930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gManager: {fileID: 504010332}
 --- !u!58 &1437156900
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2193,7 +2224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddcc603f7c2f9b49af8ecd03a625930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gManager: {fileID: 504010332}
 --- !u!58 &1520904402
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2357,6 +2387,14 @@ Prefab:
     - target: {fileID: 100000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
       propertyPath: m_TagString
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800002, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
+      propertyPath: m_Radius
+      value: .699999988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
@@ -2605,6 +2643,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1085173a74023624aae364d71ae86139, type: 2}
+      propertyPath: GManager
+      value: 
+      objectReference: {fileID: 504010332}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1085173a74023624aae364d71ae86139, type: 2}
   m_RootGameObject: {fileID: 1520904398}
@@ -2689,6 +2731,7 @@ GameObject:
   - 58: {fileID: 1831132597}
   - 50: {fileID: 1831132596}
   - 114: {fileID: 1831132595}
+  - 58: {fileID: 1831132601}
   m_Layer: 0
   m_Name: Target
   m_TagString: Target
@@ -2772,6 +2815,18 @@ Transform:
   - {fileID: 317694370}
   m_Father: {fileID: 1460295165}
   m_RootOrder: 0
+--- !u!58 &1831132601
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800002, guid: 26203cdfb746a984a88de49b3cb6bab2,
+    type: 2}
+  m_PrefabInternal: {fileID: 574079846}
+  m_GameObject: {fileID: 1831132594}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: .699999988
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1848846932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,6 +3205,7 @@ GameObject:
   - 58: {fileID: 2021279934}
   - 50: {fileID: 2021279933}
   - 114: {fileID: 2021279932}
+  - 58: {fileID: 2021279936}
   m_Layer: 0
   m_Name: Target
   m_TagString: Target
@@ -3233,6 +3289,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2521f15f8ef950a44875bbc22f30b7be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!58 &2021279936
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5800002, guid: 26203cdfb746a984a88de49b3cb6bab2,
+    type: 2}
+  m_PrefabInternal: {fileID: 806074032}
+  m_GameObject: {fileID: 2021279930}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Radius: .699999988
+  m_Center: {x: 0, y: 0}
 --- !u!1 &2046076363
 GameObject:
   m_ObjectHideFlags: 0

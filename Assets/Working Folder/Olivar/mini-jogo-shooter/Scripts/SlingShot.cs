@@ -6,6 +6,7 @@ using System;
 public class SlingShot : MonoBehaviour
 {
 	public GameObject gManager;
+	GameObject questionArea;
 	
 	//a vector that points in the middle between left and right parts of the slingshot
 	private Vector3 SlingshotMiddleVector;
@@ -122,8 +123,7 @@ public class SlingShot : MonoBehaviour
 							x.complete();
 							x.destroy();
 							InitializePanda();
-						});
-					
+						});	
 				}
 			}
 			break;
@@ -181,25 +181,6 @@ public class SlingShot : MonoBehaviour
 	{
 		TrajectoryLineRenderer.enabled = active;
 	}
-
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		
-		if(col.name.Contains("Target"))
-		{
-			transform.position = Vector3.zero;
-			
-			if(col.tag == "Errado") {
-				
-				gManager.SendMessage("AnswerHit", false);
-			}
-			else if (col.tag == "Certo") {
-				
-				gManager.SendMessage("AnswerHit", true);
-			}
-		}
-	}
-
 	
 	/// <summary>
 	/// Another solution (a great one) can be found here

@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Panda : MonoBehaviour {
 
-	public GameObject gManager;
+	GameObject GManager;
 	GameObject questionArea;
 	
 	// Use this for initialization
 	void Start()
 	{
+		GManager = GameObject.Find ("GameManager");
 		//trailrenderer is not visible until we throw the panda
 		GetComponent<TrailRenderer>().enabled = false;
 		GetComponent<TrailRenderer>().sortingLayerName = "Foreground";
@@ -20,8 +23,6 @@ public class Panda : MonoBehaviour {
 		GetComponent<CircleCollider2D>().radius = Constants.PandaColliderRadiusBig;
 		State = PandaState.BeforeThrown;
 	}
-	
-	
 	
 	void FixedUpdate()
 	{
@@ -56,18 +57,18 @@ public class Panda : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		
-		if(col.name.Contains("resposta"))
+		if(col.name.Contains("Target"))
 		{
 //			col.SendMessage("AnimAndDestroy");
 //			transform.position = Vector3.zero;
 			
 			if(col.tag == "Errado") {
-				
-				gManager.SendMessage("AnswerHit", false);
+				GManager.SendMessage("AnswerHit", false);
+				print("Enviado: Errado");
 			}
 			else if (col.tag == "Certo") {
-				
-				gManager.SendMessage("AnswerHit", true);
+				GManager.SendMessage("AnswerHit", true);
+				print("Enviado: Certo");
 			}
 		}
 		else if (col.tag == "Question")
@@ -84,7 +85,7 @@ public class Panda : MonoBehaviour {
 		else
 			questionArea.renderer.material.color = new Color (1, 1, 1, 1);
 	}
-	
+
 	IEnumerator DestroyAfter(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
