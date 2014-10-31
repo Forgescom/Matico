@@ -68,7 +68,7 @@ public class SharkFin : MonoBehaviour {
 	}
 	void StopMovement(string result)
 	{
-
+		print ("GAME END CALLED");
 		transform.position = startPos;
 		canMove = false;
 		pursuit = false;
