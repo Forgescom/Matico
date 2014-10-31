@@ -51,13 +51,13 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		if (GameController.SHOOTER_RESTARTING == false) {
+		//if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
 	//		explanationScreen.SetActive(false);
 			shooter.SetActive(false);
 			slingshot.enabled = false;
-			GameController.SHOOTER_RESTARTING = true;
-		}
+		//	GameController.SHOOTER_RESTARTING = true;
+		//}
 		else {
 			introScreen.SetActive (false);
 			shooter.SetActive(true);
