@@ -79,6 +79,7 @@ public class Coala : MonoBehaviour {
 	void changeSprite(){
 
 		thisSprite.sprite = arrayLives[brainLives.lives];
+		//JUST A COMMETN
 
 		}
 }
