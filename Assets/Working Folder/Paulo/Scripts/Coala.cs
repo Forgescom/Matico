@@ -22,7 +22,7 @@ public class Coala : MonoBehaviour {
 	public float speed = 0.5f;
 	// Use this for initialization
 	void Start () {
-		Screen.orientation = ScreenOrientation.Portrait;
+		//Screen.orientation = ScreenOrientation.Portrait;
 		initialPos = gameObject.transform.position;
 		finalPos = new Vector3 (0,-5f,-2);
 		thisSprite = transform.GetComponent<SpriteRenderer> ();
