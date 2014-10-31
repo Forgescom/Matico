@@ -4,6 +4,8 @@ using Assets.Scripts;
 
 public class CameraMove : MonoBehaviour
 {
+	
+	
 	// Update is called once per frame
 	void Update()
 	{
@@ -25,8 +27,8 @@ public class CameraMove : MonoBehaviour
 				float deltaX = (previousPosition.x - input.x)  * dragSpeed;
 				float deltaY = (previousPosition.y - input.y) * dragSpeed;
 				//clamp the values so that we drag within limits
-				float newX = Mathf.Clamp(transform.position.x + deltaX, -0.70f, 20.68f);
-				float newY = Mathf.Clamp(transform.position.y + deltaY, 0, 0);
+				float newX = Mathf.Clamp(transform.position.x + deltaX, 0, 13.36336f);
+				float newY = Mathf.Clamp(transform.position.y + deltaY, 0, 2.715f);
 				//move camera
 				transform.position = new Vector3(
 					newX,
@@ -38,7 +40,8 @@ public class CameraMove : MonoBehaviour
 				if(dragSpeed < 0.1f) dragSpeed += 0.002f;
 			}
 		}
-	}	
+	}
+	
 	private float dragSpeed = 0.01f;
 	private float timeDragStarted;
 	private Vector3 previousPosition = Vector3.zero;

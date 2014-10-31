@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour {
 	public static int CURRENT_LEVEL_DIFICULTY;
 	public static string CURRENT_LEVEL_TYPE;
 	public static int CURRENT_LIVES_LOST;
-	public static int CURRENT_LIVES;
+	public static int CURRENT_LIVES = 4;
 	public static int CURRENT_LEVEL_STEP;
 
 	//MINI GAMES FINAL SCREEN
@@ -34,6 +34,11 @@ public class GameController : MonoBehaviour {
 	public static bool ACELEROMETER_TUT = false;
 	public static bool FLIP_TUT = true;
 	public static bool SHOOTER_TUT = true;
+
+
+	//RESTARTING VAR
+	public static bool SHOOTER_RESTARTING = false;
+
 
 	//XML VALUES
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
@@ -50,6 +55,10 @@ public class GameController : MonoBehaviour {
 	public static event RestartDelegate RestartGame;
 	public delegate void CheckPrices();
 	public static event CheckPrices checkStepPrices;
+	public delegate void UnlockEvent();
+	public static event UnlockEvent unlockHouse;
+	public delegate void ShowUnlocked(bool allPrices);
+	public static event ShowUnlocked showUnlockedEvent;
 
 
 
@@ -82,11 +91,6 @@ public class GameController : MonoBehaviour {
 		CURRENT_LEVEL_STEP = 0;
 
 		Init ();
-
-
-
-
-
 	}
 	void Init(){
 		if (PlayerPrefs.GetString (PREFS_PLAYER_NAME) == "")
@@ -106,13 +110,24 @@ public class GameController : MonoBehaviour {
 			updateSoundVolume();
 		}
 
+	
+		Invoke ("ShowUnlockedPrices", 0.005f);
+
 
 
 		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
 	}
+
+	void ShowUnlockedPrices()
+	{
+		if (showUnlockedEvent != null) {
+			showUnlockedEvent(true);
+		}
+	}
 	// Update is called once per frame
 	void Update () {
-
+		//print (CURRENT_LEVEL);
+		print (CURRENT_LEVEL_STEP);
 	}
 
 
@@ -151,6 +166,8 @@ public class GameController : MonoBehaviour {
 		if (outComeIn == "Certo") {
 			if(CURRENT_LIVES <4)
 				CURRENT_LIVES ++;
+
+			houses[CURRENT_LEVEL-1]["Played"] = "true";
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
 
 
@@ -159,6 +176,7 @@ public class GameController : MonoBehaviour {
 			CURRENT_LIVES --;
 			CURRENT_LIVES_LOST ++;
 			houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
+
 			Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity);
 		}
 	}
@@ -176,8 +194,11 @@ public class GameController : MonoBehaviour {
 			Destroy(bt.transform.root.gameObject);
 			break;
 		case "BtNext":
-			houses[CURRENT_LEVEL]["Blocked"] = "false";
+
+
 			Application.LoadLevel("Board");
+
+				//Invoke ("ShowUnlockedPrices", 0.005f);
 
 			StartCoroutine("WaitForBoardLoad");
 
@@ -188,12 +209,33 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator WaitForBoardLoad()
 	{
-		yield return new WaitForSeconds (2f);
-		if(checkStepPrices != null)
-		{		
-			checkStepPrices();
-		}
 
+		yield return new WaitForSeconds (2f);
+		houses[GameController.CURRENT_LEVEL]["Blocked"] = "false";
+
+
+		
+		if(GameController.CURRENT_LEVEL % 3==0)
+		{
+			if(checkStepPrices != null)
+			{		
+				checkStepPrices();
+			}
+			if (showUnlockedEvent != null) {
+				showUnlockedEvent(false);
+			}
+		}
+		else{
+
+			if(unlockHouse != null)
+			{
+				unlockHouse();
+			}
+			if (showUnlockedEvent != null) {
+				showUnlockedEvent(true);
+			}
+		}
+		//houses[GameController.CURRENT_LEVEL]["Blocked"] = "false";
 		transform.SendMessage ("WriteToXml");
 	}
 	

@@ -92,13 +92,13 @@ public class AcelerometerBrain : MonoBehaviour {
 	void PlayerHit(string colObj, bool outCome)
 	{
 		//print ("Colidi com : " + colObj + " e foi este o resultado" + outCome);
-		Handheld.Vibrate ();
+		//Handheld.Vibrate ();
 
 		switch (colObj) {
 			case "Bubble":
 				if(outCome == true)
 				{
-					print("FIM DO JOGO   ACERTEI");
+					//print("FIM DO JOGO   ACERTEI");
 					if(endGame != null)
 					{
 						endGame("Certo");						
@@ -106,7 +106,7 @@ public class AcelerometerBrain : MonoBehaviour {
 				}
 				else
 				{
-					print("FIM DO JOGO ERREI");
+					//print("FIM DO JOGO ERREI");
 					if(endGame != null)
 					{
 						endGame("Errado");						

@@ -21,7 +21,7 @@ public class BubbleHandler : MonoBehaviour {
 
 	void Init(){
 		foreach (GameObject bub in bubbles) {
-			bub.SetActive(false);
+			//bub.SetActive(false);
 		}
 		InvokeRepeating("ShowBubble", 1,2); 
 	}

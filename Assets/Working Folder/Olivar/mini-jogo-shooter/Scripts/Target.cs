@@ -20,15 +20,27 @@ public class Target : MonoBehaviour
 		//if we are hit by a panda
 		if (col.gameObject.tag == "Panda")
 		{
-			StartCoroutine(DestroyAfter(2));
-//          GetComponent<AudioSource>().Play();
-//			Destroy(gameObject);
+			//            GetComponent<AudioSource>().Play();
+			Destroy(gameObject);
 		}
-	}
+/*		        else //we're hit by something else
+        {
+            //calculate the damage via the hit object velocity
+            float damage = col.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude * 10;
+            Health -= damage;
+            //don't play sound for small damage
+            if (damage >= 10)
+                GetComponent<AudioSource>().Play();
 
-	IEnumerator DestroyAfter(float seconds)
-	{
-		yield return new WaitForSeconds(seconds);
-		Destroy(gameObject);
+            if (Health < ChangeSpriteHealth)
+            {//change the shown sprite
+                GetComponent<SpriteRenderer>().sprite = SpriteShownWhenHurt;
+            }
+            if (Health <= 0) Destroy(this.gameObject);
+        }
+*/        
 	}
+	
+	//sound found in
+	//https://www.freesound.org/people/yottasounds/sounds/176731/
 }
