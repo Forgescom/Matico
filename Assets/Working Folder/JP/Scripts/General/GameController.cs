@@ -37,7 +37,8 @@ public class GameController : MonoBehaviour {
 
 
 	//RESTARTING VAR
-	public static bool SHOOTER_RESTART = false;
+	public static bool SHOOTER_RESTARTING = false;
+
 
 	//XML VALUES
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
