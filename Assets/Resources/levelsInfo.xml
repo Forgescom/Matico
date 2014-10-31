@@ -1,6 +1,6 @@
 <GameLevelInfo>
   <level id="Casa01" blocked="false" played="false">
-    <typeofgame>Acelerometer</typeofgame>
+    <typeofgame>Tilt</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
@@ -10,12 +10,12 @@
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa03" blocked="true" played="false">
-    <typeofgame>Acelerometer</typeofgame>
+    <typeofgame>ScratchCard</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa04" blocked="true" played="false">
-    <typeofgame>Acelerometer</typeofgame>
+    <typeofgame>Tilt</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
