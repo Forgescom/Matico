@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
 	//XML VALUES
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
-	public static List<GameObject> housesUnlocked = new List<GameObject> ();
+
 	//SOUND VALUES
 	public static bool fxSoundOn = true;
 	public static bool musicSoundOn = true;
@@ -56,8 +56,8 @@ public class GameController : MonoBehaviour {
 	public static event CheckPrices checkStepPrices;
 	public delegate void UnlockEvent();
 	public static event UnlockEvent unlockHouse;
-	public delegate void ShowUnlocked();
-	public static event ShowUnlocked showUnlocked;
+	public delegate void ShowUnlocked(bool allPrices);
+	public static event ShowUnlocked showUnlockedEvent;
 
 
 
@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour {
 			updateSoundVolume();
 		}
 
-
+	
 		Invoke ("ShowUnlockedPrices", 0.005f);
 
 
@@ -119,14 +119,14 @@ public class GameController : MonoBehaviour {
 
 	void ShowUnlockedPrices()
 	{
-		if (showUnlocked != null) {
-			showUnlocked();
+		if (showUnlockedEvent != null) {
+			showUnlockedEvent(true);
 		}
 	}
 	// Update is called once per frame
 	void Update () {
 		//print (CURRENT_LEVEL);
-
+		print (CURRENT_LEVEL_STEP);
 	}
 
 
@@ -196,7 +196,9 @@ public class GameController : MonoBehaviour {
 
 
 			Application.LoadLevel("Board");
-			Invoke ("ShowUnlockedPrices", 0.005f);
+
+				//Invoke ("ShowUnlockedPrices", 0.005f);
+
 			StartCoroutine("WaitForBoardLoad");
 
 			break;
@@ -206,13 +208,20 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator WaitForBoardLoad()
 	{
+
 		yield return new WaitForSeconds (2f);
 		houses[GameController.CURRENT_LEVEL]["Blocked"] = "false";
+
+
+		
 		if(GameController.CURRENT_LEVEL % 3==0)
 		{
 			if(checkStepPrices != null)
 			{		
 				checkStepPrices();
+			}
+			if (showUnlockedEvent != null) {
+				showUnlockedEvent(false);
 			}
 		}
 		else{
@@ -220,6 +229,9 @@ public class GameController : MonoBehaviour {
 			if(unlockHouse != null)
 			{
 				unlockHouse();
+			}
+			if (showUnlockedEvent != null) {
+				showUnlockedEvent(true);
 			}
 		}
 		//houses[GameController.CURRENT_LEVEL]["Blocked"] = "false";

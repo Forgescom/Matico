@@ -61,29 +61,27 @@ public class LevelsBlocker : MonoBehaviour {
 
 	}
 
-	void ShowUnlockedPrices(){
+	void ShowUnlockedPrices(bool allPrices){
 		//print ("UNLOCK" + GameController.CURRENT_LEVEL_STEP);
-		/*if ((GameController.CURRENT_LEVEL_STEP) !=0) {
 
-			for(int i=0; i < GameController.CURRENT_LEVEL_STEP; i++)
-			{
-				//print ("INSIDE FOR + " + i);
-				//pricesHolder[i].GetComponent<PriceHolder> ().unlocked = true;
-				pricesHolder [i].SetActive (true);
-			
-				//pricesHolder [i].animation.Play ("PricePop");
-			}
+		int limiter;
 
-		}*/
-
-		print (GameController.housesUnlocked.Count);
-		foreach (GameObject price in GameController.housesUnlocked) {
-			print (price);
-			price.SetActive(true);
+		if (allPrices == true) {
+			limiter = GameController.CURRENT_LEVEL_STEP;
+		}
+		else{
+			limiter = GameController.CURRENT_LEVEL_STEP-1;
 		}
 
+		print ("GOING TO SHOW UNTILL: " + limiter);
 
-		
+		if ((GameController.CURRENT_LEVEL_STEP) !=0) {
+
+			for(int i=0; i < limiter; i++)
+			{
+				pricesHolder [i].SetActive (true);			
+			}
+		}		
 	}
 	
 	void AssignTextures(int step,int energies){
@@ -115,21 +113,20 @@ public class LevelsBlocker : MonoBehaviour {
 	void AnimObject()
 	{
 		pricesHolder [GameController.CURRENT_LEVEL_STEP-1].SetActive (true);
-		GameController.housesUnlocked.Add(pricesHolder [GameController.CURRENT_LEVEL_STEP - 1].gameObject);
 		pricesHolder [GameController.CURRENT_LEVEL_STEP-1].animation.Play ("PricePop");
 		pricesHolder [GameController.CURRENT_LEVEL_STEP - 1].GetComponent<PriceHolder> ().unlocked = true;
 	}
 
 	void OnEnable()
 	{
-		GameController.showUnlocked += ShowUnlockedPrices;
+		GameController.showUnlockedEvent += ShowUnlockedPrices;
 		GameController.checkStepPrices += CheckIfBlocker;
 		MaticoUnlocker.showNewObjectEvent += AnimObject;
 	}
 	
 	void OnDisable()
 	{
-		GameController.showUnlocked -= ShowUnlockedPrices;
+		GameController.showUnlockedEvent -= ShowUnlockedPrices;
 		GameController.checkStepPrices -= CheckIfBlocker;
 		MaticoUnlocker.showNewObjectEvent -= AnimObject;
 	}
