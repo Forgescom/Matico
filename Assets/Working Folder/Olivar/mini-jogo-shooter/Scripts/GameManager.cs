@@ -339,20 +339,7 @@ public class GameManager : MonoBehaviour
 */
 
 
-	void btClick(GameObject btClicked)
-	{
-		switch (btClicked.name) {
-		case "BtMap":
-			GameController.MiniGamelEnd("Won");
-			break;
-		case "BtRepeat":
-			Application.LoadLevel("Accelerometer");
-			break;
-		case "BtNext":
-			GameController.MiniGamelEnd("NextLevel");
-			break;
-		}
-	}
+
 
 	void RestartGame()
 	{

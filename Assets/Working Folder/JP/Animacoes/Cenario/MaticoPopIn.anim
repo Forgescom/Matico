@@ -21,12 +21,12 @@ AnimationClip:
         value: {x: .0864125267, y: .0864129737, z: 1}
         inSlope: {x: .230888069, y: .230889425, z: 0}
         outSlope: {x: .230888069, y: .230889425, z: 0}
-        tangentMode: 1065353216
+        tangentMode: 105214180
       - time: .833333313
         value: {x: .278819233, y: .278820813, z: 1}
         inSlope: {x: 1.94158506, y: -.856490493, z: 0}
         outSlope: {x: 1.94158506, y: -.856490493, z: 0}
-        tangentMode: 0
+        tangentMode: 107085825
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -68,7 +68,7 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 1.5
+      - time: 3
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -87,7 +87,7 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 3
+      - time: 9
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -135,12 +135,12 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 1.5
+      - time: 3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2
+      - time: 5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -159,12 +159,12 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2
+      - time: 5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2.5
+      - time: 7
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -183,17 +183,17 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2
+      - time: 5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2.5
+      - time: 7
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 3
+      - time: 9
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -216,7 +216,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 3
+    m_StopTime: 9.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -325,7 +325,7 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 1.5
+      - time: 3
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -344,7 +344,7 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 3
+      - time: 9
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -392,12 +392,12 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 1.5
+      - time: 3
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2
+      - time: 5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -416,12 +416,12 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2
+      - time: 5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2.5
+      - time: 7
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -440,17 +440,17 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2
+      - time: 5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 2.5
+      - time: 7
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
-      - time: 3
+      - time: 9
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -463,8 +463,15 @@ AnimationClip:
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events:
-  - time: 2
+  - time: 5.98333311
     functionName: ShowBoardObject
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 9.25
+    functionName: AnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -87,6 +87,7 @@ public class XmlLoader : MonoBehaviour {
 
 			houseDetails.Add("HouseName",levelInfo.Attributes["id"].Value);
 			houseDetails.Add("Blocked",levelInfo.Attributes["blocked"].Value);
+			houseDetails.Add("Played",levelInfo.Attributes["played"].Value);
 
 			foreach(XmlNode levelsItems in levelContent)
 			{
@@ -120,7 +121,10 @@ public class XmlLoader : MonoBehaviour {
 		{				
 			XmlElement elmNew = xmlDoc.CreateElement("level"); // create the rotation node.
 			elmNew.SetAttribute("id",housesXml [i]["HouseName"]);
-			elmNew.SetAttribute("blocked",housesXml [i]["Blocked"]);				
+			elmNew.SetAttribute("blocked",housesXml [i]["Blocked"]);	
+
+		
+			elmNew.SetAttribute("played",housesXml [i]["Played"]);			
 
 			XmlElement typeofgame = xmlDoc.CreateElement("typeofgame"); // create the x node.
 			typeofgame.InnerText = housesXml[i]["Typeofgame"]; // apply to the node text the values of the variable.
@@ -141,6 +145,7 @@ public class XmlLoader : MonoBehaviour {
 		xmlToString = xmlDoc.InnerXml;
 		
 		Save (xmlToString);
+
 					
 	}
 }

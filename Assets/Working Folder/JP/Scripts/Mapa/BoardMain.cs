@@ -22,6 +22,7 @@ public class BoardMain : MonoBehaviour {
 
 		TurnOffOnSound ();
 		AssignHousesSettings ();
+		UnlockHouses ();
 
 		if(showIntro == true)
 			ShowIntro ();
@@ -54,22 +55,9 @@ public class BoardMain : MonoBehaviour {
 			string locked;
 			GameController.houses[i].TryGetValue("Blocked",out locked);
 
-			if(locked == "false")
-			{
-				housesGameObject[i].GetComponent<CasaValues>().locked = false;
-				housesGameObject[i].GetComponent<CasaController>().UnlockButton();
-				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
+			string played;
+			GameController.houses[i].TryGetValue("Played",out played);
 
-				//IF MORE THEN ONE LEVEL IS UNLOCK DONT SHOW INTRO
-				if(i>0)
-				{
-					showIntro = false;
-					housesGameObject[i-1].GetComponent<CasaController>().isHighLighted = false;
-				}
-			}
-			else{
-				housesGameObject[i].GetComponent<CasaValues>().locked = true;
-			}
 
 			string typeOfGame;
 			GameController.houses[i].TryGetValue("Typeofgame",out typeOfGame);
@@ -92,6 +80,49 @@ public class BoardMain : MonoBehaviour {
 		}
 	}
 
+	public void UnlockHouses()
+	{
+		for (int i = 0; i < GameController.houses.Count; i++) {
+			string locked;
+			GameController.houses[i].TryGetValue("Blocked",out locked);
+
+			if(locked == "false")
+			{
+				housesGameObject[i].GetComponent<CasaValues>().locked = false;
+				housesGameObject[i].GetComponent<CasaController>().UnlockButton();
+				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
+				
+				//IF MORE THEN ONE LEVEL IS UNLOCK DONT SHOW INTRO
+				if(i>0)
+				{
+					showIntro = false;
+					housesGameObject[i].GetComponent<CasaController>().isHighLighted = false;
+				}
+			
+				int.TryParse(housesGameObject[i].name.Substring(4,2),out GameController.CURRENT_LEVEL);
+				
+			}
+			else{
+				housesGameObject[i].GetComponent<CasaValues>().locked = true;
+			}
+
+			string played;
+			GameController.houses[i].TryGetValue("Played",out played);
+			if(played == "true")
+			{
+				int level;
+				int.TryParse(housesGameObject[i].name.Substring(4,2),out level);
+				
+				GameController.CURRENT_LEVEL_STEP = level/3;
+			}
+
+		}
+		/*if(GameController.CURRENT_LEVEL %3 !=0) 
+			transform.SendMessage("ShowUnlockedPrices");*/
+
+
+	}
+
 	public void StartLevel(Transform houseCliked)
 	{
 		string gameToOpen = houseCliked.GetComponent<CasaValues> ().gameType.ToString();
@@ -106,6 +137,7 @@ public class BoardMain : MonoBehaviour {
 
 		switch (gameToOpen) {
 			case "shooter":
+				GameController.SHOOTER_RESTART = false;
 				Application.LoadLevel ("Shooter");			
 				break;
 			case "accelerometer":
@@ -147,6 +179,8 @@ public class BoardMain : MonoBehaviour {
 		DeactivateOnAnimEnd.animationFinish += EnableMap;
 		CasaController.throwGame += StartLevel;
 		GameController.updateSoundVolume += TurnOffOnSound;
+		GameController.unlockHouse += UnlockHouses;
+		MaticoUnlocker.unlockNextHouse += UnlockHouses;
 	}
 
 	void OnDisable()
@@ -154,5 +188,7 @@ public class BoardMain : MonoBehaviour {
 		GameController.updateSoundVolume -= TurnOffOnSound;
 		DeactivateOnAnimEnd.animationFinish -= EnableMap;
 		CasaController.throwGame -= StartLevel;
+		GameController.unlockHouse -= UnlockHouses;
+		MaticoUnlocker.unlockNextHouse -= UnlockHouses;
 	}
 }
