@@ -137,7 +137,7 @@ public class BoardMain : MonoBehaviour {
 
 		switch (gameToOpen) {
 			case "shooter":
-				GameController.SHOOTER_RESTART = false;
+				GameController.SHOOTER_RESTARTING = false;
 				Application.LoadLevel ("Shooter");			
 				break;
 			case "accelerometer":
