@@ -7,7 +7,7 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
 	public GameObject introScreen;
-	public GameObject explanationScreen;
+//	public GameObject explanationScreen;
 	public GameObject question;
 	public GameObject shooter;
 	public GameObject target;
@@ -51,18 +51,18 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		//if (GameController.SHOOTER_RESTARTING == false) {
+		if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
-	//		explanationScreen.SetActive(false);
+//			explanationScreen.SetActive(false);
 			shooter.SetActive(false);
 			slingshot.enabled = false;
-		//	GameController.SHOOTER_RESTARTING = true;
-		//}
-		//else {
-		/*	introScreen.SetActive (false);
+			GameController.SHOOTER_RESTARTING = true;
+		}
+		else {
+			introScreen.SetActive (false);
 			shooter.SetActive(true);
-			slingshot.enabled = true;*/
-		//}
+			slingshot.enabled = true;
+		}
 
     }
 
@@ -94,13 +94,6 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-/*
-	void CreateNewPandas()
-	{
-		
-	}
-*/	
-	
 	// Update is called once per frame
 	void Update()
     {
@@ -152,13 +145,13 @@ public class GameManager : MonoBehaviour
             //in a normal game, we would show the "Won" screen 
             //and on tap the user would go to the next level
 //            case GameState.Won:
-            case GameState.Lost:
+/*            case GameState.Lost:
                 if (Input.GetMouseButtonUp(0))
                 {
                     Application.LoadLevel(Application.loadedLevel);
                 }
                 break;
-            default:
+*/            default:
                 break;
         }
 
@@ -201,16 +194,16 @@ public class GameManager : MonoBehaviour
 				{
 					//no more birds, go to finished
 					nolives = true;
+					endGame("Errado");
 				}
 
 				if (gameended == true) {
 					if (won == true) {
 						endGame("Certo");
 					}
-					else/* if ((won == false) || (nolives == true))*/ {
+					else {
 						endGame("Errado");
-					}
-					
+					}		
 				}
 
 				else {
@@ -293,10 +286,10 @@ public class GameManager : MonoBehaviour
 
 	void RestartGame()
 	{
-//		shooter.animation.Play("");
 		Application.LoadLevel (Application.loadedLevel);
 	}
-	
+
+/*	
 	IEnumerator ChangeQuestion(){
 		yield return new WaitForSeconds (1.5F);
 		if (GameTryAgain != null) {		
@@ -304,11 +297,11 @@ public class GameManager : MonoBehaviour
 		}	
 		transform.SendMessage ("SetQuestionValues");
 	}
-	
+*/	
 	void OnEnable()
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
-		FailureScreen.RestartGame += Init;
+		FailureScreen.RestartGame += RestartGame;
 		ClickToUnlock.unlockScreen += Init;
 		GameController.RestartGame += RestartGame;
 		
@@ -317,7 +310,7 @@ public class GameManager : MonoBehaviour
 	void OnDisable()
 	{
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
-		FailureScreen.RestartGame -= Init;
+		FailureScreen.RestartGame -= RestartGame;
 		ClickToUnlock.unlockScreen -= Init;
 		GameController.RestartGame -= RestartGame;
 	}
