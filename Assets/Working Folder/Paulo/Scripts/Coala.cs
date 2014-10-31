@@ -17,7 +17,7 @@ public class Coala : MonoBehaviour {
 	SpriteRenderer thisSprite;
 	Sprite saveSprite;
 
-	public Brain brainLives;
+	public Tilt_brain brainLives;
 
 	public float speed = 0.5f;
 	// Use this for initialization
