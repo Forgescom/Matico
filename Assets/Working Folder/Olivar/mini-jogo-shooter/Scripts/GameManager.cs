@@ -58,11 +58,11 @@ public class GameManager : MonoBehaviour
 			slingshot.enabled = false;
 		//	GameController.SHOOTER_RESTARTING = true;
 		//}
-		else {
-			introScreen.SetActive (false);
+		//else {
+		/*	introScreen.SetActive (false);
 			shooter.SetActive(true);
-			slingshot.enabled = true;
-		}
+			slingshot.enabled = true;*/
+		//}
 
     }
 
