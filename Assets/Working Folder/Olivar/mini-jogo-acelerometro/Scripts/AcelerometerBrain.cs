@@ -12,8 +12,7 @@ public class AcelerometerBrain : MonoBehaviour {
 	public delegate void EndGameDelegate(string outcome);
 	public static event EndGameDelegate endGame;
 	
-	/*public delegate void RestartGameDelegate();
-	public static event RestartGameDelegate restartGame;*/
+
 
 
 	//GAMEOBJECTS	
@@ -151,8 +150,6 @@ public class AcelerometerBrain : MonoBehaviour {
 		novaBoia.tag = "Player";
 		novaBoia.SendMessage ("ChangeSkin");		
 		novaBoia.GetComponent<PlayerController> ().canMove = true;
-
-
 
 		vidasTexture [CURRENT_SKIN_INDEX].gameObject.SetActive (false);
 		sharkFin.GetComponent<SharkFin> ().target = novaBoia.transform;

@@ -28,6 +28,7 @@ public class CoinMovement : MonoBehaviour {
 		}
 		else{
 			transform.position = startPosition;
+			transform.audio.Stop();
 		}
 
 	}

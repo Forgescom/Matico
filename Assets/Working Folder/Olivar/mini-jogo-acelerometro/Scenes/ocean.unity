@@ -4827,8 +4827,8 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1883870814}
-  m_Text: "Mant\xEAm o tablet na horizontal.\r\n\r\nL\xEA a pergunta, e carrega para
-    \r\napanhares a resposta!"
+  m_Text: "Mant\xEAm o tablet na horizontal.\r\n\r\nL\xEA a pergunta e tenta \r\napanhar
+    a resposta!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
