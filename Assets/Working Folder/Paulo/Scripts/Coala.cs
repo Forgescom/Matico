@@ -13,15 +13,17 @@ public class Coala : MonoBehaviour {
 	
 	public Sprite burnmfkr;
 	public Sprite [] arrayLives;
+	//public Sprite [] arrayEat;
 
 	SpriteRenderer thisSprite;
-	Sprite saveSprite;
+	//Sprite saveSprite;
 
 	public Tilt_brain brainLives;
 
 	public float speed = 0.5f;
 	// Use this for initialization
 	void Start () {
+		//animation.Play("swing");
 		//Screen.orientation = ScreenOrientation.Portrait;
 		initialPos = gameObject.transform.position;
 		finalPos = new Vector3 (0,-5f,-2);
@@ -69,15 +71,25 @@ public class Coala : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 
-		thisSprite.sprite = burnmfkr;
+		if (col.name == "raio") {
+			thisSprite.sprite = burnmfkr;
+			brainLives.lives--;
+			Invoke ("changeSprite", 2);
+		}
+		if (col.name == "ave_head") {
+			brainLives.lives--;
+			Invoke ("changeSprite", 2);
+		}
+		if (col.name == "Food") {
+						//Debug.Log ("esta comendo");
 
-		brainLives.lives--;
-
-		Invoke ("changeSprite", 3);
+			//animation.Play("Eating");
+			//UnityEngine.Animation:Play("eatHappy");
+				}
 	}
 
 	void changeSprite(){
-
+		Debug.Log ("on");
 		thisSprite.sprite = arrayLives[brainLives.lives];
 		//JUST A COMMETN
 
