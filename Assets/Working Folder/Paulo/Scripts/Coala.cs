@@ -15,16 +15,23 @@ public class Coala : MonoBehaviour {
 	public Sprite [] arrayLives;
 	//public Sprite [] arrayEat;
 
+	private int count;//contador valores
+	public GUIText countText;
+
 	SpriteRenderer thisSprite;
 	//Sprite saveSprite;
 
 	public Tilt_brain brainLives;
+	public NumberSrc foodNumber;
 
 	public float speed = 0.5f;
 	// Use this for initialization
 	void Start () {
 		//animation.Play("swing");
 		//Screen.orientation = ScreenOrientation.Portrait;
+		count = 0;
+		SetCountText ();
+
 		initialPos = gameObject.transform.position;
 		finalPos = new Vector3 (0,-5f,-2);
 		thisSprite = transform.GetComponent<SpriteRenderer> ();
@@ -70,6 +77,7 @@ public class Coala : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
+		//GameObject teste;
 
 		if (col.name == "raio") {
 			thisSprite.sprite = burnmfkr;
@@ -81,12 +89,21 @@ public class Coala : MonoBehaviour {
 			Invoke ("changeSprite", 2);
 		}
 		if (col.name == "Food") {
+			col.gameObject.SetActive(false);
+			//teste = col.gameObject.GetComponent<int>().foodNumber;
+			count = count + col.gameObject.GetComponent<NumberSrc>().foodNumber;
+			SetCountText();
+
 						//Debug.Log ("esta comendo");
 
 			//animation.Play("Eating");
 			//UnityEngine.Animation:Play("eatHappy");
 				}
 	}
+
+	void SetCountText(){
+		countText.text="Count: "+count.ToString();
+		}
 
 	void changeSprite(){
 		Debug.Log ("on");

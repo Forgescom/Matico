@@ -7,7 +7,6 @@ public class Clouds : MonoBehaviour {
 	Vector3 finalPos;
 	bool canMove = true;
 	public float speed = 1f;
-
 	//int originalPosition = gameObject.transform.position;
 	// Use this for initialization
 	void Start () {
