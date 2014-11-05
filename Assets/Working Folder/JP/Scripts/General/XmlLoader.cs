@@ -130,6 +130,7 @@ public class XmlLoader : MonoBehaviour {
 			typeofgame.InnerText = housesXml[i]["Typeofgame"]; // apply to the node text the values of the variable.
 			
 			XmlElement energiesspent = xmlDoc.CreateElement("energiesspent"); // create the y node.
+			print (housesXml[i]["EnergiesSpent"]);
 			energiesspent.InnerText = housesXml[i]["EnergiesSpent"]; // apply to the node text the values of the variable.
 			
 			XmlElement levelofdificulty = xmlDoc.CreateElement("levelofdificulty"); // create the z node.

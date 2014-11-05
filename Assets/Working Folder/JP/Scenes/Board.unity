@@ -13346,7 +13346,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1341131934}
-  m_Text: "Parab\xE9ns! \r\nChegast ao fim \r\nda 1\xAA fase."
+  m_Text: "Parab\xE9ns! \r\nChegaste ao fim \r\nda 1\xAA fase."
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
