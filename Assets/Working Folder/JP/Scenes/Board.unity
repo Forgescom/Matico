@@ -365,6 +365,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_4
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 591309e71fea35e45871858ae04d6f37,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9583de44a7d30f4468694885e2275754,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 10b20b4b0986ef54e9b901bccab21f5c,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1630280308}
@@ -788,7 +803,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 64801780}
-  m_Text: "Desbloqueas-te \r\num novo objecto\r\npara a tua cidade."
+  m_Text: "Desbloqueaste \r\num novo objecto\r\npara a tua cidade."
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -870,6 +885,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1296936029}
   highlightSprite: {fileID: 868197446}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &69742111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,7 +901,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &71570256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1478,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 2099020679}
   highlightSprite: {fileID: 761353710}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &152247405
 Transform:
   m_ObjectHideFlags: 0
@@ -1493,7 +1509,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &153015394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,6 +1904,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 98545912}
   highlightSprite: {fileID: 184598400}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &163176540
 Transform:
   m_ObjectHideFlags: 0
@@ -1919,7 +1935,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &164886194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2238,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1196194270}
   highlightSprite: {fileID: 1427774496}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &187966609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2238,7 +2254,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &194602156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,6 +3012,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1350437246}
   highlightSprite: {fileID: 1628158145}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &240219670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,7 +3028,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &260569005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,6 +3042,7 @@ GameObject:
   - 111: {fileID: 260569012}
   - 114: {fileID: 260569006}
   - 114: {fileID: 260569013}
+  - 114: {fileID: 260569007}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3050,6 +3066,19 @@ MonoBehaviour:
   - -3
   - 4
   orthoZoomSpeed: .00499999989
+--- !u!114 &260569007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260569005}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c82304511ce0a547b86d9e55f4548d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folder: ScreenshotFolder
+  frameRate: 25
 --- !u!124 &260569008
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3408,9 +3437,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 0f55a919006f09a45853477ab4c1475e, type: 3}
+  - {fileID: 21300000, guid: bb8118c845af2cb47b607865f64404dc, type: 3}
+  - {fileID: 21300000, guid: 6bc80149afcb99148a5b70b86f2e194e, type: 3}
   unlocked: 0
 --- !u!111 &285601215
 Animation:
@@ -3449,7 +3478,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &287060974
 Prefab:
@@ -4067,9 +4096,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 1d87a93148fe0b74ba8535534784dc8d, type: 3}
+  - {fileID: 21300000, guid: 08e6f53708d32164582534bdc73192e7, type: 3}
+  - {fileID: 21300000, guid: 2f397bf14c9111545be7b705d94a575d, type: 3}
   unlocked: 0
 --- !u!111 &379629165
 Animation:
@@ -4108,7 +4137,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &398622084
 GameObject:
@@ -4158,6 +4187,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1142542022}
   highlightSprite: {fileID: 2020125492}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &398622087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4173,7 +4203,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &399741382
 Prefab:
   m_ObjectHideFlags: 0
@@ -4267,6 +4296,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 656211129}
   highlightSprite: {fileID: 322181771}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &402225934
 Transform:
   m_ObjectHideFlags: 0
@@ -4297,7 +4327,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &425279625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4418,6 +4447,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_7
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 292ec4823ea45f6409b3081892b31297,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b8d56909d8b0bb428384ed2321dab9e,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 097f67d0095098f42b34c16bcf156eab,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1270355478}
@@ -4591,6 +4635,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1887242504}
   highlightSprite: {fileID: 1799686476}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &431803816
 Transform:
   m_ObjectHideFlags: 0
@@ -4621,7 +4666,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &437475809
 Prefab:
   m_ObjectHideFlags: 0
@@ -5171,7 +5215,7 @@ AudioListener:
     type: 2}
   m_PrefabInternal: {fileID: 949403788}
   m_GameObject: {fileID: 471059808}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1 &473341085
 GameObject:
   m_ObjectHideFlags: 0
@@ -5437,9 +5481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 9db3b309e84bbf545bb104da56a2803f, type: 3}
+  - {fileID: 21300000, guid: bc7d1261ea19fba45a640d8740fa0296, type: 3}
+  - {fileID: 21300000, guid: 46192fe6eec7b2b48919c15dc0dad251, type: 3}
   unlocked: 0
 --- !u!111 &506796838
 Animation:
@@ -5478,7 +5522,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &510947659
 Prefab:
@@ -5802,6 +5846,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 280061653}
   highlightSprite: {fileID: 470689140}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &569557668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5817,7 +5862,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &581471612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5866,6 +5910,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 974104727}
   highlightSprite: {fileID: 1436780920}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &581471615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5881,7 +5926,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &584339196
 GameObject:
   m_ObjectHideFlags: 0
@@ -5897,7 +5941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &584339197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6645,6 +6689,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 228263286}
   highlightSprite: {fileID: 209826075}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &647940514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6660,7 +6705,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &648292965
 GameObject:
   m_ObjectHideFlags: 0
@@ -7134,6 +7178,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 440821206}
   highlightSprite: {fileID: 220308198}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &679053802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7149,7 +7194,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &683700731
 GameObject:
   m_ObjectHideFlags: 0
@@ -7198,6 +7242,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1409648856}
   highlightSprite: {fileID: 706888896}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &683700734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7213,7 +7258,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &705029901
 Prefab:
   m_ObjectHideFlags: 0
@@ -7373,6 +7417,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 425279625}
   highlightSprite: {fileID: 2110339653}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &713992167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7388,7 +7433,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &722064516
 GameObject:
   m_ObjectHideFlags: 0
@@ -7488,7 +7532,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &735200802
 Transform:
@@ -7531,9 +7575,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
+  - {fileID: 21300000, guid: cc8a1634bdd7fe2448ee4a33dc4a33c8, type: 3}
+  - {fileID: 21300000, guid: 52f243700279aa140b7bbc2617682bc0, type: 3}
   unlocked: 0
 --- !u!1 &745928086
 GameObject:
@@ -7655,6 +7699,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_3
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: bef210b213b557e4eaf870089cf689aa,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9583a517fd5848b163cda1163809d,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: ca8f6b721557ba14e9ad6f6f24297f65,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1359338597}
@@ -7911,6 +7970,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 2118247157}
   highlightSprite: {fileID: 751614486}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &761928306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7926,7 +7986,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &763103477
 Prefab:
   m_ObjectHideFlags: 0
@@ -9210,6 +9269,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 281237678}
   highlightSprite: {fileID: 1661158189}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &922573943
 Transform:
   m_ObjectHideFlags: 0
@@ -9240,7 +9300,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &930594057
 Prefab:
   m_ObjectHideFlags: 0
@@ -9354,7 +9413,7 @@ Prefab:
       objectReference: {fileID: 4900000, guid: e3a45842afee67447a3eb9f09573d43c, type: 3}
     - target: {fileID: 8100000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
@@ -9469,6 +9528,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 649778013}
   highlightSprite: {fileID: 856847669}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &960409931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9484,7 +9544,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &974104727
 GameObject:
   m_ObjectHideFlags: 0
@@ -9834,6 +9893,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1588224185}
   highlightSprite: {fileID: 1990026558}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &1010370685
 Transform:
   m_ObjectHideFlags: 0
@@ -9864,7 +9924,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &1027984002
 Prefab:
   m_ObjectHideFlags: 0
@@ -9968,6 +10027,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_14
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f85316d53e23ce544807cfbd8f326dce,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: fe94f8fce953b2d4ab73420bc15f138d,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: 3df526cd581173943a844ede7f97d870,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1707488701}
@@ -10349,9 +10423,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: df479b06e560c8b48b6776c4424452c7, type: 3}
+  - {fileID: 21300000, guid: af0a3a22a06cd724b9303d5a672fd463, type: 3}
+  - {fileID: 21300000, guid: e09e625acb850e5489f0cbe7e2c6af3e, type: 3}
   unlocked: 0
 --- !u!111 &1071982278
 Animation:
@@ -10390,7 +10464,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1079771388
 GameObject:
@@ -10414,7 +10488,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079771388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 464109608}
@@ -10779,6 +10853,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1264644645}
   highlightSprite: {fileID: 835257608}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1090850545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10794,7 +10869,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1092472471
 GameObject:
   m_ObjectHideFlags: 0
@@ -10838,9 +10912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 3d581c3d7712a5d45b054b055e7fd444, type: 3}
+  - {fileID: 21300000, guid: f2e72dd1ce4da594e8e2f4721b0e8c4a, type: 3}
+  - {fileID: 21300000, guid: 63ac601a5fe0ed044831f19baf43d25f, type: 3}
   unlocked: 0
 --- !u!111 &1092472474
 Animation:
@@ -10879,7 +10953,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1096267082
 GameObject:
@@ -11018,9 +11092,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 02ef375a2c1880143ae0ff53c6cfe89c, type: 3}
+  - {fileID: 21300000, guid: 4fdba5417fee200408aaea06819496f5, type: 3}
+  - {fileID: 21300000, guid: e4d3efdf66d7dfd49a42903e14561fd3, type: 3}
   unlocked: 0
 --- !u!111 &1108501629
 Animation:
@@ -11059,7 +11133,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1117698998
 GameObject:
@@ -11188,6 +11262,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1128764809}
   highlightSprite: {fileID: 981432901}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &1121071289
 Transform:
   m_ObjectHideFlags: 0
@@ -11218,7 +11293,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1128764809
 GameObject:
   m_ObjectHideFlags: 0
@@ -11950,9 +12024,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 062471b28f012754085fd5cd5e0d612a, type: 3}
+  - {fileID: 21300000, guid: 1350f6cb134535646b9f61fffbe737a5, type: 3}
+  - {fileID: 21300000, guid: 1f45bad4c382b7b45978c38690fff1f2, type: 3}
   unlocked: 0
 --- !u!111 &1195391347
 Animation:
@@ -11991,7 +12065,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1196194270
 GameObject:
@@ -12118,6 +12192,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1516082029}
   highlightSprite: {fileID: 31621909}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1198193887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12133,7 +12208,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1201993486
 GameObject:
   m_ObjectHideFlags: 0
@@ -12327,6 +12401,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1136636621}
   highlightSprite: {fileID: 819981478}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1208212114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12342,7 +12417,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1212972759
 GameObject:
   m_ObjectHideFlags: 0
@@ -12376,6 +12450,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 194602156}
   highlightSprite: {fileID: 90420997}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &1212972761
 Transform:
   m_ObjectHideFlags: 0
@@ -12406,7 +12481,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1223319224
 GameObject:
   m_ObjectHideFlags: 0
@@ -12738,6 +12812,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1965694873}
   highlightSprite: {fileID: 835163027}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &1256172204
 Transform:
   m_ObjectHideFlags: 0
@@ -12768,7 +12843,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1264644645
 GameObject:
   m_ObjectHideFlags: 0
@@ -12889,9 +12963,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 292ec4823ea45f6409b3081892b31297, type: 3}
+  - {fileID: 21300000, guid: 9b8d56909d8b0bb428384ed2321dab9e, type: 3}
+  - {fileID: 21300000, guid: 097f67d0095098f42b34c16bcf156eab, type: 3}
   unlocked: 0
 --- !u!111 &1270355481
 Animation:
@@ -12930,7 +13004,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1285216164
 GameObject:
@@ -12975,9 +13049,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 321713e166cde174386a9d3f5b54f822, type: 3}
+  - {fileID: 21300000, guid: ab87225a6f1d08e4a8abc45ff36fc86d, type: 3}
+  - {fileID: 21300000, guid: 3866223a881e1264ab02e403562d51f9, type: 3}
   unlocked: 0
 --- !u!111 &1285216167
 Animation:
@@ -13016,7 +13090,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1293845567
 GameObject:
@@ -13066,6 +13140,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1832139046}
   highlightSprite: {fileID: 1168054046}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1293845570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13081,7 +13156,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1296936029
 GameObject:
   m_ObjectHideFlags: 0
@@ -13426,9 +13500,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: bef210b213b557e4eaf870089cf689aa, type: 3}
+  - {fileID: 21300000, guid: a9d9583a517fd5848b163cda1163809d, type: 3}
+  - {fileID: 21300000, guid: ca8f6b721557ba14e9ad6f6f24297f65, type: 3}
   unlocked: 0
 --- !u!111 &1359338600
 Animation:
@@ -13467,7 +13541,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1363713507
 Prefab:
@@ -13577,6 +13651,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_6
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 062471b28f012754085fd5cd5e0d612a,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1350f6cb134535646b9f61fffbe737a5,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f45bad4c382b7b45978c38690fff1f2,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1195391344}
@@ -13990,6 +14079,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 2099914838}
   highlightSprite: {fileID: 1742144460}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1429261754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14005,7 +14095,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1436780920
 GameObject:
   m_ObjectHideFlags: 0
@@ -14199,6 +14288,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 39794419}
   highlightSprite: {fileID: 1867074528}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1437418821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14214,7 +14304,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1445423928
 GameObject:
   m_ObjectHideFlags: 0
@@ -14357,6 +14446,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 745928086}
   highlightSprite: {fileID: 2005888929}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1466849104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14372,7 +14462,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1485879685
 GameObject:
   m_ObjectHideFlags: 0
@@ -14421,6 +14510,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1967272324}
   highlightSprite: {fileID: 114749048}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1485879688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14436,7 +14526,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1492660981
 GameObject:
   m_ObjectHideFlags: 0
@@ -14480,9 +14569,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: bd4b4d4dbe3ea894baa9190ed1a3967c, type: 3}
+  - {fileID: 21300000, guid: 9def73cfb28051140adc418538dcf8d6, type: 3}
+  - {fileID: 21300000, guid: ac5fa3e30854b7a4e9a3fe40cb2be04c, type: 3}
   unlocked: 0
 --- !u!111 &1492660984
 Animation:
@@ -14521,7 +14610,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1515350792
 GameObject:
@@ -14665,6 +14754,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 470279278}
   highlightSprite: {fileID: 1044625327}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1515936811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14680,7 +14770,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1516082029
 GameObject:
   m_ObjectHideFlags: 0
@@ -14806,6 +14895,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1885507455}
   highlightSprite: {fileID: 671550074}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1518250370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14821,7 +14911,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1525535755
 GameObject:
   m_ObjectHideFlags: 0
@@ -14870,6 +14959,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 351920618}
   highlightSprite: {fileID: 630199836}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1525535758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14885,7 +14975,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1541155903
 GameObject:
   m_ObjectHideFlags: 0
@@ -15409,6 +15498,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_10
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: bd4b4d4dbe3ea894baa9190ed1a3967c,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9def73cfb28051140adc418538dcf8d6,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: ac5fa3e30854b7a4e9a3fe40cb2be04c,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1492660981}
@@ -15843,9 +15947,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: 591309e71fea35e45871858ae04d6f37, type: 3}
+  - {fileID: 21300000, guid: 9583de44a7d30f4468694885e2275754, type: 3}
+  - {fileID: 21300000, guid: 10b20b4b0986ef54e9b901bccab21f5c, type: 3}
   unlocked: 0
 --- !u!111 &1630280311
 Animation:
@@ -15884,7 +15988,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1650703361
 Prefab:
@@ -16184,6 +16288,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 480655716}
   highlightSprite: {fileID: 812057190}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &1666583731
 Transform:
   m_ObjectHideFlags: 0
@@ -16214,7 +16319,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1686720067
 GameObject:
   m_ObjectHideFlags: 0
@@ -16446,9 +16550,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 21300000, guid: f85316d53e23ce544807cfbd8f326dce, type: 3}
+  - {fileID: 21300002, guid: 3df526cd581173943a844ede7f97d870, type: 3}
+  - {fileID: 21300000, guid: fe94f8fce953b2d4ab73420bc15f138d, type: 3}
   unlocked: 0
 --- !u!111 &1707488704
 Animation:
@@ -16487,7 +16591,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1733408184
 GameObject:
@@ -16626,6 +16730,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_12
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3d581c3d7712a5d45b054b055e7fd444,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: f2e72dd1ce4da594e8e2f4721b0e8c4a,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 63ac601a5fe0ed044831f19baf43d25f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1092472471}
@@ -16990,6 +17109,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_8
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: df479b06e560c8b48b6776c4424452c7,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: af0a3a22a06cd724b9303d5a672fd463,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: e09e625acb850e5489f0cbe7e2c6af3e,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1071982275}
@@ -17089,6 +17223,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_13
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f55a919006f09a45853477ab4c1475e,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: bb8118c845af2cb47b607865f64404dc,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6bc80149afcb99148a5b70b86f2e194e,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 285601212}
@@ -17127,6 +17276,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 153015394}
   highlightSprite: {fileID: 1202530924}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &1830528696
 Transform:
   m_ObjectHideFlags: 0
@@ -17157,7 +17307,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &1831270605
 Prefab:
   m_ObjectHideFlags: 0
@@ -17201,6 +17350,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 321713e166cde174386a9d3f5b54f822,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ab87225a6f1d08e4a8abc45ff36fc86d,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3866223a881e1264ab02e403562d51f9,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1285216164}
@@ -17489,6 +17653,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1186255033}
   highlightSprite: {fileID: 1609361592}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1859053660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17504,7 +17669,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1867074528
 GameObject:
   m_ObjectHideFlags: 0
@@ -17589,6 +17753,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1598233790}
   highlightSprite: {fileID: 460385740}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &1869925438
 Transform:
   m_ObjectHideFlags: 0
@@ -17619,7 +17784,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &1882415057
 Prefab:
   m_ObjectHideFlags: 0
@@ -18074,6 +18238,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_11
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 02ef375a2c1880143ae0ff53c6cfe89c,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4fdba5417fee200408aaea06819496f5,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: e4d3efdf66d7dfd49a42903e14561fd3,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 1108501626}
@@ -18182,6 +18361,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: cc8a1634bdd7fe2448ee4a33dc4a33c8,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 52f243700279aa140b7bbc2617682bc0,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 735200800}
@@ -18269,7 +18463,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1945245532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 735200802}
@@ -18331,6 +18525,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9db3b309e84bbf545bb104da56a2803f,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: bc7d1261ea19fba45a640d8740fa0296,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 46192fe6eec7b2b48919c15dc0dad251,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 506796835}
@@ -18660,6 +18869,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 118720322}
   highlightSprite: {fileID: 2071519970}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1979330274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18675,7 +18885,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1987286614
 GameObject:
   m_ObjectHideFlags: 0
@@ -18946,6 +19155,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 2028380104}
   highlightSprite: {fileID: 1541155903}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1993128721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18961,7 +19171,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &1995191866
 GameObject:
   m_ObjectHideFlags: 0
@@ -19010,6 +19219,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 262722819}
   highlightSprite: {fileID: 1599732144}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &1995191869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19025,7 +19235,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &2005888929
 GameObject:
   m_ObjectHideFlags: 0
@@ -19120,6 +19329,21 @@ Prefab:
       propertyPath: m_Name
       value: PriceHolder_9
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d87a93148fe0b74ba8535534784dc8d,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08e6f53708d32164582534bdc73192e7,
+        type: 3}
+    - target: {fileID: 11400000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
+      propertyPath: SpriteSet.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f397bf14c9111545be7b705d94a575d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b4f503c81984524297100900d2a0275, type: 2}
   m_RootGameObject: {fileID: 379629162}
@@ -19540,6 +19764,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1548672584}
   highlightSprite: {fileID: 1065488674}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &2055717822
 Transform:
   m_ObjectHideFlags: 0
@@ -19570,7 +19795,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &2064975974
 GameObject:
   m_ObjectHideFlags: 0
@@ -19619,6 +19843,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1884807982}
   highlightSprite: {fileID: 473341085}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &2064975977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19634,7 +19859,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &2069088147
 GameObject:
   m_ObjectHideFlags: 0
@@ -19794,6 +20018,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1337831804}
   highlightSprite: {fileID: 1152604025}
   isHighLighted: 0
+  locked: 1
 --- !u!4 &2097621464
 Transform:
   m_ObjectHideFlags: 0
@@ -19824,7 +20049,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &2098733392
 GameObject:
   m_ObjectHideFlags: 0
@@ -20077,6 +20301,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1044130653}
   highlightSprite: {fileID: 40631671}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &2105811059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20092,7 +20317,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &2110339653
 GameObject:
   m_ObjectHideFlags: 0
@@ -20329,6 +20553,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 1991783460}
   highlightSprite: {fileID: 759502487}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &2129619075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20344,7 +20569,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1 &2132360257
 GameObject:
   m_ObjectHideFlags: 0
@@ -20393,6 +20617,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 155357729}
   highlightSprite: {fileID: 1752684308}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &2132360260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20408,7 +20633,6 @@ MonoBehaviour:
   energiesSpent: 0
   dificulty: 0
   gameType: 0
-  locked: 1
 --- !u!1001 &2133115752
 Prefab:
   m_ObjectHideFlags: 0

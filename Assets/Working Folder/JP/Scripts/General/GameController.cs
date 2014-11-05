@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 	public static string CURRENT_LEVEL_TYPE;
 	public static int CURRENT_LIVES_LOST;
 	public static int CURRENT_LIVES = 4;
-	public static int CURRENT_LEVEL_STEP;
+
 
 	//MINI GAMES FINAL SCREEN
 	public GameObject SUCCESS_SCREEN;
@@ -55,10 +55,11 @@ public class GameController : MonoBehaviour {
 	public static event RestartDelegate RestartGame;
 	public delegate void CheckPrices();
 	public static event CheckPrices checkStepPrices;
-	public delegate void UnlockEvent();
+
+	public delegate void UnlockEvent(bool FromMatico);
 	public static event UnlockEvent unlockHouse;
-	public delegate void ShowUnlocked(bool allPrices);
-	public static event ShowUnlocked showUnlockedEvent;
+	/*public delegate void ShowUnlocked(bool allPrices);
+	public static event ShowUnlocked showUnlockedEvent;*/
 
 
 
@@ -80,16 +81,14 @@ public class GameController : MonoBehaviour {
 		if (updateSoundVolume != null) {
 			updateSoundVolume();
 		}
-		//print ("THROW");
+
 	}
 
 	// Use this for initialization
 	void Start () {
 		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDAMBIENTE, 1);
 		PlayerPrefs.SetInt (PREFS_PLAYER_SOUNDFX, 1);
-
-		CURRENT_LEVEL_STEP = 0;
-
+		CURRENT_LEVEL = 0;
 		Init ();
 	}
 	void Init(){
@@ -110,24 +109,13 @@ public class GameController : MonoBehaviour {
 			updateSoundVolume();
 		}
 
-	
-		Invoke ("ShowUnlockedPrices", 0.005f);
-
-
-
 		PLAYER_FACE = PlayerPrefs.GetInt (PREFS_PLAYER_AVATAR);
 	}
 
-	void ShowUnlockedPrices()
-	{
-		if (showUnlockedEvent != null) {
-			showUnlockedEvent(true);
-		}
-	}
+
 	// Update is called once per frame
-	void Update () {
-		//print (CURRENT_LEVEL);
-		print (CURRENT_LEVEL_STEP);
+	void Update () {	
+
 	}
 
 
@@ -164,10 +152,9 @@ public class GameController : MonoBehaviour {
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
-			if(CURRENT_LIVES <4)
-				CURRENT_LIVES ++;
+			/*if(CURRENT_LIVES <4)
+				CURRENT_LIVES ++;*/
 
-			houses[CURRENT_LEVEL-1]["Played"] = "true";
 			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
 
 
@@ -195,11 +182,7 @@ public class GameController : MonoBehaviour {
 			break;
 		case "BtNext":
 
-
 			Application.LoadLevel("Board");
-
-				//Invoke ("ShowUnlockedPrices", 0.005f);
-
 			StartCoroutine("WaitForBoardLoad");
 
 			break;
@@ -211,32 +194,17 @@ public class GameController : MonoBehaviour {
 	{
 
 		yield return new WaitForSeconds (2f);
-		houses[GameController.CURRENT_LEVEL]["Blocked"] = "false";
+		houses[CURRENT_LEVEL-1]["Played"] = "true";
+		houses[CURRENT_LEVEL]["Blocked"] = "false";
 
-
-		
-		if(GameController.CURRENT_LEVEL % 3==0)
+		if(unlockHouse != null)
 		{
-			if(checkStepPrices != null)
-			{		
-				checkStepPrices();
-			}
-			if (showUnlockedEvent != null) {
-				showUnlockedEvent(false);
-			}
+			unlockHouse(false);
 		}
-		else{
-
-			if(unlockHouse != null)
-			{
-				unlockHouse();
-			}
-			if (showUnlockedEvent != null) {
-				showUnlockedEvent(true);
-			}
-		}
-		//houses[GameController.CURRENT_LEVEL]["Blocked"] = "false";
 		transform.SendMessage ("WriteToXml");
+
+
+
 	}
 	
 	void OnEnable()

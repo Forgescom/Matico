@@ -63,7 +63,8 @@ public class SharkFin : MonoBehaviour {
 		canMove = true;
 		pursuit = true;
 		transform.animation.Play("Idle");
-		
+		halfBoiaAnim.sprite = halfSkins[AcelerometerBrain.vidas];
+		boiaAnim.sprite = skins[AcelerometerBrain.vidas];
 
 	}
 	void StopMovement(string result)
@@ -87,10 +88,10 @@ public class SharkFin : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.tag == "Player") {
-
+			print ("NO TUBARAAO SAO ESTAS VIDAS:  " + AcelerometerBrain.vidas);
 			//print ("VOU COMEÇAR A ANIMAR O TUBARAO");
-			halfBoiaAnim.sprite = halfSkins[AcelerometerBrain.CURRENT_SKIN_INDEX];
-			boiaAnim.sprite = skins[AcelerometerBrain.CURRENT_SKIN_INDEX];
+			halfBoiaAnim.sprite = halfSkins[AcelerometerBrain.vidas];
+			boiaAnim.sprite = skins[AcelerometerBrain.vidas];
 			transform.animation.Play("Stuck");
 			canMove = false;
 

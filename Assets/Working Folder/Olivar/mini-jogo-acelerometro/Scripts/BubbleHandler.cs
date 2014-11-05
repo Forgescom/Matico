@@ -21,7 +21,8 @@ public class BubbleHandler : MonoBehaviour {
 
 	void Init(){
 		foreach (GameObject bub in bubbles) {
-			//bub.SetActive(false);
+			bub.SetActive(false);
+			bub.GetComponent<CircleCollider2D>().enabled = true;
 		}
 		InvokeRepeating("ShowBubble", 1,2); 
 	}
@@ -36,8 +37,21 @@ public class BubbleHandler : MonoBehaviour {
 	void ShowBubble()
 	{
 
-		int randomBubble = Random.Range (0, bubbles.Length);
+		int randomBubble;
+		bool newRandom;
+		do {
+			randomBubble = Random.Range (0, bubbles.Length);
 
+			if(bubbles [randomBubble].activeSelf == false)
+			{
+				newRandom = true;
+			}
+			else
+			{
+				newRandom = false;
+			}
+
+		} while(newRandom == false);
 
 		bubbles [randomBubble].SetActive (true);
 
@@ -64,17 +78,13 @@ public class BubbleHandler : MonoBehaviour {
 	}
 
 	void OnEnable(){
-
 		AcelerometerBrain.startGame += Init;
 		AcelerometerBrain.endGame += EndGame;
-	//	AcelerometerBrain.restartGame += RestartValues;
-
 	}
 
 	void OnDisable(){
 		AcelerometerBrain.startGame -= Init;
 		AcelerometerBrain.endGame -= EndGame;
-		//AcelerometerBrain.restartGame -= RestartValues;
 	}
 
 }

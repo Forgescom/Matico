@@ -16,18 +16,35 @@ public class ChangeAlpha : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.tag == "Player")
+		transform.renderer.material.color = new Color (1, 1, 1, 0.5f);
+		/*if (col.tag == "Player")
 		{
 			transform.renderer.material.color = new Color (1, 1, 1, 0.5f);
-		}
+		}*/
 	}
 
 	void OnTriggerExit2D(Collider2D col)
 	{
-		if (col.tag == "Player")
+		transform.renderer.material.color = new Color (1, 1, 1, 1f);
+		/*if (col.tag == "Player")
 		{
 			transform.renderer.material.color = new Color (1, 1, 1, 1f);
-		}
+		}*/
+	}
+	void RestartAlpha()
+	{
+		transform.renderer.material.color = new Color (1, 1, 1, 1f);
+	}
+
+	void OnEnable(){
+		FailureScreen.RestartGame += RestartAlpha;
+		GameController.RestartGame += RestartAlpha;
+		AcelerometerBrain.startGame += RestartAlpha;
+	}
+	void OnDisable(){
+		FailureScreen.RestartGame -= RestartAlpha;
+		GameController.RestartGame -= RestartAlpha;
+		AcelerometerBrain.startGame -= RestartAlpha;
 	}
 }
 

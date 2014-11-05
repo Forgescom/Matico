@@ -11,62 +11,61 @@ public class AcelerometerBrain : MonoBehaviour {
 	
 	public delegate void EndGameDelegate(string outcome);
 	public static event EndGameDelegate endGame;
-	
-
 
 
 	//GAMEOBJECTS	
 	public GameObject introScreen;
 	public GameObject explanationScreen;
 	public GameObject accelerometer;
+	public GameObject questionHolder;
 	public GameObject screenLock;
 	public GameObject sharkFin;
 	public GameObject boia;
 
 	//STARTING POINT
 	public GUITexture [] vidasTexture;
-	int vidas;
+	public static int vidas;
 	int currentScreen;	
 
 	//STATIC VARIABLES FOR GAME OBJECTS
-	public static int CURRENT_SKIN_INDEX = 0;
+	//public static int CURRENT_SKIN_INDEX = 0;
 
 	
 
 	// Use this for initialization
 	void Start () {
-
+		currentScreen = (GameController.ACELEROMETER_TUT == true) ? 0 : 1;
 		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
 		accelerometer.SetActive(false);
 		screenLock.SetActive(false);
-		currentScreen = (GameController.ACELEROMETER_TUT == true) ? 0 : 1;
+		questionHolder.SetActive (false);
+
 
 	}
 
 	void Init(){
 
-		CURRENT_SKIN_INDEX = 0;
-		vidas = 4;
-		vidasTexture [CURRENT_SKIN_INDEX].gameObject.SetActive (false);
+		//CURRENT_SKIN_INDEX = 0;
+		vidas = 3;
+		vidasTexture [vidas].gameObject.SetActive (false);
 
 		foreach (GUITexture obj in vidasTexture) {
 			obj.gameObject.SetActive (true);
 		}
 
-		CreateNewBoia ();
+
 
 		//TELL OTHER OBJECTS TO START GAME
 		if (startGame != null) {
 			startGame();
 		}
-
+		CreateNewBoia ();
 	}
 
 
 	// Update is called once per frame
 	void Update () {
-	
 	
 
 	}
@@ -81,8 +80,9 @@ public class AcelerometerBrain : MonoBehaviour {
 		else if(currentScreen == 1)
 		{
 			screenLock.SetActive(true);
+			questionHolder.SetActive (true);
+			questionHolder.animation.Play("QuestionIn");
 			accelerometer.SetActive(true);
-
 			currentScreen ++;
 		}
 	}
@@ -111,36 +111,34 @@ public class AcelerometerBrain : MonoBehaviour {
 						endGame("Errado");						
 					}
 				}
+
+				foreach (GUITexture obj in vidasTexture) {
+					obj.gameObject.SetActive (false);
+				}
+
+
 			break;
 
 			case "Shark":
-				vidas--;
-				//print("TENHO ESTAS VIDAS :" + vidas);
+				
+		
 				if (vidas != 0) {
-
-				//print("ADICIONA NOVA BOIA");
-					//ESPERAR 3 SEGUNDOS E LANÇAR NOVA BOIA
-					CURRENT_SKIN_INDEX ++;
-					Invoke("CreateNewBoia",3);
-					
+					Invoke("CreateNewBoia",3);					
 				}
 				else if (vidas == 0) {
-				//	print("FIM DO JOGO  FIQUEI SEM BOIAS");
-
 					if(endGame != null)
 					{
-						Init ();
-						//startGame();
 						endGame("Errado");	
 					}
-				}			
+					foreach (GUITexture obj in vidasTexture) {
+						obj.gameObject.SetActive (false);
+					}
+				}	
+				vidas--;
 
 			break;
 		}
 	}
-
-
-
 
 	void CreateNewBoia()
 	{
@@ -151,7 +149,7 @@ public class AcelerometerBrain : MonoBehaviour {
 		novaBoia.SendMessage ("ChangeSkin");		
 		novaBoia.GetComponent<PlayerController> ().canMove = true;
 
-		vidasTexture [CURRENT_SKIN_INDEX].gameObject.SetActive (false);
+		vidasTexture [vidas].gameObject.SetActive (false);
 		sharkFin.GetComponent<SharkFin> ().target = novaBoia.transform;
 
 	}
@@ -160,27 +158,34 @@ public class AcelerometerBrain : MonoBehaviour {
 	
 	IEnumerator ChangeQuestion(){
 		yield return new WaitForSeconds (1.5F);
-		/*if (GameTryAgain != null) {		
-			GameTryAgain();			
-		}	*/
 		transform.SendMessage ("SetQuestionValues");
+		questionHolder.animation.Play("QuestionIn");
+		screenLock.SetActive(true);
+	}
+
+	void RestartGameAndQuestion()
+	{
+		questionHolder.animation.Play("QuestionOut");
+		StartCoroutine ("ChangeQuestion");
 	}
 
 	void OnEnable()
 	{
 		PlayerController.boiaHit += PlayerHit;
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
-		FailureScreen.RestartGame += Init;
+		FailureScreen.RestartGame += RestartGameAndQuestion;
 		ClickToUnlock.unlockScreen += Init;
 		GameController.RestartGame += Init;
 
 	}
+
+
 	
 	void OnDisable()
 	{
 		PlayerController.boiaHit -= PlayerHit;
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
-		FailureScreen.RestartGame -= Init;
+		FailureScreen.RestartGame -= RestartGameAndQuestion;
 		ClickToUnlock.unlockScreen -= Init;
 		GameController.RestartGame -= Init;
 	}

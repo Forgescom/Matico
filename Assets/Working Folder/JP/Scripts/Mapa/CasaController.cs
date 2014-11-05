@@ -15,11 +15,10 @@ public class CasaController : MonoBehaviour {
 	float timeFactor = 5f;
 	
 	public bool isHighLighted = false;
-	
+	public bool locked = true;
 	// Use this for initialization
 	void Start () {
-	/*	desbloquadoSprite.SetActive(false);
-		highlightSprite.SetActive(false);*/
+	
 	}
 	
 	// Update is called once per frame
@@ -30,8 +29,18 @@ public class CasaController : MonoBehaviour {
 			                                                   Mathf.PingPong((Time.time/timeFactor), maxHighlightSize-minHighlightSize)+minHighlightSize, 
 			                                                   1f);		
 		}
+		else{
+			highlightSprite.transform.localScale = new Vector3(1f,1f,1f);		
+		}
 	}
-	
+
+	public void UpdateState(){
+		if (locked == false)
+			UnlockButton ();
+
+
+	}
+
 	void ButtonPressed(){
 		if (throwGame != null) {
 			throwGame (transform);

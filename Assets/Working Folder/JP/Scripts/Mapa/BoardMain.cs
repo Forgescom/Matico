@@ -22,7 +22,7 @@ public class BoardMain : MonoBehaviour {
 
 		TurnOffOnSound ();
 		AssignHousesSettings ();
-		UnlockHouses ();
+		//UnlockHouses ();
 
 		if(showIntro == true)
 			ShowIntro ();
@@ -33,7 +33,7 @@ public class BoardMain : MonoBehaviour {
 	}
 
 	void ShowIntro(){
-		if (GameController.CURRENT_LEVEL <= 1) {
+		if (GameController.CURRENT_LEVEL == 0) {
 			intro.SetActive(true);
 			bg.GetComponent<BackgroundTouch>().enabled = false;
 		}
@@ -49,14 +49,27 @@ public class BoardMain : MonoBehaviour {
 	{	
 
 		for (int i = 0; i < GameController.houses.Count; i++) {
-			string houseName;
-			GameController.houses[i].TryGetValue("HouseName",out houseName);
-	
+
+			//CHECK IF HOUSE IS LOCK AND ASSIGN	
 			string locked;
 			GameController.houses[i].TryGetValue("Blocked",out locked);
 
+			if(locked == "true")
+				housesGameObject[i].GetComponent<CasaController>().locked = true;
+			else{
+			
+				housesGameObject[i].GetComponent<CasaController>().locked = false;
+			}
+
+
+			//CHECK IF HOUSE WAS PLAYED AND IF IS UNLOCKED TO HIGHLIGHT
 			string played;
 			GameController.houses[i].TryGetValue("Played",out played);
+
+			if(played == "false" && locked == "false")
+				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
+			else
+				housesGameObject[i].GetComponent<CasaController>().isHighLighted = false;
 
 
 			string typeOfGame;
@@ -76,52 +89,39 @@ public class BoardMain : MonoBehaviour {
 			string dificulty;
 			GameController.houses[i].TryGetValue("Dificulty",out dificulty);
 			housesGameObject[i].GetComponent<CasaValues>().dificulty = int.Parse(dificulty);
-	
+
+			//UPDATE HOUSE TO ITS STATE WITH VALUES ASSIGNED NOW
+			housesGameObject[i].GetComponent<CasaController>().UpdateState();
+
+
+			//CHECK IF ShOW INTRO OR NOT
+			if(i == 0 && played == "true")
+			{
+				showIntro = false;
+			}
 		}
+
 	}
 
-	public void UnlockHouses()
+	void UnlockNextHouse(bool fromMatico = false)
 	{
-		for (int i = 0; i < GameController.houses.Count; i++) {
-			string locked;
-			GameController.houses[i].TryGetValue("Blocked",out locked);
+		CasaController houseController = housesGameObject [GameController.CURRENT_LEVEL].GetComponent<CasaController> ();
 
-			if(locked == "false")
-			{
-				housesGameObject[i].GetComponent<CasaValues>().locked = false;
-				housesGameObject[i].GetComponent<CasaController>().UnlockButton();
-				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
-				
-				//IF MORE THEN ONE LEVEL IS UNLOCK DONT SHOW INTRO
-				if(i>0)
-				{
-					showIntro = false;
-					housesGameObject[i].GetComponent<CasaController>().isHighLighted = false;
-				}
-			
-				int.TryParse(housesGameObject[i].name.Substring(4,2),out GameController.CURRENT_LEVEL);
-				
-			}
-			else{
-				housesGameObject[i].GetComponent<CasaValues>().locked = true;
-			}
-
-			string played;
-			GameController.houses[i].TryGetValue("Played",out played);
-			if(played == "true")
-			{
-				int level;
-				int.TryParse(housesGameObject[i].name.Substring(4,2),out level);
-				
-				GameController.CURRENT_LEVEL_STEP = level/3;
-			}
-
+		if (GameController.CURRENT_LEVEL % 3 == 0 && fromMatico == false) {
+			transform.SendMessage("ShowMatico");
 		}
-		/*if(GameController.CURRENT_LEVEL %3 !=0) 
-			transform.SendMessage("ShowUnlockedPrices");*/
-
+		else
+		{
+			if(houseController.locked == true){
+				houseController.locked = false;
+				houseController.UnlockButton ();
+				houseController.isHighLighted = true;
+				housesGameObject [GameController.CURRENT_LEVEL - 1].GetComponent<CasaController> ().isHighLighted = false;
+			}
+		}
 
 	}
+
 
 	public void StartLevel(Transform houseCliked)
 	{
@@ -179,8 +179,8 @@ public class BoardMain : MonoBehaviour {
 		DeactivateOnAnimEnd.animationFinish += EnableMap;
 		CasaController.throwGame += StartLevel;
 		GameController.updateSoundVolume += TurnOffOnSound;
-		GameController.unlockHouse += UnlockHouses;
-		MaticoUnlocker.unlockNextHouse += UnlockHouses;
+		GameController.unlockHouse += UnlockNextHouse;
+		MaticoUnlocker.unlockNextHouse += UnlockNextHouse;
 	}
 
 	void OnDisable()
@@ -188,7 +188,7 @@ public class BoardMain : MonoBehaviour {
 		GameController.updateSoundVolume -= TurnOffOnSound;
 		DeactivateOnAnimEnd.animationFinish -= EnableMap;
 		CasaController.throwGame -= StartLevel;
-		GameController.unlockHouse -= UnlockHouses;
-		MaticoUnlocker.unlockNextHouse -= UnlockHouses;
+		GameController.unlockHouse -= UnlockNextHouse;
+		MaticoUnlocker.unlockNextHouse -= UnlockNextHouse;
 	}
 }

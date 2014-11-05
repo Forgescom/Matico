@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 	void Init(){
 		canMove = true;
 		transform.position = Vector3.zero;
-		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.CURRENT_SKIN_INDEX];
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.vidas];
 	}
 
 	void Update()
@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
 					boiaHit("Bubble",true);
 				}
 			}
+			Invoke("DestroyThis",1);
 		}
 		//COLLISION WITH SHARK
 		else if (col.tag =="Shark")
@@ -106,9 +107,11 @@ public class PlayerController : MonoBehaviour
 
 	public void ChangeSkin()
 	{
-		//print ("ABOUT TO CHANGE SKIN TO THIS INDEX :" + AcelerometerBrain.CURRENT_SKIN_INDEX);
-		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.CURRENT_SKIN_INDEX];
+		transform.GetComponent<SpriteRenderer> ().sprite = skins [AcelerometerBrain.vidas];
+	}
 
+	void DestroyThis(){
+		Destroy(gameObject);
 	}
 
 	void AddWaveForce()
@@ -139,14 +142,12 @@ public class PlayerController : MonoBehaviour
 
 	void OnEnable()
 	{
-		//AcelerometerBrain.restartGame += RestartValues;
 		AcelerometerBrain.startGame += Init;
 		AcelerometerBrain.endGame += StopMovement;
 	}
 
 	void OnDisable()
 	{
-		//AcelerometerBrain.restartGame -= RestartValues;
 		AcelerometerBrain.startGame -= Init;
 		AcelerometerBrain.endGame -= StopMovement;
 	}

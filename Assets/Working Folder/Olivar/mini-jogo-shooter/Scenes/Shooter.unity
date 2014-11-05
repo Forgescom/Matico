@@ -369,7 +369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introScreen: {fileID: 1916410871}
-  explanationScreen: {fileID: 0}
   question: {fileID: 1160194961}
   shooter: {fileID: 244501031}
   target: {fileID: 100000, guid: 26203cdfb746a984a88de49b3cb6bab2, type: 2}
