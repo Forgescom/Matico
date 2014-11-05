@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: e0064eac9f9f9b440b328d3862fa7c45
+guid: dfb04735482a4d14f9d08a3a7342a221
 TextureImporter:
   fileIDToRecycleName:
-    21300000: montanhas_2
+    21300000: ceu_bg 1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,8 +22,8 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 2048
   textureSettings:
     filterMode: -1
     aniso: -1

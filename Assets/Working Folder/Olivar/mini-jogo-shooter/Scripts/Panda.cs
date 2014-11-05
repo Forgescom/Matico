@@ -97,5 +97,4 @@ public class Panda : MonoBehaviour {
 		get;
 		private set;
 	}
-	
 }

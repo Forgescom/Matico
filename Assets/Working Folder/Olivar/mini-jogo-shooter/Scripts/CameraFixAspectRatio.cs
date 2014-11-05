@@ -19,4 +19,5 @@ public class CameraFixAspectRatio : MonoBehaviour
 			camera.orthographicSize = 4.6f;
 		}
 	}
+
 }
