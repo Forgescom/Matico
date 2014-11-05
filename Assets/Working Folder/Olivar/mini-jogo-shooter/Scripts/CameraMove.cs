@@ -25,12 +25,10 @@ public class CameraMove : MonoBehaviour
 	float MAX_Y_ZOOMIN = 4.12F;
 	float MAX_Y_ZOOMOUT = 6.16F;
 	// Update is called once per frame
+
 	void Update()
 	{
 		float currentSize = transform.camera.orthographicSize;
-
-
-
 
 		if(Input.touchCount == 1 ) {
 			if(Input.GetTouch(0).phase == TouchPhase.Began){
@@ -46,7 +44,13 @@ public class CameraMove : MonoBehaviour
 		{
 			ZoomInOutCamera();
 		}
-	}	
+	}
+
+	void SetZoom (bool gameended) {
+		if (gameended == true) {
+			Camera.main.orthographicSize = 5.4f;
+		}
+	}
 
 	void SaveFirstPosition(){
 		hit_position = Input.GetTouch(0).position;	

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 	public static event GameNewTry GameTryAgain;
 
 	private bool won;
-	private bool gameended;
+	public bool gameended;
 	private bool nolives;
 
     // Use this for initialization
@@ -193,11 +193,14 @@ public class GameManager : MonoBehaviour
 				if (currentPandaIndex == Pandas.Count - 1)
 				{
 					//no more birds, go to finished
+					camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
+//					GManager.SendMessage("AnswerHit", true);
 					nolives = true;
 					endGame("Errado");
 				}
 
 				if (gameended == true) {
+					camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
 					if (won == true) {
 						endGame("Certo");
 					}
@@ -207,8 +210,6 @@ public class GameManager : MonoBehaviour
 				}
 
 				else {
-					print("Ganhou?");
-					print(won);
 					print("Continua...");
 					slingshot.slingshotState = SlingshotState.Idle;
 					//panda to throw is the next on the list
