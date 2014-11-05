@@ -106,12 +106,7 @@ public class GameManager : MonoBehaviour
 				startText.transform.position = new Vector3(100, 0, 0);
 				start = true;
 			}
-
-/*			if(Input.GetTouch(0).tapCount == 2) {
-				print ("Double tap!!!");
-				camera.GetComponent<CameraMove>().enabled = true;
-			}
-*/		}
+		}
 
 		switch (CurrentGameState)
         {
