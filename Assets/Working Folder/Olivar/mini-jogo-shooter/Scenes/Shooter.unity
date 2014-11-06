@@ -490,8 +490,8 @@ Transform:
   m_LocalPosition: {x: 9.63786411, y: 3.11198473, z: -21.0849609}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1407708925}
   - {fileID: 1738413281}
+  - {fileID: 1407708925}
   - {fileID: 433897473}
   m_Father: {fileID: 244501032}
   m_RootOrder: 0
@@ -1912,6 +1912,33 @@ Transform:
   - {fileID: 2054000356}
   m_Father: {fileID: 244501032}
   m_RootOrder: 1
+--- !u!1 &1380171237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1380171238}
+  m_Layer: 0
+  m_Name: Explanation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1380171238
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1380171237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.75644183, y: -1.47210848, z: 49.1640625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &1407708923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,7 +1949,7 @@ GameObject:
   - 4: {fileID: 1407708925}
   - 212: {fileID: 1407708924}
   m_Layer: 0
-  m_Name: bambu1
+  m_Name: bambu2
   m_TagString: Bamboo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1961,7 +1988,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551015323}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1437156896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,7 +2501,7 @@ GameObject:
   - 4: {fileID: 1738413281}
   - 212: {fileID: 1738413280}
   m_Layer: 0
-  m_Name: bambu2
+  m_Name: bambu1
   m_TagString: Bamboo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2509,11 +2536,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1738413279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.67893553, y: -5.38853121, z: .449951172}
+  m_LocalPosition: {x: 4.67893505, y: -5.38853121, z: .449951172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 551015323}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1738939044
 GameObject:
   m_ObjectHideFlags: 0
