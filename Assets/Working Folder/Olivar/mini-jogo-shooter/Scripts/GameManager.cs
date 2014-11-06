@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
 	void Init() 
 	{
 		CurrentGameState = GameState.Start;
-		slingshot.enabled = true;
-		question.gameObject.SetActive(true);
+
+//		question.gameObject.SetActive(true);
 		//find all relevant game objects
 		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
 		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
@@ -98,11 +98,13 @@ public class GameManager : MonoBehaviour
 	void Update()
     {
 		if (start == false) {
+			Init();
 			AutoResize(1920, 1080);
 			startText.text = "Toca no ecra para o jogo iniciar";
+			question.gameObject.SetActive(true);
 			if(Input.touchCount > 0)
 			{
-				Init();
+				slingshot.enabled = true;
 				startText.transform.position = new Vector3(100, 0, 0);
 				start = true;
 			}
