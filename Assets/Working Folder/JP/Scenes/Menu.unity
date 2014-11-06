@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &35235555
 Transform:
   m_ObjectHideFlags: 0
@@ -895,6 +895,10 @@ Prefab:
     - target: {fileID: 400000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
@@ -2879,7 +2883,7 @@ AudioListener:
     type: 2}
   m_PrefabInternal: {fileID: 492862145}
   m_GameObject: {fileID: 1718154750}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &1828257546
 GameObject:
   m_ObjectHideFlags: 0
