@@ -69,7 +69,7 @@ public class CameraMove : MonoBehaviour
 			startPosition = transform.position;		
 			Vector3 newPosition = startPosition + direction;
 			newPosition.z = startPosition.z;		
-			transform.position = Vector3.Lerp(startPosition,newPosition,0.5f);		
+			transform.position = Vector3.Lerp(startPosition,newPosition,0.05f);		
 
 		}
 
