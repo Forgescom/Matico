@@ -54,7 +54,9 @@ public class GameManager : MonoBehaviour
 		if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
 //			explanationScreen.SetActive(false);
+
 			shooter.SetActive(false);
+
 			slingshot.enabled = false;
 			GameController.SHOOTER_RESTARTING = true;
 		}
@@ -62,6 +64,9 @@ public class GameManager : MonoBehaviour
 			introScreen.SetActive (false);
 			shooter.SetActive(true);
 			slingshot.enabled = true;
+			CurrentGameState = GameState.Start;
+			camera.transform.position = new Vector3(18,0,-20);
+
 		}
 
     }
@@ -85,13 +90,14 @@ public class GameManager : MonoBehaviour
 		//this ensures that we subscribe only once
 		slingshot.PandaThrown -= Slingshot_PandaThrown; 
 		slingshot.PandaThrown += Slingshot_PandaThrown;
-		AnimatePandaToSlingshot();
 
+		AnimatePandaToSlingshot();
 		if (startGame != null)
 		{
 			startGame();
 			
 		}
+
 	}
 
 	// Update is called once per frame
@@ -102,12 +108,18 @@ public class GameManager : MonoBehaviour
 			AutoResize(1920, 1080);
 			startText.text = "Toca no ecra para o jogo iniciar";
 			question.gameObject.SetActive(true);
+
 			if(Input.touchCount > 0)
 			{
 				slingshot.enabled = true;
 				startText.transform.position = new Vector3(100, 0, 0);
 				start = true;
+				CurrentGameState = GameState.PandaMovingToSlingshot;
+				Vector3 posicaoInicial = new Vector3(0,0,-1);
+				//testar camara mobvimento
+				camera.transform.positionTo(2f, posicaoInicial);
 			}
+
 		}
 
 		switch (CurrentGameState)
@@ -135,6 +147,7 @@ public class GameManager : MonoBehaviour
 			    slingshot.enabled = false;
 			    AnimateCameraToStartPosition();
 			    CurrentGameState = GameState.PandaMovingToSlingshot;
+
 			}
 
             break;
@@ -163,6 +176,8 @@ public class GameManager : MonoBehaviour
 		}
 		else if(currentScreen == 1)
 		{
+			CurrentGameState = GameState.Start;
+			camera.transform.position = new Vector3(18,0,-20);
 			shooter.SetActive(true);
 			currentScreen ++;
 			/*if(startGame !=null)
