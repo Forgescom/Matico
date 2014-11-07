@@ -9,32 +9,38 @@ public class Coala : MonoBehaviour {
 	Vector3 finalPos;
 	public float speedToPosition = 1f;
 
-	public GameObject control;
+	//public GameObject control;
 	
 	public Sprite burnmfkr;
 	public Sprite [] arrayLives;
-	//public Sprite [] arrayEat;
 
-	private int count;//contador valores
-	public GUIText countText;
+	//contadores
+	private int Menor;
+	private int Maior;
+	private int Igual;
+	public countMenorScr countMenor;
+	public countIgualSrc countIgual;
+	public countMaiorSrc countMaior;
 
+	//guardar Sprite;
 	SpriteRenderer thisSprite;
-	//Sprite saveSprite;
 
 	public Tilt_brain brainLives;
-	public NumberSrc foodNumber;
+	//public NumberSrc foodNumber;
 
 	public float speed = 0.5f;
 	// Use this for initialization
 	void Start () {
-		//animation.Play("swing");
-		//Screen.orientation = ScreenOrientation.Portrait;
-		count = 0;
-		SetCountText ();
-
+		//aceder a sprite
+		thisSprite = transform.GetComponent<SpriteRenderer> ();
+		//iniciar contadores
+		Menor = 0;
+		Maior = 0;
+		Igual = 0;
+		//defenir posiçoes
 		initialPos = gameObject.transform.position;
 		finalPos = new Vector3 (0,-5f,-2);
-		thisSprite = transform.GetComponent<SpriteRenderer> ();
+
 	}
 
 	void Update()
@@ -55,7 +61,8 @@ public class Coala : MonoBehaviour {
 	{
 		
 		if (SystemInfo.deviceType == DeviceType.Desktop) {
-			
+
+
 			var move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 			transform.position += move * speed * Time.deltaTime;
 			
@@ -78,32 +85,35 @@ public class Coala : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		//GameObject teste;
-
-		if (col.name == "raio") {
-			thisSprite.sprite = burnmfkr;
-			brainLives.lives--;
-			Invoke ("changeSprite", 2);
+		switch(col.name){
+			case "raio": 
+				//col.gameObject.SetActive(false);
+				thisSprite.sprite = burnmfkr;
+				brainLives.lives--;
+				Invoke ("changeSprite", 2);
+				break;
+			case "ave_head":
+				//col.gameObject.SetActive(false);
+				brainLives.lives--;
+				Invoke ("changeSprite", 2);
+				break;
+			case "Menor":
+				//col.gameObject.SetActive(false);
+				Menor = Menor + 1;
+				countMenor.barDisplay = Menor;
+				break;
+			case "Igual":
+				//col.gameObject.SetActive(false);
+				Igual = Igual + 1;
+				countIgual.barDisplay = Igual;
+			break;
+			case "Maior":
+				//col.gameObject.SetActive(false);
+				Maior = Maior + 1;
+				countMaior.barDisplay = Maior;
+			break;
 		}
-		if (col.name == "ave_head") {
-			brainLives.lives--;
-			Invoke ("changeSprite", 2);
-		}
-		if (col.name == "Food") {
-			col.gameObject.SetActive(false);
-			//teste = col.gameObject.GetComponent<int>().foodNumber;
-			count = count + col.gameObject.GetComponent<NumberSrc>().foodNumber;
-			SetCountText();
-
-						//Debug.Log ("esta comendo");
-
-			//animation.Play("Eating");
-			//UnityEngine.Animation:Play("eatHappy");
-				}
 	}
-
-	void SetCountText(){
-		countText.text="Count: "+count.ToString();
-		}
 
 	void changeSprite(){
 		Debug.Log ("on");
