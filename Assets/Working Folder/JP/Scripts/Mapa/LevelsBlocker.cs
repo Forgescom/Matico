@@ -47,7 +47,7 @@ public class LevelsBlocker : MonoBehaviour {
 
 				if(GameController.houses[i]["Played"] == "false")
 				{
-					print ("SAI NO " + i);
+				
 					goto Foo;
 				}
 				else{

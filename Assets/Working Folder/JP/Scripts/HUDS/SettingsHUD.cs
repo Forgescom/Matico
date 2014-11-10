@@ -6,15 +6,26 @@ public class SettingsHUD : MonoBehaviour {
 	bool open = false;
 
 	AudioClip backGroundMusic;
+	public HUDClick somFx;
+	public HUDClick somMusica;
 	
 	// Use this for initialization
 	void Start () {
-
+		TurnOffOnSound ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		print (somMusica.buttonOn);
+		print ("GAME BRAIN :" + GameController.BG_SOUND);
+	}
+
+	void TurnOffOnSound()
+	{
+
+		somMusica.buttonOn = GameController.BG_SOUND;
+		somMusica.UpdateButton ();
+		print ("DESPOIS DE ALTERAR" +somMusica.buttonOn);
 	}
 
 	void btClick(GameObject clickedBt){
@@ -32,8 +43,14 @@ public class SettingsHUD : MonoBehaviour {
 					open = false;
 				}
 			break;
+			case "somMusica":
+				GameController.SwitchOnOffSound("Music");
+			break;
 			case "somFx":
-			GameController.SwitchOnOffSound("Music");
+				GameController.SwitchOnOffSound("FX");
+			break;
+			case "sair":
+				Application.LoadLevel("Menu");
 			break;
 		
 		}

@@ -751,6 +751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac16edc35a920c48b5817ae279d621d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  somFx: {fileID: 1592158365}
+  somMusica: {fileID: 2145729069}
 --- !u!111 &64545514
 Animation:
   m_ObjectHideFlags: 0

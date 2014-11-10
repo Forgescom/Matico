@@ -41,6 +41,7 @@ public class AcelerometerBrain : MonoBehaviour {
 		screenLock.SetActive(false);
 		questionHolder.SetActive (false);
 
+		TurnOffOnSound ();
 
 	}
 
@@ -63,6 +64,18 @@ public class AcelerometerBrain : MonoBehaviour {
 		CreateNewBoia ();
 	}
 
+	void TurnOffOnSound()
+	{
+		
+		AudioSource audio = transform.GetComponent<AudioSource> ();
+		audio.enabled = GameController.BG_SOUND;
+		
+		if (audio.enabled)
+			audio.Play ();
+		else {
+			audio.Stop();
+		}
+	}
 
 	// Update is called once per frame
 	void Update () {

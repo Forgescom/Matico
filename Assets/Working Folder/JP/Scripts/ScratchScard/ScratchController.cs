@@ -19,8 +19,22 @@ public class ScratchController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		TurnOffOnSound ();
 		Init ();
 
+	}
+
+	void TurnOffOnSound()
+	{
+	
+		AudioSource audio = transform.GetComponent<AudioSource> ();
+		audio.enabled = GameController.BG_SOUND;
+		
+		if (audio.enabled)
+			audio.Play ();
+		else {
+			audio.Stop();
+		}
 	}
 
 

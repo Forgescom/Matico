@@ -165,12 +165,13 @@ public class BoardMain : MonoBehaviour {
 
 	void TurnOffOnSound()
 	{
-		if (GameController.musicSoundOn == false) {
-			transform.GetComponent<AudioSource>().Stop();
-		}
-		else{
-			transform.GetComponent<AudioSource>().Play();
-			//transform.audio.Play();
+		AudioSource audio = transform.GetComponent<AudioSource> ();
+		audio.enabled = GameController.BG_SOUND;
+		
+		if (audio.enabled)
+			audio.Play ();
+		else {
+			audio.Stop();
 		}
 	}
 
