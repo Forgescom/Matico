@@ -20,9 +20,9 @@ public class Target : MonoBehaviour
 		//if we are hit by a panda
 		if (col.gameObject.tag == "Panda")
 		{
-			StartCoroutine(DestroyAfter(2));
+
+			StartCoroutine(DestroyAfter(5));
 //          GetComponent<AudioSource>().Play();
-//			Destroy(gameObject);
 		}
 	}
 

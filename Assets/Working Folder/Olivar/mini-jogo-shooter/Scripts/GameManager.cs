@@ -7,14 +7,14 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
 	public GameObject introScreen;
-//	public GameObject explanationScreen;
+	public GameObject explanationScreen;
 	public GameObject question;
 	public GameObject shooter;
 	public GameObject target;
 
 	public GameObject camera;
 
-	int currentScreen = 1;
+	int currentScreen = 0;
 
 	// Iniciar Jogo
 	public TextMesh startText;
@@ -53,25 +53,22 @@ public class GameManager : MonoBehaviour
     {
 		if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
-//			explanationScreen.SetActive(false);
+			explanationScreen.SetActive(false);
 
 			shooter.SetActive(false);
 
 			slingshot.enabled = false;
 			GameController.SHOOTER_RESTARTING = true;
+			currentScreen = (GameController.SHOOTER_TUT == true) ? 0 : 1;
 		}
 		else {
 			introScreen.SetActive (false);
 			shooter.SetActive(true);
 			slingshot.enabled = true;
 			CurrentGameState = GameState.Start;
-			camera.transform.position = new Vector3(18,0,-20);
-
+			camera.transform.position = new Vector3(18, 0, -20);
 		}
-
     }
-
-
 
 	void Init() 
 	{
@@ -94,10 +91,8 @@ public class GameManager : MonoBehaviour
 		AnimatePandaToSlingshot();
 		if (startGame != null)
 		{
-			startGame();
-			
+			startGame();			
 		}
-
 	}
 
 	// Update is called once per frame
@@ -115,11 +110,10 @@ public class GameManager : MonoBehaviour
 				startText.transform.position = new Vector3(100, 0, 0);
 				start = true;
 				CurrentGameState = GameState.PandaMovingToSlingshot;
-				Vector3 posicaoInicial = new Vector3(0,0,-1);
+				Vector3 posicaoInicial = new Vector3(0, 0, -1);
 				//testar camara mobvimento
 				camera.transform.positionTo(2f, posicaoInicial);
 			}
-
 		}
 
 		switch (CurrentGameState)
@@ -147,7 +141,6 @@ public class GameManager : MonoBehaviour
 			    slingshot.enabled = false;
 			    AnimateCameraToStartPosition();
 			    CurrentGameState = GameState.PandaMovingToSlingshot;
-
 			}
 
             break;
@@ -170,21 +163,25 @@ public class GameManager : MonoBehaviour
 	void ChangeScreen()
 	{
 		if (currentScreen == 0) {
-//			explanationScreen.SetActive(true);
-//			explanationScreen.animation.Play("shooterExplanation");
+			explanationScreen.SetActive(true);
+			explanationScreen.animation.Play("Explanation");
 			currentScreen ++;
+			GameController.SHOOTER_TUT = false;
 		}
 		else if(currentScreen == 1)
 		{
 			CurrentGameState = GameState.Start;
-			camera.transform.position = new Vector3(18,0,-20);
+			camera.transform.position = new Vector3(18, 0, -20);
 			shooter.SetActive(true);
 			currentScreen ++;
-			/*if(startGame !=null)
-			{
-				startGame();
-			}*/
 		}
+	}
+
+	IEnumerator timeCount (float seconds) {
+		yield return new WaitForSeconds(seconds);
+		camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
+		Vector3 posicaoInicial = new Vector3(18, 0, -20);
+		camera.transform.positionTo(2f, posicaoInicial);
 	}
 
     /// Animates the camera to the original location
@@ -200,25 +197,29 @@ public class GameManager : MonoBehaviour
             cameraFollow.StartingPosition). //end position
             setOnCompleteHandler((x) =>
 	        {
-	            cameraFollow.IsFollowing = false;
 				
+	            cameraFollow.IsFollowing = false;
+
 				if (currentPandaIndex == Pandas.Count - 1)
 				{
 					//no more birds, go to finished
 					camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
-//					GManager.SendMessage("AnswerHit", true);
 					nolives = true;
 					endGame("Errado");
 				}
 
 				if (gameended == true) {
-					camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
+						StartCoroutine (timeCount(3));
+					
+					
 					if (won == true) {
+						
 						endGame("Certo");
 					}
 					else {
+						
 						endGame("Errado");
-					}		
+					}
 				}
 
 				else {
@@ -301,16 +302,7 @@ public class GameManager : MonoBehaviour
 	{
 		Application.LoadLevel (Application.loadedLevel);
 	}
-
-/*	
-	IEnumerator ChangeQuestion(){
-		yield return new WaitForSeconds (1.5F);
-		if (GameTryAgain != null) {		
-			GameTryAgain();
-		}	
-		transform.SendMessage ("SetQuestionValues");
-	}
-*/	
+	
 	void OnEnable()
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;

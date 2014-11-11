@@ -47,8 +47,18 @@ public class CameraMove : MonoBehaviour
 	}
 
 	void SetZoom (bool gameended) {
+		float t = 0.0f;
+		float transitionDuration = 1.5f;
+		float currentSize = transform.camera.orthographicSize;
+
 		if (gameended == true) {
-			Camera.main.orthographicSize = 5.4f;
+			while (t < 1.0f)
+			{
+				t += Time.deltaTime * (Time.timeScale/transitionDuration);
+				transform.camera.orthographicSize = Mathf.Lerp(currentSize, 5.4f, t);
+				ClampCameraMovement();
+			}
+//			Camera.main.orthographicSize = 5.4f;
 		}
 	}
 
@@ -69,12 +79,9 @@ public class CameraMove : MonoBehaviour
 			startPosition = transform.position;		
 			Vector3 newPosition = startPosition + direction;
 			newPosition.z = startPosition.z;		
-			transform.position = Vector3.Lerp(startPosition,newPosition,0.05f);		
-
+			transform.position = Vector3.Lerp(startPosition,newPosition,0.05f);
 		}
-
 		ClampCameraMovement ();
-
 	}
 
 	void ZoomInOutCamera(Touch[] inputValues = null ){
