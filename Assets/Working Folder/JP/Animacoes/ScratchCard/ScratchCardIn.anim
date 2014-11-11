@@ -20,12 +20,12 @@ AnimationClip:
         value: {x: 15.3834305, y: -2.48164129, z: 9}
         inSlope: {x: -30.6678066, y: 0, z: 0}
         outSlope: {x: -30.6678066, y: 0, z: 0}
-        tangentMode: 1
+        tangentMode: 1066751317
       - time: 1
         value: {x: .0495275259, y: -2.48164129, z: 9}
         inSlope: {x: -30.6678066, y: 0, z: 0}
         outSlope: {x: -30.6678066, y: 0, z: 0}
-        tangentMode: 0
+        tangentMode: 103966428
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: raspadinha_bg2
@@ -36,12 +36,12 @@ AnimationClip:
         value: {x: 17.6715622, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678047, y: 0, z: 0}
         outSlope: {x: -30.6678047, y: 0, z: 0}
-        tangentMode: 200
+        tangentMode: 0
       - time: 1
         value: {x: 2.33765936, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678047, y: 0, z: 0}
         outSlope: {x: -30.6678047, y: 0, z: 0}
-        tangentMode: 200
+        tangentMode: 2004053569
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: Answer1
@@ -52,12 +52,12 @@ AnimationClip:
         value: {x: 14.4200668, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678066, y: 0, z: 0}
         outSlope: {x: -30.6678066, y: 0, z: 0}
-        tangentMode: 106091804
+        tangentMode: 1
       - time: 1
         value: {x: -.913836122, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678066, y: 0, z: 0}
         outSlope: {x: -30.6678066, y: 0, z: 0}
-        tangentMode: 105906433
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: Answer3
@@ -68,12 +68,12 @@ AnimationClip:
         value: {x: 12.7774429, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678047, y: 0, z: 0}
         outSlope: {x: -30.6678047, y: 0, z: 0}
-        tangentMode: 1
+        tangentMode: 106091804
       - time: 1
         value: {x: -2.5564599, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678047, y: 0, z: 0}
         outSlope: {x: -30.6678047, y: 0, z: 0}
-        tangentMode: 0
+        tangentMode: 105906433
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: Answer4
@@ -84,47 +84,15 @@ AnimationClip:
         value: {x: 16.0206947, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678104, y: 0, z: 0}
         outSlope: {x: -30.6678104, y: 0, z: 0}
-        tangentMode: 0
+        tangentMode: 200
       - time: 1
         value: {x: .68678987, y: -1.59979928, z: 0}
         inSlope: {x: -30.6678104, y: 0, z: 0}
         outSlope: {x: -30.6678104, y: 0, z: 0}
-        tangentMode: 4
+        tangentMode: 200
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: Answer2
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: .0483436584, y: 5.75194883, z: 0}
-        inSlope: {x: 0, y: -4.99446917, z: 0}
-        outSlope: {x: 0, y: -4.99446917, z: 0}
-        tangentMode: 0
-      - time: .583333313
-        value: {x: .0483436584, y: 2.83850861, z: 0}
-        inSlope: {x: 0, y: -4.99446917, z: 0}
-        outSlope: {x: 0, y: -4.99446917, z: 0}
-        tangentMode: -1
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: pergunta_raspadinha
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: -.0663032532, y: 6.73280478, z: -4.17000008}
-        inSlope: {x: 0, y: -4.9944644, z: 0}
-        outSlope: {x: 0, y: -4.9944644, z: 0}
-        tangentMode: 0
-      - time: .583333313
-        value: {x: -.0663032532, y: 3.81936741, z: -4.17000008}
-        inSlope: {x: 0, y: -4.9944644, z: 0}
-        outSlope: {x: 0, y: -4.9944644, z: 0}
-        tangentMode: 3
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: Question
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -138,7 +106,7 @@ AnimationClip:
         value: {x: .147887319, y: .147887364, z: 1}
         inSlope: {x: 2.13028216, y: 2.13028216, z: 0}
         outSlope: {x: 2.13028216, y: 2.13028216, z: 0}
-        tangentMode: 2004053569
+        tangentMode: 120
       - time: 1.16666663
         value: {x: 1, y: 1, z: 1}
         inSlope: {x: 5.1126771, y: 5.1126771, z: 0}
@@ -501,120 +469,6 @@ AnimationClip:
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
     path: Answer2
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .0483436584
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .583333313
-        value: .0483436584
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.x
-    path: pergunta_raspadinha
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 5.75194883
-        inSlope: -4.99446917
-        outSlope: -4.99446917
-        tangentMode: 10
-      - time: .583333313
-        value: 2.83850861
-        inSlope: -4.99446917
-        outSlope: -4.99446917
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.y
-    path: pergunta_raspadinha
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .583333313
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.z
-    path: pergunta_raspadinha
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.0663032532
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .583333313
-        value: -.0663032532
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.x
-    path: Question
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 6.73280478
-        inSlope: -4.9944644
-        outSlope: -4.9944644
-        tangentMode: 10
-      - time: .583333313
-        value: 3.81936741
-        inSlope: -4.9944644
-        outSlope: -4.9944644
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.y
-    path: Question
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -4.17000008
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: .583333313
-        value: -4.17000008
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalPosition.z
-    path: Question
     classID: 4
     script: {fileID: 0}
   - curve:

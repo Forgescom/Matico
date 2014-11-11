@@ -57,9 +57,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteSet:
-  - {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
-  - {fileID: 21300000, guid: 71594a9addeaafd45a42fad7194b6589, type: 3}
-  - {fileID: 21300000, guid: c0e818e531f5cf04fb0b52aeaccb4925, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  unlocked: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc9dde277d9cd574e8d790aa38327051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0489f5bfaa3f5c743aef79adb6096555, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

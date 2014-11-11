@@ -11,21 +11,25 @@ public class LevelsBlocker : MonoBehaviour {
 
 	void Start()
 	{
-		print ("start");
-		//pricesHolder.SetActive (false);
 
-		DetermineTexturesToPrices ();
 
 		foreach (GameObject price in pricesHolder) {
 			if(price.GetComponent<PriceHolder>().unlocked == false)
 				price.SetActive(false);
 		}
-
-
 		matico.SetActive (false);
 
-		//DetermineTexturesToPrices ();
-	//	ShowUnlockedPrices ();
+		DetermineTexturesToPrices ();
+	}
+
+	void ShowMatico()
+	{
+		Vector3 newPos = steps.transform.GetChild((GameController.CURRENT_LEVEL/3)-1).transform.position;
+		newPos.z = matico.transform.position.z;
+		matico.transform.position = newPos;
+		matico.SetActive(true);
+		matico.animation.Play("MaticoPopIn");
+		DetermineTexturesToPrices ();
 
 	}
 
@@ -40,8 +44,10 @@ public class LevelsBlocker : MonoBehaviour {
 			energiesSpent = 0;
 			for(int i = firstIndex; i <firstIndex+3; i++)
 			{
+
 				if(GameController.houses[i]["Played"] == "false")
 				{
+				
 					goto Foo;
 				}
 				else{
@@ -51,6 +57,8 @@ public class LevelsBlocker : MonoBehaviour {
 				}
 
 			}
+			print("NUMERO DE ENERGIAS" + energiesSpent );
+
 			AssignTextures(stepIndex,energiesSpent );
 
 		}
@@ -61,75 +69,51 @@ public class LevelsBlocker : MonoBehaviour {
 
 	}
 
-	void ShowUnlockedPrices(bool allPrices){
-		//print ("UNLOCK" + GameController.CURRENT_LEVEL_STEP);
 
-		int limiter;
-
-		if (allPrices == true) {
-			limiter = GameController.CURRENT_LEVEL_STEP;
-		}
-		else{
-			limiter = GameController.CURRENT_LEVEL_STEP-1;
-		}
-
-		print ("GOING TO SHOW UNTILL: " + limiter);
-
-		if ((GameController.CURRENT_LEVEL_STEP) !=0) {
-
-			for(int i=0; i < limiter; i++)
-			{
-				pricesHolder [i].SetActive (true);			
-			}
-		}		
-	}
-	
 	void AssignTextures(int step,int energies){
 		int indexNewTexture = 0;
 
-		if(energies <= 6){
+		if(energies < 2){
 			indexNewTexture = 2;
 		}
-		else if(energies > 6 && energies <= 12){
+		else if(energies >= 2 && energies <= 4){
 			indexNewTexture = 1;
 		}
-		else if(energies > 12){
+		else if(energies > 4){
 			indexNewTexture = 0;
 		}
 	
+		print ("INDICE DA IMAGEM:" + indexNewTexture + "CURRENT INDEX: " + step);
+
 		pricesHolder [step].GetComponent<PriceHolder> ().SetSprite (indexNewTexture);
-
+		pricesHolder [step].GetComponent<PriceHolder> ().unlocked = true;
+		if (matico.activeSelf == false) {
+			pricesHolder [step].SetActive (true);
+		}
 	}
 
-	public void CheckIfBlocker(bool initialRequest = false)
-	{
-		matico.transform.position = steps.transform.GetChild(GameController.CURRENT_LEVEL_STEP-1).transform.position;
-		matico.SetActive(true);
-		matico.animation.Play("MaticoPopIn");
-	}
 
 
 
 	void AnimObject()
 	{
-		pricesHolder [GameController.CURRENT_LEVEL_STEP-1].SetActive (true);
-		pricesHolder [GameController.CURRENT_LEVEL_STEP-1].animation.Play ("PricePop");
-		pricesHolder [GameController.CURRENT_LEVEL_STEP - 1].GetComponent<PriceHolder> ().unlocked = true;
+		int Index = (GameController.CURRENT_LEVEL / 3) - 1;
+		pricesHolder [Index].SetActive (true);
+		pricesHolder [Index].animation.Play ("PricePop");
+		pricesHolder [Index].GetComponent<PriceHolder> ().unlocked = true;
 	}
 
 	void OnEnable()
 	{
-		GameController.showUnlockedEvent += ShowUnlockedPrices;
-		GameController.checkStepPrices += CheckIfBlocker;
+
 		MaticoUnlocker.showNewObjectEvent += AnimObject;
 	}
 	
 	void OnDisable()
 	{
-		GameController.showUnlockedEvent -= ShowUnlockedPrices;
-		GameController.checkStepPrices -= CheckIfBlocker;
+
 		MaticoUnlocker.showNewObjectEvent -= AnimObject;
 	}
-	
+
 	
 }

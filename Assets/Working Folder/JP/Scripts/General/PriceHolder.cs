@@ -21,6 +21,6 @@ public class PriceHolder : MonoBehaviour {
 		transformSprite = transform.GetComponent<SpriteRenderer> ();
 
 
-		transformSprite.sprite = SpriteSet [2];
+		transformSprite.sprite = SpriteSet [index];
 	}
 }

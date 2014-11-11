@@ -7,7 +7,7 @@ public class MaticoUnlocker : MonoBehaviour {
 	public delegate void ShowNewObject();
 	public static event ShowNewObject showNewObjectEvent;
 
-	public delegate void UnlockNextHouse();
+	public delegate void UnlockNextHouse(bool FromMatico);
 	public static event UnlockNextHouse unlockNextHouse;
 
 	// Use this for initialization
@@ -27,7 +27,7 @@ public class MaticoUnlocker : MonoBehaviour {
 	}
 	void AnimationEnd(){
 		if (unlockNextHouse != null) {
-			unlockNextHouse();
+			unlockNextHouse(true);
 		}
 		gameObject.SetActive (false);
 	}

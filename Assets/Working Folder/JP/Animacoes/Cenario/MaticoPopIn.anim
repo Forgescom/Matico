@@ -463,7 +463,7 @@ AnimationClip:
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events:
-  - time: 5.98333311
+  - time: 5
     functionName: ShowBoardObject
     data: 
     objectReferenceParameter: {fileID: 0}
