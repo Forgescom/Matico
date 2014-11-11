@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63c9d4b169d4fd3498b8a04c7dbdd7f4
+guid: 11870b98b8c50964598208349c20977d
 TextureImporter:
   fileIDToRecycleName:
     21300000: coala_expressions_0
@@ -51,7 +51,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 70
+        width: 73
         height: 69
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -59,9 +59,9 @@ TextureImporter:
     - name: coala_expressions_1
       rect:
         serializedVersion: 2
-        x: 88
+        x: 86
         y: 0
-        width: 70
+        width: 75
         height: 69
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -69,9 +69,9 @@ TextureImporter:
     - name: coala_expressions_2
       rect:
         serializedVersion: 2
-        x: 181
+        x: 170
         y: 0
-        width: 67
+        width: 73
         height: 69
       alignment: 0
       pivot: {x: .5, y: .5}
