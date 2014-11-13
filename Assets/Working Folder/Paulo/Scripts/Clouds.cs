@@ -6,9 +6,11 @@ public class Clouds : MonoBehaviour {
 	Vector3 initialPos;
 	Vector3 finalPos;
 	bool canMove = true;
+
 	public float speed = 1f;
 	public bool Horizontal;
 	public bool Rain;
+
 	private float posx;
 
 	void Start () {
