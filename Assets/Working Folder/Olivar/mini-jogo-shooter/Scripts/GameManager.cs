@@ -203,17 +203,18 @@ public class GameManager : MonoBehaviour
 				if (currentPandaIndex == Pandas.Count - 1)
 				{
 					//no more birds, go to finished
+					Vector3 posicaoInicial = new Vector3(0, 0, -20);
+					camera.transform.positionTo(1f, posicaoInicial);
+
 					camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
 					nolives = true;
 					endGame("Errado");
 				}
 
 				if (gameended == true) {
-						StartCoroutine (timeCount(3));
-					
-					
-					if (won == true) {
-						
+					StartCoroutine (timeCount(3));
+
+					if (won == true) {						
 						endGame("Certo");
 					}
 					else {
@@ -319,5 +320,4 @@ public class GameManager : MonoBehaviour
 		ClickToUnlock.unlockScreen -= Init;
 		GameController.RestartGame -= RestartGame;
 	}
-	
 }
