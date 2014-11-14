@@ -24,7 +24,7 @@ public class Lighting : MonoBehaviour
 		if(isMousePressed)
 		{
 			Vector3 lightPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			lightPos.z = -1.5f;
+			lightPos.z = -6f;
 			transform.position = lightPos;
 		}
 		
@@ -34,4 +34,5 @@ public class Lighting : MonoBehaviour
 			transform.position = lightPos;
 		}
 	}
+
 }

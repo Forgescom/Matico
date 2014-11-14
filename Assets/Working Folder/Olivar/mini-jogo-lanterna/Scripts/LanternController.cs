@@ -9,7 +9,8 @@ public class LanternController : MonoBehaviour {
 	private Vector3 direction;
 	private float distanceFromObject;
 
-	public LineRenderer LanternLineRenderer;
+	public GameObject lanternOn;
+	public GameObject lanternOff;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,9 @@ public class LanternController : MonoBehaviour {
 
 		if (Input.touchCount > 0)
 		{
+			// Show lantern on
+			lanternOn.transform.position = new Vector3 (0, -4.5f, -1);
+			lanternOff.transform.position = new Vector3 (0, -4.5f, 1);
 			//Grab the current mouse position on the screen
 			touchPosition = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, Input.mousePosition.z - camera.transform.position.z));
 			
@@ -38,6 +42,18 @@ public class LanternController : MonoBehaviour {
 			
 			//Move towards the mouse
 			rigidbody2D.AddForce(direction * speed * distanceFromObject * Time.deltaTime);
+
+		}
+		else {
+			// Show lantern off
+			lanternOn.transform.position = new Vector3 (0, -4.5f, 1);
+			lanternOff.transform.position = new Vector3 (0, -4.5f, -1);
+		}
+	}
+
+	void SelectAnswer () {
+		if (Input.touchCount == 2) {
+			
 		}
 	}
 
