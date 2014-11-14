@@ -6,7 +6,7 @@ public class LifesHandler : MonoBehaviour {
 	public GUITexture avatar;
 	public GUITexture lives;
 
-	public Texture [] livesTextures;
+	public GUITexture [] livesTextures;
 	public Texture [] faces;
 
 	int currentLives;
@@ -14,14 +14,28 @@ public class LifesHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentLives = GameController.CURRENT_LIVES;
-		//print (currentLives);
-		lives.texture = livesTextures [currentLives];
-
-
-	
 		avatar.texture = faces [GameController.PLAYER_FACE];
-	}
+		int livesToHide = livesTextures.Length - currentLives;
+
+		for (int i = 0 ;i <=currentLives-1; i ++) {
+			print (i);
+			livesTextures[i].gameObject.SetActive(true);
+		}
+
+		Invoke ("AnimLifeLoose", 2);
+
+
+
 	
+
+	}
+
+	void AnimLifeLoose()
+	{
+		livesTextures [currentLives-1].animation.Play ("LifeFadeOut");
+		//lives.texture = livesTextures [currentLives-1];
+	}
+
 	// Update is called once per frame
 	void Update () {
 
@@ -34,14 +48,14 @@ public class LifesHandler : MonoBehaviour {
 		{
 			if (currentLives > 1) {
 				//currentLives --;
-				lives.texture = livesTextures[currentLives -1];
+				//lives.texture = livesTextures[currentLives -1];
 			}
 		}
 		else 
 		{
 			if (currentLives <= 4) {
 				//currentLives ++;
-				lives.texture = livesTextures[currentLives -1];
+				//lives.texture = livesTextures[currentLives -1];
 			}
 		}
 	}

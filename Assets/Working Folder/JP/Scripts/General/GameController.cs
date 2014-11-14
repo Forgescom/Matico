@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {	
-		print ("BACKGROUND SOUND: " + BG_SOUND + " FX SOUND: " + FX_SOUND);
+
 	}
 
 	public void SetAvatar(){
@@ -170,14 +170,20 @@ public class GameController : MonoBehaviour {
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
-			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
+			GameObject successScreen = Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity) as GameObject;
+			successScreen.transform.parent = Camera.main.transform;
 		}
 		else if (outComeIn == "Errado"){
-			CURRENT_LIVES --;
-			CURRENT_LIVES_LOST ++;
-			Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity);
+			Invoke("RemoveLife",2);
+			GameObject failScreen = Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity) as GameObject;
+			failScreen.transform.parent = Camera.main.transform;
 		}
 		houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
+	}
+
+	void RemoveLife(){
+		CURRENT_LIVES --;
+		CURRENT_LIVES_LOST ++;
 	}
 
 	//HANDLE CLICK FROM SUCCESS SCREEN
