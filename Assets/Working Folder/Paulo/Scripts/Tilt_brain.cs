@@ -23,6 +23,8 @@ public class Tilt_brain : MonoBehaviour {
 	private bool gameOver;
 	private bool restart;
 
+	public bool paused;
+
 	void Start(){
 		gameOver = false;
 		restart = false;
@@ -35,16 +37,31 @@ public class Tilt_brain : MonoBehaviour {
 		countIgual.barDisplay = Igual;
 		countMenor.barDisplay = Menor;
 
+		//GAMEOVER
 		cntTime -= Time.deltaTime;
 		if (cntTime <= 0 || lives == 0) {
 						//FIM
+			Time.timeScale = 0.0f;
 			GameOver ();
 			RestartText.text = "Press 'R' for Restart";
 			restart = true;
 		}
-
+		//PAUSE
+		if(Input.GetKeyDown("p") && !paused)
+		{
+			print("p");
+			Time.timeScale = 0.0f;
+			paused = true;
+		}else if(Input.GetKeyDown("p") && paused)
+		{
+			print("Unpaused");
+			Time.timeScale = 1.0f;
+			paused = false;    
+		} 
+		//RESTART
 		if (restart){
 			if (Input.GetKeyDown (KeyCode.R)) {
+				Time.timeScale = 1.0f;
 				Application.LoadLevel (Application.loadedLevel);
 			}
 		}
@@ -59,7 +76,4 @@ public class Tilt_brain : MonoBehaviour {
 	void OnGUI() {
 		GUI.Box (new Rect(timePos.x, timePos.y, timeSize.x, timeSize.y), "" + cntTime.ToString("0"));
 	}
-
-
-
 }

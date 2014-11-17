@@ -317,6 +317,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &340691102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 340691105}
+  - 212: {fileID: 340691104}
+  - 95: {fileID: 340691103}
+  m_Layer: 0
+  m_Name: Baloon21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &340691103
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 340691102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 593f780925516f2459d7aa77541bbfd4, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!212 &340691104
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 340691102}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 34350236913f89348bba62f5fb250b32, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &340691105
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 340691102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1670302705}
+  m_RootOrder: 2
 --- !u!1001 &351675865
 Prefab:
   m_ObjectHideFlags: 0
@@ -552,11 +618,12 @@ MonoBehaviour:
   Igual: 1
   countMaior: {fileID: 1826173216}
   Maior: 1
-  cntTime: 10
+  cntTime: 2000
   timePos: {x: 50, y: 20}
-  timeSize: {x: 20, y: 20}
+  timeSize: {x: 40, y: 40}
   RestartText: {fileID: 1995110756}
   GameOverText: {fileID: 2040303206}
+  paused: 0
 --- !u!4 &513386268
 Transform:
   m_ObjectHideFlags: 0
@@ -2078,7 +2145,6 @@ GameObject:
   - 212: {fileID: 1670302704}
   - 95: {fileID: 1670302707}
   - 114: {fileID: 1670302702}
-  - 61: {fileID: 1670302708}
   m_Layer: 0
   m_Name: coala
   m_TagString: Untagged
@@ -2105,8 +2171,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4922a6bf1b2cad440bebb1f0b72e35de, type: 3}
   - {fileID: 21300000, guid: f1ff6e2f0c17a884487186d593aed244, type: 3}
   face: {fileID: 2083332523}
+  baloon32: {fileID: 2101418864}
+  baloon21: {fileID: 340691103}
   Brain: {fileID: 513386267}
-  speed: 10
+  speed: 5
 --- !u!61 &1670302703
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2116,8 +2184,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1.78999996, y: 1.52999997}
-  m_Center: {x: -.730000019, y: -2.63000011}
+  m_Size: {x: 1.71000004, y: 2.98000002}
+  m_Center: {x: -.419999987, y: -1.70000005}
 --- !u!212 &1670302704
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2147,10 +2215,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1670302701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0458670557, y: -11.4366035, z: 0}
+  m_LocalPosition: {x: .3775675, y: -2.40333462, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2101418866}
   - {fileID: 2083332525}
+  - {fileID: 340691105}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!50 &1670302706
@@ -2183,17 +2253,6 @@ Animator:
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!61 &1670302708
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1670302701}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 1.29999995, y: 1.29999995}
-  m_Center: {x: .0299999993, y: -.720000029}
 --- !u!1 &1764472508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,7 +2681,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Material: {fileID: 0}
-  m_FontSize: 0
+  m_FontSize: 40
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -2685,7 +2744,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Material: {fileID: 0}
-  m_FontSize: 0
+  m_FontSize: 50
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -2745,7 +2804,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 11870b98b8c50964598208349c20977d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &2083332525
 Transform:
@@ -2754,11 +2813,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2083332522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.915532887, y: -2.59594131, z: 0}
+  m_LocalPosition: {x: -.915532827, y: -2.59594154, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670302705}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &2083332526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2770,3 +2829,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda583279a84c574e90283d8f63f8e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2101418863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2101418866}
+  - 212: {fileID: 2101418865}
+  - 95: {fileID: 2101418864}
+  m_Layer: 0
+  m_Name: Baloon32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &2101418864
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2101418863}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69898fe30c5d92948bc9e026b55f6eb7, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!212 &2101418865
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2101418863}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300006, guid: 7be0cb89068ff4740ab64fe6b4345aa8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &2101418866
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2101418863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1670302705}
+  m_RootOrder: 0

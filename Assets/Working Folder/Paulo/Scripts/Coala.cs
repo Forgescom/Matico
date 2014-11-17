@@ -15,6 +15,9 @@ public class Coala : MonoBehaviour {
 
 	//FACE
 	public Animator face;
+	//Baloon
+	public Animator baloon32;
+	public Animator baloon21;
 
 	//guardar Sprite;
 	SpriteRenderer thisSprite;
@@ -23,7 +26,7 @@ public class Coala : MonoBehaviour {
 	//public NumberSrc foodNumber;
 
 	public float speed = 0.5f;
-
+	
 	// Use this for initialization
 	void Start () {
 		//aceder a sprite
@@ -32,8 +35,7 @@ public class Coala : MonoBehaviour {
 		finalPos = new Vector3 (0,-5f,-2);
 	}
 
-	void Update()
-	{
+	void Update(){
 		if (canMove == true) {
 			MoveCoalaToPosition ();
 			HandleMovement ();
@@ -71,13 +73,26 @@ public class Coala : MonoBehaviour {
 
 		switch(col.name){
 			case "raio": 
+				delSprite32();
+				delSprite21();
+				face.GetComponent<SpriteRenderer>().active = false;
 				thisSprite.sprite = burnmfkr;
 				Brain.lives--;
-				Invoke ("changeSprite", 2);
+				StartCoroutine(WaitFotIt());
 				break;
 			case "ave_head":
 				Brain.lives--;
-				Invoke ("changeSprite", 2);
+				changeSprite();
+				if (Brain.lives == 2){
+					baloon32.GetComponent<SpriteRenderer> ().active = true;
+					baloon32.SetBool("pop",true);
+					Invoke ("delSprite32", 1);
+				}
+				if (Brain.lives == 1){
+					baloon21.GetComponent<SpriteRenderer> ().active = true;
+					baloon21.SetBool("pop2",true);
+					Invoke ("delSprite21",1);
+				}
 				break;
 			case "Menor":
 				face.SetBool("Eat",true);;
@@ -93,8 +108,18 @@ public class Coala : MonoBehaviour {
 			break;
 		}
 	}
-
 	void changeSprite(){
 		thisSprite.sprite = arrayLives[Brain.lives];
-		}
+	}
+	void delSprite32(){
+		baloon32.GetComponent<SpriteRenderer> ().active = false;
+	}
+	void delSprite21(){
+		baloon21.GetComponent<SpriteRenderer> ().active = false;
+	}
+	IEnumerator WaitFotIt() {
+		yield return new WaitForSeconds(1);
+		changeSprite();
+		face.GetComponent<SpriteRenderer>().active = true;
+	}
 }
