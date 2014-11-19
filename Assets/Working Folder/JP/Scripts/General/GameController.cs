@@ -192,11 +192,13 @@ public class GameController : MonoBehaviour {
 
 		switch (bt.name) {
 		case "BtRepeat":
+			print ("RESTARTIN");
 			if(RestartGame!=null)
 			{
 				RestartGame();
 			}
-			Destroy(bt.transform.root.gameObject);
+		///	print (bt.transform.parent.name);
+			Destroy(bt.transform.parent.gameObject);
 			break;
 		case "BtNext":
 
