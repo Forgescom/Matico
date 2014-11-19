@@ -61,7 +61,6 @@ public class Panda : MonoBehaviour {
 		{
 //			col.SendMessage("AnimAndDestroy");
 //			transform.position = Vector3.zero;
-			
 			if(col.tag == "Errado") {
 				GManager.SendMessage("AnswerHit", false);
 				print("Enviado: Errado");
