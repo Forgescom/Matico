@@ -81,34 +81,7 @@ Com quantos selos ficou a Cláudia?</question>
 		<false3>18</false3>
 		<correct>151</correct>		
 	</questionDetails>
-//----------------------	
-	<questionDetails id="question10" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
-			galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
-		<false1>423</false1>
-		<false2>123</false2>
-		<false3>18</false3>
-		<correct>151</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question11" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
-			galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
-		<false1>423</false1>
-		<false2>123</false2>
-		<false3>18</false3>
-		<correct>151</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question12" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
-			galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
-		<false1>423</false1>
-		<false2>123</false2>
-		<false3>18</false3>
-		<correct>151</correct>		
-	</questionDetails>
-
+	
 		
 </Questions>
 

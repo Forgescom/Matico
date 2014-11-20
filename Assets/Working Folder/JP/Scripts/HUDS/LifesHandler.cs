@@ -18,16 +18,17 @@ public class LifesHandler : MonoBehaviour {
 		int livesToHide = livesTextures.Length - currentLives;
 
 		for (int i = 0 ;i <=currentLives-1; i ++) {
-			print (i);
+		
 			livesTextures[i].gameObject.SetActive(true);
 		}
 
+		//
+
+	}
+
+	public void AnimateLifeLoose()
+	{
 		Invoke ("AnimLifeLoose", 2);
-
-
-
-	
-
 	}
 
 	void AnimLifeLoose()

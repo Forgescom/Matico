@@ -20,7 +20,8 @@ public class BoardMain : MonoBehaviour {
 
 		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
-		TurnOffOnSound ();
+		TurnOffOnSound (GameController.SOUND_FX);
+		TurnOffOnSound (GameController.SOUND_BG);
 		AssignHousesSettings ();
 		//UnlockHouses ();
 
@@ -163,15 +164,18 @@ public class BoardMain : MonoBehaviour {
 		}
 	}
 
-	void TurnOffOnSound()
+	void TurnOffOnSound(string soundType)
 	{
-		AudioSource audio = transform.GetComponent<AudioSource> ();
-		audio.enabled = GameController.BG_SOUND;
-		
-		if (audio.enabled)
-			audio.Play ();
-		else {
-			audio.Stop();
+		if(soundType == GameController.SOUND_BG)
+		{
+			AudioSource audio = transform.GetComponent<AudioSource> ();
+			audio.enabled = GameController.BG_SOUND;
+			
+			if (audio.enabled)
+				audio.Play ();
+			else {
+				audio.Stop();
+			}
 		}
 	}
 

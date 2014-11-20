@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
 	public static string PREFS_PLAYER_CURRENTLEVEL = "PlayerLevel";
 	public static string PREFS_PLAYER_FXSOUND = "SoundFx";
 	public static string PREFS_PLAYER_BGSOUND = "SoundAmbiente";
+	public static string SOUND_BG = "Background";
+	public static string SOUND_FX = "FX";
 
 	//SOUND
 	public static bool FX_SOUND = true;
@@ -33,8 +35,8 @@ public class GameController : MonoBehaviour {
 	public GameObject FAILURE_SCREEN;
 
 	//TUTORIALS
-	public static bool SCRATCHCARD_TUT = false;
-	public static bool ACELEROMETER_TUT = false;
+	public static bool SCRATCHCARD_TUT = true;
+	public static bool ACELEROMETER_TUT = true;
 	public static bool FLIP_TUT = true;
 	public static bool SHOOTER_TUT = true;
 
@@ -50,7 +52,7 @@ public class GameController : MonoBehaviour {
 
 
 	//EVENTS AND DELEGATES
-	public delegate void SoundDelegate();
+	public delegate void SoundDelegate(string type);
 	public static event SoundDelegate updateSoundVolume;
 	public delegate void RestartDelegate();
 	public static event RestartDelegate RestartGame;
@@ -80,7 +82,8 @@ public class GameController : MonoBehaviour {
 
 		//THROW EVENT TO TURN ON/OFF SOUNDS
 		if (updateSoundVolume != null) {
-			updateSoundVolume();
+			updateSoundVolume(SOUND_BG);
+			updateSoundVolume(SOUND_FX);
 		}
 
 	}
@@ -123,7 +126,8 @@ public class GameController : MonoBehaviour {
 		
 		//THROW EVENT TO TURN ON/OFF SOUNDS
 		if (updateSoundVolume != null) {
-			updateSoundVolume();
+			updateSoundVolume(SOUND_BG);
+			updateSoundVolume(SOUND_FX);
 		}
 	}
 
@@ -139,6 +143,9 @@ public class GameController : MonoBehaviour {
 			boolInt = currentValue ? 1 : 0;
 
 			PlayerPrefs.SetInt(PREFS_PLAYER_FXSOUND,boolInt);
+			if (updateSoundVolume != null) {
+				updateSoundVolume(SOUND_FX);
+			}
 		}
 		else if(sound == "Music"){
 			BG_SOUND = !BG_SOUND;
@@ -147,10 +154,11 @@ public class GameController : MonoBehaviour {
 			boolInt = currentValue ? 1 : 0;
 
 			PlayerPrefs.SetInt(PREFS_PLAYER_BGSOUND,boolInt);
-		}
+			
+			if (updateSoundVolume != null) {
+				updateSoundVolume(SOUND_BG);
+			}
 
-		if (updateSoundVolume != null) {
-			updateSoundVolume();
 		}
 	}
 
@@ -177,6 +185,8 @@ public class GameController : MonoBehaviour {
 			Invoke("RemoveLife",2);
 			GameObject failScreen = Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity) as GameObject;
 			failScreen.transform.parent = Camera.main.transform;
+			LifesHandler scriptEnergies = failScreen.transform.FindChild("EnergyHUD").GetComponent<LifesHandler>() as LifesHandler;
+			scriptEnergies.AnimateLifeLoose();
 		}
 		houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
 	}

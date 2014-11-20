@@ -42,7 +42,7 @@ public class BtHandler : MonoBehaviour {
 
 
 
-
+	
 	}
 
 	void OnMouseEnter(){
@@ -68,6 +68,7 @@ public class BtHandler : MonoBehaviour {
 			ToggleButton ();
 			menuController = GameObject.Find(menuController.name);
 			menuController.SendMessage ("btClick", transform.gameObject);
+
 
 		}	
 	}
