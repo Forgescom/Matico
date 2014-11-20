@@ -23,6 +23,9 @@ public class Tilt_brain : MonoBehaviour {
 	private bool gameOver;
 	private bool restart;
 
+	//win
+	public string winText;
+
 	public bool paused;
 
 	void Start(){
@@ -38,13 +41,15 @@ public class Tilt_brain : MonoBehaviour {
 		countMenor.barDisplay = Menor;
 
 		//GAMEOVER
+		//time
 		cntTime -= Time.deltaTime;
-		if (cntTime <= 0 || lives == 0) {
-						//FIM
-			Time.timeScale = 0.0f;
+
+		if (cntTime <= 0){
 			GameOver ();
-			RestartText.text = "Press 'R' for Restart";
-			restart = true;
+		}
+		//lives
+		if (lives == 0) {
+			ToLose();
 		}
 		//PAUSE
 		if(Input.GetKeyDown("p") && !paused)
@@ -65,12 +70,73 @@ public class Tilt_brain : MonoBehaviour {
 				Application.LoadLevel (Application.loadedLevel);
 			}
 		}
-
 	}
 
 	public void GameOver (){
-		GameOverText.text = "Game Over!";
-		gameOver = true;
+		Time.timeScale = 0.0f;
+
+		bool empate = false;
+		int maiorValor = 0;
+
+		if (Maior > maiorValor) {
+			maiorValor = Maior;
+		}
+		if (Menor >= maiorValor) {
+			if(maiorValor == Menor){
+				empate = true;
+			}
+			else
+			{
+				maiorValor = Menor;
+				empate = false;
+			}
+		}
+		if (Igual >= maiorValor) {
+			if(maiorValor == Igual){
+				empate = true;
+			}
+			else
+			{
+				maiorValor = Igual;
+				empate = false;
+			}
+		}
+
+		if (empate) {
+			ToLose();		
+		}else{
+			checkWin (maiorValor);
+		}
+	}
+
+	void checkWin (int value){
+		if (value == Maior) {
+			if (winText == "Maior"){
+				GameOverText.text = "YOU WIN!!!";
+			}else{
+				ToLose();	
+			}
+		}
+		if (value == Igual) {
+			if (winText == "Igual"){
+				GameOverText.text = "YOU WIN!!!";
+			}else{
+				ToLose();	
+			}
+		}
+		if (value == Menor) {
+			if (winText == "Menor"){
+				GameOverText.text = "YOU WIN!!!";
+			}else{
+				ToLose();	
+			}
+		}
+	}
+
+	void ToLose() {
+		GameOverText.text = "YOU LOSE!";
+		RestartText.text = "Press 'R' for Restart";
+		restart = true;	
 	}
 
 	void OnGUI() {

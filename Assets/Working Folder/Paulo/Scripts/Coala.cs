@@ -50,9 +50,7 @@ public class Coala : MonoBehaviour {
 	
 	void HandleMovement()
 	{
-		
 		if (SystemInfo.deviceType == DeviceType.Desktop) {
-
 			var move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 			transform.position += move * speed * Time.deltaTime;
 			ClampMovement();
@@ -60,13 +58,13 @@ public class Coala : MonoBehaviour {
 		else 
 		{
 			float smoothSpeed = 8f * Time.deltaTime;
-			transform.Translate(Input.acceleration.x * smoothSpeed, Input.acceleration.y * smoothSpeed, 0);
+			transform.Translate(Input.acceleration.x * smoothSpeed,0,0);
 			ClampMovement();
 		}
 	}
 	void ClampMovement()
 	{
-		transform.position = new Vector3 (transform.position.x,transform.position.y,transform.position.z);
+		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, -13f, 13f),transform.position.y, 0);
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
