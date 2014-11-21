@@ -12,7 +12,7 @@ public class AvatarPiker : MonoBehaviour {
 	//NAME
 	TouchScreenKeyboard keyboard;
 	public TextMesh avatarName;
-	bool insertingName =false;
+
 
 	void Awake()
 	{
@@ -72,10 +72,10 @@ public class AvatarPiker : MonoBehaviour {
 	}
 
 	void InsertName(){
-		insertingName = false;
+
 		avatarName.text = "";
 		keyboard = TouchScreenKeyboard.Open (GameController.PLAYER_NAME);	
-		insertingName = true;
+
 
 	}
 

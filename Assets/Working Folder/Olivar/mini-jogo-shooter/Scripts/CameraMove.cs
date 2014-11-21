@@ -3,11 +3,7 @@ using System.Collections;
 using Assets.Scripts;
 
 public class CameraMove : MonoBehaviour
-{
-	private float dragSpeed = 0.01f;
-	private float timeDragStarted;
-	private Vector3 previousPosition = Vector3.zero;
-	
+{	
 	public SlingShot Slingshot;
 	public GameObject question;
 
@@ -28,7 +24,7 @@ public class CameraMove : MonoBehaviour
 
 	void Update()
 	{
-		float currentSize = transform.camera.orthographicSize;
+
 
 		if(Input.touchCount == 1 ) {
 			if(Input.GetTouch(0).phase == TouchPhase.Began){

@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 	public GameObject explanationScreen;
 	public GameObject question;
 	public GameObject shooter;
-	public GameObject target;
 
+	public CameraFollow cameraFollow;
 	public GameObject camera;
 
 	int currentScreen = 0;
@@ -20,10 +20,11 @@ public class GameManager : MonoBehaviour
 	public TextMesh startText;
 	bool start = false;
 
-    public CameraFollow cameraFollow;
+  
     int currentPandaIndex;
     public SlingShot slingshot;
-    [HideInInspector]
+
+   
     public static GameState CurrentGameState = GameState.Start;
     private List<GameObject> Pandas;
 	private List<GameObject> Bamboos;
@@ -35,22 +36,17 @@ public class GameManager : MonoBehaviour
 	public delegate void EndGameDelegate(string outcome);
 	public static event EndGameDelegate endGame;
 
-	public delegate void RestartGameDelegate();
-	public static event RestartGameDelegate restartGame;
 
-	//EVENTS FOR GAME END
-	public delegate void gameEnd(string test);
-	public static event gameEnd GameEnded;
-	public delegate void GameNewTry();
-	public static event GameNewTry GameTryAgain;
+
 
 	private bool won;
 	public bool gameended;
-	private bool nolives;
+
 
     // Use this for initialization
     void Start()
     {
+		question.SetActive (false);
 		if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
 			explanationScreen.SetActive(false);
@@ -79,20 +75,17 @@ public class GameManager : MonoBehaviour
 		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
 		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
 		Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
-		print (Targets.Count);
+
 		won = false;
-		nolives = false;
+	
 		gameended = false;
 		//unsubscribe and resubscribe from the event
 		//this ensures that we subscribe only once
 		slingshot.PandaThrown -= Slingshot_PandaThrown; 
 		slingshot.PandaThrown += Slingshot_PandaThrown;
 
-		AnimatePandaToSlingshot();
-		if (startGame != null)
-		{
-			startGame();			
-		}
+		//AnimatePandaToSlingshot();
+
 	}
 
 	// Update is called once per frame
@@ -101,8 +94,8 @@ public class GameManager : MonoBehaviour
 		if (start == false) {
 			Init();
 			AutoResize(1920, 1080);
-			startText.text = "Toca no ecra para o jogo iniciar";
-			question.gameObject.SetActive(true);
+		
+		
 
 			if(Input.touchCount > 0)
 			{
@@ -123,7 +116,13 @@ public class GameManager : MonoBehaviour
                 //to the slingshot
                 if (Input.GetMouseButtonUp(0))
                 {
-                    AnimatePandaToSlingshot();
+                   
+					if (startGame != null)
+					{
+						startGame();			
+					}
+					AnimatePandaToSlingshot();
+					
                 }
                 break;
             case GameState.PandaMovingToSlingshot:
@@ -133,15 +132,14 @@ public class GameManager : MonoBehaviour
                 //if we have thrown a panda
                 //and either everything has stopped moving
                 //or there has been 5 seconds since we threw the panda
-                //animate the camera to the start position
-              
+                //animate the camera to the start position            
 
-			if (slingshot.slingshotState == SlingshotState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - slingshot.TimeSinceThrown > 5f))
-			{
-			    slingshot.enabled = false;
-			    AnimateCameraToStartPosition();
-			    CurrentGameState = GameState.PandaMovingToSlingshot;
-			}
+				if (slingshot.slingshotState == SlingshotState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - slingshot.TimeSinceThrown > 5f))
+				{
+				    slingshot.enabled = false;
+				    AnimateCameraToStartPosition();
+				    CurrentGameState = GameState.PandaMovingToSlingshot;
+				}
 
             break;
             //if we have won or lost, we will restart the level
@@ -170,10 +168,13 @@ public class GameManager : MonoBehaviour
 		}
 		else if(currentScreen == 1)
 		{
+
 			CurrentGameState = GameState.Start;
 			camera.transform.position = new Vector3(18, 0, -20);
 			shooter.SetActive(true);
 			currentScreen ++;
+			question.SetActive (true);
+			question.animation.Play("QuestionIn");
 		}
 	}
 
@@ -207,7 +208,7 @@ public class GameManager : MonoBehaviour
 					camera.transform.positionTo(1f, posicaoInicial);
 
 					camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
-					nolives = true;
+				
 					endGame("Errado");
 				}
 

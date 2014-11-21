@@ -14,11 +14,21 @@ public class FailureScreen : MonoBehaviour {
 	
 	void Update () {
 		if (CheckFingerTouch() == true || Input.GetMouseButtonUp(0) == true) {
-			if(RestartGame !=  null)
-			{
-				RestartGame();
+			print ("ON FAILURE SCREEN " + GameController.CURRENT_LIVES);
 
+			if(GameController.CURRENT_LIVES > 0)
+			{
+				if(RestartGame !=  null)
+				{
+					RestartGame();
+					
+				}
 			}
+			else
+			{
+				GameController.NoLifesHandler();
+			}
+
 			Destroy(transform.parent.gameObject);
 		}
 		

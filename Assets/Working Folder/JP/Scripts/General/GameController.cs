@@ -56,8 +56,7 @@ public class GameController : MonoBehaviour {
 	public static event SoundDelegate updateSoundVolume;
 	public delegate void RestartDelegate();
 	public static event RestartDelegate RestartGame;
-	public delegate void CheckPrices();
-	public static event CheckPrices checkStepPrices;
+
 
 	public delegate void UnlockEvent(bool FromMatico);
 	public static event UnlockEvent unlockHouse;
@@ -189,6 +188,11 @@ public class GameController : MonoBehaviour {
 			scriptEnergies.AnimateLifeLoose();
 		}
 		houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
+	}
+
+	public static void NoLifesHandler()
+	{
+		Application.LoadLevel ("Board");
 	}
 
 	void RemoveLife(){

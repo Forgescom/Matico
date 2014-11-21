@@ -29,10 +29,6 @@ public class SettingsHandler : MonoBehaviour {
 
 	void btClick(GameObject bt)
 	{
-		bool btValue = bt.GetComponent<BtHandler>().buttonOn;
-		int boolInt = btValue ? 1 : 0;
-
-
 		switch (bt.name) {
 			case "BtSoundAmbiente":
 				GameController.SwitchOnOffSound("Music");
@@ -41,11 +37,8 @@ public class SettingsHandler : MonoBehaviour {
 			case "BtSoundFx":
 				GameController.SwitchOnOffSound("FX");
 				
-				break;
-			
+				break;			
 		}
-
-
 	}
 
 	

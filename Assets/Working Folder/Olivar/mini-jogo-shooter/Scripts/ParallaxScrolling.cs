@@ -5,14 +5,14 @@ public class ParallaxScrolling : MonoBehaviour {
 
 	public float ParallaxFactor;
 	Vector3 previousCameraTransform;
-
+	Camera camera;
 	// Use this for initialization
 	void Start () {
 		camera = Camera.main;
 		previousCameraTransform = camera.transform.position;
 	}
 	
-	Camera camera;
+
 	
 	/// <summary>
 	/// similar tactics just like the "CameraMove" script
