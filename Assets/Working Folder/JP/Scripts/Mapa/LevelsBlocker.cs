@@ -83,6 +83,7 @@ public class LevelsBlocker : MonoBehaviour {
 			indexNewTexture = 0;
 		}
 	
+		matico.transform.FindChild ("Txt1").GetComponent<TextMesh> ().text = "Parabens! \n Chegaste ao fim \n da " + (step +1) + "ª fase"; 
 		matico.transform.FindChild ("Txt2").GetComponent<TextMesh> ().text = "Gastaste " + energies.ToString () + "\n energias para \n o conseguires"; 
 
 		pricesHolder [step].GetComponent<PriceHolder> ().SetSprite (indexNewTexture);

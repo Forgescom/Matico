@@ -58,9 +58,7 @@ public class CameraFollow : MonoBehaviour
 		//camera follows panda's x position
 		transform.position = new Vector3(x, StartingPosition.y, StartingPosition.z);
 		
-		question.transform.position = new Vector3 (transform.position.x,
-		                                           Mathf.Clamp (transform.position.y, yMin, yMax),
-		                                           10);
+
 	}
 
 }

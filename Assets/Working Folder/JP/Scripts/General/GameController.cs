@@ -37,8 +37,8 @@ public class GameController : MonoBehaviour {
 	//TUTORIALS
 	public static bool SCRATCHCARD_TUT = true;
 	public static bool ACELEROMETER_TUT = true;
-	public static bool FLIP_TUT = true;
-	public static bool SHOOTER_TUT = true;
+	public static bool FLIP_TUT = false;
+	public static bool SHOOTER_TUT = false;
 
 
 	//RESTARTING VAR
@@ -177,7 +177,7 @@ public class GameController : MonoBehaviour {
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
-			GameObject successScreen = Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity) as GameObject;
+			GameObject successScreen = Instantiate (SUCCESS_SCREEN,new Vector3(0,0,-9),Quaternion.identity) as GameObject;
 			successScreen.transform.parent = Camera.main.transform;
 		}
 		else if (outComeIn == "Errado"){

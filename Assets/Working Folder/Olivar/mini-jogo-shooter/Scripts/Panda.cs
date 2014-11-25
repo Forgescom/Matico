@@ -8,7 +8,7 @@ using Assets.Scripts;
 public class Panda : MonoBehaviour {
 
 	GameObject GManager;
-	GameObject questionArea;
+
 	
 	// Use this for initialization
 	void Start()
@@ -47,43 +47,30 @@ public class Panda : MonoBehaviour {
 		//make the collider normal size
 		GetComponent<CircleCollider2D>().radius = Constants.PandaColliderRadiusNormal;
 		State = PandaState.Thrown;
+		GameManager.CurrentGameState = GameState.Playing;
 	}
 
-	void OnTriggerExit2D(Collider2D col)
-	{
-		HideQuestion (false);
-	}
 
-	void OnTriggerEnter2D(Collider2D col)
+
+	void OnCollisionEnter2D(Collision2D col)
 	{
-		
-		if(col.name.Contains("Target"))
+
+		if(col.transform.name.Contains("Target"))
 		{
 //			col.SendMessage("AnimAndDestroy");
 //			transform.position = Vector3.zero;
-			if(col.tag == "Errado") {
+			if(col.transform.tag == "Errado") {
 				GManager.SendMessage("AnswerHit", false);
 				print("Enviado: Errado");
 			}
-			else if (col.tag == "Certo") {
+			else if (col.transform.tag == "Certo") {
 				GManager.SendMessage("AnswerHit", true);
 				print("Enviado: Certo");
 			}
 		}
-		else if (col.tag == "Question")
-		{
-			HideQuestion(true);
-		}
+
 	}
 
-	void HideQuestion(bool hide)
-	{
-		questionArea = GameObject.FindGameObjectWithTag ("Question");
-		if(hide)		
-			questionArea.renderer.material.color = new Color (1, 1, 1, 0.5f);
-		else
-			questionArea.renderer.material.color = new Color (1, 1, 1, 1);
-	}
 
 	IEnumerator DestroyAfter(float seconds)
 	{

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 	public GameObject explanationScreen;
 	public GameObject question;
 	public GameObject shooter;
+	public GameObject unlockScreen;
 
 	public CameraFollow cameraFollow;
 	public GameObject camera;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
 	int currentScreen = 0;
 
 	// Iniciar Jogo
-	public TextMesh startText;
+
 	bool start = false;
 
   
@@ -46,11 +47,12 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		TurnOffOnSound ();
 		question.SetActive (false);
 		if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
 			explanationScreen.SetActive(false);
-
+			unlockScreen.SetActive (false);
 			shooter.SetActive(false);
 
 			slingshot.enabled = false;
@@ -60,11 +62,25 @@ public class GameManager : MonoBehaviour
 		else {
 			introScreen.SetActive (false);
 			shooter.SetActive(true);
+			unlockScreen.SetActive (false);
 			slingshot.enabled = true;
 			CurrentGameState = GameState.Start;
 			camera.transform.position = new Vector3(18, 0, -20);
 		}
     }
+
+	void TurnOffOnSound()
+	{
+		
+		AudioSource audio = transform.GetComponent<AudioSource> ();
+		audio.enabled = GameController.BG_SOUND;
+		
+		if (audio.enabled)
+			audio.Play ();
+		else {
+			audio.Stop();
+		}
+	}
 
 	void Init() 
 	{
@@ -86,6 +102,7 @@ public class GameManager : MonoBehaviour
 
 		//AnimatePandaToSlingshot();
 
+
 	}
 
 	// Update is called once per frame
@@ -94,19 +111,6 @@ public class GameManager : MonoBehaviour
 		if (start == false) {
 			Init();
 			AutoResize(1920, 1080);
-		
-		
-
-			if(Input.touchCount > 0)
-			{
-				slingshot.enabled = true;
-				startText.transform.position = new Vector3(100, 0, 0);
-				start = true;
-				CurrentGameState = GameState.PandaMovingToSlingshot;
-				Vector3 posicaoInicial = new Vector3(0, 0, -1);
-				//testar camara mobvimento
-				camera.transform.positionTo(2f, posicaoInicial);
-			}
 		}
 
 		switch (CurrentGameState)
@@ -117,11 +121,7 @@ public class GameManager : MonoBehaviour
                 if (Input.GetMouseButtonUp(0))
                 {
                    
-					if (startGame != null)
-					{
-						startGame();			
-					}
-					AnimatePandaToSlingshot();
+					
 					
                 }
                 break;
@@ -175,9 +175,28 @@ public class GameManager : MonoBehaviour
 			currentScreen ++;
 			question.SetActive (true);
 			question.animation.Play("QuestionIn");
+			unlockScreen.SetActive (true);
 		}
 	}
 
+	void UnlockClick()
+	{
+		slingshot.enabled = true;
+		unlockScreen.SetActive (false);
+		start = true;
+		CurrentGameState = GameState.PandaMovingToSlingshot;
+		Vector3 posicaoInicial = new Vector3(0, 0, -1);
+		//testar camara mobvimento
+		camera.transform.positionTo(2f, posicaoInicial);
+
+		if (startGame != null)
+		{
+			startGame();			
+		}
+		AnimatePandaToSlingshot();
+		
+	}
+	
 	IEnumerator timeCount (float seconds) {
 		yield return new WaitForSeconds(seconds);
 		camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
@@ -309,8 +328,9 @@ public class GameManager : MonoBehaviour
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		FailureScreen.RestartGame += RestartGame;
-		ClickToUnlock.unlockScreen += Init;
+		ClickToUnlock.unlockScreen += UnlockClick;
 		GameController.RestartGame += RestartGame;
+
 		
 	}
 	
@@ -318,7 +338,7 @@ public class GameManager : MonoBehaviour
 	{
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
 		FailureScreen.RestartGame -= RestartGame;
-		ClickToUnlock.unlockScreen -= Init;
+		ClickToUnlock.unlockScreen -= UnlockClick;
 		GameController.RestartGame -= RestartGame;
 	}
 }

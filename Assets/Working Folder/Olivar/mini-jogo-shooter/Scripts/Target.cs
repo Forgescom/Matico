@@ -21,7 +21,7 @@ public class Target : MonoBehaviour
 		if (col.gameObject.tag == "Panda")
 		{
 
-			StartCoroutine(DestroyAfter(5));
+			//StartCoroutine(DestroyAfter(5));
 //          GetComponent<AudioSource>().Play();
 		}
 	}

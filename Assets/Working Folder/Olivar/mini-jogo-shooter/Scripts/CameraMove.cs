@@ -5,7 +5,7 @@ using Assets.Scripts;
 public class CameraMove : MonoBehaviour
 {	
 	public SlingShot Slingshot;
-	public GameObject question;
+	public GameObject questionHolder;
 
 	public float orthoZoomSpeed = 0.3f;
 
@@ -31,7 +31,7 @@ public class CameraMove : MonoBehaviour
 				SaveFirstPosition();				
 			}
 			
-			if(Input.GetTouch(0).phase == TouchPhase.Moved){
+			if(Input.GetTouch(0).phase == TouchPhase.Moved){			
 				MoveCamera();
 			}
 			
@@ -64,7 +64,7 @@ public class CameraMove : MonoBehaviour
 
 	void MoveCamera ()
 	{
-		if ((Slingshot.slingshotState == SlingshotState.Idle) && (GameManager.CurrentGameState == GameState.Playing)) {
+		if ((Slingshot.slingshotState == SlingshotState.Idle) && (GameManager.CurrentGameState == GameState.PandaMovingToSlingshot)) {
 			currentPosition = Input.GetTouch(0).position;
 			// Get direction of movement.  (Note: Don't normalize, the magnitude of change is going to be Vector3.Distance(current_position-hit_position)
 			// anyways.  
@@ -76,6 +76,11 @@ public class CameraMove : MonoBehaviour
 			Vector3 newPosition = startPosition + direction;
 			newPosition.z = startPosition.z;		
 			transform.position = Vector3.Lerp(startPosition,newPosition,0.05f);
+
+
+
+
+
 		}
 		ClampCameraMovement ();
 	}
@@ -108,6 +113,7 @@ public class CameraMove : MonoBehaviour
 			camera.orthographicSize = Mathf.Max(camera.orthographicSize, 5.4f);
 			camera.orthographicSize = Mathf.Min(camera.orthographicSize, 7.4f);
 		}	
+		AdjustQuestion ();
 		ClampCameraMovement ();
 	}
 
@@ -115,21 +121,31 @@ public class CameraMove : MonoBehaviour
 	{
 		float currentSize = transform.camera.orthographicSize;
 		float factor = (MAX_X_ZOOMIN - MAX_X_ZOOMOUT)/(MAXSCALE-MINSCALE);
-		float factorY = (MAX_Y_ZOOMOUT - MAX_Y_ZOOMIN)/(MAXSCALE-MINSCALE);
+
 
 		float xMin = 0 +(currentSize - MINSCALE)*factor;
 		float xMax = MAX_X_ZOOMIN -(currentSize-MINSCALE)*factor;
 
-		float yMin = 4.15f +(currentSize-MINSCALE)*factorY;
-		float yMax = MAX_Y_ZOOMOUT -(currentSize-MINSCALE)*factorY;
+
 
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, xMin, xMax),
 		                                  Mathf.Clamp (transform.position.y, 0, 0),
 		                                  transform.position.z);
 	
-		question.transform.position = new Vector3 (transform.position.x,
-		                                           Mathf.Clamp (transform.position.y, yMin, yMax),
-		                                           10);
+	
+	}
+
+	void AdjustQuestion()
+	{
+		float currentSize = transform.camera.orthographicSize;
+
+	
+		float factor = (1.37f-1f)/(MAXSCALE - MINSCALE);
+		float finalScale = currentSize*factor;
+
+		questionHolder.transform.localScale = new Vector3 (finalScale, finalScale, 1);	
+
+
 	}
 
 }

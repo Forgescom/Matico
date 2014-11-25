@@ -87,7 +87,8 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		if (currentScreen == 0) {
 			explanationScreen.SetActive(true);
-			explanationScreen.animation.Play("boiaExplanation");
+			explanationScreen.animation.Play("Explanation");
+			GameController.ACELEROMETER_TUT = false;
 			currentScreen ++;
 		}
 		else if(currentScreen == 1)

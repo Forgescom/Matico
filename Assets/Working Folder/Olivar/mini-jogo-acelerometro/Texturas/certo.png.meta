@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: c3b75088ccd100641b8aa51d3b62df29
+guid: 40aad1fe1f6989e449757d2d08700596
 TextureImporter:
   fileIDToRecycleName:
-    21300000: alvo
+    21300000: certo
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,8 +22,8 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 128
   textureSettings:
     filterMode: -1
     aniso: -1
