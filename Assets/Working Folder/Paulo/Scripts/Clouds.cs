@@ -60,7 +60,9 @@ public class Clouds : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D col){
-		Start ();//restart
+		if (col.name == "eatingKfood") {
+						Start ();//restart
+				}
 		//transform.position = initialPos;
 	}
 

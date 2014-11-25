@@ -622,7 +622,7 @@ MonoBehaviour:
   Igual: 1
   countMaior: {fileID: 1826173216}
   Maior: 1
-  cntTime: 40
+  cntTime: 100
   timePos: {x: 50, y: 20}
   timeSize: {x: 40, y: 40}
   RestartText: {fileID: 1995110756}
@@ -2174,15 +2174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   speedToPosition: 1
-  burnmfkr: {fileID: 21300000, guid: f04f9722cc762db468e31875b7d9894f, type: 3}
-  arrayLives:
-  - {fileID: 21300000, guid: f04f9722cc762db468e31875b7d9894f, type: 3}
-  - {fileID: 21300000, guid: 4922a6bf1b2cad440bebb1f0b72e35de, type: 3}
-  - {fileID: 21300000, guid: f1ff6e2f0c17a884487186d593aed244, type: 3}
-  face: {fileID: 2083332523}
-  baloon32: {fileID: 2101418864}
-  baloon21: {fileID: 340691103}
-  Brain: {fileID: 513386267}
   speed: 5
 --- !u!61 &1670302703
 BoxCollider2D:
@@ -2190,11 +2181,11 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1670302701}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1.71000004, y: 2.98000002}
-  m_Center: {x: -.419999987, y: -1.70000005}
+  m_Size: {x: 1.29999995, y: 1.5}
+  m_Center: {x: .0500000007, y: -.819999993}
 --- !u!212 &1670302704
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2224,12 +2215,14 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1670302701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.98087645, y: -.915731192, z: 0}
+  m_LocalPosition: {x: 2.5589633, y: -4.23074865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1686570096}
   - {fileID: 2101418866}
-  - {fileID: 2083332525}
   - {fileID: 340691105}
+  - {fileID: 1850736745}
+  - {fileID: 2083332525}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!50 &1670302706
@@ -2262,6 +2255,67 @@ Animator:
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &1686570095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1686570096}
+  - 61: {fileID: 1686570098}
+  - 114: {fileID: 1686570097}
+  m_Layer: 0
+  m_Name: Ways2Die
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1686570096
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686570095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1670302705}
+  m_RootOrder: 0
+--- !u!114 &1686570097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686570095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5386253106ecb419aaa009a55def45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coala: {fileID: 1670302701}
+  Brain: {fileID: 513386267}
+  baloon32: {fileID: 2101418864}
+  baloon21: {fileID: 340691103}
+  burnmfkr: {fileID: 21300000, guid: f04f9722cc762db468e31875b7d9894f, type: 3}
+  arrayLives:
+  - {fileID: 21300000, guid: aba43d7873a43b64bad1251df6c2c36c, type: 3}
+  - {fileID: 21300000, guid: 4922a6bf1b2cad440bebb1f0b72e35de, type: 3}
+  - {fileID: 21300000, guid: f1ff6e2f0c17a884487186d593aed244, type: 3}
+  face: {fileID: 2083332523}
+--- !u!61 &1686570098
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686570095}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1.36000001, y: 1.19000006}
+  m_Center: {x: .0199999996, y: -.649999976}
 --- !u!1 &1764472508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,6 +2392,59 @@ MonoBehaviour:
   size: {x: 40, y: 180}
   emptyTex: {fileID: 2800000, guid: 37d17cc183a204443b85775f872455a7, type: 3}
   fullTex: {fileID: 2800000, guid: c6fb84675792f2d4083657369c2a7da2, type: 3}
+--- !u!1 &1850736744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1850736745}
+  - 61: {fileID: 1850736747}
+  - 114: {fileID: 1850736746}
+  m_Layer: 0
+  m_Name: eatingKfood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1850736745
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850736744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.635068417, y: -2.67347789, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1670302705}
+  m_RootOrder: 3
+--- !u!114 &1850736746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850736744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30711e91f9d2c3140ad50fb9cc69c85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Brain: {fileID: 513386267}
+  face: {fileID: 2083332523}
+--- !u!61 &1850736747
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850736744}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1.79999995, y: 1.50999999}
+  m_Center: {x: -.119999997, y: 0}
 --- !u!1 &1865429944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,7 +2937,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670302705}
-  m_RootOrder: 1
+  m_RootOrder: 4
 --- !u!114 &2083332526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2907,4 +3014,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1670302705}
-  m_RootOrder: 0
+  m_RootOrder: 1

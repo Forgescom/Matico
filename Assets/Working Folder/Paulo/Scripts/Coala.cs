@@ -10,19 +10,19 @@ public class Coala : MonoBehaviour {
 	public float speedToPosition = 1f;
 
 	//public GameObject control;	
-	public Sprite burnmfkr;
-	public Sprite [] arrayLives;
+	//public Sprite burnmfkr;
+	//public Sprite [] arrayLives;
 
 	//FACE
-	public Animator face;
+	//public Animator face;
 	//Baloon
-	public Animator baloon32;
-	public Animator baloon21;
+	//public Animator baloon32;
+	//public Animator baloon21;
 
 	//guardar Sprite;
-	SpriteRenderer thisSprite;
+	//SpriteRenderer thisSprite;
 
-	public Tilt_brain Brain;
+	//public Tilt_brain Brain;
 	//public NumberSrc foodNumber;
 
 	public float speed = 0.5f;
@@ -30,9 +30,9 @@ public class Coala : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//aceder a sprite
-		thisSprite = transform.GetComponent<SpriteRenderer> ();
+		//thisSprite = transform.GetComponent<SpriteRenderer> ();
 		initialPos = gameObject.transform.position;
-		finalPos = new Vector3 (0,-5f,-2);
+		finalPos = new Vector3 (0,-3,0);
 	}
 
 	void Update(){
@@ -66,7 +66,7 @@ public class Coala : MonoBehaviour {
 	{
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, -13f, 13f),transform.position.y, 0);
 	}
-
+	/**
 	void OnTriggerEnter2D(Collider2D col){
 
 		switch(col.name){
@@ -91,9 +91,9 @@ public class Coala : MonoBehaviour {
 					baloon21.SetBool("pop2",true);
 					Invoke ("delSprite21",1);
 				}
-				break;
-			case "Menor":
-				face.SetBool("Eat",true);;
+				break;**/
+		/**	case "Menor":
+				face.SetBool("Eat",true);
 				Brain.Menor = Brain.Menor + 1;
 				break;
 			case "Igual":
@@ -103,8 +103,8 @@ public class Coala : MonoBehaviour {
 			case "Maior":
 				face.SetBool("Eat",true);
 				Brain.Maior = Brain.Maior + 1;
-			break;
-		}
+			break;**/
+	/**	}
 	}
 	void changeSprite(){
 		thisSprite.sprite = arrayLives[Brain.lives];
@@ -119,5 +119,5 @@ public class Coala : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 		changeSprite();
 		face.GetComponent<SpriteRenderer>().active = true;
-	}
+	}**/
 }
