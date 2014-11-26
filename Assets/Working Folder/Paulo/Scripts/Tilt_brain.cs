@@ -141,5 +141,5 @@ public class Tilt_brain : MonoBehaviour {
 
 	void OnGUI() {
 		GUI.Box (new Rect(timePos.x, timePos.y, timeSize.x, timeSize.y), "" + cntTime.ToString("0"));
-	}
+	} 
 }
