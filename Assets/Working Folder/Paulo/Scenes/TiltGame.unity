@@ -1083,7 +1083,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
       propertyPath: speed
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3180616521b533c47a3a826746a665e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 20
   Horizontal: 0
   Rain: 0
 --- !u!61 &1154317593

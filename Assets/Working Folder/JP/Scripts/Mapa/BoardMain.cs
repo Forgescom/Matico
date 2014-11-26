@@ -123,6 +123,20 @@ public class BoardMain : MonoBehaviour {
 
 	}
 
+	void LockLastHouse()
+	{
+
+		CasaController houseController = housesGameObject [GameController.CURRENT_LEVEL-1].GetComponent<CasaController> ();
+
+
+		if(houseController.locked == false){
+			houseController.locked = true;
+			houseController.LockButton ();
+			houseController.isHighLighted = false;
+			housesGameObject [GameController.CURRENT_LEVEL - 2].GetComponent<CasaController> ().isHighLighted = true;
+
+		}
+	}
 
 	public void StartLevel(Transform houseCliked)
 	{
@@ -185,6 +199,7 @@ public class BoardMain : MonoBehaviour {
 		CasaController.throwGame += StartLevel;
 		GameController.updateSoundVolume += TurnOffOnSound;
 		GameController.unlockHouse += UnlockNextHouse;
+		GameController.lockHouse += LockLastHouse;
 		MaticoUnlocker.unlockNextHouse += UnlockNextHouse;
 	}
 
@@ -194,6 +209,7 @@ public class BoardMain : MonoBehaviour {
 		DeactivateOnAnimEnd.animationFinish -= EnableMap;
 		CasaController.throwGame -= StartLevel;
 		GameController.unlockHouse -= UnlockNextHouse;
+		GameController.lockHouse -= LockLastHouse;
 		MaticoUnlocker.unlockNextHouse -= UnlockNextHouse;
 	}
 }

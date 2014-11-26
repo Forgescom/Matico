@@ -7,6 +7,8 @@ using System.Linq;
 public class GameController : MonoBehaviour {
 	public static GameController controller;
 
+
+
 	//PLAYER PREF KEYS
 	public static string PREFS_PLAYER_NAME = "PlayerName";
 	public static string PREFS_PLAYER_AVATAR = "PlayerAvatar";
@@ -27,7 +29,7 @@ public class GameController : MonoBehaviour {
 	public static int CURRENT_LEVEL_DIFICULTY;
 	public static string CURRENT_LEVEL_TYPE;
 	public static int CURRENT_LIVES_LOST;
-	public static int CURRENT_LIVES = 4;
+	public static int CURRENT_LIVES = 1;
 
 
 	//MINI GAMES FINAL SCREEN
@@ -35,20 +37,17 @@ public class GameController : MonoBehaviour {
 	public GameObject FAILURE_SCREEN;
 
 	//TUTORIALS
-	public static bool SCRATCHCARD_TUT = true;
-	public static bool ACELEROMETER_TUT = true;
+	public static bool SCRATCHCARD_TUT = false;
+	public static bool ACELEROMETER_TUT = false;
 	public static bool FLIP_TUT = false;
 	public static bool SHOOTER_TUT = false;
-
 
 	//RESTARTING VAR
 	public static bool SHOOTER_RESTARTING = false;
 
-
 	//XML VALUES
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
-
 
 
 	//EVENTS AND DELEGATES
@@ -56,13 +55,10 @@ public class GameController : MonoBehaviour {
 	public static event SoundDelegate updateSoundVolume;
 	public delegate void RestartDelegate();
 	public static event RestartDelegate RestartGame;
-
-
 	public delegate void UnlockEvent(bool FromMatico);
 	public static event UnlockEvent unlockHouse;
-
-
-
+	public delegate void LockEvent();
+	public static event LockEvent lockHouse;
 
 
 	void Awake()
@@ -181,7 +177,7 @@ public class GameController : MonoBehaviour {
 			successScreen.transform.parent = Camera.main.transform;
 		}
 		else if (outComeIn == "Errado"){
-			Invoke("RemoveLife",2);
+			Invoke("RemoveLife",1);
 			GameObject failScreen = Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity) as GameObject;
 			failScreen.transform.parent = Camera.main.transform;
 			LifesHandler scriptEnergies = failScreen.transform.FindChild("EnergyHUD").GetComponent<LifesHandler>() as LifesHandler;
@@ -190,14 +186,13 @@ public class GameController : MonoBehaviour {
 		houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
 	}
 
-	public static void NoLifesHandler()
-	{
-		Application.LoadLevel ("Board");
-	}
+
 
 	void RemoveLife(){
-		CURRENT_LIVES --;
-		CURRENT_LIVES_LOST ++;
+		if(CURRENT_LIVES >0){
+			CURRENT_LIVES --;
+			CURRENT_LIVES_LOST ++;
+		}
 	}
 
 	//HANDLE CLICK FROM SUCCESS SCREEN
@@ -237,17 +232,41 @@ public class GameController : MonoBehaviour {
 		transform.SendMessage ("WriteToXml");
 
 	}
+
+	void NoLivesHandler ()
+	{
+		Application.LoadLevel ("Board");
+		Invoke ("LockHouse",1);
+
+
+
+	}
+
+	void LockHouse()
+	{
+		if (CURRENT_LEVEL - 1 > 0) {
+			houses [CURRENT_LEVEL - 1] ["Played"] = "false";
+			houses [CURRENT_LEVEL - 1] ["Blocked"] = "true";
+			if (lockHouse != null) {
+					print ("BU");
+					lockHouse ();
+			}
+			transform.SendMessage ("WriteToXml");
+		}
+	}
 	
 	void OnEnable()
 	{
 		ScratchController.GameEnded += ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame += ShowMiniGameFinalScreen;
 		GameManager.endGame += ShowMiniGameFinalScreen;
+		FailureScreen.NoLives += NoLivesHandler;
 	}
 	void OnDisable()
 	{
 		ScratchController.GameEnded -= ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame -= ShowMiniGameFinalScreen;
 		GameManager.endGame -= ShowMiniGameFinalScreen;
+		FailureScreen.NoLives -= NoLivesHandler;
 	}
 }

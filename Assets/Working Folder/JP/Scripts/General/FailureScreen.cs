@@ -7,6 +7,9 @@ public class FailureScreen : MonoBehaviour {
 	public delegate void FailureScreenEvent();
 	public static event FailureScreenEvent RestartGame;
 
+	public delegate void NoLivesEvent();
+	public static event NoLivesEvent NoLives;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,7 +17,6 @@ public class FailureScreen : MonoBehaviour {
 	
 	void Update () {
 		if (CheckFingerTouch() == true || Input.GetMouseButtonUp(0) == true) {
-			print ("ON FAILURE SCREEN " + GameController.CURRENT_LIVES);
 
 			if(GameController.CURRENT_LIVES > 0)
 			{
@@ -26,7 +28,10 @@ public class FailureScreen : MonoBehaviour {
 			}
 			else
 			{
-				GameController.NoLifesHandler();
+				if(NoLives != null)
+				{
+					NoLives();
+				}
 			}
 
 			Destroy(transform.parent.gameObject);

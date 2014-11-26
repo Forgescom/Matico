@@ -32,7 +32,7 @@ public class LifesHandler : MonoBehaviour {
 	void AnimLifeLoose()
 	{
 		livesTextures [currentLives-1].animation.Play ("LifeFadeOut");
-		print (GameController.CURRENT_LIVES);
+
 	}
 
 	// Update is called once per frame
