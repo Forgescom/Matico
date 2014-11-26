@@ -43,7 +43,7 @@ public class cntWays2Die : MonoBehaviour {
 					face.GetComponent<SpriteRenderer> ().active = false;
 					thisSprite.sprite = burnmfkr;
 					Brain.lives--;
-					StartCoroutine (WaitFotIt ());
+					StartCoroutine (WaitFotIt ()); 
 					break;
 			case "ave_head":
 					Brain.lives--;
