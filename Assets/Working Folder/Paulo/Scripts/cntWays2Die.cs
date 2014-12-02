@@ -3,13 +3,13 @@ using System.Collections;
 
 public class cntWays2Die : MonoBehaviour {
 
+		public Tilt_brain Brain;
+
 		public GameObject coala;	
 
 		//guardar Sprite;
 		SpriteRenderer thisSprite;
 		
-		public Tilt_brain Brain;
-
 		//Baloon
 		public Animator baloon32;
 		public Animator baloon21;

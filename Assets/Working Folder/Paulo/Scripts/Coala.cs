@@ -46,6 +46,6 @@ public class Coala : MonoBehaviour {
 	}
 	void ClampMovement()
 	{
-		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, -13f, 13f),transform.position.y, 0);
+		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, -8f, 8f),transform.position.y, 0);
 	}
 }

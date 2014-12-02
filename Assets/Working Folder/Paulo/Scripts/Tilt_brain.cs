@@ -28,12 +28,20 @@ public class Tilt_brain : MonoBehaviour {
 
 	public bool paused;
 
+	//explicar jogo no inicio
+	public GameObject Intro;
+
 	void Start(){
+
+		Intro.GetComponent<Animator>().animation.Play();
+
 		gameOver = false;
 		restart = false;
 		RestartText.text = "";
 		GameOverText.text = "";
 	}
+
+	//void OnGUI() { GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), introTutorial); }
 
 	void Update(){
 		countMaior.barDisplay = Maior;
@@ -140,6 +148,8 @@ public class Tilt_brain : MonoBehaviour {
 	}
 
 	void OnGUI() {
+		//GUI.DrawAnimation(new Rect(0, 0, Screen.width, Screen.height), introTutorial);
+
 		GUI.Box (new Rect(timePos.x, timePos.y, timeSize.x, timeSize.y), "" + cntTime.ToString("0"));
 	} 
 }
