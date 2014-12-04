@@ -594,7 +594,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 649981884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -2.77999997, z: -1}
+  m_LocalPosition: {x: 9, y: -2.77999997, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1309501480}
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barDisplay: 0
-  pos: {x: 10, y: 200}
+  pos: {x: 10, y: 220}
   size: {x: 30, y: 180}
   emptyTex: {fileID: 2800000, guid: 73490cb5f0cc6f64eb224bcfeb0d1ce9, type: 3}
   fullTex: {fileID: 2800000, guid: 5eab965c9f84b0347b6a235033dfffe1, type: 3}
@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barDisplay: 0
-  pos: {x: 10, y: 380}
+  pos: {x: 10, y: 410}
   size: {x: 30, y: 180}
   emptyTex: {fileID: 2800000, guid: 37d17cc183a204443b85775f872455a7, type: 3}
   fullTex: {fileID: 2800000, guid: c6fb84675792f2d4083657369c2a7da2, type: 3}
@@ -2231,7 +2231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barDisplay: 0
-  pos: {x: 10, y: 20}
+  pos: {x: 10, y: 30}
   size: {x: 30, y: 180}
   emptyTex: {fileID: 2800000, guid: 2dc8196ec1f6bfc4ba0fe12b388ee089, type: 3}
   fullTex: {fileID: 2800000, guid: 9e4f3ecfb8b2ff94c813023489635c88, type: 3}
@@ -2390,7 +2390,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1985870156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalPosition: {x: 9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1309501480}
