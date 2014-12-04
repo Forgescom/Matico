@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 34350236913f89348bba62f5fb250b32
+guid: 9038ceaa2b3cd4041ab7190740b4f0c9
 TextureImporter:
   fileIDToRecycleName:
     21300000: explosao_2_0
@@ -50,40 +50,40 @@ TextureImporter:
     - name: explosao_2_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 241
-        height: 339
+        width: 120
+        height: 170
       alignment: 9
       pivot: {x: .699999988, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: explosao_2_1
       rect:
         serializedVersion: 2
-        x: 275
+        x: 137
         y: 0
-        width: 241
-        height: 339
+        width: 120
+        height: 170
       alignment: 9
       pivot: {x: .699999988, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: explosao_2_2
       rect:
         serializedVersion: 2
-        x: 561
+        x: 280
         y: 0
-        width: 241
-        height: 339
+        width: 120
+        height: 170
       alignment: 9
       pivot: {x: .699999988, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: explosao_2_3
       rect:
         serializedVersion: 2
-        x: 836
+        x: 418
         y: 0
-        width: 240
-        height: 339
+        width: 120
+        height: 170
       alignment: 9
       pivot: {x: .699999988, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

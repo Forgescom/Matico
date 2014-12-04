@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e6d9ccb86a5740d4aaa0e43622363da0
+guid: 3ff7cbfda22a31642a9085a70f9f2d38
 TextureImporter:
   fileIDToRecycleName:
-    21300000: coala_expressions 1_0
-    21300002: coala_expressions 1_1
-    21300004: coala_expressions 1_2
-    21300006: coala_expressions 1_3
+    21300000: coala_expressions_5
+    21300002: coala_expressions_7
+    21300004: coala_expressions_9
+    21300006: coala_expressions_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,43 +47,43 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: coala_expressions 1_0
+    - name: coala_expressions_5
       rect:
         serializedVersion: 2
-        x: 4
-        y: 20
-        width: 69
-        height: 73
-      alignment: 2
-      pivot: {x: .5, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: coala_expressions 1_1
-      rect:
-        serializedVersion: 2
-        x: 104
+        x: 2
         y: 0
-        width: 67
-        height: 93
+        width: 33
+        height: 47
       alignment: 2
       pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: coala_expressions 1_2
+    - name: coala_expressions_7
       rect:
         serializedVersion: 2
-        x: 194
-        y: 29
-        width: 64
-        height: 64
+        x: 53
+        y: 0
+        width: 33
+        height: 47
       alignment: 2
       pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: coala_expressions 1_3
+    - name: coala_expressions_9
       rect:
         serializedVersion: 2
-        x: 286
-        y: 29
-        width: 64
-        height: 64
+        x: 95
+        y: 0
+        width: 31
+        height: 47
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: coala_expressions_11
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 0
+        width: 31
+        height: 47
       alignment: 2
       pivot: {x: .5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

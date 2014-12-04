@@ -10,23 +10,12 @@ public class Clouds : MonoBehaviour {
 	public float speed = 1f;
 	public bool Horizontal;
 	public bool Rain;
+	public float timeToStart = 1f;
 
 	private float posx;
 
 	void Start () {
-	
-		if (Horizontal) {
-				posx = Random.Range (-15f, 15f);
-				initialPos = new Vector3 (posx, Random.Range (12f, 25f), 0);
-				finalPos = new Vector3 (posx, -15f, 0);
-		} else if (Rain) {
-				initialPos = new Vector3 (0, Random.Range (40f, 50f), 0);
-				finalPos = new Vector3 (0, -15f, 0);
-		}else{
-				initialPos = new Vector3 (Random.Range (-15f, 15f), Random.Range (12f, 25f), 0);
-				finalPos = new Vector3 (Random.Range (-15f, 15f), -15f, 0);
-		}
-		transform.position = initialPos;
+		StartCoroutine(waitToStart());
 	}	
 	// Update is called once per frame
 	void Update () {
@@ -44,15 +33,15 @@ public class Clouds : MonoBehaviour {
 		if (Vector3.Distance (transform.position, finalPos) <= 0) {
 
 			if (Horizontal) {
-				posx = Random.Range (-15f, 15f);
-				initialPos = new Vector3 (posx, Random.Range (12f, 25f), 0);
+				posx = Random.Range (-10f, 10f);
+				initialPos = new Vector3 (posx, Random.Range (12f, 45f), 0);
 				finalPos = new Vector3 (posx, -15f, 0);
 			} else if (Rain) {
 				initialPos = new Vector3 (0, Random.Range (40f, 50f), 0);
 				finalPos = new Vector3 (0, -15f, 0);
 			}else{
-				initialPos = new Vector3 (Random.Range (-15f, 15f), Random.Range (12f, 25f), 0);
-				finalPos = new Vector3 (Random.Range (-15f, 15f), -15f, 0);
+				initialPos = new Vector3 (Random.Range (-10f, 10f), Random.Range (12f, 45f), 0);
+				finalPos = new Vector3 (Random.Range (-10f, 10f), -15f, 0);
 			}
 
 			transform.position = initialPos;
@@ -64,6 +53,24 @@ public class Clouds : MonoBehaviour {
 						Start ();//restart
 				}
 		//transform.position = initialPos;
+	}
+
+	IEnumerator waitToStart() {
+
+		yield return new WaitForSeconds (timeToStart);
+
+		if (Horizontal) {
+			posx = Random.Range (-10f, 10f);
+			initialPos = new Vector3 (posx, Random.Range (12f, 25f), 0);
+			finalPos = new Vector3 (posx, -15f, 0);
+		} else if (Rain) {
+			initialPos = new Vector3 (0, Random.Range (40f, 50f), 0);
+			finalPos = new Vector3 (0, -15f, 0);
+		}else{
+			initialPos = new Vector3 (Random.Range (-10f, 10f), Random.Range (12f, 25f), 0);
+			finalPos = new Vector3 (Random.Range (-10f, 10f), -15f, 0);
+		}
+		transform.position = initialPos;
 	}
 
 }
