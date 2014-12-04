@@ -62,11 +62,23 @@ public class AcelerometerBrain : MonoBehaviour {
 
 
 		//TELL OTHER OBJECTS TO START GAME
+
+		CreateNewBoia ();
+
+		float luckValue = Mathf.Round(Random.Range(0,2));
+	
+
+		if (luckValue % 2 == 0) {
+			InvokeRepeating ("SpawnSwirl", 1, swirlSpawnRate);
+		}
+		else{
+			sharkFin.SetActive(true);
+		}
+
 		if (startGame != null) {
 			startGame();
 		}
-		CreateNewBoia ();
-		InvokeRepeating ("SpawnSwirl", 1, swirlSpawnRate);
+
 	}
 
 	void SpawnSwirl ()
@@ -93,7 +105,6 @@ public class AcelerometerBrain : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
 
 	}
 

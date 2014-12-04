@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 		else if (canMove == false && hittedOnSwirl == true)
 				SwirlTrap ();
 
-		//ClampMovement ();
+		ClampMovement ();
 	}
 
 	void SwirlTrap ()
