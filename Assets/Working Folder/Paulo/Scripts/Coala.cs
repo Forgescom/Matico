@@ -14,7 +14,7 @@ public class Coala : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		initialPos = gameObject.transform.position;
-		finalPos = new Vector3 (0,-3,0);
+		finalPos = new Vector3 (0,-2.5f,0);
 	}
 
 	void Update(){
