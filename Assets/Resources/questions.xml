@@ -213,6 +213,7 @@
 		<false1>38,6</false1>
 		<correct>386</correct>		
 		<false2>3,86</false2>	
+		<false3>3860</false3>
 	</questionDetails>	
 	
 	<questionDetails id="question22" level="1" typeofgame="shooter"><!-- level 1 ! -->
@@ -221,6 +222,7 @@
 		<false1>461</false1>
 		<correct>4610</correct>		
 		<false2>46100</false2>	
+		<false3>46,1</false3>
 	</questionDetails>	
 	
 	<questionDetails id="question23" level="1" typeofgame="shooter"><!-- level 1 ! -->
@@ -229,6 +231,7 @@
 		<false1>2,549</false1>
 		<correct>25,49</correct>		
 		<false2>2549</false2>	
+		<false3>254,9</false3>
 	</questionDetails>	
 	
 	<questionDetails id="question24" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
@@ -237,6 +240,7 @@
 		<false1>144</false1>
 		<correct>188</correct>		
 		<false2>134</false2>	
+		<false3>140</false3>
 	</questionDetails>	
 	
 	<questionDetails id="question25" level="1" typeofgame="shooter"><!-- level 1 ! -->
@@ -246,6 +250,7 @@
 		<false1>18</false1>
 		<correct>36</correct>		
 		<false2>40</false2>	
+		<false3>38</false3>
 	</questionDetails>	
 	
 	<questionDetails id="question26" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->

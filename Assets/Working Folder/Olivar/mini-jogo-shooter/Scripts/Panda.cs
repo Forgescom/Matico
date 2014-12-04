@@ -8,7 +8,7 @@ using Assets.Scripts;
 public class Panda : MonoBehaviour {
 
 	GameObject GManager;
-
+	bool targetHit = false;
 	
 	// Use this for initialization
 	void Start()
@@ -22,6 +22,7 @@ public class Panda : MonoBehaviour {
 		//make the collider bigger to allow for easy touching
 		GetComponent<CircleCollider2D>().radius = Constants.PandaColliderRadiusBig;
 		State = PandaState.BeforeThrown;
+		targetHit = false;
 	}
 	
 	void FixedUpdate()
@@ -55,18 +56,21 @@ public class Panda : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col)
 	{
 
-		if(col.transform.name.Contains("Target"))
+		if(col.transform.name.Contains("Target") && targetHit == false)
 		{
 //			col.SendMessage("AnimAndDestroy");
 //			transform.position = Vector3.zero;
 			if(col.transform.tag == "Errado") {
 				GManager.SendMessage("AnswerHit", false);
-				print("Enviado: Errado");
+				//print("Enviado: Errado");
 			}
 			else if (col.transform.tag == "Certo") {
 				GManager.SendMessage("AnswerHit", true);
-				print("Enviado: Certo");
+				//print("Enviado: Certo");
 			}
+
+			targetHit = true;
+		
 		}
 
 	}

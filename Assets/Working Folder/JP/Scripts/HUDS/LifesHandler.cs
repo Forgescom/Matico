@@ -31,9 +31,21 @@ public class LifesHandler : MonoBehaviour {
 
 	void AnimLifeLoose()
 	{
+		livesTextures [currentLives - 1].animation ["LifeFadeOut"].normalizedTime = 0f;
+		livesTextures [currentLives - 1].animation ["LifeFadeOut"].speed = 1.0f;
 		livesTextures [currentLives-1].animation.Play ("LifeFadeOut");
 
 	}
+	void AnimLifeWin(bool fromMatico)
+	{
+		currentLives = GameController.CURRENT_LIVES;
+		livesTextures[currentLives -1].gameObject.SetActive(true);
+		livesTextures [currentLives -1 ].animation ["LifeFadeOut"].normalizedTime = 1.0f;
+		livesTextures [currentLives -1].animation ["LifeFadeOut"].speed = -1.0f;
+		livesTextures [currentLives -1].animation.Play ("LifeFadeOut");
+		
+	}
+
 
 	// Update is called once per frame
 	void Update () {
@@ -62,11 +74,13 @@ public class LifesHandler : MonoBehaviour {
 
 	void OnEnable()
 	{
+		GameController.unlockHouse += AnimLifeWin;
 		ScratchController.GameEnded += UpdateLives;
 		AcelerometerBrain.endGame += UpdateLives;
 	}
 	void OnDisable()
 	{
+		GameController.unlockHouse -= AnimLifeWin;
 		ScratchController.GameEnded -= UpdateLives;
 		AcelerometerBrain.endGame -= UpdateLives;
 	}

@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour
     {
 		TurnOffOnSound ();
 		question.SetActive (false);
+		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
+		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
+		Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
+
+
 		if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
 			explanationScreen.SetActive(false);
@@ -62,10 +67,14 @@ public class GameManager : MonoBehaviour
 		else {
 			introScreen.SetActive (false);
 			shooter.SetActive(true);
-			unlockScreen.SetActive (false);
-			slingshot.enabled = true;
-			CurrentGameState = GameState.Start;
+			unlockScreen.SetActive (true);
+			question.SetActive (true);
+			question.animation.Play("QuestionIn");
+
 			camera.transform.position = new Vector3(18, 0, -20);
+
+
+
 		}
     }
 
@@ -85,18 +94,10 @@ public class GameManager : MonoBehaviour
 	void Init() 
 	{
 		CurrentGameState = GameState.Start;
-
-//		question.gameObject.SetActive(true);
-		//find all relevant game objects
-		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
-		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
-		Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
-
-		won = false;
-	
+		won = false;	
 		gameended = false;
-		//unsubscribe and resubscribe from the event
-		//this ensures that we subscribe only once
+
+	
 		slingshot.PandaThrown -= Slingshot_PandaThrown; 
 		slingshot.PandaThrown += Slingshot_PandaThrown;
 
@@ -125,14 +126,9 @@ public class GameManager : MonoBehaviour
 					
                 }
                 break;
-            case GameState.PandaMovingToSlingshot:
-                //do nothing
-                break;
+   
             case GameState.Playing:
-                //if we have thrown a panda
-                //and either everything has stopped moving
-                //or there has been 5 seconds since we threw the panda
-                //animate the camera to the start position            
+               
 
 				if (slingshot.slingshotState == SlingshotState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - slingshot.TimeSinceThrown > 5f))
 				{
@@ -142,18 +138,7 @@ public class GameManager : MonoBehaviour
 				}
 
             break;
-            //if we have won or lost, we will restart the level
-            //in a normal game, we would show the "Won" screen 
-            //and on tap the user would go to the next level
-//            case GameState.Won:
-/*            case GameState.Lost:
-                if (Input.GetMouseButtonUp(0))
-                {
-                    Application.LoadLevel(Application.loadedLevel);
-                }
-                break;
-*/            default:
-                break;
+           
         }
 
     }
@@ -181,10 +166,13 @@ public class GameManager : MonoBehaviour
 
 	void UnlockClick()
 	{
+
+
+
 		slingshot.enabled = true;
 		unlockScreen.SetActive (false);
 		start = true;
-		CurrentGameState = GameState.PandaMovingToSlingshot;
+		CurrentGameState = GameState.Start;
 		Vector3 posicaoInicial = new Vector3(0, 0, -1);
 		//testar camara mobvimento
 		camera.transform.positionTo(2f, posicaoInicial);
@@ -193,6 +181,9 @@ public class GameManager : MonoBehaviour
 		{
 			startGame();			
 		}
+
+		slingshot.PandaThrown -= Slingshot_PandaThrown; 
+		slingshot.PandaThrown += Slingshot_PandaThrown;
 		AnimatePandaToSlingshot();
 		
 	}
@@ -208,6 +199,7 @@ public class GameManager : MonoBehaviour
 	/// When it finishes, it checks if we have lost, won or we have other pandas available to throw
     private void AnimateCameraToStartPosition()
     {
+		print("VOU VOULTAR");
         float duration = Vector2.Distance(Camera.main.transform.position, cameraFollow.StartingPosition) / 10f;
         if (duration == 0.0f) duration = 0.1f;
         //animate the camera to start
@@ -257,6 +249,8 @@ public class GameManager : MonoBehaviour
 	void AnimatePandaToSlingshot()
 	{
 		CurrentGameState = GameState.PandaMovingToSlingshot;
+
+	
 		Pandas[currentPandaIndex].transform.positionTo
 			(Vector2.Distance(Pandas[currentPandaIndex].transform.position / 10,
 			                  slingshot.PandaWaitPosition.transform.position) / 2, //duration
@@ -280,6 +274,7 @@ public class GameManager : MonoBehaviour
 	
 	bool PandasBamboosTargetsStoppedMoving()
     {
+
         foreach (var item in Bamboos.Union(Pandas).Union(Targets))
         {
 			if(item!=null && item.rigidbody2D !=null)
@@ -301,7 +296,7 @@ public class GameManager : MonoBehaviour
 			
 	void AnswerHit(bool correct)
 	{
-		Handheld.Vibrate ();
+		//Handheld.Vibrate ();
 		gameended = true;
 		if(correct == true)
 		{

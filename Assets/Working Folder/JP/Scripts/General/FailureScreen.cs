@@ -12,7 +12,7 @@ public class FailureScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		transform.parent.GetComponent<AudioSource> ().enabled = GameController.BG_SOUND;
 	}
 	
 	void Update () {

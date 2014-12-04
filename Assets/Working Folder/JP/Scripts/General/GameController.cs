@@ -29,12 +29,14 @@ public class GameController : MonoBehaviour {
 	public static int CURRENT_LEVEL_DIFICULTY;
 	public static string CURRENT_LEVEL_TYPE;
 	public static int CURRENT_LIVES_LOST;
-	public static int CURRENT_LIVES = 1;
+	public static int CURRENT_LIVES = 4;
+	public static int LAST_LEVEL_UNLOCKED;
 
 
 	//MINI GAMES FINAL SCREEN
 	public GameObject SUCCESS_SCREEN;
 	public GameObject FAILURE_SCREEN;
+	public MaticoHUD MATICO_HUD;
 
 	//TUTORIALS
 	public static bool SCRATCHCARD_TUT = false;
@@ -99,7 +101,7 @@ public class GameController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {	
-
+	
 	}
 
 	public void SetAvatar(){
@@ -175,6 +177,7 @@ public class GameController : MonoBehaviour {
 		if (outComeIn == "Certo") {
 			GameObject successScreen = Instantiate (SUCCESS_SCREEN,new Vector3(0,0,-9),Quaternion.identity) as GameObject;
 			successScreen.transform.parent = Camera.main.transform;
+
 		}
 		else if (outComeIn == "Errado"){
 			Invoke("RemoveLife",1);
@@ -221,7 +224,12 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator WaitForBoardLoad()
 	{
+
 		yield return new WaitForSeconds (2f);
+		if (CURRENT_LIVES < 4) {
+			CURRENT_LIVES ++;
+		}
+		print ("LIFE ADDED");
 		houses[CURRENT_LEVEL-1]["Played"] = "true";
 		houses[CURRENT_LEVEL]["Blocked"] = "false";
 
@@ -236,7 +244,11 @@ public class GameController : MonoBehaviour {
 	void NoLivesHandler ()
 	{
 		Application.LoadLevel ("Board");
-		Invoke ("LockHouse",1);
+
+		if (CURRENT_LEVEL -1 > 0) {
+
+			Invoke ("LockHouse", 1);
+		}
 
 
 
@@ -244,15 +256,17 @@ public class GameController : MonoBehaviour {
 
 	void LockHouse()
 	{
-		if (CURRENT_LEVEL - 1 > 0) {
-			houses [CURRENT_LEVEL - 1] ["Played"] = "false";
-			houses [CURRENT_LEVEL - 1] ["Blocked"] = "true";
-			if (lockHouse != null) {
-					print ("BU");
-					lockHouse ();
-			}
-			transform.SendMessage ("WriteToXml");
+
+		if (lockHouse != null) {
+
+				lockHouse ();
 		}
+
+		houses [LAST_LEVEL_UNLOCKED-1] ["Played"] = "false";
+		houses [LAST_LEVEL_UNLOCKED-1] ["Blocked"] = "true";
+
+		transform.SendMessage ("WriteToXml");
+
 	}
 	
 	void OnEnable()

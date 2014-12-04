@@ -30,8 +30,10 @@ public class CameraFollow : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
 		if (IsFollowing)
 		{
+
 			if (PandaToFollow != null) //panda will be destroyed if it goes out of the scene
 			{
 				AdjustCameraToZoom ();
@@ -44,16 +46,15 @@ public class CameraFollow : MonoBehaviour
 	void AdjustCameraToZoom () {
 		float currentSize = transform.camera.orthographicSize;
 		float factor = (MAX_X_ZOOMIN - MAX_X_ZOOMOUT)/(MAXSCALE-MINSCALE);
-		float factorY = (MAX_Y_ZOOMOUT - MAX_Y_ZOOMIN)/(MAXSCALE-MINSCALE);
+	
 		
 		float xMin = 0 +(currentSize - MINSCALE)*factor;
 		float xMax = MAX_X_ZOOMIN -(currentSize-MINSCALE)*factor;
-		
+
+
+
 		var pandaPosition = PandaToFollow.transform.position;
 		float x = Mathf.Clamp(pandaPosition.x, xMin, xMax);
-		
-		float yMin = 4.15f +(currentSize-MINSCALE)*factorY;
-		float yMax = MAX_Y_ZOOMOUT -(currentSize-MINSCALE)*factorY;
 		
 		//camera follows panda's x position
 		transform.position = new Vector3(x, StartingPosition.y, StartingPosition.z);

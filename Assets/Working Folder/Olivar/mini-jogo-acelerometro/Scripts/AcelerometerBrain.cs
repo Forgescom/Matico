@@ -21,11 +21,15 @@ public class AcelerometerBrain : MonoBehaviour {
 	public GameObject screenLock;
 	public GameObject sharkFin;
 	public GameObject boia;
+	public GameObject swirl;
 
 	//STARTING POINT
 	public GUITexture [] vidasTexture;
 	public static int vidas;
 	int currentScreen;	
+
+	float swirlSpawnRate = 10f;
+
 
 	//STATIC VARIABLES FOR GAME OBJECTS
 	//public static int CURRENT_SKIN_INDEX = 0;
@@ -62,7 +66,17 @@ public class AcelerometerBrain : MonoBehaviour {
 			startGame();
 		}
 		CreateNewBoia ();
+		InvokeRepeating ("SpawnSwirl", 1, swirlSpawnRate);
 	}
+
+	void SpawnSwirl ()
+	{
+		swirl.SetActive (true);
+		SwirlController swirlController = swirl.GetComponent<SwirlController> ();
+		swirlController.SpawnSwirl ();
+		swirlController.ZoomIn ();
+	}
+
 
 	void TurnOffOnSound()
 	{
@@ -150,6 +164,9 @@ public class AcelerometerBrain : MonoBehaviour {
 				}	
 				vidas--;
 
+			break;
+		case "Swirl":
+			CancelInvoke();
 			break;
 		}
 	}

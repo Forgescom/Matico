@@ -64,7 +64,9 @@ public class CameraMove : MonoBehaviour
 
 	void MoveCamera ()
 	{
-		if ((Slingshot.slingshotState == SlingshotState.Idle) && (GameManager.CurrentGameState == GameState.PandaMovingToSlingshot)) {
+		print (GameManager.CurrentGameState);
+		print (Slingshot.slingshotState);
+		if ((Slingshot.slingshotState == SlingshotState.Idle) && (GameManager.CurrentGameState == GameState.Playing)) {
 			currentPosition = Input.GetTouch(0).position;
 			// Get direction of movement.  (Note: Don't normalize, the magnitude of change is going to be Vector3.Distance(current_position-hit_position)
 			// anyways.  
@@ -111,7 +113,7 @@ public class CameraMove : MonoBehaviour
 			
 			// Make sure the orthographic size never drops below zero.
 			camera.orthographicSize = Mathf.Max(camera.orthographicSize, 5.4f);
-			camera.orthographicSize = Mathf.Min(camera.orthographicSize, 7.4f);
+			camera.orthographicSize = Mathf.Min(camera.orthographicSize, 10f);
 		}	
 		AdjustQuestion ();
 		ClampCameraMovement ();

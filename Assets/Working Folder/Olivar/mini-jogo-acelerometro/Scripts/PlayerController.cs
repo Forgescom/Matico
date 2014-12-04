@@ -17,7 +17,12 @@ public class PlayerController : MonoBehaviour
 	public bool canMove = false;
 	public float speed = 0.5f;
 
-
+	public bool hittedOnSwirl = false;
+	Vector3 swirlPosition;
+	public float unit = 2;
+	public float freq = 0.2f;
+	float decreaseAmount = 0.002f;
+	float angle = 15;
 
 	void Start () {
 		//ASSIGN TEXTUR
@@ -35,10 +40,24 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		if(canMove == true)
-			HandleMovement ();
+		if (canMove == true)
+				HandleMovement ();
+		else if (canMove == false && hittedOnSwirl == true)
+				SwirlTrap ();
 
-		ClampMovement ();
+		//ClampMovement ();
+	}
+
+	void SwirlTrap ()
+	{
+		float newX = (unit * Mathf.Cos (Time.time * freq)) + swirlPosition.x;
+		float newY = (unit * Mathf.Sin (Time.time * freq)) + swirlPosition.y;
+
+		transform.position = new Vector3 (newX,newY, transform.position.z);
+		transform.localScale = new Vector3 (transform.localScale.x - 0.001f, transform.localScale.y - 0.001f, 1);
+
+		unit -= decreaseAmount;	
+
 	}
 
 	void HandleMovement()
@@ -101,6 +120,18 @@ public class PlayerController : MonoBehaviour
 		else if (col.tag =="Wave")
 		{
 			AddWaveForce();
+		}
+		else if (col.tag == "Swirl")
+		{
+			swirlPosition = col.transform.position;
+			col.SendMessage("StopAutoDestroy");
+			hittedOnSwirl = true;
+			canMove = false;
+
+			if(boiaHit !=null)
+			{
+				boiaHit("Swirl",true);
+			}
 		}
 
 	}

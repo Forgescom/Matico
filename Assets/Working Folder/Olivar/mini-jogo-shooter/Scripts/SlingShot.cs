@@ -114,6 +114,7 @@ public class SlingShot : MonoBehaviour
 				}
 				else//not pulled long enough, so reinitiate it
 				{
+					slingshotState = SlingshotState.Idle;
 					//distance/10 was found with trial and error :)
 					//animate the bird to the wait position
 					PandaToThrow.transform.positionTo(distance / 10, //duration

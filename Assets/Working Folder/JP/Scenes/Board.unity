@@ -3194,6 +3194,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: dd838ee88e832ba4fb6de3bf2a05adc3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd838ee88e832ba4fb6de3bf2a05adc3, type: 2}
   m_RootGameObject: {fileID: 102003605}
@@ -5342,6 +5346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SUCCESS_SCREEN: {fileID: 100004, guid: f15a71795a1bc9c4493c5b95eb49255a, type: 2}
   FAILURE_SCREEN: {fileID: 100004, guid: e09e98f9637225d439aa2683c389ee98, type: 2}
+  MATICO_HUD: {fileID: 2120530379}
 --- !u!4 &471059812
 Transform:
   m_ObjectHideFlags: 0
@@ -8079,7 +8084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energiesSpent: 0
   dificulty: 0
-  gameType: 0
+  gameType: 1
 --- !u!1001 &763103477
 Prefab:
   m_ObjectHideFlags: 0
@@ -9512,6 +9517,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
+      propertyPath: MATICO_HUD
+      value: 
+      objectReference: {fileID: 2120530379}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69a062f79ff249845b5e382fc185fbbd, type: 2}
   m_RootGameObject: {fileID: 471059808}
@@ -10329,6 +10338,10 @@ Prefab:
     - target: {fileID: 100006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
       propertyPath: m_Name
       value: Casa01
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
+      propertyPath: gameType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab26f73163004fc48a4e5d37076a8862, type: 2}
@@ -11538,7 +11551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1118499873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11739,7 +11752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1132575299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11778,7 +11791,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1132575298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: .109999999, z: 9.81838799}
+  m_LocalPosition: {x: 0, y: .109999999, z: 9.81838799}
   m_LocalScale: {x: 1, y: .189999998, z: 1}
   m_Children: []
   m_Father: {fileID: 2120530378}
@@ -19120,13 +19133,14 @@ GameObject:
   m_Component:
   - 4: {fileID: 1948228514}
   - 132: {fileID: 1948228513}
+  - 114: {fileID: 1948228515}
   m_Layer: 0
   m_Name: GUI Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!132 &1948228513
 GUIText:
   m_ObjectHideFlags: 0
@@ -19162,6 +19176,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2120530378}
   m_RootOrder: 1
+--- !u!114 &1948228515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1948228512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6657e025096cbf49a12e4a824224392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayOfTexts:
+  - Ups! Perdeste todas as vidas...
+  - "foi bloqueado o \xFAltimo n\xEDvel."
+  - "Volta a ganhar um n\xEDvel anterior,"
+  - aposto que te vais ter mais energias
+  - para prosseguires no mapa!
+  - Boa sorte!!
 --- !u!1001 &1963676169
 Prefab:
   m_ObjectHideFlags: 0

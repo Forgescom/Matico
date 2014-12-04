@@ -22,7 +22,7 @@ public class BubbleHandler : MonoBehaviour {
 	void Init(){
 		foreach (GameObject bub in bubbles) {
 			bub.SetActive(false);
-			bub.GetComponent<CircleCollider2D>().enabled = true;
+			bub.GetComponent<CircleCollider2D>().enabled = false;
 		}
 		InvokeRepeating("ShowBubble", 1,2); 
 	}
@@ -54,6 +54,7 @@ public class BubbleHandler : MonoBehaviour {
 		} while(newRandom == false);
 
 		bubbles [randomBubble].SetActive (true);
+		StartCoroutine ("TurnOnCollider", randomBubble);
 
 		if (shownBubbles.Contains (bubbles [randomBubble]) == false) {
 			shownBubbles.Add (bubbles [randomBubble]);
@@ -63,6 +64,12 @@ public class BubbleHandler : MonoBehaviour {
 			shownBubbles[0].SetActive(false);
 			shownBubbles.RemoveAt(0);
 		}
+	}
+
+	IEnumerator TurnOnCollider(int bubbleIndex)
+	{
+		yield return new WaitForSeconds (2f);
+		bubbles [bubbleIndex].GetComponent<CircleCollider2D> ().enabled = true;
 	}
 
 	void EndGame(string outCome){

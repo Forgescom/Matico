@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 884de1b6ba6e29a4b960dfb81b23b8fb
+guid: fef77347c858a454d961f11f83340b31
 TextureImporter:
   fileIDToRecycleName:
-    21300000: remoinho_2
+    21300000: remoinho_txana
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,8 +22,8 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 256
   textureSettings:
     filterMode: -1
     aniso: -1
