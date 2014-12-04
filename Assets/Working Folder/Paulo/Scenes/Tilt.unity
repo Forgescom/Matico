@@ -502,7 +502,7 @@ MonoBehaviour:
   Igual: 1
   countMaior: {fileID: 1826173216}
   Maior: 1
-  cntTime: 20
+  cntTime: 40
   timePos: {x: 50, y: 20}
   timeSize: {x: 40, y: 40}
   RestartText: {fileID: 1995110756}
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barDisplay: 0
   pos: {x: 10, y: 200}
-  size: {x: 40, y: 180}
+  size: {x: 30, y: 180}
   emptyTex: {fileID: 2800000, guid: 73490cb5f0cc6f64eb224bcfeb0d1ce9, type: 3}
   fullTex: {fileID: 2800000, guid: 5eab965c9f84b0347b6a235033dfffe1, type: 3}
 --- !u!1 &1309501479
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barDisplay: 0
   pos: {x: 10, y: 380}
-  size: {x: 40, y: 180}
+  size: {x: 30, y: 180}
   emptyTex: {fileID: 2800000, guid: 37d17cc183a204443b85775f872455a7, type: 3}
   fullTex: {fileID: 2800000, guid: c6fb84675792f2d4083657369c2a7da2, type: 3}
 --- !u!1 &1850736744
@@ -2205,7 +2205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barDisplay: 0
   pos: {x: 10, y: 20}
-  size: {x: 40, y: 180}
+  size: {x: 30, y: 180}
   emptyTex: {fileID: 2800000, guid: 2dc8196ec1f6bfc4ba0fe12b388ee089, type: 3}
   fullTex: {fileID: 2800000, guid: 9e4f3ecfb8b2ff94c813023489635c88, type: 3}
 --- !u!1 &1887643735

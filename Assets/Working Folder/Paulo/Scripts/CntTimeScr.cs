@@ -25,7 +25,7 @@ public class CntTimeScr : MonoBehaviour {
 	}
 
 	void Moving(){
-		var speedTime = 6/time;
+		var speedTime = 5.8f/time;
 		var step = speedTime * Time.deltaTime;
 		transform.position = Vector3.MoveTowards (transform.position, finalPosTime, step);
 	}
