@@ -175,7 +175,7 @@ public class BoardMain : MonoBehaviour {
 				Application.LoadLevel ("Scratchcard");			
 				break;
 			case "tilt":
-				Application.LoadLevel ("TiltGame");			
+				Application.LoadLevel ("Tilt");			
 				break;
 		}	
 	}

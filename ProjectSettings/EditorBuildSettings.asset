@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Working Folder/Olivar/mini-jogo-shooter/Scenes/Shooter.unity
   - enabled: 1
     path: Assets/Working Folder/Paulo/Scenes/TiltGame.unity
+  - enabled: 1
+    path: Assets/Working Folder/Paulo/Scenes/teste.unity

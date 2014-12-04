@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 	Vector3 swirlPosition;
 	public float unit = 2;
 	public float freq = 0.2f;
-	float decreaseAmount = 0.002f;
+	float decreaseAmount = 0.005f;
 	float angle = 15;
 
 	void Start () {
@@ -54,9 +54,18 @@ public class PlayerController : MonoBehaviour
 		float newY = (unit * Mathf.Sin (Time.time * freq)) + swirlPosition.y;
 
 		transform.position = new Vector3 (newX,newY, transform.position.z);
-		transform.localScale = new Vector3 (transform.localScale.x - 0.001f, transform.localScale.y - 0.001f, 1);
-
+		transform.localScale = new Vector3 (transform.localScale.x - 0.005f, transform.localScale.y - 0.005f, 1);
+		freq -= 0.0001f;
 		unit -= decreaseAmount;	
+
+		print (unit);
+		if (unit < 0.07f) {
+			if(boiaHit !=null)
+			{
+				boiaHit("Shark");
+			}
+			Destroy(gameObject);
+		}
 
 	}
 

@@ -11,6 +11,9 @@ public class SwirlController : MonoBehaviour {
 	int yRange = 3;
 	CircleCollider2D transformCollider;
 
+	float timeToDestroy = 5f;
+	float timeToDestroyAfterHit = 2f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +34,7 @@ public class SwirlController : MonoBehaviour {
 		
 		transform.position = new Vector3 (newX, newY, 6);
 
-		StartCoroutine ("SwirlStop");
+		StartCoroutine ("SwirlStop",timeToDestroy);
 	}
 	
 	public void ZoomIn()
@@ -40,10 +43,10 @@ public class SwirlController : MonoBehaviour {
 		transform.scaleTo (zoomInTime, finalScale).setOnCompleteHandler (originalTween => transformCollider.enabled = true);
 	}
 
-	IEnumerator SwirlStop()
+	IEnumerator SwirlStop(float time)
 	{
 
-		yield return new WaitForSeconds (5f);
+		yield return new WaitForSeconds (time);
 
 		transformCollider.enabled = false;
 		transform.scaleTo (zoomInTime, initialScale).setOnCompleteHandler (originalTween => {																			
@@ -53,6 +56,8 @@ public class SwirlController : MonoBehaviour {
 	void StopAutoDestroy()
 	{
 		StopCoroutine("SwirlStop");
+
+		StartCoroutine ("SwirlStop", timeToDestroyAfterHit);
 
 	}
 

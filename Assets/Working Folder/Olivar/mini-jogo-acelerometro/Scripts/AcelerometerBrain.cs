@@ -166,7 +166,7 @@ public class AcelerometerBrain : MonoBehaviour {
 
 			break;
 		case "Swirl":
-			CancelInvoke();
+			//CancelInvoke();
 			break;
 		}
 	}
