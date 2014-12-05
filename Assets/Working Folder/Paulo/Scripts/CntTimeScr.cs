@@ -14,7 +14,7 @@ public class CntTimeScr : MonoBehaviour {
 
 	void Start () {
 		initialPosTime = gameObject.transform.position;
-		finalPosTime = new Vector3 (9,3,-1);
+		finalPosTime = new Vector3 (8.5f,3,-1);
 	}
 
 	void Update(){
