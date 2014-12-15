@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Intro : MonoBehaviour {
 
-	string maticoIntro = " Eu sou o Matico e vou acompanhar-te nesta aventura pelo Mundo Magico. \n Vou estar presente sempre que precisares de ajuda.";
+	string maticoIntro = " Eu sou o Mático e vou acompanhar-te nesta aventura pelo Mundo Mágico. \n Vou estar presente sempre que precisares de ajuda.";
 	public GUIStyle textStyle;
 
 	public float xPos;
@@ -14,7 +14,7 @@ public class Intro : MonoBehaviour {
 	void Start()
 	{
 		playerName.text= PlayerPrefs.GetString (GameController.PREFS_PLAYER_NAME);
-		StartCoroutine ("ExitAnim");
+		//StartCoroutine ("ExitAnim");
 	}
 
 	void OnGUI(){
@@ -23,66 +23,28 @@ public class Intro : MonoBehaviour {
 	}
 
 
-	IEnumerator ExitAnim(){
-		yield return new WaitForSeconds(2f);
+	/*IEnumerator ExitAnim(){
+		yield return new WaitForSeconds(7f);
 		animation.Play ("IntroOut");
 
+	}*/
+
+	void ExitAnim()
+	{
+		animation.Play ("IntroOut");
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*
-	 *
-	string maticoIntro = " Eu sou o Matico e vou acompanhar-te nesta aventura pelo Mundo Magico. \n Vou estar presente sempre que precisares de ajuda.";
-	public GUIStyle textStyle;
-	public GameObject maticoSprite;
-	public TextMesh name;
-
-
-
-
-	public BoardMain mainBoardBrain;
-
-	// Use this for initialization
-	void Start () {
-		name.text = PlayerPrefs.GetString (Main.PREFS_PLAYER_NAME);
-
-		StartCoroutine ("ShowIntro");
+	void OnEnable()
+	{	
+		ClickToUnlock.unlockScreen += ExitAnim;		
 	}
 	
-
-
-	IEnumerator ShowIntro()
+	
+	
+	void OnDisable()
 	{
-		yield return new WaitForSeconds (4f);
-		animation.Play ("IntroOut");
-		mainBoardBrain.canStartCamera = true;
+		ClickToUnlock.unlockScreen -= ExitAnim;
 	}
 
-
-
-	void MaticoOut(){
-		animation.Play ("IntroOut");
-		mainBoardBrain.canStartCamera = true;
-	}
-*/
 
 }

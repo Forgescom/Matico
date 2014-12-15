@@ -53,6 +53,13 @@ public class CasaController : MonoBehaviour {
 		bloqueadoSprite.animation.Play ();
 	}
 
+	public void LockButton(){
+		desbloquadoSprite.SetActive(false);
+		highlightSprite.SetActive(false);
+		bloqueadoSprite.SetActive (true);
+		bloqueadoSprite.animation.Play ("CasaFadeIn");
+	}
+
 
 	
 	void RemoveLocker()

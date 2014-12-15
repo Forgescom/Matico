@@ -15,14 +15,12 @@ public class Target : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.GetComponent<Rigidbody2D>() == null) return;
+	
 		
 		//if we are hit by a panda
 		if (col.gameObject.tag == "Panda")
 		{
-
-			StartCoroutine(DestroyAfter(5));
-//          GetComponent<AudioSource>().Play();
+			transform.animation.Play("TargetHit");
 		}
 	}
 

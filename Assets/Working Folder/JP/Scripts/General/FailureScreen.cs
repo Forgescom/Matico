@@ -7,18 +7,33 @@ public class FailureScreen : MonoBehaviour {
 	public delegate void FailureScreenEvent();
 	public static event FailureScreenEvent RestartGame;
 
+	public delegate void NoLivesEvent();
+	public static event NoLivesEvent NoLives;
+
 	// Use this for initialization
 	void Start () {
-	
+		transform.parent.GetComponent<AudioSource> ().enabled = GameController.BG_SOUND;
 	}
 	
 	void Update () {
 		if (CheckFingerTouch() == true || Input.GetMouseButtonUp(0) == true) {
-			if(RestartGame !=  null)
-			{
-				RestartGame();
 
+			if(GameController.CURRENT_LIVES > 0)
+			{
+				if(RestartGame !=  null)
+				{
+					RestartGame();
+					
+				}
 			}
+			else
+			{
+				if(NoLives != null)
+				{
+					NoLives();
+				}
+			}
+
 			Destroy(transform.parent.gameObject);
 		}
 		

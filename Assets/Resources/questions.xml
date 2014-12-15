@@ -1,63 +1,63 @@
 <Questions>
-	<questionDetails id="question1" level="1" typeofgame="scratchcard accelerometer shooter">
-		<question>Numa prova de atletismo, o Nuno ficou em 5º lugar.
-			A Joana ficou 4 lugares à sua frente e a Sofia chegou cinco lugares depois do 2º.
-			Escreve em que lugar ficou a Joana?</question>
-		<false1>18</false1>
-		<false2>4</false2>
-		<false3>15</false3>
-		<correct>1</correct>		
-	</questionDetails>
+ 	<questionDetails id="question1" level="1" typeofgame="scratchcard accelerometer shooter">
+ 		<question>Numa prova de atletismo, o Nuno ficou em 5º lugar.
+ 			A Joana ficou 4 lugares à sua frente e a Sofia chegou cinco lugares depois do 2º.
+ 			Escreve em que lugar ficou a Joana?</question>
+ 			<false1>18</false1>
+			<false2>4</false2>
+		 	<false3>15</false3>
+		 	<correct>1</correct> 
+ 	</questionDetails>
 
-//----------------------	
-	<questionDetails id="question2" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>A Rute tem 15 rebuçados e quer dividir igualmente esses rebuçados por 3 amigos.
-Quantos rebuçados ficarão para cada amigo?</question>
-		<false1>8</false1>
-		<false2>3</false2>
-		<false3>15</false3>
-		<correct>5</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question3" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+//---------------------- 
+ 	<questionDetails id="question2" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+ 		<question>A Rute tem 15 rebuçados e quer dividir igualmente esses rebuçados por 3 amigos.
+			Quantos rebuçados ficarão para cada amigo?</question>
+ 			<false1>8</false1>
+ 			<false2>3</false2>
+ 			<false3>15</false3>
+ 			<correct>5</correct> 
+ 	</questionDetails>
+//---------------------- 
+ 	<questionDetails id="question3" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>Um prédio tem 4 andares e cada andar tem 5 apartamentos. 
-Quantos apartamentos tem o edifício?</question>
-		<false1>4</false1>
-		<false2>9</false2>
-		<false3>5</false3>
-		<correct>20</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question4" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>O João tem 8 anos e o seu irmão o dobro da sua idade.
-Quantos anos tem o irmão do João?</question>
-		<false1>8</false1>
-		<false2>10</false2>
-		<false3>18</false3>
-		<correct>16</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question5" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>A Cláudia tem 250 selos. A tia deu-lhe mais duas dezenas e meia.
-Com quantos selos ficou a Cláudia?</question>
-		<false1>250</false1>
-		<false2>230</false2>
-		<false3>252</false3>
-		<correct>275</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question6" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>A Inês tinha 20€ e foi às compras. Comprou 1 camisola que custou
-		7,5€ e uma t-shirt que custou 5,5€. Com quanto dinheiro ficou a Inês?</question>
-		<false1>20</false1>
-		<false2>13</false2>
-		<false3>8</false3>
-		<correct>7</correct>		
+			Quantos apartamentos tem o edifício?</question>
+ 			<false1>4</false1>
+ 			<false2>9</false2>
+ 			<false3>5</false3>
+ 			<correct>20</correct> 
+ 	</questionDetails>
+//---------------------- 
+ 	<questionDetails id="question4" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+ 		<question>O João tem 8 anos e o seu irmão o dobro da sua idade.
+			Quantos anos tem o irmão do João?</question>
+ 			<false1>8</false1>
+ 			<false2>10</false2>
+ 			<false3>18</false3>
+ 			<correct>16</correct> 
+ 	</questionDetails>
+//---------------------- 
+ 	<questionDetails id="question5" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+ 		<question>A Cláudia tem 250 selos. A tia deu-lhe mais duas dezenas e meia.
+			Com quantos selos ficou a Cláudia?</question>
+ 			<false1>250</false1>
+ 			<false2>230</false2>
+ 			<false3>252</false3>
+ 			<correct>275</correct> 
+ 	</questionDetails>
+//---------------------- 
+ 	<questionDetails id="question6" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+ 		<question>A Inês tinha 20€ e foi às compras. Comprou 1 camisola que custou
+ 			7,5€ e uma t-shirt que custou 5,5€. Com quanto dinheiro ficou a Inês?</question>
+ 			<false1>20</false1>
+ 			<false2>13</false2>
+			<false3>8</false3>
+			<correct>7</correct>		
 	</questionDetails>
 //----------------------	
 	<questionDetails id="question7" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>Uma fábrica produz setecentos e quarenta e duas dezenas
-		de rolhas por semana. Qual o número que indica a sua produçao semanal?</question>
+		de rolhas por semana. Qual o número que indica a sua produção semanal?</question>
 		<false1>724</false1>
 		<false2>760</false2>
 		<false3>740</false3>
@@ -66,7 +66,7 @@ Com quantos selos ficou a Cláudia?</question>
 //----------------------	
 	<questionDetails id="question8" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>Um comboio chega a uma estação com 241 passageiros. Aí, saem 160 
-			e entram 210. Quantos passageiros vão agora no comboio?</question>
+		e entram 210. Quantos passageiros vão agora no comboio?</question>
 		<false1>230</false1>
 		<false2>281</false2>
 		<false3>680</false3>
@@ -75,40 +75,402 @@ Com quantos selos ficou a Cláudia?</question>
 //----------------------	
 	<questionDetails id="question9" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
 		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
-			galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
-		<false1>423</false1>
-		<false2>123</false2>
-		<false3>18</false3>
-		<correct>151</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question10" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
-			galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
-		<false1>423</false1>
-		<false2>123</false2>
-		<false3>18</false3>
-		<correct>151</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question11" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
-			galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
-		<false1>423</false1>
-		<false2>123</false2>
-		<false3>18</false3>
-		<correct>151</correct>		
-	</questionDetails>
-//----------------------	
-	<questionDetails id="question12" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
-		<question>O Afonso tinha na sua quinta 138 galinhas e 56 patos. Vendeu 45 
-			galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
+		galinhas e metade dos patos. Quantas aves ficaram na quinta?</question>
 		<false1>423</false1>
 		<false2>123</false2>
 		<false3>18</false3>
 		<correct>151</correct>		
 	</questionDetails>
 
+	<questionDetails id="question10" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Considera o número 26430.
+			Se lhe retirares uma dezena, que número obténs?</question>
+		<correct>26420</correct>
+		<false2>26330</false2>
+		<false3>26429</false3>
+		<false1>25430</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question11" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Considera o número 26430.
+		Se lhe retirares uma centena, que número obténs?</question>
+		<false2>26420</false2>
+		<correct>26330</correct>
+		<false3>26429</false3>
+		<false1>25430</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question12" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Considera o número 26430.
+		Se lhe retirares um milhar, que número obténs?</question>
+		<false2>27430</false2>
+		<false3>25330</false3>
+		<correct>25430</correct>
+		<false1>26330</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question13" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Qual é o milhar mais próximo do número 9008? 
+		</question>
+		<false2>10000</false2>
+		<false3>8000</false3>
+		<correct>9000</correct>
+		<false1>7000</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question14" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Qual é o milhar mais próximo do número 5009? 
+		</question>
+		<false2>50000</false2>
+		<false3>6000</false3>
+		<correct>5000</correct>
+		<false1>9000</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question15" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Qual o nº que corresponde à seguinte expressão matemática
+		(5x100000)+(4x10000)+(6x1000)+(7x100)+(3x10)?
+		</question>
+		<false2>54671</false2>
+		<correct>546730</correct>
+		<false3>54673</false3>
+		<false1>504673</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question16" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Qual o nº que corresponde à seguinte expressão matemática
+		(5x100)+(4x10)+(3x1)?
+		</question>
+		<correct>543</correct>
+		<false2>54,3</false2>
+		<false3>504</false3>
+		<false1>540</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question16" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Qual o nº que corresponde à seguinte expressão matemática
+		(5x100)+(4x10)+(3x1) ?
+		</question>
+		<correct>543</correct>
+		<false2>54,3</false2>
+		<false3>504</false3>
+		<false1>540</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question17" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Qual o nº que corresponde à seguinte expressão matemática
+		Seis milhares, quatro centenas e dezoito centésimas ?
+		</question>
+		<correct>6400,18</correct>
+		<false2>6,40018</false2>
+		<false3>640,018</false3>
+		<false1>64,0018</false1>		
+	</questionDetails>	
+	
+	<questionDetails id="question17" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Completa: 1kg são quantas gramas? 
+		</question>		
+		<false3>10</false3>
+		<false1>0.001</false1>	
+		<correct>1000</correct>
+		<false2>100</false2>	
+	</questionDetails>	
+	
+	<questionDetails id="question18" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Completa: meio quilo são quantas gramas? 
+		</question>		
+		<correct>500</correct>
+		<false3>50,0</false3>
+		<false1>520</false1>		
+		<false2>250</false2>	
+	</questionDetails>	
+	
+	<questionDetails id="question19" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>A Gabriela comprou no supermercado 250g de queijo
+         e 250g de fiambre. Quanto gastou, sabendo que o preço        
+		do quilograma dos dois produtos é de 8euros?  
+		</question>		
+		<false1>1</false1>
+		<correct>4</correct>		
+		<false2>8</false2>
+		<false3>2</false3>	
+	</questionDetails>	
+	
+	<questionDetails id="question20" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>A Gabriela comprou no supermercado 250g de queijo
+         e 250g de fiambre. Quanto gastou, sabendo que o preço        
+		do quilograma dos dois produtos é de 8euros?  
+		</question>		
+		<false1>1</false1>
+		<correct>4</correct>		
+		<false2>8</false2>
+		<false3>2</false3>	
+	</questionDetails>	
+	
+	<questionDetails id="question21" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Calcula: 0,386 x 1000  
+		</question>		
+		<false1>38,6</false1>
+		<correct>386</correct>		
+		<false2>3,86</false2>	
+		<false3>3860</false3>
+	</questionDetails>	
+	
+	<questionDetails id="question22" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Calcula: 46,1 x 100  
+		</question>		
+		<false1>461</false1>
+		<correct>4610</correct>		
+		<false2>46100</false2>	
+		<false3>46,1</false3>
+	</questionDetails>	
+	
+	<questionDetails id="question23" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Calcula: 254,9 : 10  
+		</question>		
+		<false1>2,549</false1>
+		<correct>25,49</correct>		
+		<false2>2549</false2>	
+		<false3>254,9</false3>
+	</questionDetails>	
+	
+	<questionDetails id="question24" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Calcula: 45 + 99  
+		</question>		
+		<false1>144</false1>
+		<correct>188</correct>		
+		<false2>134</false2>	
+		<false3>140</false3>
+	</questionDetails>	
+	
+	<questionDetails id="question25" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>A Diana tem 9 anos. A mãe tem o quádruplo da idade da filha. 
+		Que idade tem a mãe da Diana?  
+		</question>		
+		<false1>18</false1>
+		<correct>36</correct>		
+		<false2>40</false2>	
+		<false3>38</false3>
+	</questionDetails>	
+	
+	<questionDetails id="question26" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>O Rui e a Camila têm 5 cadernetas de pessoas famosas da história 
+		completas com 26 páginas cada uma. Uma caderneta completa tem 130 cromos 
+		de famosos da história. Quantos cromos têm ao todo o Rui e a Camila? 
+		</question>		
+		<false1>600</false1>
+		<correct>650</correct>		
+		<false2>380</false2>	
+		<false3>680</false3>	
+	</questionDetails>	
+	
+	
+	 <questionDetails id="question27" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Quantas garrafas de 0,5l posso encher com a água do garrafão 10l? 
+		</question>		
+		<false1>10</false1>
+		<correct>5</correct>		
+		<false2>50</false2>	
+		<false3>0.5</false3>	
+	</questionDetails>	
+	
+	 <questionDetails id="question28" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Um camião leva 6800 garrafas de vinho para um hipermercado 0,01 são de vinho branco.
+				Quantas garrafas são de vinho tinto?
+		</question>		
+		<false1>68</false1>
+		<correct>6732</correct>		
+		<false2>1000</false2>	
+		<false3>673</false3>	
+	</questionDetails>	
+	
+	<questionDetails id="question29" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Calcula: 2 l - 39 cl
+		</question>		
+		<false1>37cl</false1>
+		<correct>161cl</correct>		
+		<false2>161l</false2>	
+		<false3>170cl</false3>
+	</questionDetails>	
+	
+	<questionDetails id="question30" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question>Calcula: 1600 ml + 17,2 l
+		</question>		
+		<false1>1617dl</false1>
+		<correct>18800 ml</correct>		
+		<false2>177,2 ml</false2>	
+		<false3>1800 ml</false3>
+	</questionDetails>	
+	
+	<questionDetails id="question31" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question>Os 5 irmãos Cavaco estão sempre a discutir!
+				Compraram 545 ovelhas e agora querem saber quantas vão ficar para cada um.
+				Dá-lhes uma ajuda antes que comecem a andar à cacetada!	</question>		
+		<false1>100</false1>
+		<correct>109</correct>		
+		<false2>25</false2>	
+		<false3>45</false3>	
+	</questionDetails>	
+		
+	<questionDetails id="question32" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> Na escola do Artur há 15 turmas. Se em cada turma há 24 alunos, quantos alunos há nas turmas todas?
+		</question>		
+		<false1>300</false1>	
+		<false2>500</false2>
+		<correct>360</correct>		
+		<false3>400</false3>
+			
+	</questionDetails>	
+	
+	<questionDetails id="question33" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> Uma peça de tecido tinha 36m. Vendeu-se a terça parte desse tecido. 
+			Com quantos decímetros ficou a peça?
+		</question>		
+		<false1>18</false1>	
+		<false2>10</false2>
+		<correct>12</correct>		
+		<false3>14</false3>
+			
+	</questionDetails>	
+		
+		
+	<questionDetails id="question34" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> O senhor António comprou, para os sobrinhos, 36 ovos  por 40,80 Euros. 
+			Quantos  Euros custou cada ovo? 
+		</question>		
+		<false1>0.70</false1>	
+		<false2>0.89</false2>
+		<correct>0.88</correct>		
+		<false3>1</false3>
+			
+	</questionDetails>	
+	
+	<questionDetails id="question35" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> O Rui queria comprar um ovo de chocolate que custava 5 € mas só tinha 0,6 desse dinheiro.
+				Quanto lhe faltava para comprar o ovo de chocolate?
+		</question>		
+		<false1>3</false1>	
+		<false2>0.3</false2>
+		<correct>2</correct>		
+		<false3>1</false3>
+			
+	</questionDetails>	
+	
+	<questionDetails id="question35" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> O Tomé fez várias experiências e concluiu que em cada passo que dá percorre 60 cm. 
+		Para determinar o perímetro do recreio da escola, o Tomé percorreu os 4 lados, junto aos muros que o contornam
+		e contou 72 passos. De quantos metros é o perímetro do recreio da escola do Tomé?
+		</question>		
+		<false1></false1>	
+		<false2></false2>
+		<correct></correct>		
+		<false3></false3>
+			
+	</questionDetails>	
+	
+	<questionDetails id="question36" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> Comprei 3, 75 m de seda azul e 4 m de seda branca. Quantos metros de seda comprei?
+		</question>		
+		<false1></false1>	
+		<false2></false2>
+		<correct></correct>		
+		<false3></false3>
+			
+	</questionDetails>	
+	
+	<questionDetails id="question37" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> A distância da casa da Tatiana à escola é de 4, 18 hm. Ela faz esse percurso duas vezes por dia. 
+			Quantos metros faz ela por dia?
+		</question>		
+		<false1></false1>	
+		<false2></false2>
+		<correct></correct>		
+		<false3></false3>
+			
+	</questionDetails>	
+	
+	<questionDetails id="question38" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> O Pedro quer comprar um jogo que custa 48 euros e já tem 0,35 desse valor. 
+		Quanto lhe falta para comprar o jogo?
+		</question>		
+		<false1>10</false1>	
+		<false2>16,8</false2>
+		<correct>31,2</correct>		
+		<false3>25</false3>
+			
+	</questionDetails>
+	
+	<questionDetails id="question39" level="1" typeofgame="scratchcard accelerometer shooter"><!-- level 1 ! -->
+		<question> Uma peixeira tinha 750 sardinhas. Estragou-se a décima parte. Quantas sardinhas se estragaram?
+		</question>		
+		<false1></false1>	
+		<false2></false2>
+		<correct></correct>		
+		<false3></false3>
+			
+	</questionDetails>
+	
+	<questionDetails id="question40" level="1" typeofgame="shooter"><!-- level 1 ! -->
+		<question> Um terreno tem de comprimento 75570 cm e de largura 17,3 m. Qual é a sua área em metros?
+		</question>		
+		<false1></false1>	
+		<false2></false2>
+		<correct></correct>		
+		<false3></false3>
+			
+	</questionDetails>
+	
+	<questionDetails id="question41" level="1" typeofgame="scratchcard shooter"><!-- level 1 ! -->
+		<question> Qual o algarismo das dezenas de milhares do número 432 254?
+		</question>		
+		<false1>2</false1>	
+		<false2>4</false2>
+		<correct>3</correct>		
+		<false3>5</false3>
+			
+	</questionDetails>
+	
+	<questionDetails id="question42" level="1" typeofgame="scratchcard shooter"><!-- level 1 ! -->
+		<question> Calcula:  1014 × 0,5
+		</question>		
+		<false1>50,7</false1>	
+		<false2>2028</false2>
+		<correct>507</correct>		
+		<false3>5070</false3>
+			
+	</questionDetails>
+	
+	<questionDetails id="question43" level="1" typeofgame="scratchcard shooter"><!-- level 1 ! -->
+		<question> Qual o número que completa corretamente a igualdade seguinte:
+		24 : 4 = ___ : 3
+		</question>		
+		<false1>6</false1>	
+		<false2>2</false2>
+		<correct>18</correct>		
+		<false3>12</false3>
+			
+	</questionDetails>
+	
+	<questionDetails id="question44" level="1" typeofgame="scratchcard shooter"><!-- level 1 ! -->
+		<question>  Assinala: 28 milhares e 15 unidades
+		</question>		
+		<false1>2815</false1>	
+		<false2>28,15</false2>
+		<correct>28015</correct>		
+		<false3>2,815</false3>
+			
+	</questionDetails>
+	
+	<questionDetails id="question45" level="1" typeofgame="scratchcard shooter"><!-- level 1 ! -->
+		<question>  Assinala: 2 milhares e 80 unidades
+		</question>		
+		<false1>2800</false1>	
+		<false2>208</false2>
+		<correct>2080</correct>		
+		<false3>28</false3>
+			
+	</questionDetails>
 		
 </Questions>
+
 

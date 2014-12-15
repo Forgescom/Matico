@@ -10,20 +10,22 @@ public class GameManager : MonoBehaviour
 	public GameObject explanationScreen;
 	public GameObject question;
 	public GameObject shooter;
-	public GameObject target;
+	public GameObject unlockScreen;
 
+	public CameraFollow cameraFollow;
 	public GameObject camera;
 
 	int currentScreen = 0;
 
 	// Iniciar Jogo
-	public TextMesh startText;
+
 	bool start = false;
 
-    public CameraFollow cameraFollow;
+  
     int currentPandaIndex;
     public SlingShot slingshot;
-    [HideInInspector]
+
+   
     public static GameState CurrentGameState = GameState.Start;
     private List<GameObject> Pandas;
 	private List<GameObject> Bamboos;
@@ -35,26 +37,27 @@ public class GameManager : MonoBehaviour
 	public delegate void EndGameDelegate(string outcome);
 	public static event EndGameDelegate endGame;
 
-	public delegate void RestartGameDelegate();
-	public static event RestartGameDelegate restartGame;
 
-	//EVENTS FOR GAME END
-	public delegate void gameEnd(string test);
-	public static event gameEnd GameEnded;
-	public delegate void GameNewTry();
-	public static event GameNewTry GameTryAgain;
+
 
 	private bool won;
 	public bool gameended;
-	private bool nolives;
+
 
     // Use this for initialization
     void Start()
     {
+		TurnOffOnSound ();
+		question.SetActive (false);
+		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
+		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
+		Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
+
+
 		if (GameController.SHOOTER_RESTARTING == false) {
 			introScreen.SetActive (true);
 			explanationScreen.SetActive(false);
-
+			unlockScreen.SetActive (false);
 			shooter.SetActive(false);
 
 			slingshot.enabled = false;
@@ -64,35 +67,43 @@ public class GameManager : MonoBehaviour
 		else {
 			introScreen.SetActive (false);
 			shooter.SetActive(true);
-			slingshot.enabled = true;
-			CurrentGameState = GameState.Start;
+			unlockScreen.SetActive (true);
+			question.SetActive (true);
+			question.animation.Play("QuestionIn");
+
 			camera.transform.position = new Vector3(18, 0, -20);
+
+
+
 		}
     }
+
+	void TurnOffOnSound()
+	{
+		
+		AudioSource audio = transform.GetComponent<AudioSource> ();
+		audio.enabled = GameController.BG_SOUND;
+		
+		if (audio.enabled)
+			audio.Play ();
+		else {
+			audio.Stop();
+		}
+	}
 
 	void Init() 
 	{
 		CurrentGameState = GameState.Start;
-
-//		question.gameObject.SetActive(true);
-		//find all relevant game objects
-		Pandas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Panda"));
-		Bamboos = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bamboo"));
-		Targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Target"));
-		print (Targets.Count);
-		won = false;
-		nolives = false;
+		won = false;	
 		gameended = false;
-		//unsubscribe and resubscribe from the event
-		//this ensures that we subscribe only once
+
+	
 		slingshot.PandaThrown -= Slingshot_PandaThrown; 
 		slingshot.PandaThrown += Slingshot_PandaThrown;
 
-		AnimatePandaToSlingshot();
-		if (startGame != null)
-		{
-			startGame();			
-		}
+		//AnimatePandaToSlingshot();
+
+
 	}
 
 	// Update is called once per frame
@@ -101,19 +112,6 @@ public class GameManager : MonoBehaviour
 		if (start == false) {
 			Init();
 			AutoResize(1920, 1080);
-			startText.text = "Toca no ecra para o jogo iniciar";
-			question.gameObject.SetActive(true);
-
-			if(Input.touchCount > 0)
-			{
-				slingshot.enabled = true;
-				startText.transform.position = new Vector3(100, 0, 0);
-				start = true;
-				CurrentGameState = GameState.PandaMovingToSlingshot;
-				Vector3 posicaoInicial = new Vector3(0, 0, -1);
-				//testar camara mobvimento
-				camera.transform.positionTo(2f, posicaoInicial);
-			}
 		}
 
 		switch (CurrentGameState)
@@ -123,39 +121,24 @@ public class GameManager : MonoBehaviour
                 //to the slingshot
                 if (Input.GetMouseButtonUp(0))
                 {
-                    AnimatePandaToSlingshot();
+                   
+					
+					
                 }
                 break;
-            case GameState.PandaMovingToSlingshot:
-                //do nothing
-                break;
+   
             case GameState.Playing:
-                //if we have thrown a panda
-                //and either everything has stopped moving
-                //or there has been 5 seconds since we threw the panda
-                //animate the camera to the start position
-              
+               
 
-			if (slingshot.slingshotState == SlingshotState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - slingshot.TimeSinceThrown > 5f))
-			{
-			    slingshot.enabled = false;
-			    AnimateCameraToStartPosition();
-			    CurrentGameState = GameState.PandaMovingToSlingshot;
-			}
+				if (slingshot.slingshotState == SlingshotState.PandaFlying && (PandasBamboosTargetsStoppedMoving() || Time.time - slingshot.TimeSinceThrown > 5f))
+				{
+				    slingshot.enabled = false;
+				    AnimateCameraToStartPosition();
+				    CurrentGameState = GameState.PandaMovingToSlingshot;
+				}
 
             break;
-            //if we have won or lost, we will restart the level
-            //in a normal game, we would show the "Won" screen 
-            //and on tap the user would go to the next level
-//            case GameState.Won:
-/*            case GameState.Lost:
-                if (Input.GetMouseButtonUp(0))
-                {
-                    Application.LoadLevel(Application.loadedLevel);
-                }
-                break;
-*/            default:
-                break;
+           
         }
 
     }
@@ -170,13 +153,41 @@ public class GameManager : MonoBehaviour
 		}
 		else if(currentScreen == 1)
 		{
+
 			CurrentGameState = GameState.Start;
 			camera.transform.position = new Vector3(18, 0, -20);
 			shooter.SetActive(true);
 			currentScreen ++;
+			question.SetActive (true);
+			question.animation.Play("QuestionIn");
+			unlockScreen.SetActive (true);
 		}
 	}
 
+	void UnlockClick()
+	{
+
+
+
+		slingshot.enabled = true;
+		unlockScreen.SetActive (false);
+		start = true;
+		CurrentGameState = GameState.Start;
+		Vector3 posicaoInicial = new Vector3(0, 0, -1);
+		//testar camara mobvimento
+		camera.transform.positionTo(2f, posicaoInicial);
+
+		if (startGame != null)
+		{
+			startGame();			
+		}
+
+		slingshot.PandaThrown -= Slingshot_PandaThrown; 
+		slingshot.PandaThrown += Slingshot_PandaThrown;
+		AnimatePandaToSlingshot();
+		
+	}
+	
 	IEnumerator timeCount (float seconds) {
 		yield return new WaitForSeconds(seconds);
 		camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
@@ -188,6 +199,7 @@ public class GameManager : MonoBehaviour
 	/// When it finishes, it checks if we have lost, won or we have other pandas available to throw
     private void AnimateCameraToStartPosition()
     {
+		print("VOU VOULTAR");
         float duration = Vector2.Distance(Camera.main.transform.position, cameraFollow.StartingPosition) / 10f;
         if (duration == 0.0f) duration = 0.1f;
         //animate the camera to start
@@ -207,7 +219,7 @@ public class GameManager : MonoBehaviour
 					camera.transform.positionTo(1f, posicaoInicial);
 
 					camera.GetComponent<CameraMove>().SendMessage("SetZoom", true);
-					nolives = true;
+				
 					endGame("Errado");
 				}
 
@@ -237,6 +249,8 @@ public class GameManager : MonoBehaviour
 	void AnimatePandaToSlingshot()
 	{
 		CurrentGameState = GameState.PandaMovingToSlingshot;
+
+	
 		Pandas[currentPandaIndex].transform.positionTo
 			(Vector2.Distance(Pandas[currentPandaIndex].transform.position / 10,
 			                  slingshot.PandaWaitPosition.transform.position) / 2, //duration
@@ -260,6 +274,7 @@ public class GameManager : MonoBehaviour
 	
 	bool PandasBamboosTargetsStoppedMoving()
     {
+
         foreach (var item in Bamboos.Union(Pandas).Union(Targets))
         {
 			if(item!=null && item.rigidbody2D !=null)
@@ -281,7 +296,7 @@ public class GameManager : MonoBehaviour
 			
 	void AnswerHit(bool correct)
 	{
-		Handheld.Vibrate ();
+		//Handheld.Vibrate ();
 		gameended = true;
 		if(correct == true)
 		{
@@ -308,8 +323,9 @@ public class GameManager : MonoBehaviour
 	{
 		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 		FailureScreen.RestartGame += RestartGame;
-		ClickToUnlock.unlockScreen += Init;
+		ClickToUnlock.unlockScreen += UnlockClick;
 		GameController.RestartGame += RestartGame;
+
 		
 	}
 	
@@ -317,7 +333,7 @@ public class GameManager : MonoBehaviour
 	{
 		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
 		FailureScreen.RestartGame -= RestartGame;
-		ClickToUnlock.unlockScreen -= Init;
+		ClickToUnlock.unlockScreen -= UnlockClick;
 		GameController.RestartGame -= RestartGame;
 	}
 }

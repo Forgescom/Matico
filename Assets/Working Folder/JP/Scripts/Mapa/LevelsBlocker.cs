@@ -57,7 +57,7 @@ public class LevelsBlocker : MonoBehaviour {
 				}
 
 			}
-			print("NUMERO DE ENERGIAS" + energiesSpent );
+
 
 			AssignTextures(stepIndex,energiesSpent );
 
@@ -83,7 +83,8 @@ public class LevelsBlocker : MonoBehaviour {
 			indexNewTexture = 0;
 		}
 	
-		print ("INDICE DA IMAGEM:" + indexNewTexture + "CURRENT INDEX: " + step);
+		matico.transform.FindChild ("Txt1").GetComponent<TextMesh> ().text = "Parabens! \n Chegaste ao fim \n da " + (step +1) + "ª fase"; 
+		matico.transform.FindChild ("Txt2").GetComponent<TextMesh> ().text = "Gastaste " + energies.ToString () + "\n energias para \n o conseguires"; 
 
 		pricesHolder [step].GetComponent<PriceHolder> ().SetSprite (indexNewTexture);
 		pricesHolder [step].GetComponent<PriceHolder> ().unlocked = true;

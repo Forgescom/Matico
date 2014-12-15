@@ -19,7 +19,8 @@ public class Main : MonoBehaviour {
 		ShowMenu ();
 
 		//SOUND
-		TurnOffOnSound ();
+		TurnOffOnSound (GameController.SOUND_FX);
+		TurnOffOnSound (GameController.SOUND_BG);
 	}
 	
 	// Update is called once per frame
@@ -59,22 +60,27 @@ public class Main : MonoBehaviour {
 		}
 		else
 		{
+			mainMenu.transform.position = new Vector3(0,0,-1);
 			mainMenu.SetActive (true);
+
 			avatarMenu.SetActive(false);
 			activeMenu = mainMenu;
 		}
 	}
 
-	void TurnOffOnSound()
+	void TurnOffOnSound(string soundType)
 	{
-		AudioSource audio = transform.GetComponent<AudioSource> ();
-		audio.enabled = GameController.BG_SOUND;
+		if(soundType == GameController.SOUND_BG)
+		{
+			AudioSource audio = transform.GetComponent<AudioSource> ();
+			audio.enabled = GameController.BG_SOUND;
 
-		if (audio.enabled)
-			audio.Play ();
-		else {
-			audio.Stop();
-				}
+			if (audio.enabled)
+				audio.Play ();
+			else {
+				audio.Stop();
+					}
+		}
 	}
 
 	void OnEnable()

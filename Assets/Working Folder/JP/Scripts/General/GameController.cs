@@ -7,12 +7,16 @@ using System.Linq;
 public class GameController : MonoBehaviour {
 	public static GameController controller;
 
+
+
 	//PLAYER PREF KEYS
 	public static string PREFS_PLAYER_NAME = "PlayerName";
 	public static string PREFS_PLAYER_AVATAR = "PlayerAvatar";
 	public static string PREFS_PLAYER_CURRENTLEVEL = "PlayerLevel";
 	public static string PREFS_PLAYER_FXSOUND = "SoundFx";
 	public static string PREFS_PLAYER_BGSOUND = "SoundAmbiente";
+	public static string SOUND_BG = "Background";
+	public static string SOUND_FX = "FX";
 
 	//SOUND
 	public static bool FX_SOUND = true;
@@ -26,42 +30,37 @@ public class GameController : MonoBehaviour {
 	public static string CURRENT_LEVEL_TYPE;
 	public static int CURRENT_LIVES_LOST;
 	public static int CURRENT_LIVES = 4;
+	public static int LAST_LEVEL_UNLOCKED;
 
 
 	//MINI GAMES FINAL SCREEN
 	public GameObject SUCCESS_SCREEN;
 	public GameObject FAILURE_SCREEN;
+	public MaticoHUD MATICO_HUD;
 
 	//TUTORIALS
 	public static bool SCRATCHCARD_TUT = false;
 	public static bool ACELEROMETER_TUT = false;
-	public static bool FLIP_TUT = true;
-	public static bool SHOOTER_TUT = true;
-
+	public static bool FLIP_TUT = false;
+	public static bool SHOOTER_TUT = false;
 
 	//RESTARTING VAR
 	public static bool SHOOTER_RESTARTING = false;
-
 
 	//XML VALUES
 	public static List<Dictionary<string,string>> houses = new List<Dictionary<string,string>>();
 	public static List<Dictionary<string,string>> questions = new List<Dictionary<string, string>>();
 
 
-
 	//EVENTS AND DELEGATES
-	public delegate void SoundDelegate();
+	public delegate void SoundDelegate(string type);
 	public static event SoundDelegate updateSoundVolume;
 	public delegate void RestartDelegate();
 	public static event RestartDelegate RestartGame;
-	public delegate void CheckPrices();
-	public static event CheckPrices checkStepPrices;
-
 	public delegate void UnlockEvent(bool FromMatico);
 	public static event UnlockEvent unlockHouse;
-
-
-
+	public delegate void LockEvent();
+	public static event LockEvent lockHouse;
 
 
 	void Awake()
@@ -80,7 +79,8 @@ public class GameController : MonoBehaviour {
 
 		//THROW EVENT TO TURN ON/OFF SOUNDS
 		if (updateSoundVolume != null) {
-			updateSoundVolume();
+			updateSoundVolume(SOUND_BG);
+			updateSoundVolume(SOUND_FX);
 		}
 
 	}
@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {	
-		print ("BACKGROUND SOUND: " + BG_SOUND + " FX SOUND: " + FX_SOUND);
+	
 	}
 
 	public void SetAvatar(){
@@ -123,7 +123,8 @@ public class GameController : MonoBehaviour {
 		
 		//THROW EVENT TO TURN ON/OFF SOUNDS
 		if (updateSoundVolume != null) {
-			updateSoundVolume();
+			updateSoundVolume(SOUND_BG);
+			updateSoundVolume(SOUND_FX);
 		}
 	}
 
@@ -139,6 +140,9 @@ public class GameController : MonoBehaviour {
 			boolInt = currentValue ? 1 : 0;
 
 			PlayerPrefs.SetInt(PREFS_PLAYER_FXSOUND,boolInt);
+			if (updateSoundVolume != null) {
+				updateSoundVolume(SOUND_FX);
+			}
 		}
 		else if(sound == "Music"){
 			BG_SOUND = !BG_SOUND;
@@ -147,10 +151,11 @@ public class GameController : MonoBehaviour {
 			boolInt = currentValue ? 1 : 0;
 
 			PlayerPrefs.SetInt(PREFS_PLAYER_BGSOUND,boolInt);
-		}
+			
+			if (updateSoundVolume != null) {
+				updateSoundVolume(SOUND_BG);
+			}
 
-		if (updateSoundVolume != null) {
-			updateSoundVolume();
 		}
 	}
 
@@ -170,14 +175,27 @@ public class GameController : MonoBehaviour {
 	public void ShowMiniGameFinalScreen(string outComeIn)
 	{
 		if (outComeIn == "Certo") {
-			Instantiate (SUCCESS_SCREEN,new Vector3(0,0,9),Quaternion.identity);
+			GameObject successScreen = Instantiate (SUCCESS_SCREEN,new Vector3(0,0,-9),Quaternion.identity) as GameObject;
+			successScreen.transform.parent = Camera.main.transform;
+
 		}
 		else if (outComeIn == "Errado"){
-			CURRENT_LIVES --;
-			CURRENT_LIVES_LOST ++;
-			Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity);
+			Invoke("RemoveLife",1);
+			GameObject failScreen = Instantiate (FAILURE_SCREEN,new Vector3(0,0,-9),Quaternion.identity) as GameObject;
+			failScreen.transform.parent = Camera.main.transform;
+			LifesHandler scriptEnergies = failScreen.transform.FindChild("EnergyHUD").GetComponent<LifesHandler>() as LifesHandler;
+			scriptEnergies.AnimateLifeLoose();
 		}
 		houses[CURRENT_LEVEL-1]["EnergiesSpent"] = CURRENT_LIVES_LOST.ToString();
+	}
+
+
+
+	void RemoveLife(){
+		if(CURRENT_LIVES >0){
+			CURRENT_LIVES --;
+			CURRENT_LIVES_LOST ++;
+		}
 	}
 
 	//HANDLE CLICK FROM SUCCESS SCREEN
@@ -186,11 +204,13 @@ public class GameController : MonoBehaviour {
 
 		switch (bt.name) {
 		case "BtRepeat":
+	
 			if(RestartGame!=null)
 			{
 				RestartGame();
 			}
-			Destroy(bt.transform.root.gameObject);
+		
+			Destroy(bt.transform.parent.gameObject);
 			break;
 		case "BtNext":
 
@@ -204,7 +224,12 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator WaitForBoardLoad()
 	{
+
 		yield return new WaitForSeconds (2f);
+		if (CURRENT_LIVES < 4) {
+			CURRENT_LIVES ++;
+		}
+		print ("LIFE ADDED");
 		houses[CURRENT_LEVEL-1]["Played"] = "true";
 		houses[CURRENT_LEVEL]["Blocked"] = "false";
 
@@ -215,17 +240,47 @@ public class GameController : MonoBehaviour {
 		transform.SendMessage ("WriteToXml");
 
 	}
+
+	void NoLivesHandler ()
+	{
+		Application.LoadLevel ("Board");
+
+		if (CURRENT_LEVEL -1 > 0) {
+
+			Invoke ("LockHouse", 1);
+		}
+
+
+
+	}
+
+	void LockHouse()
+	{
+
+		if (lockHouse != null) {
+
+				lockHouse ();
+		}
+
+		houses [LAST_LEVEL_UNLOCKED-1] ["Played"] = "false";
+		houses [LAST_LEVEL_UNLOCKED-1] ["Blocked"] = "true";
+
+		transform.SendMessage ("WriteToXml");
+
+	}
 	
 	void OnEnable()
 	{
 		ScratchController.GameEnded += ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame += ShowMiniGameFinalScreen;
 		GameManager.endGame += ShowMiniGameFinalScreen;
+		FailureScreen.NoLives += NoLivesHandler;
 	}
 	void OnDisable()
 	{
 		ScratchController.GameEnded -= ShowMiniGameFinalScreen;
 		AcelerometerBrain.endGame -= ShowMiniGameFinalScreen;
 		GameManager.endGame -= ShowMiniGameFinalScreen;
+		FailureScreen.NoLives -= NoLivesHandler;
 	}
 }

@@ -16,8 +16,8 @@ public class SettingsHUD : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (somMusica.buttonOn);
-		print ("GAME BRAIN :" + GameController.BG_SOUND);
+
+
 	}
 
 	void TurnOffOnSound()
@@ -25,7 +25,6 @@ public class SettingsHUD : MonoBehaviour {
 
 		somMusica.buttonOn = GameController.BG_SOUND;
 		somMusica.UpdateButton ();
-		print ("DESPOIS DE ALTERAR" +somMusica.buttonOn);
 	}
 
 	void btClick(GameObject clickedBt){

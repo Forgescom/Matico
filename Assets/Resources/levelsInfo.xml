@@ -1,11 +1,11 @@
 <GameLevelInfo>
   <level id="Casa01" blocked="false" played="false">
-    <typeofgame>ScratchCard</typeofgame>
+    <typeofgame>Acelerometer</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>
   <level id="Casa02" blocked="true" played="false">
-    <typeofgame>ScratchCard</typeofgame>
+    <typeofgame>Acelerometer</typeofgame>
     <energiesspent>0</energiesspent>
     <levelofdificulty>1</levelofdificulty>
   </level>

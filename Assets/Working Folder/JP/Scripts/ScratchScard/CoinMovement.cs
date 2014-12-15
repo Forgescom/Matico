@@ -73,16 +73,20 @@ public class CoinMovement : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D col)
 	{
-		if(grabed)
+		if (col.name.Contains("Answer"))
 		{
-			if (Input.touchCount>0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
-				if(transform.audio.isPlaying == false)
-					transform.audio.Play();
-				col.SendMessage ("Scratch", true);
-			}
-			else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary){
-				transform.audio.Pause();
-				col.SendMessage ("Scratch", false);
+
+			if(grabed)
+			{
+				if (Input.touchCount>0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
+					if(transform.audio.isPlaying == false)
+						transform.audio.Play();
+					col.SendMessage ("Scratch", true);
+				}
+				else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary){
+					transform.audio.Pause();
+					col.SendMessage ("Scratch", false);
+				}
 			}
 		}
 
@@ -91,8 +95,11 @@ public class CoinMovement : MonoBehaviour {
 
 
 	void OnTriggerExit2D(Collider2D col){
-		col.SendMessage ("Scratch", false);
-
+		if (col.name.Contains("Answer"))
+		{
+			col.SendMessage ("Scratch", false);
+			//transform.audio.Pause();
+		}
 		
 	}
 	void RestartGame()

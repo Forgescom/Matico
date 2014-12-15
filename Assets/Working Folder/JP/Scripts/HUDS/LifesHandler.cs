@@ -6,7 +6,7 @@ public class LifesHandler : MonoBehaviour {
 	public GUITexture avatar;
 	public GUITexture lives;
 
-	public Texture [] livesTextures;
+	public GUITexture [] livesTextures;
 	public Texture [] faces;
 
 	int currentLives;
@@ -14,14 +14,39 @@ public class LifesHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentLives = GameController.CURRENT_LIVES;
-		//print (currentLives);
-		lives.texture = livesTextures [currentLives];
+		avatar.texture = faces [GameController.PLAYER_FACE];	
+
+		for (int i = 0 ;i <=currentLives-1; i ++) {
+		
+			livesTextures[i].gameObject.SetActive(true);
+		}
 
 
-	
-		avatar.texture = faces [GameController.PLAYER_FACE];
 	}
-	
+
+	public void AnimateLifeLoose()
+	{
+		Invoke ("AnimLifeLoose", 2);
+	}
+
+	void AnimLifeLoose()
+	{
+		livesTextures [currentLives - 1].animation ["LifeFadeOut"].normalizedTime = 0f;
+		livesTextures [currentLives - 1].animation ["LifeFadeOut"].speed = 1.0f;
+		livesTextures [currentLives-1].animation.Play ("LifeFadeOut");
+
+	}
+	void AnimLifeWin(bool fromMatico)
+	{
+		currentLives = GameController.CURRENT_LIVES;
+		livesTextures[currentLives -1].gameObject.SetActive(true);
+		livesTextures [currentLives -1 ].animation ["LifeFadeOut"].normalizedTime = 1.0f;
+		livesTextures [currentLives -1].animation ["LifeFadeOut"].speed = -1.0f;
+		livesTextures [currentLives -1].animation.Play ("LifeFadeOut");
+		
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 
@@ -34,14 +59,14 @@ public class LifesHandler : MonoBehaviour {
 		{
 			if (currentLives > 1) {
 				//currentLives --;
-				lives.texture = livesTextures[currentLives -1];
+				//lives.texture = livesTextures[currentLives -1];
 			}
 		}
 		else 
 		{
 			if (currentLives <= 4) {
 				//currentLives ++;
-				lives.texture = livesTextures[currentLives -1];
+				//lives.texture = livesTextures[currentLives -1];
 			}
 		}
 	}
@@ -49,11 +74,13 @@ public class LifesHandler : MonoBehaviour {
 
 	void OnEnable()
 	{
+		GameController.unlockHouse += AnimLifeWin;
 		ScratchController.GameEnded += UpdateLives;
 		AcelerometerBrain.endGame += UpdateLives;
 	}
 	void OnDisable()
 	{
+		GameController.unlockHouse -= AnimLifeWin;
 		ScratchController.GameEnded -= UpdateLives;
 		AcelerometerBrain.endGame -= UpdateLives;
 	}

@@ -982,6 +982,57 @@ Transform:
   - {fileID: 1601056542}
   m_Father: {fileID: 0}
   m_RootOrder: 8
+<<<<<<< HEAD
+--- !u!1001 &751873066
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .847779751
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 24.9975338
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: da4a4edae92fa9b408472106bd1ed2b2, type: 2}
+  m_RootGameObject: {fileID: 1154317591}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
+=======
+>>>>>>> 0d706c409977dfec6099cfd25bf75312f64f0b66
 --- !u!1 &801250452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,7 +1474,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3180616521b533c47a3a826746a665e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  speed: 20
+=======
   speed: 3
+>>>>>>> 0d706c409977dfec6099cfd25bf75312f64f0b66
   Horizontal: 0
   Rain: 0
 --- !u!61 &1154317593

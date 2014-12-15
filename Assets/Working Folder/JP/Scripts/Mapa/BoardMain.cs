@@ -14,13 +14,16 @@ public class BoardMain : MonoBehaviour {
 	public CameraMovesHandler cameraScript;
 	public bool showIntro = true;
 
+	int lastHouseIndex;
+
 
 	void Start(){
 
 
 		housesGameObject =   GameObject.FindGameObjectsWithTag("House").OrderBy( go => go.name ).ToArray();
 
-		TurnOffOnSound ();
+		TurnOffOnSound (GameController.SOUND_FX);
+		TurnOffOnSound (GameController.SOUND_BG);
 		AssignHousesSettings ();
 		//UnlockHouses ();
 
@@ -47,7 +50,7 @@ public class BoardMain : MonoBehaviour {
 
 	void AssignHousesSettings()
 	{	
-
+		lastHouseIndex = 0;
 		for (int i = 0; i < GameController.houses.Count; i++) {
 
 			//CHECK IF HOUSE IS LOCK AND ASSIGN	
@@ -70,6 +73,11 @@ public class BoardMain : MonoBehaviour {
 				housesGameObject[i].GetComponent<CasaController>().isHighLighted = true;
 			else
 				housesGameObject[i].GetComponent<CasaController>().isHighLighted = false;
+
+			if(played == "false" && locked == "true" && lastHouseIndex ==0)
+			{
+				lastHouseIndex = i;
+			}
 
 
 			string typeOfGame;
@@ -101,6 +109,12 @@ public class BoardMain : MonoBehaviour {
 			}
 		}
 
+		if (lastHouseIndex != GameController.LAST_LEVEL_UNLOCKED) {
+			GameController.LAST_LEVEL_UNLOCKED = lastHouseIndex;
+		
+		}
+	
+
 	}
 
 	void UnlockNextHouse(bool fromMatico = false)
@@ -122,6 +136,20 @@ public class BoardMain : MonoBehaviour {
 
 	}
 
+	void LockLastHouse()
+	{
+
+		CasaController houseController = housesGameObject [lastHouseIndex-1].GetComponent<CasaController> ();
+
+
+		if(houseController.locked == false){
+			houseController.locked = true;
+			houseController.LockButton ();
+			houseController.isHighLighted = false;
+			housesGameObject [lastHouseIndex - 2].GetComponent<CasaController> ().isHighLighted = true;
+
+		}
+	}
 
 	public void StartLevel(Transform houseCliked)
 	{
@@ -147,7 +175,7 @@ public class BoardMain : MonoBehaviour {
 				Application.LoadLevel ("Scratchcard");			
 				break;
 			case "tilt":
-				Application.LoadLevel ("TiltGame");			
+				Application.LoadLevel ("Tilt");			
 				break;
 		}	
 	}
@@ -163,15 +191,18 @@ public class BoardMain : MonoBehaviour {
 		}
 	}
 
-	void TurnOffOnSound()
+	void TurnOffOnSound(string soundType)
 	{
-		AudioSource audio = transform.GetComponent<AudioSource> ();
-		audio.enabled = GameController.BG_SOUND;
-		
-		if (audio.enabled)
-			audio.Play ();
-		else {
-			audio.Stop();
+		if(soundType == GameController.SOUND_BG)
+		{
+			AudioSource audio = transform.GetComponent<AudioSource> ();
+			audio.enabled = GameController.BG_SOUND;
+			
+			if (audio.enabled)
+				audio.Play ();
+			else {
+				audio.Stop();
+			}
 		}
 	}
 
@@ -181,6 +212,7 @@ public class BoardMain : MonoBehaviour {
 		CasaController.throwGame += StartLevel;
 		GameController.updateSoundVolume += TurnOffOnSound;
 		GameController.unlockHouse += UnlockNextHouse;
+		GameController.lockHouse += LockLastHouse;
 		MaticoUnlocker.unlockNextHouse += UnlockNextHouse;
 	}
 
@@ -190,6 +222,7 @@ public class BoardMain : MonoBehaviour {
 		DeactivateOnAnimEnd.animationFinish -= EnableMap;
 		CasaController.throwGame -= StartLevel;
 		GameController.unlockHouse -= UnlockNextHouse;
+		GameController.lockHouse -= LockLastHouse;
 		MaticoUnlocker.unlockNextHouse -= UnlockNextHouse;
 	}
 }

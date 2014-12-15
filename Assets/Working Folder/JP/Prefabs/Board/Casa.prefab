@@ -154,6 +154,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 0f6414f5ff48bc4498ab05224668f8d5, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 0f6414f5ff48bc4498ab05224668f8d5, type: 2}
+  - {fileID: 7400000, guid: 697f3d145d660aa4492b0499c42fb760, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -173,6 +174,7 @@ MonoBehaviour:
   desbloquadoSprite: {fileID: 100002}
   highlightSprite: {fileID: 100004}
   isHighLighted: 0
+  locked: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

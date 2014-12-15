@@ -5,27 +5,35 @@ public class ClickToUnlock : MonoBehaviour {
 
 	public delegate void UnlockScreenDelegate();
 	public static event UnlockScreenDelegate unlockScreen;
+	bool canPress = false;
 
 	// Use this for initialization
 	void Start () {
-	
+		Invoke ("Activate", 1);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
+		if(canPress)
+		{
+			if (CheckFingerTouch () == true || Input.GetMouseButtonDown(0)== true) {
+			
+				if(unlockScreen !=null)
+				{
 
-		if (CheckFingerTouch () == true || Input.GetMouseButtonDown(0)== true) {
-		
-			if(unlockScreen !=null)
-			{
+					unlockScreen();
+					gameObject.SetActive(false);
 
-				unlockScreen();
-				gameObject.SetActive(false);
+				}
 
 			}
-
 		}
+	}
+
+	void Activate()
+	{
+		canPress = true;
 	}
 
    	bool CheckFingerTouch()

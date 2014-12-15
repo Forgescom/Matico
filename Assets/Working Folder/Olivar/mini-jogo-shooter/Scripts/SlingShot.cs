@@ -114,6 +114,7 @@ public class SlingShot : MonoBehaviour
 				}
 				else//not pulled long enough, so reinitiate it
 				{
+					slingshotState = SlingshotState.Idle;
 					//distance/10 was found with trial and error :)
 					//animate the bird to the wait position
 					PandaToThrow.transform.positionTo(distance / 10, //duration
@@ -201,15 +202,15 @@ public class SlingShot : MonoBehaviour
 		// The initial velocity
 		Vector2 segVelocity = new Vector2(v2.x, v2.y) * ThrowSpeed * distance;
 		
-		float angle = Vector2.Angle(segVelocity, new Vector2(1, 0));
+
 		float time = segmentScale / segVelocity.magnitude;
 		for (int i = 1; i < segmentCount; i++)
 		{
 			//x axis: spaceX = initialSpaceX + velocityX * time
 			//y axis: spaceY = initialSpaceY + velocityY * time + 1/2 * accelerationY * time ^ 2
 			//both (vector) space = initialSpace + velocity * time + 1/2 * acceleration * time ^ 2
-			float time2 = i * Time.fixedDeltaTime * 5;
-			segments[i] = segments[0] + segVelocity * time2 + 0.5f * Physics2D.gravity * Mathf.Pow(time2, 2);
+			time = i * Time.fixedDeltaTime * 5;
+			segments[i] = segments[0] + segVelocity * time + 0.5f * Physics2D.gravity * Mathf.Pow(time, 2);
 		}
 		
 		TrajectoryLineRenderer.SetVertexCount(segmentCount);

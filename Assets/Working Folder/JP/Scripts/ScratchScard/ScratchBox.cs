@@ -84,7 +84,7 @@ public class ScratchBox : MonoBehaviour {
 		transform.renderer.material.color = new Color(1,1,1,1);
 		textAnswer.renderer.material.color = new Color(1,1,1,1);
 		answerSprite.SetActive (false);
-
+		transform.tag = "Errado";
 		enable = true;
 	}
 

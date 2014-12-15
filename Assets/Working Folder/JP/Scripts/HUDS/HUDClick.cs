@@ -72,7 +72,6 @@ public class HUDClick : MonoBehaviour {
 	void ToggleButton(){
 		
 		if (toggleButton) {
-			print (buttonOn);
 			if(buttonOn)
 			{
 				spriteActive.texture = toggleOff;

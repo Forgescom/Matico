@@ -21,11 +21,15 @@ public class AcelerometerBrain : MonoBehaviour {
 	public GameObject screenLock;
 	public GameObject sharkFin;
 	public GameObject boia;
+	public GameObject swirl;
 
 	//STARTING POINT
 	public GUITexture [] vidasTexture;
 	public static int vidas;
 	int currentScreen;	
+
+	float swirlSpawnRate = 10f;
+
 
 	//STATIC VARIABLES FOR GAME OBJECTS
 	//public static int CURRENT_SKIN_INDEX = 0;
@@ -58,11 +62,33 @@ public class AcelerometerBrain : MonoBehaviour {
 
 
 		//TELL OTHER OBJECTS TO START GAME
+
+		CreateNewBoia ();
+
+		float luckValue = Mathf.Round(Random.Range(0,2));
+	
+
+		if (luckValue % 2 == 0) {
+			InvokeRepeating ("SpawnSwirl", 1, swirlSpawnRate);
+		}
+		else{
+			sharkFin.SetActive(true);
+		}
+
 		if (startGame != null) {
 			startGame();
 		}
-		CreateNewBoia ();
+
 	}
+
+	void SpawnSwirl ()
+	{
+		swirl.SetActive (true);
+		SwirlController swirlController = swirl.GetComponent<SwirlController> ();
+		swirlController.SpawnSwirl ();
+		swirlController.ZoomIn ();
+	}
+
 
 	void TurnOffOnSound()
 	{
@@ -79,7 +105,6 @@ public class AcelerometerBrain : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
 
 	}
 
@@ -87,7 +112,8 @@ public class AcelerometerBrain : MonoBehaviour {
 	{
 		if (currentScreen == 0) {
 			explanationScreen.SetActive(true);
-			explanationScreen.animation.Play("boiaExplanation");
+			explanationScreen.animation.Play("Explanation");
+			GameController.ACELEROMETER_TUT = false;
 			currentScreen ++;
 		}
 		else if(currentScreen == 1)
@@ -149,6 +175,9 @@ public class AcelerometerBrain : MonoBehaviour {
 				}	
 				vidas--;
 
+			break;
+		case "Swirl":
+			//CancelInvoke();
 			break;
 		}
 	}
