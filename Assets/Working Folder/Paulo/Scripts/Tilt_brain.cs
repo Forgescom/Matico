@@ -4,7 +4,10 @@ using System.Collections;
 public class Tilt_brain : MonoBehaviour {
 
 	public int lives;
-	// Use this for initialization
+	//Controlo geral
+	public GameObject introGame;
+	public GameObject gameFull;
+
 	//contadores
 	public countMenorScr countMenor;
 	public int Menor;
@@ -35,12 +38,20 @@ public class Tilt_brain : MonoBehaviour {
 	void Start(){
 
 		//Intro.GetComponent<Animator>().animation.Play();
-
+		Init ();
 		gameOver = false;
 		restart = false;
 		RestartText.text = "";
 		GameOverText.text = "";
 		timeValue.time = cntTime;
+
+		//Intro.SetActive(false);
+	}
+	//Controlo Geral
+	void Init(){
+
+		gameFull.SetActive (false);
+		introGame.SetActive (true);
 	}
 
 	//void OnGUI() { GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), introTutorial); }
