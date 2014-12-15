@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class ParallaxScrolling : MonoBehaviour {
-	
+
+	public float ParallaxFactor;
+	Vector3 previousCameraTransform;
+
 	// Use this for initialization
 	void Start () {
 		camera = Camera.main;
@@ -18,15 +21,7 @@ public class ParallaxScrolling : MonoBehaviour {
 		Vector3 delta = camera.transform.position - previousCameraTransform;
 		delta.y = 0; delta.z = 0;
 		transform.position += delta / ParallaxFactor;
-		
-		
 		previousCameraTransform = camera.transform.position;
 	}
 	
-	public float ParallaxFactor;
-	
-	Vector3 previousCameraTransform;
-	
-	///background graphics found here:
-	///http://opengameart.org/content/hd-multi-layer-parallex-background-samples-of-glitch-game-assets
 }

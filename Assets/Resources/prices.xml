@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prices>
+  <price id="Price01" earned="false">
+    <typeofgame>ScratchCard</typeofgame>
+    <energiesspent>0</energiesspent>
+    <levelofdificulty>1</levelofdificulty>
+  </price>
+  
+</Prices>

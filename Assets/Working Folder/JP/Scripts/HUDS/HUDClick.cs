@@ -86,7 +86,7 @@ public class HUDClick : MonoBehaviour {
 		}
 		
 	}
-	public void updateButton()
+	public void UpdateButton()
 	{
 		spriteActive = GetComponent<GUITexture> ();
 		if(buttonOn)

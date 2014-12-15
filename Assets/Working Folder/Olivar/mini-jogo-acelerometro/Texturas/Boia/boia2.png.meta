@@ -1,8 +1,10 @@
 fileFormatVersion: 2
-guid: c8d8b29efd236854db4552603ffecea8
+guid: 189592854d778c24c9a9b2c64ae9a8c2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: boia2
+    21300000: boia5
+    21300002: boia4
+    21300004: boia2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

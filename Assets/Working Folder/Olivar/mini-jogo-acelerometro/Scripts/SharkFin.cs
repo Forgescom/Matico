@@ -16,7 +16,7 @@ public class SharkFin : MonoBehaviour {
 	public Sprite [] skins;
 	public Sprite [] halfSkins;
 
-	int currentSkin = 0;
+	bool GameEnded = false;
 
 	void Start()
 	{
@@ -59,34 +59,42 @@ public class SharkFin : MonoBehaviour {
 
 	void StartMovement()
 	{
+		GameEnded = false;
 		canMove = true;
 		pursuit = true;
-		currentSkin = 0;
+		transform.animation.Play("Idle");
+		halfBoiaAnim.sprite = halfSkins[AcelerometerBrain.vidas];
+		boiaAnim.sprite = skins[AcelerometerBrain.vidas];
 
 	}
 	void StopMovement(string result)
 	{
+
 		transform.position = startPos;
 		canMove = false;
 		pursuit = false;
+		GameEnded = true;
 	}
 
 	void AnimEndStopPursuit()
 	{
-		canMove = true;
-		pursuit = false;
+		if (GameEnded == false) {
+			canMove = true;
+			pursuit = false;
+		}
+
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.tag == "Player") {
-
+			print ("NO TUBARAAO SAO ESTAS VIDAS:  " + AcelerometerBrain.vidas);
 			//print ("VOU COMEÇAR A ANIMAR O TUBARAO");
-			halfBoiaAnim.sprite = halfSkins[currentSkin];
-			boiaAnim.sprite = skins[currentSkin];
+			halfBoiaAnim.sprite = halfSkins[AcelerometerBrain.vidas];
+			boiaAnim.sprite = skins[AcelerometerBrain.vidas];
 			transform.animation.Play("Stuck");
 			canMove = false;
-			currentSkin ++;
+
 
 
 		}
@@ -98,19 +106,15 @@ public class SharkFin : MonoBehaviour {
 	void OnEnable()
 	{
 		AcelerometerBrain.startGame += StartMovement;
-		AcelerometerBrain.restartGame += RestartValues;
 		AcelerometerBrain.endGame += StopMovement;
 	}
 	
 	void OnDisable()
 	{
 		AcelerometerBrain.startGame -= StartMovement;
-		AcelerometerBrain.restartGame -= RestartValues;
 		AcelerometerBrain.endGame -= StopMovement;
 	}
 
-	void RestartValues(){
-		transform.position = startPos;
-	}
+
 
 }

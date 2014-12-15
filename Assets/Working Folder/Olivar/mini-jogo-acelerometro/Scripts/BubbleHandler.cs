@@ -15,14 +15,16 @@ public class BubbleHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		foreach (GameObject bub in bubbles) {
-			bub.SetActive(true);
-		}
+
 
 	}
 
 	void Init(){
-		//InvokeRepeating("ShowBubble", 1,2); 
+		foreach (GameObject bub in bubbles) {
+			bub.SetActive(false);
+			bub.GetComponent<CircleCollider2D>().enabled = true;
+		}
+		InvokeRepeating("ShowBubble", 1,2); 
 	}
 
 	
@@ -35,8 +37,21 @@ public class BubbleHandler : MonoBehaviour {
 	void ShowBubble()
 	{
 
-		int randomBubble = Random.Range (0, bubbles.Length);
+		int randomBubble;
+		bool newRandom;
+		do {
+			randomBubble = Random.Range (0, bubbles.Length);
 
+			if(bubbles [randomBubble].activeSelf == false)
+			{
+				newRandom = true;
+			}
+			else
+			{
+				newRandom = false;
+			}
+
+		} while(newRandom == false);
 
 		bubbles [randomBubble].SetActive (true);
 
@@ -50,6 +65,10 @@ public class BubbleHandler : MonoBehaviour {
 		}
 	}
 
+	void EndGame(string outCome){
+		CancelInvoke ();
+	}
+
 	void RestartValues()
 	{
 		foreach (GameObject bub in bubbles) {
@@ -59,15 +78,13 @@ public class BubbleHandler : MonoBehaviour {
 	}
 
 	void OnEnable(){
-
 		AcelerometerBrain.startGame += Init;
-		AcelerometerBrain.restartGame += RestartValues;
-
+		AcelerometerBrain.endGame += EndGame;
 	}
 
 	void OnDisable(){
 		AcelerometerBrain.startGame -= Init;
-		AcelerometerBrain.restartGame -= RestartValues;
+		AcelerometerBrain.endGame -= EndGame;
 	}
 
 }

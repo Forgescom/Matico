@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: ff4b24df9a332784fb5946ab72716211
+guid: 0c3e70c380d71cd4999e170e896e780f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: boia2_half
+    21300000: boia4_half
+    21300002: boia2_half
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,9 +27,9 @@ TextureImporter:
   maxTextureSize: 128
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

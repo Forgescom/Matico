@@ -7,7 +7,7 @@ namespace Assets.Scripts
 {
     //enums for the state of the slingshot, the 
     //state of the game and the state of the panda
-    public enum CannonState
+	public enum SlingshotState
     {
         Idle,
         UserPulling,
@@ -17,7 +17,7 @@ namespace Assets.Scripts
     public enum GameState
     {
         Start,
-        PandaMovingToCannon,
+        PandaMovingToSlingshot,
         Playing,
         Won,
         Lost
@@ -31,3 +31,4 @@ namespace Assets.Scripts
     }
     
 }
+

@@ -5,6 +5,8 @@ public class CoinMovement : MonoBehaviour {
 
 	public static bool CANMOVE = true;
 	public AudioClip scratchSound;
+	public GameObject highlight;
+
 
 	Vector3 startPosition;
 	bool grabed = false;
@@ -13,6 +15,8 @@ public class CoinMovement : MonoBehaviour {
 	void Start () {
 		startPosition = transform.position;
 		CANMOVE = true;
+		highlight.SetActive(true);
+		highlight.animation.Play ();
 	}
 	
 	// Update is called once per frame
@@ -24,6 +28,7 @@ public class CoinMovement : MonoBehaviour {
 		}
 		else{
 			transform.position = startPosition;
+			transform.audio.Stop();
 		}
 
 	}
@@ -39,7 +44,8 @@ public class CoinMovement : MonoBehaviour {
 			Collider2D hit = Physics2D.OverlapPoint(touchPos);
 			
 			if(hit && hit.name == "moeda"){
-				print("ACERTEI NA MOEDA");
+				//print("ACERTEI NA MOEDA");
+				highlight.SetActive(false);
 				grabed = true;
 				return true;
 			}
@@ -50,6 +56,8 @@ public class CoinMovement : MonoBehaviour {
 		}
 		else
 		{
+			highlight.SetActive(true);
+			highlight.animation.Play();
 			transform.audio.Stop();
 			transform.position = startPosition;
 			grabed = false;

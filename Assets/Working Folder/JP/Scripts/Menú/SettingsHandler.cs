@@ -13,21 +13,12 @@ public class SettingsHandler : MonoBehaviour {
 	void Start () {
 
 
-		btSoundFx.buttonOn = GameController.fxSoundOn;
+		btSoundFx.buttonOn = GameController.FX_SOUND;
 		btSoundFx.updateButton ();
 
-		btSoundAmbiente.buttonOn = GameController.musicSoundOn;
+		btSoundAmbiente.buttonOn = GameController.BG_SOUND;
 		btSoundAmbiente.updateButton ();
 
-
-		bool soundMaticoOn;
-
-		 
-
-		int soundMaticoPrefs = PlayerPrefs.GetInt (GameController.PREFS_PLAYER_SOUNDMATICO);
-		soundMaticoOn = (soundMaticoPrefs == 1) ? true : false;
-		btSoundMatico.buttonOn = soundMaticoOn;
-		btSoundMatico.updateButton ();
 
 	}
 	
@@ -43,18 +34,13 @@ public class SettingsHandler : MonoBehaviour {
 
 
 		switch (bt.name) {
-			case "BtSoundMatico":
-
-			PlayerPrefs.SetInt(GameController.PREFS_PLAYER_SOUNDMATICO, boolInt);				
+			case "BtSoundAmbiente":
+				GameController.SwitchOnOffSound("Music");
 				
 				break;
-			case "BtSoundAmbiente":
-			GameController.SwitchOnOffSound("Music");
-			PlayerPrefs.SetInt(GameController.PREFS_PLAYER_SOUNDAMBIENTE, boolInt);	
-				break;
 			case "BtSoundFx":
-			GameController.SwitchOnOffSound("FX");
-			PlayerPrefs.SetInt(GameController.PREFS_PLAYER_SOUNDFX, boolInt);	
+				GameController.SwitchOnOffSound("FX");
+				
 				break;
 			
 		}

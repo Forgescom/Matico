@@ -12,6 +12,7 @@ public class AvatarPiker : MonoBehaviour {
 	//NAME
 	TouchScreenKeyboard keyboard;
 	public TextMesh avatarName;
+	bool insertingName =false;
 
 	void Awake()
 	{
@@ -33,11 +34,12 @@ public class AvatarPiker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(TouchScreenKeyboard.visible ==true)
-			avatarName.text = keyboard.text;
-
-		if(avatarName.text.Length >= 10)
-			keyboard.active = false;
+		if(TouchScreenKeyboard.visible ==true){
+			if(keyboard.text.Length < 10)
+				avatarName.text = keyboard.text;
+			else
+				avatarName.text = avatarName.text;
+		}
 
 		if(keyboard!=null)
 			if(keyboard.done)
@@ -69,8 +71,10 @@ public class AvatarPiker : MonoBehaviour {
 	}
 
 	void InsertName(){
+		insertingName = false;
 		avatarName.text = "";
-		keyboard = TouchScreenKeyboard.Open (GameController.PLAYER_NAME);		
+		keyboard = TouchScreenKeyboard.Open (GameController.PLAYER_NAME);	
+		insertingName = true;
 
 	}
 

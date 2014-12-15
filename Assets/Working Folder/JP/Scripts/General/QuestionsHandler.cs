@@ -59,15 +59,15 @@ public class QuestionsHandler : MonoBehaviour {
 		int randomQuestionNumber = 0;
 	
 
-		//ENSURE THAT RANDOM QUESTION IS SAME LEVEL DIFICULTY AS CURRENT LEVEL
-		/*do {
+	/*//ENSURE THAT RANDOM QUESTION IS SAME LEVEL DIFICULTY AS CURRENT LEVEL
+		do {
 
 			randomQuestionNumber = Random.Range (0, GameController.questions.Count);		
 
 		} while (TypeGameEquals(randomQuestionNumber,GameController.CURRENT_LEVEL_TYPE,GameController.CURRENT_LEVEL_DIFICULTY) != true);
 
+		*/
 
-*/
 		//PICK QUESTION TEXT FROM PREVIOUS NUMBER
 		string questionNumber;
 		GameController.questions [randomQuestionNumber].TryGetValue ("question", out questionNumber);

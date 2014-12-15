@@ -6,6 +6,7 @@ public class ScratchController : MonoBehaviour {
 	public GameObject introScreen;
 	public GameObject explanationScreen;
 	public GameObject scratchCard;
+	public GameObject questionHolder;
 
 
 	int currentScreen = 0;
@@ -18,8 +19,22 @@ public class ScratchController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		TurnOffOnSound ();
 		Init ();
 
+	}
+
+	void TurnOffOnSound()
+	{
+	
+		AudioSource audio = transform.GetComponent<AudioSource> ();
+		audio.enabled = GameController.BG_SOUND;
+		
+		if (audio.enabled)
+			audio.Play ();
+		else {
+			audio.Stop();
+		}
 	}
 
 
@@ -28,6 +43,7 @@ public class ScratchController : MonoBehaviour {
 		currentScreen = (GameController.SCRATCHCARD_TUT == true) ? 0 : 1;
 		introScreen.SetActive (true);
 		explanationScreen.SetActive (false);
+		questionHolder.SetActive (false);
 		scratchCard.SetActive(false);
 
 	}
@@ -52,6 +68,9 @@ public class ScratchController : MonoBehaviour {
 		{
 			scratchCard.SetActive(true);
 			scratchCard.animation.Play("ScratchCardIn");
+
+			questionHolder.SetActive (true);
+			questionHolder.animation.Play("QuestionIn");
 			currentScreen ++;
 		}
 	}
@@ -66,6 +85,7 @@ public class ScratchController : MonoBehaviour {
 	void RestartGame()
 	{
 		scratchCard.animation.Play("ScratchCardOut");
+		questionHolder.animation.Play("QuestionOut");
 		StartCoroutine ("ChangeQuestion");
 	}
 
@@ -76,6 +96,7 @@ public class ScratchController : MonoBehaviour {
 		}	
 		transform.SendMessage ("SetQuestionValues");
 		scratchCard.animation.Play ("ScratchCardIn");
+		questionHolder.animation.Play("QuestionIn");
 	}
 
 	void OnEnable()
