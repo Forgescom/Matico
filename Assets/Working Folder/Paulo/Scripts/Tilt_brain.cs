@@ -7,6 +7,9 @@ public class Tilt_brain : MonoBehaviour {
 	//Controlo geral
 	public GameObject introGame;
 	public GameObject gameFull;
+	public GameObject splash;
+	public GameObject questionHolder;
+	int currentScreen = 0;
 
 	//contadores
 	public countMenorScr countMenor;
@@ -43,15 +46,17 @@ public class Tilt_brain : MonoBehaviour {
 		restart = false;
 		RestartText.text = "";
 		GameOverText.text = "";
+		//tempo de jogo
 		timeValue.time = cntTime;
 
 		//Intro.SetActive(false);
 	}
 	//Controlo Geral
 	void Init(){
-
+		splash.SetActive (true);
+		introGame.SetActive (false);
 		gameFull.SetActive (false);
-		introGame.SetActive (true);
+		questionHolder.SetActive (false);
 	}
 
 	//void OnGUI() { GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), introTutorial); }
@@ -63,9 +68,10 @@ public class Tilt_brain : MonoBehaviour {
 		countMenor.barDisplay = Menor;
 
 		//GAMEOVER
-		//time
-		cntTime -= Time.deltaTime;
-
+		if (currentScreen >= 2) {
+				//time
+				cntTime -= Time.deltaTime;
+		}
 		if (cntTime <= 0){
 			GameOver ();
 		}
@@ -161,9 +167,30 @@ public class Tilt_brain : MonoBehaviour {
 		restart = true;	
 	}
 
-	void OnGUI() {
-		//GUI.DrawAnimation(new Rect(0, 0, Screen.width, Screen.height), introTutorial);
+	void ChangeScreen ()
+	{
 
-		//GUI.Box (new Rect(timePos.x, timePos.y, timeSize.x, timeSize.y), "" + cntTime.ToString("0"));
+		if (currentScreen == 0) {
+			introGame.SetActive (true);
+			//explanationScreen.animation.Play("Explanation");
+			//GameController.SCRATCHCARD_TUT = false;
+			currentScreen ++;
+		}
+		else if(currentScreen == 1)
+		{
+			gameFull.SetActive(true);
+			//scratchCard.animation.Play("ScratchCardIn");
+			
+			questionHolder.SetActive (true);
+			//questionHolder.animation.Play("QuestionIn");
+			currentScreen ++;
+		}
+	}
+
+	void OnEnable() {
+		DeactivateOnAnimEnd.animationFinish += ChangeScreen;
 	} 
+	void OnDisable() {
+		DeactivateOnAnimEnd.animationFinish -= ChangeScreen;
+	}
 }

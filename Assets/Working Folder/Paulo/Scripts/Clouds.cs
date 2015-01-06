@@ -10,13 +10,13 @@ public class Clouds : MonoBehaviour {
 	public float speed = 1f;
 	public bool Horizontal;
 	public bool Rain;
-	public float timeToStart = 1f;
+	public float timeToStart = 2f;
 
 	private float posx;
-
+	/*
 	void Start () {
 		StartCoroutine(waitToStart());
-	}	
+	}*/	
 	// Update is called once per frame
 	void Update () {
 		if (canMove) {
@@ -50,15 +50,16 @@ public class Clouds : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D col){
 		if (col.name == "eatingKfood") {
-				Start ();//restart
-				transform.position = initialPos;
+				Restart ();//restart
+				//transform.position = initialPos;
 				}
 		//transform.position = initialPos;
 	}
 
-	IEnumerator waitToStart() {
+	//IEnumerator waitToStart() {
 
-		yield return new WaitForSeconds (timeToStart);
+	void Restart (){
+		//yield return new WaitForSeconds (timeToStart);
 
 		if (Horizontal) {
 			posx = Random.Range (-10f, 10f);
