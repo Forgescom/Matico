@@ -453,7 +453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &166987537
 Animator:
   serializedVersion: 3
@@ -911,7 +911,6 @@ MonoBehaviour:
   speed: 2
   Horizontal: 0
   Rain: 0
-  timeToStart: 1
 --- !u!1 &649981884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1079,6 @@ MonoBehaviour:
   speed: 1
   Horizontal: 1
   Rain: 0
-  timeToStart: 1
 --- !u!212 &681234859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1199,7 +1197,6 @@ MonoBehaviour:
   speed: 3
   Horizontal: 0
   Rain: 0
-  timeToStart: 1
 --- !u!61 &705409537
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1491,7 +1488,6 @@ MonoBehaviour:
   speed: 1
   Horizontal: 1
   Rain: 0
-  timeToStart: 1
 --- !u!212 &1010042145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1610,7 +1606,6 @@ MonoBehaviour:
   speed: 3
   Horizontal: 0
   Rain: 0
-  timeToStart: 1
 --- !u!61 &1154317593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1986,7 +1981,6 @@ MonoBehaviour:
   speed: .5
   Horizontal: 0
   Rain: 1
-  timeToStart: 1
 --- !u!4 &1427878205
 Transform:
   m_ObjectHideFlags: 0
@@ -2383,7 +2377,6 @@ MonoBehaviour:
   speed: 1
   Horizontal: 0
   Rain: 0
-  timeToStart: 2
 --- !u!212 &1665191852
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2429,15 +2422,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: c584dfc25df90c348861783d7ee2da61, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.15288353
+      value: 4.8499999
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c584dfc25df90c348861783d7ee2da61, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.7343502
+      value: 10.1899996
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c584dfc25df90c348861783d7ee2da61, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 7.90090466
+      value: 7.9000001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c584dfc25df90c348861783d7ee2da61, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2538,8 +2531,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1670302701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.78789806, y: -.156536818, z: 7.90090466}
-  m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1}
+  m_LocalPosition: {x: -3.98000002, y: -7.69999981, z: 7.9000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1686570096}
   - {fileID: 2101418866}
@@ -2727,6 +2720,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4e93d39ee23415141b5f343dd4ccdda6, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: 4e93d39ee23415141b5f343dd4ccdda6, type: 2}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e93d39ee23415141b5f343dd4ccdda6, type: 2}
@@ -3166,7 +3163,6 @@ MonoBehaviour:
   speed: 1
   Horizontal: 1
   Rain: 0
-  timeToStart: 1
 --- !u!212 &1861853181
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3187,7 +3183,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f9244166989088a4a9a38ffa0ca4094d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1861853182
@@ -3352,7 +3348,7 @@ Transform:
   m_PrefabInternal: {fileID: 1667296190}
   m_GameObject: {fileID: 1887643735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.15288353, y: 9.7343502, z: 7.90090466}
+  m_LocalPosition: {x: 4.8499999, y: 10.1899996, z: 7.9000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 654487089}
@@ -3373,7 +3369,6 @@ MonoBehaviour:
   speed: 3
   Horizontal: 0
   Rain: 0
-  timeToStart: 1
 --- !u!61 &1887643738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3627,7 +3622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2069581293
 Transform:
   m_ObjectHideFlags: 0
